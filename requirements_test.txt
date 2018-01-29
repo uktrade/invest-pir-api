@@ -4,14 +4,22 @@
 #
 #    pip-compile --output-file requirements_test.txt requirements_test.in
 #
-coverage==4.4.1           # via pytest-cov
-django==1.11.8
-gunicorn==19.5.0
-py==1.4.34                # via pytest
-pytest-cov==2.3.1
-pytest-django==3.0.0
-pytest-sugar==0.8.0
-pytest==3.0.2
-pytz==2017.2              # via django
+attrs==17.4.0             # via pytest
+coverage==4.4.2           # via pytest-cov
+django==1.11.9
+flake8==3.5.0
+gunicorn==19.7.1
+mccabe==0.6.1             # via flake8
+pluggy==0.6.0             # via pytest
+py==1.5.2                 # via pytest
+pycodestyle==2.3.1        # via flake8
+pyflakes==1.6.0           # via flake8
+pytest-cov==2.5.1
+pytest-django==3.1.2
+pytest-sugar==0.9.0
+pytest==3.3.2
+pytz==2017.3
+raven==6.5.0
+six==1.11.0               # via pytest
 termcolor==1.1.0          # via pytest-sugar
-whitenoise==3.1
+whitenoise==3.3.1

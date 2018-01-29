@@ -20,6 +20,7 @@ test:
 	$(COLLECT_STATIC) && $(FLAKE8) && $(PYTEST) && $(CODECOV)
 
 DJANGO_WEBSERVER := \
+	python manage.py migrate --noinput && \
 	python manage.py collectstatic --noinput && \
 	python manage.py runserver 0.0.0.0:$$PORT
 
@@ -36,7 +37,12 @@ docker_run:
 
 DOCKER_SET_DEBUG_ENV_VARS := \
 	export INVEST_DEBUG=true; \
-	export INVEST_TEST=true
+	export INVEST_PORT=8005; \
+	export INVEST_SECRET_KEY=secret; \
+	export INVEST_TEST=true; \
+	export INVEST_SESSION_COOKIE_SECURE=false; \
+	export INVEST_SECURE_HSTS_SECONDS=0; \
+	export INVEST_SECURE_SSL_REDIRECT=false
 
 docker_test_env_files:
 	$(DOCKER_SET_DEBUG_ENV_VARS) && \
@@ -73,10 +79,10 @@ docker_build:
 
 DEBUG_SET_ENV_VARS := \
 	export PORT=8010; \
-	export SECRET_KEY=debug; \
 	export DEBUG=true ;\
+	export SECRET=secret; \
 	export SESSION_COOKIE_SECURE=false; \
-	export SECURE_HSTS_SECONDS=0 ;\
+	export SECURE_HSTS_SECONDS=0; \
 	export SECURE_SSL_REDIRECT=false
 
 debug_webserver:
