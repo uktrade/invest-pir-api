@@ -27,6 +27,10 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG') == 'true'
+ENABLE_DEBUG_TOOLBAR = DEBUG and os.getenv('DEBUG_TOOLBAR') == 'true'
+
+if ENABLE_DEBUG_TOOLBAR:
+    INTERNAL_IPS = os.getenv('INTERNAL_IPS', ['127.0.0.1'])
 
 # As the app is running behind a host-based router supplied by Heroku or other
 # PaaS, we can open ALLOWED_HOSTS
@@ -62,6 +66,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+if ENABLE_DEBUG_TOOLBAR:
+    INSTALLED_APPS.append('debug_toolbar')
+
 MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -74,6 +81,11 @@ MIDDLEWARE_CLASSES = [
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
+
+if ENABLE_DEBUG_TOOLBAR:
+    MIDDLEWARE_CLASSES.append(
+        'debug_toolbar.middleware.DebugToolbarMiddleware'
+    )
 
 ROOT_URLCONF = 'config.urls'
 
