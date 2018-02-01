@@ -1,5 +1,8 @@
+boto3==1.5.10
+botocore==1.8.24
 dj-database-url==0.4.2
 django==1.11.9
+django-storages==1.6.5
 gunicorn==19.7.1
 psycopg2==2.7.3.2
 pytz==2017.3              # via django
