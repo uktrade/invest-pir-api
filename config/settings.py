@@ -18,7 +18,6 @@ import os
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(PROJECT_ROOT)
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -27,7 +26,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG') == 'true'
-ENABLE_DEBUG_TOOLBAR = DEBUG and os.getenv('DEBUG_TOOLBAR') == 'true'
+ENABLE_DEBUG_TOOLBAR = os.getenv('ENABLE_DEBUG_TOOLBAR') == 'true'
 
 if ENABLE_DEBUG_TOOLBAR:
     INTERNAL_IPS = os.getenv('INTERNAL_IPS', ['127.0.0.1'])
