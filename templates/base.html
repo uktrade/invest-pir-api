@@ -5,8 +5,7 @@
 {% endblock head %}
 
 <body class="{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}">
-{% wagtailuserbar %}
-{% include "includes/header.html" %}
+{% wagtailuserbar %}}
 {% block head-extra %}
 {% endblock head-extra %}
 
