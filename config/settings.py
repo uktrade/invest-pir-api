@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'storages',
     'taggit',
+    'wagtailmarkdown',
 
     'django.contrib.admin',
     'django.contrib.auth',
