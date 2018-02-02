@@ -8,4 +8,5 @@ psycopg2==2.7.3.2
 pytz==2017.3              # via django
 raven==6.5.0
 wagtail==2.0b1
+-e git+https://github.com/uktrade/wagtail-markdown.git@wagtail2#egg=wagtail-markdown
 whitenoise==3.3.1
