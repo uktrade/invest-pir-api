@@ -22,3 +22,9 @@ class HomePage(Page):
         FieldPanel('sub_heading'),
         ImageChooserPanel('hero_image'),
     ]
+
+    def get_context(self, request):
+        from industry.models import IndustryPage
+        context = super(HomePage, self).get_context(request)
+        context['industry_cards'] = IndustryPage.objects.live()
+        return context

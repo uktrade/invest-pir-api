@@ -20,6 +20,11 @@ class IndustriesLandingPage(Page):
         FieldPanel('heading'),
     ]
 
+    def get_context(self, request):
+        context = super(IndustriesLandingPage, self).get_context(request)
+        context['industry_cards'] = IndustryPage.objects.live()
+        return context
+
 
 class IndustryPage(Page):
     # Related industries are implemented as subpages
@@ -58,3 +63,9 @@ class IndustryPage(Page):
         StreamFieldPanel('pullout'),
         StreamFieldPanel('subsections')
     ]
+
+    def get_context(self, request):
+        context = super(IndustryPage, self).get_context(request)
+        context['industry_cards'] = self.get_children().live()
+        # pages will return as Page type, use .specific to get IndustryPage
+        return context

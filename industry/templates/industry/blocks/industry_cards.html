@@ -1,2 +1,19 @@
 <section id="{{ id|default_if_none:"industries" }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2>{{ title }}</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="card-deck-wrapper">
+        <div class="card-deck">
+          {% for card in cards %}
+            {% include "industry/blocks/industry_cards/card.html" %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
