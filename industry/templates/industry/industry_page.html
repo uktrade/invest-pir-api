@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% include_block page.body %}
 
 {% block body_class %}industry{% endblock %}
+
+{% block head-extra %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/industry.css' %}">
+{% endblock head-extra %}
 
 {% block content %}
 

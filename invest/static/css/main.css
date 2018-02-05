@@ -78,6 +78,8 @@ nav.mb-4, nav.my-4 {
 
 /* bs4 customisations - end */
 
+
+/* accordion component */
 #accordion {
     background-color: white;
 }
@@ -123,6 +125,41 @@ nav.mb-4, nav.my-4 {
     font-size: 1.2rem;
     text-align: justify;
     text-justify: auto;
+}
+
+
+/** hero component */
+#hero .jumbotron {
+    background: no-repeat 100% 0%;
+    background-position-x: 100%;
+    background-position-y: 0%;
+    background-size: cover;
+    padding: 0;
+}
+
+#hero > .jumbotron .row {
+    padding-top: 0;
+    position: relative;
+    min-height: 360px;
+}
+
+#hero .jumbotron .container {
+    background-color: inherit;
+    padding-top: 30px;
+}
+
+#hero .heading {
+    color: white;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+#hero .heading h1 {
+    font-weight: bolder;
+    margin-bottom: 15px;
+    font-size: 3rem;
+    line-height: 1.1em;
 }
 
 /* industry cards */

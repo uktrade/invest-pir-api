@@ -4,15 +4,15 @@
     {% include "includes/head.html" %}
 {% endblock head %}
 
-<body class="{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}">
-{% wagtailuserbar %}
 {% block head-extra %}
 {% endblock head-extra %}
+
+<body class="{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}">
+{% wagtailuserbar %}
 
 {% block messages %}
     {% include "includes/messages.html" %}
 {% endblock messages %}
-
 
 <main role="main">
     {% block content %}

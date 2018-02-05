@@ -1,4 +1,20 @@
+{% load wagtailmarkdown %}
+{% load wagtailimages_tags %}
+
 {% block header %}
+{% image page.specific.hero_image width-2400 as hero %}
 <section id="hero">
+  <div class="jumbotron" style="background-image: url('{{ hero.url }}'); background-position: center center">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 heading">
+          <h1>{{ page.heading }}</h1>
+          {% if page.sub_heading %}
+          <h2>{{ page.sub_heading }}</h2>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 {% endblock %}
