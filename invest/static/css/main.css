@@ -1,3 +1,8 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #160d37;
+}
+
 body section {
     background: white;
 }
@@ -12,6 +17,32 @@ h3 {
     font-weight: 400;
 }
 
+/* bs4 customisation - outer elements */
+.container {
+    max-width: 1200px !important;
+    padding-right: 60px;
+    padding-left: 60px;
+    padding-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+}
+
+.jumbotron {
+    border-radius: 0;
+    margin-bottom: 0 !important;
+}
+
+.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.row {
+    padding-top: 15px;
+}
+
+/* bs4 customisation innner elements */
 .card {
     padding-top: 0;
     padding-bottom: 0;
@@ -29,9 +60,19 @@ h3 {
     padding: 15px;
 }
 
-.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
-    padding-left: 0;
-    padding-right: 0;
+/** bs4 customisations: disable rounded corners on cards */
+.card-header:first-child {
+    border-radius: 0;
+}
+
+.card-img-top {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+
+nav.mb-4, nav.my-4 {
+    margin-bottom: 0 !important;
 }
 
 
@@ -92,4 +133,39 @@ h3 {
     margin-top: 32px;
     margin-left: -15px;
     margin-right: -15px;
+}
+
+#industries .card {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+#industries .card-header {
+    text-align: left;
+    margin-right: auto;
+    padding: 0px !important;
+    border-bottom: none;
+    background: #006dcc;
+    color: white;
+    display: inline-block;
+}
+
+#industries .card-header h3 {
+    padding: 0.25rem;
+    font-size: 1rem;
+    margin: 0 15px;
+}
+
+#industries .card-header h3 a {
+    color: white;
+}
+
+#industries .card-img-top {
+    max-height: 150px;
+}
+
+
+#industries .card-block {
+    border: 1px #d8d8d8 solid;
+    min-height: 200px;
 }
