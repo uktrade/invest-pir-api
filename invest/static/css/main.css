@@ -2,7 +2,57 @@ body section {
     background: white;
 }
 
-/** override bootstrap defaults TODO - set these from variables.scss */
+
+
+#accordion {
+    background-color: white;
+}
+
+
+#accordion .card-header {
+    border-top: none;
+    border-bottom: solid 1px #d8d8d8;
+    padding: 15px;
+    border-radius: 0px 0px 0px 0px !important;
+    border-left: none;
+    border-right: none;
+    font-weight: bold;
+    font-size: large;
+    min-height: 3rem;
+}
+
+#accordion .card-block {
+    padding: 15px 15px 15px 75px;
+}
+
+#accordion .card-header:after {
+    float: right;
+    font-weight: bolder;
+    content: '+';
+}
+
+#accordion .show .card-footer {
+    max-height: 0;
+}
+
+#accordion .card-footer {
+    max-height: 1px;
+    border-top: none;
+    border-bottom: 1px #d8d8d8 solid;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#accordion .card p {
+    font-size: 1.2rem;
+    text-align: justify;
+    text-justify: auto;
+}
+
+
+/** bs4 customisations - these should be done by setting up variables.scss */
 h1, h2 {
     font-weight: bold;
 }
@@ -11,35 +61,27 @@ h3 {
     font-weight: 400;
 }
 
+.card {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: 0 0 0 0 !important;
+    background-color: inherit;
+    border-style: none;
+}
+
+.card-header {
+    background-color: inherit;
+    padding-bottom: 0 !important;
+}
+
+.card-block {
+    padding: 15px;
+}
+
 .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
     padding-left: 0;
     padding-right: 0;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #160d37;
-}
 
-nav.mb-4, nav.my-4 {
-    margin-bottom: 0 !important;
-}
-
-.jumbotron {
-    border-radius: 0;
-    margin-bottom: 0 !important;
-}
-
-.container {
-    max-width: 1200px !important;
-    padding-right: 60px;
-    padding-left: 60px;
-    padding-top: 30px;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: white;
-}
-
-.row {
-    padding-top: 15px;
-}
+/* bs4 customisations - end */
