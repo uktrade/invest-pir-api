@@ -7,7 +7,6 @@
 {% block body_class %}home{% endblock %}
 
 {% block content %}
-  {% include "industry/blocks/heading.html" %}
-
-  {% include "industry/blocks/industry_cards.html" with cards=industry_cards title="Discover UK Industries" %}
+  {% include "industry/sections/heading.html" %}
+  {% include "industry/sections/industry_cards.html" with cards=industry_cards title="Discover UK Industries" %}
 {% endblock %}

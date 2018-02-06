@@ -17,7 +17,7 @@ class SetupGuideLandingPage(Page):
     ]
 
     def get_context(self, request):
-        context = super(SetupGuideLandingPage, self).get_context(request)
+        context = super().get_context(request)
         context['setup_guide_cards'] = SetupGuide.objects.live()
         return context
 

@@ -7,7 +7,7 @@ from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtailmarkdown.blocks import MarkdownBlock
 
-from .blocks import MarkdownAccordionItemBlock
+from invest.blocks import MarkdownAccordionItemBlock
 
 
 class IndustriesLandingPage(Page):
@@ -30,7 +30,7 @@ class IndustriesLandingPage(Page):
     ]
 
     def get_context(self, request):
-        context = super(IndustriesLandingPage, self).get_context(request)
+        context = super().get_context(request)
         context['industry_cards'] = IndustryPage.objects.live()
         return context
 
@@ -74,7 +74,7 @@ class IndustryPage(Page):
     ]
 
     def get_context(self, request):
-        context = super(IndustryPage, self).get_context(request)
+        context = super().get_context(request)
         context['industry_cards'] = self.get_children().live()
         # pages will return as Page type, use .specific to get IndustryPage
         return context

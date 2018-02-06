@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
-{% load staticfiles %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load static from staticfiles %}
+{% load include_block from wagtailcore_tags %}
 
 {% include_block page.body %}
 
@@ -13,18 +13,18 @@
 
 {% block content %}
 
-{% include "industry/blocks/heading.html" %}
+  {% include "industry/sections/heading.html" %}
 
-{% for block in page.pullout %}
-  {% include "industry/blocks/pullout.html" with value=block.value %}
-{% endfor %}
+  {% for block in page.pullout %}
+    {% include "industry/sections/pullout.html" with value=block.value %}
+  {% endfor %}
 
-{% if page.subsections %}
-  {% include "industry/blocks/accordion.html" with subsections=page.subsections %}
-{% endif %}
+  {% if page.subsections %}
+    {% include "industry/sections/accordion.html" with subsections=page.subsections %}
+  {% endif %}
 
-{% if industry_cards %}
-  {% include "industry/blocks/industry_cards.html" with cards=industry_cards title="Related Industries" %}
-{% endif %}
+  {% if industry_cards %}
+    {% include "industry/sections/industry_cards.html" with cards=industry_cards title="Related Industries" %}
+  {% endif %}
 
 {% endblock %}
