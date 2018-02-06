@@ -206,3 +206,38 @@ nav.mb-4, nav.my-4 {
     border: 1px #d8d8d8 solid;
     min-height: 200px;
 }
+
+/** pullout component */
+#pullout {
+    background-color: #fcfbf9;
+    padding: 0;
+}
+
+#pullout .row {
+    padding: 15px 0;
+}
+
+#pullout .container {
+    background-color: inherit;
+    padding-top: 0;
+}
+
+#pullout .text {
+    font-size: 1.2rem;
+    display: inline-block;
+    overflow-x: hidden;
+    width: 75%;
+    margin-top: 16px;
+    vertical-align: top;
+}
+
+#pullout .stat {
+    padding-left: 15px;
+    border-left: 3px #01539e solid;
+    display: inline-block;
+}
+
+#pullout .stat h1 {
+    color: #01539e;
+    font-size: 3.3rem;
+}

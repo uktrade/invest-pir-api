@@ -15,6 +15,10 @@
 
 {% include "industry/blocks/heading.html" %}
 
+{% for block in page.pullout %}
+  {% include "industry/blocks/pullout.html" with value=block.value %}
+{% endfor %}
+
 {% if page.subsections %}
   {% include "industry/blocks/accordion.html" with subsections=page.subsections %}
 {% endif %}

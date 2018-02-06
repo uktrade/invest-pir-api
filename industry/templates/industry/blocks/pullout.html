@@ -1,2 +1,13 @@
-<section class="row pullout jumbotron">
+{% load wagtailmarkdown %}
+{% load wagtailimages_tags %}
+<section id="pullout" class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 text">{{ value.text|markdown }}</div>
+      <div class="col-4 stat">
+          <h1>{{ value.stat }}</h1>
+          <p>{{ value.stat_text }}</p>
+      </div>
+    </div>
+  </div>
 </section>
