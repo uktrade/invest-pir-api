@@ -7,5 +7,10 @@
 {% block body_class %}industries{% endblock %}
 
 {% block content %}
+  {% include "industry/blocks/industry_cards.html" with cards=industry_cards title="Discover UK Industries" card_descriptions=False %}
+
+  {% if page.subsections %}
+    {% include "industry/blocks/accordion.html" with subsections=page.subsections %}
+  {% endif %}
 
 {% endblock %}

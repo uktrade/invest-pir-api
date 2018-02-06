@@ -8,4 +8,14 @@
 
 {% block content %}
 
+{% include "industry/blocks/heading.html" %}
+
+{% if page.subsections %}
+  {% include "industry/blocks/accordion.html" with subsections=page.subsections %}
+{% endif %}
+
+{% if industry_cards %}
+  {% include "industry/blocks/industry_cards.html" with cards=industry_cards title="Related Industries" %}
+{% endif %}
+
 {% endblock %}
