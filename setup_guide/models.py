@@ -18,11 +18,11 @@ class SetupGuideLandingPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['setup_guide_cards'] = SetupGuide.objects.live()
+        context['setup_guide_cards'] = SetupGuidePage.objects.live()
         return context
 
 
-class SetupGuide(Page):
+class SetupGuidePage(Page):
     description = models.TextField()  # appears in card on external pages
 
     heading = models.CharField(max_length=255)
