@@ -177,6 +177,10 @@ nav.mb-4, nav.my-4 {
     margin-bottom: 30px;
 }
 
+#guides .card-block {
+    min-height: 360px;
+}
+
 #guides h3 {
     padding-bottom: 15px;
 }
