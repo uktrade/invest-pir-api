@@ -12,16 +12,16 @@
 
 {% block content %}
 
-  {% include "setup_guide/sections/heading.html" %}
+  {% include "includes/heading_plain.html" %}
 
-  {% include "setup_guide/sections/sub_heading.html" %}
+  {% include "includes/sub_heading.html" %}
 
   {% if page.subsections %}
-    {% include "invest/sections/../../../invest/templates/includes/accordion.html" with subsections=page.subsections %}
+    {% include "includes/accordion.html" with subsections=page.subsections %}
   {% endif %}
 
-  {% if industry_cards %}
-    {% include "setup_guide/sections/setup_guide_cards.html" with cards=industry_cards title="Related Industries" %}
+  {% if setup_guide_cards %}
+    {% include "includes/setup_guide_cards.html" with cards=industry_cards title="Related Industries" %}
   {% endif %}
 
 {% endblock %}

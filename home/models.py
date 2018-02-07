@@ -25,6 +25,10 @@ class HomePage(Page):
 
     def get_context(self, request):
         from industry.models import IndustryPage
-        context = super().get_context(request)
-        context['industry_cards'] = IndustryPage.objects.live()
+        from setup_guide.models import SetupGuidePage
+        context = dict(
+            **super().get_context(request),
+            industry_cards = IndustryPage.objects.live(),
+            setup_guide_cards = SetupGuidePage.objects.live(),
+        )
         return context

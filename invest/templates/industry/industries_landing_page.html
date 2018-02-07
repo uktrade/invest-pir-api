@@ -11,7 +11,7 @@
   {% include "includes/image_cards.html" with cards=industry_cards title="Discover UK Industries" card_descriptions=False %}
 
   {% if page.subsections %}
-    {% include "includes/accordion_section.html" with subsections=page.subsections %}
+    {% include "includes/accordion.html" with subsections=page.subsections %}
   {% endif %}
 
 {% endblock %}
