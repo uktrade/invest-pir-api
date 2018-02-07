@@ -28,7 +28,7 @@ class HomePage(Page):
         from setup_guide.models import SetupGuidePage
         context = dict(
             **super().get_context(request),
-            industry_cards = IndustryPage.objects.live(),
-            setup_guide_cards = SetupGuidePage.objects.live(),
+            industry_cards=IndustryPage.objects.live(),
+            setup_guide_cards=SetupGuidePage.objects.live(),
         )
         return context
