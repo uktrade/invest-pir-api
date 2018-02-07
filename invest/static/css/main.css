@@ -162,6 +162,32 @@ nav.mb-4, nav.my-4 {
     line-height: 1.1em;
 }
 
+/* setup guide cards */
+#guides {
+    background: #fcfbf9;
+}
+
+#guides > .container {
+    background-color: inherit;
+}
+
+#guides .card {
+    border: 1px solid #ddd;
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+#guides h3 {
+    padding-bottom: 15px;
+}
+
+#guides h3 a, #guides h3 a:active {
+    color: blue;
+    text-decoration: underline;
+    font-size: smaller;
+
+}
+
 /* industry cards */
 #industries .container:last-child:after {
     content: "";

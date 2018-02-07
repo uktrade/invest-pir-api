@@ -1,3 +1,4 @@
+{# Double height hero with heading and subheading text #}
 {% load image from wagtailimages_tags %}
 
 {% block header %}
@@ -8,9 +9,7 @@
       <div class="row">
         <div class="col-6 heading">
           <h1>{{ page.heading }}</h1>
-          {% if page.sub_heading %}
           <h2>{{ page.sub_heading }}</h2>
-          {% endif %}
         </div>
       </div>
     </div>
