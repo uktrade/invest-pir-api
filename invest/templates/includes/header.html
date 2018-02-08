@@ -1,0 +1,21 @@
+{% load static %}
+{% load navigation_tags %}
+
+<!-- Static navbar -->
+{% block main_navigation %}
+<nav class="navbar navbar-expand-md">
+    <a class="navbar-brand" href="//"><img src="{% static '/img/logo.png' %}" alt="HM Government"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_menubutton" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar_menubutton">
+      <ul class="navbar-nav mr-auto">
+        {# main_menu is defined in base/templatetags/navigation_tags.py #}
+        {% get_site_root as site_root %}
+        {% top_menu parent=site_root calling_page=self %}
+      </ul>
+    </div>
+</nav>
+
+{% endblock %}

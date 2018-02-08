@@ -76,6 +76,69 @@ nav.mb-4, nav.my-4 {
 }
 
 
+#navbar {
+    background: #1e1348;
+    border-bottom: none;
+    margin-bottom: 0 !important;
+}
+
+/* navbar.less */
+.navbar {
+    background: #1e1348;
+    border-bottom: none;
+    margin-bottom: 0 !important;
+}
+
+.navbar-nav {
+    position: absolute;
+    right: 7rem;
+    bottom: 0;
+}
+
+.navbar-nav li {
+    margin-top: 0;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 0;
+    padding-bottom: 15px;
+}
+
+.navbar-nav li.active {
+    border-bottom: 3px solid #e41f13;
+}
+
+.navbar-nav li.active a {
+    color: white !important;
+    font-weight: bold;
+    background: inherit !important;
+}
+
+.navbar-nav li a {
+    color: white !important;
+    font-weight: bold;
+    background: inherit !important;
+}
+
+.navbar-nav li a:hover {
+    color: white !important;
+    font-weight: bold;
+    background: inherit !important;
+    text-decoration: none;
+}
+
+.navbar-brand {
+    height: 110px;
+}
+
+.navbar-static-top {
+    padding-left: 3rem;
+    padding-right: 3rem;
+
+    background: #1e1348;
+    border-bottom: none;
+    margin-bottom: 0 !important;
+}
+
 /* bs4 customisations - end */
 
 
