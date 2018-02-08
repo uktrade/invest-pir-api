@@ -1,0 +1,18 @@
+{# Double height hero with heading and subheading text #}
+{% load image from wagtailimages_tags %}
+
+{% block header %}
+{% image page.specific.hero_image width-2400 as hero %}
+<section id="heading_hero_tall">
+  <div class="jumbotron" style="background-image: url('{{ hero.url }}'); background-position: center center">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 heading">
+          <h1>{{ page.heading }}</h1>
+          <h2>{{ page.sub_heading }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

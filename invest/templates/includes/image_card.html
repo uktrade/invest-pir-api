@@ -1,7 +1,9 @@
-{% load wagtailmarkdown %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{# card containing an image and markdown content if  card_descriptions is True #}
+{% load markdown from wagtailmarkdown %}
+{% load image from wagtailimages_tags %}
+{% load pageurl from wagtailcore_tags %}
 
-<div class="col-md-4">
+<div class="col-md-4 col-sm-12">
   <div class="card">
     <div class="card-header">
       <h3><a href="{% pageurl card %}">{{ card.title }}</a></h3>

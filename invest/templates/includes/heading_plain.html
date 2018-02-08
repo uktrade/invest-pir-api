@@ -1,0 +1,14 @@
+{# heading with no hero image #}
+{% load image from wagtailimages_tags %}
+
+{% block header %}
+<section id="heading_plain">
+  <div class="container">
+    <div class="row">
+      <div class="col-5 heading">
+        <h1>{{ page.heading }}</h1>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

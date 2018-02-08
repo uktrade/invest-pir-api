@@ -78,6 +78,8 @@ nav.mb-4, nav.my-4 {
 
 /* bs4 customisations - end */
 
+
+/* accordion component */
 #accordion {
     background-color: white;
 }
@@ -86,12 +88,12 @@ nav.mb-4, nav.my-4 {
 #accordion .card-header {
     border-top: none;
     border-bottom: solid 1px #d8d8d8;
-    padding: 15px;
-    border-radius: 0px 0px 0px 0px !important;
+    border-radius: 0 0 0 0 !important;
     border-left: none;
     border-right: none;
     font-weight: bold;
     font-size: large;
+    padding: 15px;
     min-height: 3rem;
 }
 
@@ -125,10 +127,142 @@ nav.mb-4, nav.my-4 {
     text-justify: auto;
 }
 
+
+/** hero component */
+/* #heading_hero used on industry and invest content pages */
+#heading_hero .jumbotron {
+    background: no-repeat 100% 0;
+    background-position-x: 100%;
+    background-position-y: 0;
+    background-size: cover;
+    padding: 0;
+}
+
+#heading_hero > .jumbotron .row {
+    padding-top: 0;
+    position: relative;
+    min-height: 225px;
+}
+
+#heading_hero .jumbotron .container {
+    background-color: inherit;
+    padding-top: 30px;
+}
+
+#heading_hero .heading {
+    color: white;
+    background-color: rgba(0, 84, 159, 0.8);
+    border-bottom: 4px solid #e41f13;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#heading_hero .heading h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    line-height: 1.1em;
+    padding: 25px;
+}
+
+/* #heading_hero_tall used on homepage */
+#heading_hero_tall .jumbotron {
+    background: no-repeat 100% 0;
+    background-position-x: 100%;
+    background-position-y: 0;
+    background-size: cover;
+    padding: 0;
+}
+
+#heading_hero_tall > .jumbotron .row {
+    padding-top: 0;
+    position: relative;
+    min-height: 360px;
+}
+
+#heading_hero_tall .jumbotron .container {
+    background-color: inherit;
+    padding-top: 30px;
+}
+
+#heading_hero_tall .heading {
+    color: white;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+#heading_hero_tall .heading h1 {
+    font-weight: bolder;
+    margin-bottom: 15px;
+    font-size: 3rem;
+    line-height: 1.1em;
+}
+
+/* #heading_plain used on auxilery pages */
+#heading_plain {
+    background: #00549f;
+}
+
+#heading_plain .row {
+    position: relative;
+    min-height: 225px;
+}
+
+#heading_plain .container  {
+    background: inherit;
+}
+
+#heading_plain .heading {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom: 4px solid #e41f13;
+}
+
+#heading_plain h1 {
+    background: white;
+    padding: 25px;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+/* setup guide cards */
+#guides {
+    background: #fcfbf9;
+}
+
+#guides > .container {
+    background-color: inherit;
+}
+
+#guides .card {
+    border: 1px solid #ddd;
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+#guides .card-block {
+    min-height: 360px;
+}
+
+#guides h3 {
+    padding-bottom: 15px;
+}
+
+#guides h3 a, #guides h3 a:active {
+    color: blue;
+    text-decoration: underline;
+    font-size: smaller;
+
+}
+
 /* industry cards */
 #industries .container:last-child:after {
     content: "";
-    border-bottom: red 2px solid;
+    border-bottom: #e41f13 2px solid;
     display: block;
     margin-top: 32px;
     margin-left: -15px;
@@ -168,4 +302,39 @@ nav.mb-4, nav.my-4 {
 #industries .card-block {
     border: 1px #d8d8d8 solid;
     min-height: 200px;
+}
+
+/** pullout component */
+#pullout {
+    background-color: #fcfbf9;
+    padding: 0;
+}
+
+#pullout .row {
+    padding: 30px 0;
+}
+
+#pullout .container {
+    background-color: inherit;
+    padding-top: 0;
+}
+
+#pullout .text {
+    font-size: 1.2rem;
+    display: inline-block;
+    overflow-x: hidden;
+    width: 75%;
+    margin-top: 16px;
+    vertical-align: top;
+}
+
+#pullout .stat {
+    padding-left: 15px;
+    border-left: 3px #01539e solid;
+    display: inline-block;
+}
+
+#pullout .stat h1 {
+    color: #01539e;
+    font-size: 3.3rem;
 }

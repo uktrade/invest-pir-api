@@ -4,7 +4,7 @@ from wagtailmarkdown.blocks import MarkdownBlock
 
 class MarkdownAccordionItemBlock(StructBlock):
     class Meta:
-        template = 'industry/blocks/accordion/markdown_item.html'
+        template = 'blocks/accordion_item_markdown.html'
 
     # accordion section
     title = CharBlock(max_length=255)

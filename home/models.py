@@ -24,7 +24,13 @@ class HomePage(Page):
     ]
 
     def get_context(self, request):
+        # imports here, as otherwise a circular dependency can happen
+        # during the initial migration
         from industry.models import IndustryPage
-        context = super(HomePage, self).get_context(request)
-        context['industry_cards'] = IndustryPage.objects.live()
+        from setup_guide.models import SetupGuidePage
+        context = super().get_context(request)
+        context.update(
+            industry_cards=IndustryPage.objects.live(),
+            setup_guide_cards=SetupGuidePage.objects.live(),
+        )
         return context

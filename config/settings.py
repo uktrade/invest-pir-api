@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'invest',
     'home',
     'industry',
+    'setup_guide',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

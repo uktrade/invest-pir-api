@@ -7,7 +7,7 @@ from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtailmarkdown.blocks import MarkdownBlock
 
-from .blocks import MarkdownAccordionItemBlock
+from invest.blocks import MarkdownAccordionItemBlock
 
 
 class IndustriesLandingPage(Page):
@@ -16,12 +16,21 @@ class IndustriesLandingPage(Page):
     # page fields
     heading = models.CharField(max_length=255)
 
+    hero_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
     content_panels = Page.content_panels + [
         FieldPanel('heading'),
+        ImageChooserPanel('hero_image'),
     ]
 
     def get_context(self, request):
-        context = super(IndustriesLandingPage, self).get_context(request)
+        context = super().get_context(request)
         context['industry_cards'] = IndustryPage.objects.live()
         return context
 
@@ -65,7 +74,7 @@ class IndustryPage(Page):
     ]
 
     def get_context(self, request):
-        context = super(IndustryPage, self).get_context(request)
+        context = super().get_context(request)
         context['industry_cards'] = self.get_children().live()
         # pages will return as Page type, use .specific to get IndustryPage
         return context
