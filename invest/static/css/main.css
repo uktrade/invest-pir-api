@@ -75,6 +75,10 @@ nav.mb-4, nav.my-4 {
     margin-bottom: 0 !important;
 }
 
+nav .container {
+    background: inherit;
+}
+
 
 #navbar {
     background: #1e1348;
@@ -87,19 +91,25 @@ nav.mb-4, nav.my-4 {
     background: #1e1348;
     border-bottom: none;
     margin-bottom: 0 !important;
+    padding-bottom: 0;
 }
 
+.navbar-brand {
+    height: 110px;
+}
+
+.navbar-collapse {
+    position: relative;
+    height: 110px;
+}
 .navbar-nav {
     position: absolute;
-    right: 7rem;
     bottom: 0;
+    right: 0;
 }
 
 .navbar-nav li {
-    margin-top: 0;
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-bottom: 0;
+    margin: 0 15px;
     padding-bottom: 15px;
 }
 
@@ -124,19 +134,6 @@ nav.mb-4, nav.my-4 {
     font-weight: bold;
     background: inherit !important;
     text-decoration: none;
-}
-
-.navbar-brand {
-    height: 110px;
-}
-
-.navbar-static-top {
-    padding-left: 3rem;
-    padding-right: 3rem;
-
-    background: #1e1348;
-    border-bottom: none;
-    margin-bottom: 0 !important;
 }
 
 /* bs4 customisations - end */
