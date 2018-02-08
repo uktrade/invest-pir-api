@@ -34,8 +34,8 @@ def is_active(page, current_page):
 
 
 # Retrieves the top menu items - the immediate children of the parent page
-# The has_menu_children method is necessary because the Foundation menu requires
-# a dropdown class to be applied to a parent
+# The has_menu_children method is necessary because the Foundation menu
+# requires a dropdown class to be applied to a parent
 @register.inclusion_tag('tags/top_menu.html', takes_context=True)
 def top_menu(context, parent, calling_page=None):
     root = get_site_root(context)
@@ -53,8 +53,8 @@ def top_menu(context, parent, calling_page=None):
                 if calling_page else False
             )
         else:
-            # We don't directly check if calling_page is None since the template
-            # engine can pass an empty string to calling_page
+            # We don't directly check if calling_page is None since the
+            # template engine can pass an empty string to calling_page
             # if the variable passed as calling_page does not exist.
             menuitem.show_dropdown = has_menu_children(menuitem)
             menuitem.active = ((calling_page.url.startswith(menuitem.url)
