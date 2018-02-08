@@ -2,16 +2,11 @@
 {% load image from wagtailimages_tags %}
 
 {% block header %}
-<section id="hero">
-  <div class="jumbotron">
-    <div class="container">
-      <div class="row">
-        <div class="col-6 heading">
-          <h1>{{ page.heading }}</h1>
-          {% if page.sub_heading %}
-          <h2>{{ page.sub_heading }}</h2>
-          {% endif %}
-        </div>
+<section id="heading_plain">
+  <div class="container">
+    <div class="row">
+      <div class="col-6 heading">
+        <h1>{{ page.heading }}</h1>
       </div>
     </div>
   </div>

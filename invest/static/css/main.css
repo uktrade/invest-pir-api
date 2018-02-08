@@ -88,12 +88,12 @@ nav.mb-4, nav.my-4 {
 #accordion .card-header {
     border-top: none;
     border-bottom: solid 1px #d8d8d8;
-    padding: 15px;
-    border-radius: 0px 0px 0px 0px !important;
+    border-radius: 0 0 0 0 !important;
     border-left: none;
     border-right: none;
     font-weight: bold;
     font-size: large;
+    padding: 15px;
     min-height: 3rem;
 }
 
@@ -129,37 +129,102 @@ nav.mb-4, nav.my-4 {
 
 
 /** hero component */
-#hero .jumbotron {
-    background: no-repeat 100% 0%;
+/* #heading_hero used on industry and invest content pages */
+#heading_hero .jumbotron {
+    background: no-repeat 100% 0;
     background-position-x: 100%;
-    background-position-y: 0%;
+    background-position-y: 0;
     background-size: cover;
     padding: 0;
 }
 
-#hero > .jumbotron .row {
+#heading_hero > .jumbotron .row {
+    padding-top: 0;
+    position: relative;
+    min-height: 225px;
+}
+
+#heading_hero .jumbotron .container {
+    background-color: inherit;
+    padding-top: 30px;
+}
+
+#heading_hero .heading {
+    color: white;
+    background-color: #00549f;
+    border-bottom: 4px solid red;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#heading_hero .heading h1 {
+    font-weight: bolder;
+    margin-bottom: 15px;
+    font-size: 3rem;
+    line-height: 1.1em;
+    padding: 25px;
+}
+
+/* #heading_hero_tall used on homepage */
+#heading_hero_tall .jumbotron {
+    background: no-repeat 100% 0;
+    background-position-x: 100%;
+    background-position-y: 0;
+    background-size: cover;
+    padding: 0;
+}
+
+#heading_hero_tall > .jumbotron .row {
     padding-top: 0;
     position: relative;
     min-height: 360px;
 }
 
-#hero .jumbotron .container {
+#heading_hero_tall .jumbotron .container {
     background-color: inherit;
     padding-top: 30px;
 }
 
-#hero .heading {
+#heading_hero_tall .heading {
     color: white;
     position: absolute;
     bottom: 0px;
     left: 0px;
 }
 
-#hero .heading h1 {
+#heading_hero_tall .heading h1 {
     font-weight: bolder;
     margin-bottom: 15px;
     font-size: 3rem;
     line-height: 1.1em;
+}
+
+/* #heading_plain used on auxilery pages */
+#heading_plain {
+    background: #d8d8d8;
+}
+
+#heading_plain .row {
+    position: relative;
+    min-height: 225px;
+}
+
+#heading_plain .container  {
+    background: inherit;
+}
+
+#heading_plain .heading {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom: 4px solid red;
+}
+
+#heading_plain h1 {
+    background: white;
+    padding: 25px;
+    margin-bottom: 0;
 }
 
 /* setup guide cards */
