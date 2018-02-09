@@ -41,7 +41,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'invest',
     'home',
-    'industry',
+    'sector',
     'setup_guide',
 
     'wagtail.contrib.forms',

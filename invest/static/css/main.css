@@ -189,7 +189,7 @@ nav .container {
 
 
 /** hero component */
-/* #heading_hero used on industry and invest content pages */
+/* #heading_hero used on sector and invest content pages */
 #heading_hero .jumbotron {
     background: no-repeat 100% 0;
     background-position-x: 100%;
@@ -320,8 +320,8 @@ nav .container {
 
 }
 
-/* industry cards */
-#industries .container:last-child:after {
+/* sector cards */
+#sector .container:last-child:after {
     content: "";
     border-bottom: #e41f13 2px solid;
     display: block;
@@ -330,12 +330,12 @@ nav .container {
     margin-right: -15px;
 }
 
-#industries .card {
+#sector .card {
     text-align: left;
     margin-bottom: 30px;
 }
 
-#industries .card-header {
+#sector .card-header {
     text-align: left;
     margin-right: auto;
     padding: 0px !important;
@@ -345,22 +345,22 @@ nav .container {
     display: inline-block;
 }
 
-#industries .card-header h3 {
+#sector .card-header h3 {
     padding: 0.25rem;
     font-size: 1rem;
     margin: 0 15px;
 }
 
-#industries .card-header h3 a {
+#sector .card-header h3 a {
     color: white;
 }
 
-#industries .card-img-top {
+#sector .card-img-top {
     max-height: 150px;
 }
 
 
-#industries .card-block {
+#sector .card-block {
     border: 1px #d8d8d8 solid;
     min-height: 200px;
 }

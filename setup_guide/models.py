@@ -7,6 +7,8 @@ from invest.blocks import MarkdownAccordionItemBlock
 
 
 class SetupGuideLandingPage(Page):
+    subpage_types = ['setup_guide.SetupGuidePage']
+
     # page fields
     heading = models.CharField(max_length=255)
     sub_heading = models.CharField(max_length=255)
@@ -23,6 +25,8 @@ class SetupGuideLandingPage(Page):
 
 
 class SetupGuidePage(Page):
+    subpage_types = []
+
     description = models.TextField()  # appears in card on external pages
 
     heading = models.CharField(max_length=255)

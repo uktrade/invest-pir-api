@@ -10,8 +10,8 @@ from wagtailmarkdown.blocks import MarkdownBlock
 from invest.blocks import MarkdownAccordionItemBlock
 
 
-class IndustriesLandingPage(Page):
-    subpage_types = ['industry.IndustryPage']
+class SectorLandingPage(Page):
+    subpage_types = ['sector.sectorPage']
 
     # page fields
     heading = models.CharField(max_length=255)
@@ -31,13 +31,13 @@ class IndustriesLandingPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['industry_cards'] = IndustryPage.objects.live()
+        context['sector_cards'] = SectorPage.objects.live()
         return context
 
 
-class IndustryPage(Page):
-    # Related industries are implemented as subpages
-    subpage_types = ['industry.IndustryPage']
+class SectorPage(Page):
+    # Related sector are implemented as subpages
+    subpage_types = ['sector.sectorPage']
 
     description = models.TextField()  # appears in card on external pages
 
@@ -75,6 +75,6 @@ class IndustryPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['industry_cards'] = self.get_children().live()
-        # pages will return as Page type, use .specific to get IndustryPage
+        context['sector_cards'] = self.get_children().live()
+        # pages will return as Page type, use .specific to get sectorPage
         return context
