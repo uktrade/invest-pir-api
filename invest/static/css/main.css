@@ -251,6 +251,7 @@ nav .container {
     position: absolute;
     bottom: 0px;
     left: 0px;
+    max-height: 400px;
 }
 
 #heading_hero_tall .heading h1 {
