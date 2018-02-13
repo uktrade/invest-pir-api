@@ -10,12 +10,12 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('wagtailimages', '0019_delete_filter'),
-        ('industry', '0001_initial'),
+        ('sector', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='industrieslandingpage',
+            model_name='SectorLandingPage',
             name='hero_image',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image'),
         ),

@@ -75,6 +75,66 @@ nav.mb-4, nav.my-4 {
     margin-bottom: 0 !important;
 }
 
+nav .container {
+    background: inherit;
+}
+
+
+#navbar {
+    background: #1e1348;
+    border-bottom: none;
+    margin-bottom: 0 !important;
+}
+
+/* navbar.less */
+.navbar {
+    background: #1e1348;
+    border-bottom: none;
+    margin-bottom: 0 !important;
+    padding-bottom: 0;
+}
+
+.navbar-brand {
+    height: 110px;
+}
+
+.navbar-collapse {
+    position: relative;
+    height: 110px;
+}
+.navbar-nav {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.navbar-nav li {
+    margin: 0 15px;
+    padding-bottom: 15px;
+}
+
+.navbar-nav li.active {
+    border-bottom: 3px solid #e41f13;
+}
+
+.navbar-nav li.active a {
+    color: white !important;
+    font-weight: bold;
+    background: inherit !important;
+}
+
+.navbar-nav li a {
+    color: white !important;
+    font-weight: bold;
+    background: inherit !important;
+}
+
+.navbar-nav li a:hover {
+    color: white !important;
+    font-weight: bold;
+    background: inherit !important;
+    text-decoration: none;
+}
 
 /* bs4 customisations - end */
 
@@ -129,7 +189,7 @@ nav.mb-4, nav.my-4 {
 
 
 /** hero component */
-/* #heading_hero used on industry and invest content pages */
+/* #heading_hero used on sector and invest content pages */
 #heading_hero .jumbotron {
     background: no-repeat 100% 0;
     background-position-x: 100%;
@@ -191,6 +251,7 @@ nav.mb-4, nav.my-4 {
     position: absolute;
     bottom: 0px;
     left: 0px;
+    max-height: 400px;
 }
 
 #heading_hero_tall .heading h1 {
@@ -259,8 +320,8 @@ nav.mb-4, nav.my-4 {
 
 }
 
-/* industry cards */
-#industries .container:last-child:after {
+/* sector cards */
+#sector .container:last-child:after {
     content: "";
     border-bottom: #e41f13 2px solid;
     display: block;
@@ -269,12 +330,12 @@ nav.mb-4, nav.my-4 {
     margin-right: -15px;
 }
 
-#industries .card {
+#sector .card {
     text-align: left;
     margin-bottom: 30px;
 }
 
-#industries .card-header {
+#sector .card-header {
     text-align: left;
     margin-right: auto;
     padding: 0px !important;
@@ -284,22 +345,22 @@ nav.mb-4, nav.my-4 {
     display: inline-block;
 }
 
-#industries .card-header h3 {
+#sector .card-header h3 {
     padding: 0.25rem;
     font-size: 1rem;
     margin: 0 15px;
 }
 
-#industries .card-header h3 a {
+#sector .card-header h3 a {
     color: white;
 }
 
-#industries .card-img-top {
+#sector .card-img-top {
     max-height: 150px;
 }
 
 
-#industries .card-block {
+#sector .card-block {
     border: 1px #d8d8d8 solid;
     min-height: 200px;
 }

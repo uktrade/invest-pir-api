@@ -1,5 +1,4 @@
 import pytest
-
 from django.template.loader import render_to_string
 from wagtail.core.models import Site
 
@@ -8,8 +7,8 @@ from wagtail.core.models import Site
 
 
 @pytest.mark.django_db
-def test_setup_guide_landing_page(client):
-    response = client.get('/setup_guide/')
+def test_sector_landing_page(client):
+    response = client.get('/industries/')
     wsgi_request = response.wsgi_request
     wsgi_request.site = Site.find_for_request(wsgi_request)
     context = {
@@ -24,16 +23,15 @@ def test_setup_guide_landing_page(client):
 
 
 @pytest.mark.django_db
-def test_setup_guide_page(client):
-    response = client.get('/uk-setup-guide/set-company-uk/')
-    wsgi_request = response.wsgi_request
-    wsgi_request.site = Site.find_for_request(wsgi_request)
+def test_sector_page(client):
+    response = client.get('/industries/aerospace')
+    request = response.wsgi_request
+    request.site = Site.find_for_request(request)
     context = {
-        'request': wsgi_request,
-        "setup_guide_cards": []
+        'request': request
     }
     html = render_to_string(
-        "sector/sector_landing_page.html",
+        "sector/sector_page.html",
         context,
-        request=wsgi_request)
+        request=request)
     assert html

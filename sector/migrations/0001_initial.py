@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='IndustriesLandingPage',
+            name='SectorLandingPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('heading', models.CharField(max_length=255)),
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
             bases=('wagtailcore.page',),
         ),
         migrations.CreateModel(
-            name='IndustryPage',
+            name='SectorPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('description', models.TextField()),

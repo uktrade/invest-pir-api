@@ -41,7 +41,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'invest',
     'home',
-    'industry',
+    'sector',
     'setup_guide',
 
     'wagtail.contrib.forms',
@@ -73,7 +73,7 @@ INSTALLED_APPS = [
 if ENABLE_DEBUG_TOOLBAR:
     INSTALLED_APPS.append('debug_toolbar')
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -87,7 +87,7 @@ MIDDLEWARE_CLASSES = [
 ]
 
 if ENABLE_DEBUG_TOOLBAR:
-    MIDDLEWARE_CLASSES.append(
+    MIDDLEWARE.append(
         'debug_toolbar.middleware.DebugToolbarMiddleware'
     )
 
