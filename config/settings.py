@@ -73,7 +73,7 @@ INSTALLED_APPS = [
 if ENABLE_DEBUG_TOOLBAR:
     INSTALLED_APPS.append('debug_toolbar')
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -87,7 +87,7 @@ MIDDLEWARE_CLASSES = [
 ]
 
 if ENABLE_DEBUG_TOOLBAR:
-    MIDDLEWARE_CLASSES.append(
+    MIDDLEWARE.append(
         'debug_toolbar.middleware.DebugToolbarMiddleware'
     )
 
@@ -257,6 +257,3 @@ WAGTAIL_SITE_NAME = "invest"
 # Base URL to use when referring to full URLs within the Wagtail admin backend
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://invest.great.gov.uk'
-
-if "SITE_ID" in os.environ:
-    SITE_ID = os.environ["SITE_ID"]  # Needed for unittests, actual site is created on live.

@@ -22,7 +22,7 @@ def test_toolbar_app_absent(settings):
 @toolbar_disabled
 def test_toolbar_middleware_absent(settings):
     assert 'debug_toolbar.middleware.DebugToolbarMiddleware' not in \
-           settings.MIDDLEWARE_CLASSES
+           settings.MIDDLEWARE
 
 
 @toolbar_enabled
@@ -33,4 +33,4 @@ def test_toolbar_app_present(settings):
 @toolbar_enabled
 def test_toolbar_middleware_present(settings):
     assert 'debug_toolbar.middleware.DebugToolbarMiddleware' in \
-           settings.MIDDLEWARE_CLASSES
+           settings.MIDDLEWARE
