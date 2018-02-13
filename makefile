@@ -43,6 +43,7 @@ DOCKER_SET_DEBUG_ENV_VARS := \
 	export INVEST_SECURE_HSTS_SECONDS=0; \
 	export INVEST_SECURE_SSL_REDIRECT=false; \
 	export INVEST_SESSION_COOKIE_SECURE=false; \
+	export INVEST_SITE_ID=1; \
 	export INVEST_TEST=true
 
 docker_test_env_files:
