@@ -44,6 +44,7 @@ DOCKER_SET_DEBUG_ENV_VARS := \
 	export INVEST_SECURE_SSL_REDIRECT=false; \
 	export INVEST_SESSION_COOKIE_SECURE=false; \
 	export INVEST_TEST=true
+	export INVEST_DATABASE_URL=sqlite://:memory:
 
 docker_test_env_files:
 	$(DOCKER_SET_DEBUG_ENV_VARS) && \
