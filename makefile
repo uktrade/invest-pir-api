@@ -38,6 +38,7 @@ docker_run:
 DOCKER_SET_DEBUG_ENV_VARS := \
 	export INVEST_DEBUG=true; \
 	export INVEST_PORT=8005; \
+	export INVEST_REDIS_URL=redis://127.0.0.1:6379/1; \
 	export INVEST_SECRET_KEY=secret; \
 	export INVEST_SESSION_COOKIE_SECURE=false; \
 	export INVEST_SECURE_HSTS_SECONDS=0; \

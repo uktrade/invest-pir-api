@@ -7,7 +7,8 @@ COPY requirements.txt /usr/src/app/
 # Different src directory for pip to prevent 'pip install -e' packages to be installed in /usr/src/app/
 RUN pip install --no-cache-dir -r requirements.txt --src /usr/local/src
 
-# Required to compile translations
+# gettext to compile translations
+# redis for caching and sessions
 RUN apt-get update && apt-get install -y gettext redis-server && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY . /usr/src/app
