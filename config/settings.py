@@ -36,10 +36,10 @@ if ENABLE_DEBUG_TOOLBAR:
 # PaaS, we can open ALLOWED_HOSTS
 # For Cloudflare, disallow access to the CF url, by seting ALLOWED_HOSTS
 # to the external url, e.g: ALLOWED_HOSTS=https://invest.great.uat.uktrade.io
-ALLOWED_HOSTS = filter(
+ALLOWED_HOSTS = list(filter(
     None,
     re.split(r'[, ]*', os.getenv('ALLOWED_HOSTS', '*'))
-)
+))
 
 REDIS_URL = os.getenv("REDIS_URL")
 ENABLE_REDIS = REDIS_URL is not None
