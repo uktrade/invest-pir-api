@@ -4,9 +4,8 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
--e git+https://github.com/uktrade/wagtail-markdown.git@wagtail2#egg=wagtail-markdown
 beautifulsoup4==4.6.0     # via wagtail
-bleach==2.1.2
+bleach==2.1.2             # via wagtail-markdown
 boto3==1.5.10
 botocore==1.8.24
 certifi==2018.1.18        # via requests
@@ -24,7 +23,7 @@ gunicorn==19.7.1
 html5lib==0.999999999     # via bleach, wagtail
 idna==2.6                 # via requests
 jmespath==0.9.3           # via boto3, botocore
-markdown==2.6.11
+markdown==2.6.11          # via wagtail-markdown
 olefile==0.45.1           # via pillow
 pillow==4.3.0             # via wagtail
 psycopg2==2.7.3.2
@@ -36,6 +35,7 @@ s3transfer==0.1.12        # via boto3
 six==1.11.0               # via bleach, html5lib, python-dateutil
 unidecode==0.4.21         # via wagtail
 urllib3==1.22             # via requests
+wagtail-markdown==0.5a2.post1
 wagtail==2.0b1
 webencodings==0.5.1       # via html5lib
 whitenoise==3.3.1
