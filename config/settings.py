@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/1.9/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
+import re
 
 import dj_database_url
 import os
@@ -33,7 +34,12 @@ if ENABLE_DEBUG_TOOLBAR:
 
 # As the app is running behind a host-based router supplied by Heroku or other
 # PaaS, we can open ALLOWED_HOSTS
-ALLOWED_HOSTS = ['*']
+# For Cloudflare, disallow access to the CF url, by seting ALLOWED_HOSTS
+# to the external url, e.g: ALLOWED_HOSTS=https://invest.great.uat.uktrade.io
+ALLOWED_HOSTS = filter(
+    None,
+    re.split(r'[, ]*', os.getenv('ALLOWED_HOSTS', '*'))
+)
 
 RESTRICT_ADMIN = True         # block the django admin at /django-admin
 RESTRICT_URLS = ['^admin/*']  # block the wagtail admin
@@ -132,11 +138,23 @@ DATABASES = {
     'default': dj_database_url.config()
 }
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+if ENABLE_REDIS:
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": REDIS_URL,
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            }
+        }
     }
-}
+else:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        }
+    }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/

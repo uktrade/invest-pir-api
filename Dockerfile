@@ -8,7 +8,7 @@ COPY requirements.txt /usr/src/app/
 RUN pip install --no-cache-dir -r requirements.txt --src /usr/local/src
 
 # Required to compile translations
-RUN apt-get update && apt-get install -y gettext && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y gettext redis-server && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY . /usr/src/app
 
