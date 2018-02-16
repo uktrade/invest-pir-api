@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'home',
     'sector',
     'setup_guide',
+    'contact',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
