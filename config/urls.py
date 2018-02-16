@@ -13,7 +13,6 @@ urlpatterns = [
 
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
-    url(r'^documents/', include(wagtaildocs_urls)),
 
     # Contact forms
     url(
