@@ -6,7 +6,7 @@ from directory_validators.common import not_contains_url_or_email
 from directory_validators.company import no_html
 
 
-class FeedbackForm(forms.Form):
+class ReportIssueForm(forms.Form):
     name = forms.CharField(label=_('Name'))
     email = forms.EmailField(label=_('Email'))
     feedback = forms.CharField(

@@ -17,10 +17,10 @@ ZENPY_CREDENTIALS = {
 zenpy_client = Zenpy(timeout=5, **ZENPY_CREDENTIALS)
 
 
-class FeedbackFormView(FormView):
+class ReportIssueFormView(FormView):
     success_template = 'feedback-success.html'
     template_name = 'feedback.html'
-    form_class = forms.FeedbackForm
+    form_class = forms.ReportIssueForm
 
     def get_or_create_zendesk_user(self, cleaned_data):
         zendesk_user = ZendeskUser(
