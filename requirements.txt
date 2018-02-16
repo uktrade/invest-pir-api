@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
--e git+git@github.com:stuaxo/django-admin-ip-restrictor.git@feature/block_by_url#egg=django-admin-ip-restrictor
+-e git+https://github.com/stuaxo/django-admin-ip-restrictor.git@feature/block_by_url#egg=django-admin-ip-restrictor
 beautifulsoup4==4.6.0     # via wagtail
 bleach==2.1.2             # via wagtail-markdown
 boto3==1.5.10
