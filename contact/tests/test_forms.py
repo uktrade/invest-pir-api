@@ -2,7 +2,7 @@ from contact import forms
 
 
 def test_feeback_form_required():
-    form = forms.FeedbackForm()
+    form = forms.ReportIssueForm()
 
     assert form.is_valid() is False
     assert form.fields['name'].required is True
@@ -12,7 +12,7 @@ def test_feeback_form_required():
 
 
 def test_feeback_form_accepts_valid_data(captcha_stub):
-    form = forms.FeedbackForm(
+    form = forms.ReportIssueForm(
         data={
             'name': 'Jim Example',
             'email': 'jim@example.com',
