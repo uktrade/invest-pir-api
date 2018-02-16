@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'storages',
     'taggit',
     'wagtailmarkdown',
+    'captcha',
 
     'django.contrib.admin',
     'django.contrib.auth',
