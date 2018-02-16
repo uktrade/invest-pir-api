@@ -4,6 +4,7 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
+-e git+git@github.com:stuaxo/django-admin-ip-restrictor.git@feature/block_by_url#egg=django-admin-ip-restrictor
 beautifulsoup4==4.6.0     # via wagtail
 bleach==2.1.2             # via wagtail-markdown
 boto3==1.5.10
@@ -11,11 +12,12 @@ botocore==1.8.24
 certifi==2018.1.18        # via requests
 chardet==3.0.4            # via requests
 dj-database-url==0.4.2
+django-ipware==1.1.6
 django-modelcluster==4.0  # via wagtail
 django-storages==1.6.5
 django-taggit==0.22.2     # via wagtail
 django-treebeard==4.2.0   # via wagtail
-django==1.11.9
+django==1.11.10
 djangorestframework==3.7.7  # via wagtail
 docutils==0.14            # via botocore
 draftjs-exporter==2.0.0   # via wagtail

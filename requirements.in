@@ -1,7 +1,8 @@
 boto3==1.5.10
 botocore==1.8.24
 dj-database-url==0.4.2
-django==1.11.9
+django==1.11.10
+-e git+git@github.com:stuaxo/django-admin-ip-restrictor.git@feature/block_by_url#egg=django-admin-ip-restrictor
 django-storages==1.6.5
 gunicorn==19.7.1
 psycopg2==2.7.3.2
