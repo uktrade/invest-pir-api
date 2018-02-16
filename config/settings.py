@@ -35,6 +35,9 @@ if ENABLE_DEBUG_TOOLBAR:
 # PaaS, we can open ALLOWED_HOSTS
 ALLOWED_HOSTS = ['*']
 
+RESTRICT_ADMIN = True         # block the django admin at /django-admin
+RESTRICT_URLS = ['^admin/*']  # block the wagtail admin
+
 
 # Application definition
 
@@ -86,6 +89,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware',
 ]
 
 if ENABLE_DEBUG_TOOLBAR:
