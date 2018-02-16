@@ -1,0 +1,9 @@
+{% extends 'contact/base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+	<div class="container">
+		<br>
+		{% include 'report_issue-form.html' with form=form %}
+	</div>
+{% endblock %}

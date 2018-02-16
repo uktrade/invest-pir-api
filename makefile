@@ -44,8 +44,14 @@ DOCKER_SET_DEBUG_ENV_VARS := \
 	export INVEST_SECURE_HSTS_SECONDS=0; \
 	export INVEST_SECURE_SSL_REDIRECT=false; \
 	export INVEST_SITE_ID=1; \
-	export INVEST_TEST=true
-	export INVEST_DATABASE_URL=sqlite://:memory:
+	export INVEST_TEST=true; \
+	export INVEST_DATABASE_URL=sqlite://:memory:; \
+	export INVEST_ZENDESK_EMAIL=debug; \
+	export INVEST_ZENDESK_SUBDOMAIN=debugdebugdebug; \
+	export INVEST_ZENDESK_TOKEN=debug; \
+	export INVEST_RECAPTCHA_PUBLIC_KEY=debug; \
+	export INVEST_RECAPTCHA_PRIVATE_KEY=debug; \
+	export INVEST_NOCAPTCHA=false
 
 docker_test_env_files:
 	$(DOCKER_SET_DEBUG_ENV_VARS) && \
@@ -86,7 +92,13 @@ DEBUG_SET_ENV_VARS := \
 	export SECRET=secret; \
 	export SESSION_COOKIE_SECURE=false; \
 	export SECURE_HSTS_SECONDS=0; \
-	export SECURE_SSL_REDIRECT=false
+	export SECURE_SSL_REDIRECT=false; \
+	export ZENDESK_EMAIL=debug; \
+	export ZENDESK_SUBDOMAIN=debugdebugdebug; \
+	export ZENDESK_TOKEN=debug; \
+	export RECAPTCHA_PUBLIC_KEY=debug; \
+	export RECAPTCHA_PRIVATE_KEY=debug; \
+	export NOCAPTCHA=false
 
 debug_webserver:
 	$(DEBUG_SET_ENV_VARS) && $(DJANGO_WEBSERVER)
