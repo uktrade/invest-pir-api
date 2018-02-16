@@ -16,6 +16,7 @@ chardet==3.0.4            # via requests
 dj-database-url==0.4.2
 django-ipware==1.1.6
 django-modelcluster==4.1  # via wagtail
+django-redis==4.8.0
 django-storages==1.6.5
 django-taggit==0.22.2     # via wagtail
 django-treebeard==4.2.0   # via wagtail
@@ -34,8 +35,9 @@ phonenumberslite==7.7.4
 pillow==4.2.1             # via wagtail
 psycopg2==2.7.3.2
 python-dateutil==2.6.1    # via botocore, zenpy
-pytz==2017.2
+pytz==2017.3
 raven==6.5.0
+redis==2.10.6             # via django-redis
 requests==2.18.4          # via wagtail, zenpy
 s3transfer==0.1.13        # via boto3
 six==1.11.0               # via bleach, html5lib, python-dateutil

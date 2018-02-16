@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/1.9/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
+import re
 
 import dj_database_url
 import os
@@ -33,11 +34,19 @@ if ENABLE_DEBUG_TOOLBAR:
 
 # As the app is running behind a host-based router supplied by Heroku or other
 # PaaS, we can open ALLOWED_HOSTS
-ALLOWED_HOSTS = ['*']
+# For Cloudflare, disallow access to the CF url, by seting ALLOWED_HOSTS
+# to the external url, e.g: ALLOWED_HOSTS=https://invest.great.uat.uktrade.io
+ALLOWED_HOSTS = list(filter(
+    None,
+    re.split(r'[, ]*', os.getenv('ALLOWED_HOSTS', '*'))
+))
+
 
 RESTRICT_ADMIN = True         # block the django admin at /django-admin
 RESTRICT_URLS = ['^admin/*']  # block the wagtail admin
 
+REDIS_URL = os.getenv("REDIS_URL")
+ENABLE_REDIS = REDIS_URL is not None
 
 # Application definition
 
@@ -46,6 +55,7 @@ INSTALLED_APPS = [
     'home',
     'sector',
     'setup_guide',
+    'contact',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -64,6 +74,7 @@ INSTALLED_APPS = [
     'storages',
     'taggit',
     'wagtailmarkdown',
+    'captcha',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -130,11 +141,23 @@ DATABASES = {
     'default': dj_database_url.config()
 }
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+if ENABLE_REDIS:
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": REDIS_URL,
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            }
+        }
     }
-}
+else:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        }
+    }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
@@ -261,3 +284,14 @@ WAGTAIL_SITE_NAME = "invest"
 # Base URL to use when referring to full URLs within the Wagtail admin backend
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://invest.great.gov.uk'
+
+# Zendesk
+ZENDESK_SUBDOMAIN = os.environ['ZENDESK_SUBDOMAIN']
+ZENDESK_TOKEN = os.environ['ZENDESK_TOKEN']
+ZENDESK_EMAIL = os.environ['ZENDESK_EMAIL']
+
+# Google Recaptcha
+RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
+RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
+# NOCAPTCHA = True turns on version 2 of recaptcha
+NOCAPTCHA = os.getenv('NOCAPTCHA') != 'false'
