@@ -257,3 +257,14 @@ WAGTAIL_SITE_NAME = "invest"
 # Base URL to use when referring to full URLs within the Wagtail admin backend
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://invest.great.gov.uk'
+
+# Zendesk
+ZENDESK_SUBDOMAIN = os.environ['ZENDESK_SUBDOMAIN']
+ZENDESK_TOKEN = os.environ['ZENDESK_TOKEN']
+ZENDESK_EMAIL = os.environ['ZENDESK_EMAIL']
+
+# Google Recaptcha
+RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
+RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
+# NOCAPTCHA = True turns on version 2 of recaptcha
+NOCAPTCHA = os.getenv('NOCAPTCHA') != 'false'

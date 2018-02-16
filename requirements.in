@@ -5,8 +5,11 @@ django==1.11.9
 django-storages==1.6.5
 gunicorn==19.7.1
 psycopg2==2.7.3.2
-pytz==2017.3              # via django
 raven==6.5.0
 wagtail==2.0b1
 wagtail-markdown==0.5a2.post1
 whitenoise==3.3.1
+zenpy==1.1.10
+django_recaptcha==1.2.0
+
+-e git+https://github.com/uktrade/directory-validators.git@v4.2.0#egg=directory_validators
