@@ -33,12 +33,21 @@ if ENABLE_DEBUG_TOOLBAR:
 # PaaS, we can open ALLOWED_HOSTS
 # For Cloudflare, disallow access to the CF url, by seting ALLOWED_HOSTS
 # to the external url, e.g: ALLOWED_HOSTS=invest.great.uat.uktrade.io
-ALLOWED_HOSTS = [item.strip() for item in os.getenv('ALLOWED_HOSTS', '*').split(',')]
+ALLOWED_HOSTS = [
+    item.strip()
+    for item in
+    os.getenv('ALLOWED_HOSTS', '*').split(',')
+]
 
-RESTRICT_ADMIN = True         # block the django admin at /django-admin
+RESTRICT_ADMIN = True  # block the django admin at /django-admin
 RESTRICT_URLS = ['^admin/*']  # block the wagtail admin
-ALLOWED_ADMIN_IPS = re.split(r'[, ]*', os.getenv('ALLOWED_ADMIN_IPS', '127.0.0.1').split(','))
+ALLOWED_ADMIN_IPS = [item.strip()
+                     for item in
+                     os.getenv('ALLOWED_ADMIN_IPS', '127.0.0.1').split(',')
+                     ]
 
+REDIS_URL = os.getenv("REDIS_URL")
+ENABLE_REDIS = REDIS_URL is not None
 
 # Application definition
 
