@@ -9,11 +9,8 @@ https://docs.djangoproject.com/en/1.9/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
-import re
-
 import dj_database_url
 import os
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -35,11 +32,15 @@ if ENABLE_DEBUG_TOOLBAR:
 # As the app is running behind a host-based router supplied by Heroku or other
 # PaaS, we can open ALLOWED_HOSTS
 # For Cloudflare, disallow access to the CF url, by seting ALLOWED_HOSTS
-# to the external url, e.g: ALLOWED_HOSTS=https://invest.great.uat.uktrade.io
-ALLOWED_HOSTS = list(filter(
-    None,
-    re.split(r'[, ]*', os.getenv('ALLOWED_HOSTS', '*'))
-))
+# to the external url, e.g: ALLOWED_HOSTS=invest.great.uat.uktrade.io
+ALLOWED_HOSTS = [item.strip() for item in os.getenv('ALLOWED_HOSTS', '*')]
+
+RESTRICT_ADMIN = True  # block the django admin at /django-admin
+RESTRICT_URLS = ['^admin/*']  # block the wagtail admin
+ALLOWED_ADMIN_IPS = [item.strip()
+                     for item in
+                     os.getenv('ALLOWED_ADMIN_IPS', '127.0.0.1')
+                     ]
 
 REDIS_URL = os.getenv("REDIS_URL")
 ENABLE_REDIS = REDIS_URL is not None
@@ -94,6 +95,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware',
 ]
 
 if ENABLE_DEBUG_TOOLBAR:
@@ -153,7 +155,6 @@ else:
         }
     }
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 LANGUAGE_CODE = 'en-gb'
@@ -177,7 +178,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_HOST = os.environ.get('STATIC_HOST', '')
 STATIC_URL = STATIC_HOST + '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 
 # Logging for development
 if DEBUG:
@@ -271,7 +271,6 @@ SESSION_COOKIE_SECURE = os.getenv('SESSION_COOKIE_SECURE', 'true') == 'true'
 
 SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SECURE = True
-
 
 # Wagtail settings
 WAGTAIL_SITE_NAME = "invest"
