@@ -99,7 +99,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-    'admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware',
+    #'admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware',
 ]
 
 if ENABLE_DEBUG_TOOLBAR:
