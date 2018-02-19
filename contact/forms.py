@@ -5,29 +5,28 @@ from django.utils.translation import ugettext as _
 from directory_validators.common import not_contains_url_or_email
 from directory_validators.company import no_html
 
-
 FEEDBACK_SERVICE = (
-            (
-                'Very satisfied',
-                _('Very satisfied')
-            ),
-            (
-                'Satisfied',
-                _('Satisfied')
-            ),
-            (
-                'Neither satisfied or dissatisfied',
-                _('Neither satisfied or dissatisfied',)
-            ),
-            (
-                'Dissatisfied',
-                _('Dissatisfied')
-            ),
-            (
-                'Very dissatisfied',
-                _('Very dissatisfied')
-            )
-        )
+    (
+        'Very satisfied',
+        _('Very satisfied')
+    ),
+    (
+        'Satisfied',
+        _('Satisfied')
+    ),
+    (
+        'Neither satisfied or dissatisfied',
+        _('Neither satisfied or dissatisfied', )
+    ),
+    (
+        'Dissatisfied',
+        _('Dissatisfied')
+    ),
+    (
+        'Very dissatisfied',
+        _('Very dissatisfied')
+    )
+)
 
 
 class ReportIssueForm(forms.Form):
