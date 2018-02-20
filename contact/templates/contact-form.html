@@ -1,0 +1,19 @@
+{% load trans from i18n %}
+<div class="ed-landing-page-form-container">
+	<div class="ed-landing-page-form-inner">
+		<h2 class="element-within title">
+			<span class="dont-break-out">{% trans "Contact information" %}</span>
+		</h2>
+		<div class="row-fluid">
+			<form action="{% url 'contact' %}" method="post" style="margin-top: 30px;">
+				{% csrf_token %}
+                {{ form.as_p }}
+        <button type="submit">{% trans "Contact us" %}</button>
+			</form>
+
+            <p>
+                By sending us your details you can confirm that the information you've shared with us is true and you accept our terms and conditions.
+            </p>
+		</div>
+	</div>
+</div>
