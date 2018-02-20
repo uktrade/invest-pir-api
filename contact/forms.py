@@ -28,6 +28,25 @@ FEEDBACK_SERVICE = (
     )
 )
 
+STAFF_CHOICES = (
+    (
+        'Less than 10',
+        _('Less than 10')
+    ),
+    (
+        '10 to 50',
+        _('10 to 50')
+    ),
+    (
+        '51 to 250',
+        _('51 to 250')
+    ),
+    (
+        'More than 250',
+        _('More than 250')
+    ),
+)
+
 
 class ReportIssueForm(forms.Form):
     name = forms.CharField(label=_('Name'))
@@ -59,6 +78,43 @@ class FeedbackForm(forms.Form):
             'Please don\'t include any personal or financial information, '
             'for example your National Insurance or credit card numbers.'),
         widget=forms.Textarea
+    )
+    captcha = ReCaptchaField(
+        label='',
+        label_suffix='',
+    )
+
+
+class ContactForm(forms.Form):
+    name = forms.CharField(label=_('Name'))
+    job_title = forms.CharField(label=_('Job title'))
+    email = forms.EmailField(label=_('Email address'))
+    phone_number = forms.CharField(
+        label=_('Phone number (optional)'),
+        required=False
+    )
+    company_name = forms.CharField(label=_('Company name'))
+    company_website = forms.URLField(
+        label=_('Website URL'),
+        required=False
+    )
+    country = forms.CharField(
+        label=_('Which country are you based in?'),
+        help_text=_('We will use this information to put in touch with your'
+                    'closest British embassy or high commission.')
+
+    )
+    staff_number = forms.ChoiceField(
+        label=_('Current number of staff'),
+        choices=STAFF_CHOICES
+    )
+    description = forms.CharField(
+        label=_('Tell us about your investment'),
+        help_text=_('Tell us about your company and your plans for the UK in'
+                    'terms of size of investment, operational and recruitment'
+                    'plans. Please also tell us what help you would like from'
+                    'the UK government.'),
+        widget=forms.Textarea()
     )
     captcha = ReCaptchaField(
         label='',

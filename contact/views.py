@@ -17,7 +17,7 @@ ZENPY_CREDENTIALS = {
 zenpy_client = Zenpy(timeout=5, **ZENPY_CREDENTIALS)
 
 
-class ZendeskFeedbackView:
+class ZendeskView:
 
     def create_description(self, data):
         raise NotImplementedError
@@ -48,7 +48,7 @@ class ZendeskFeedbackView:
         return TemplateResponse(self.request, self.success_template)
 
 
-class ReportIssueFormView(ZendeskFeedbackView, FormView):
+class ReportIssueFormView(ZendeskView, FormView):
     success_template = 'report_issue_success.html'
     template_name = 'report_issue.html'
     form_class = forms.ReportIssueForm
@@ -62,7 +62,7 @@ class ReportIssueFormView(ZendeskFeedbackView, FormView):
         return description
 
 
-class FeedbackFormView(ZendeskFeedbackView, FormView):
+class FeedbackFormView(ZendeskView, FormView):
     success_template = 'feedback-success.html'
     template_name = 'feedback.html'
     form_class = forms.FeedbackForm
@@ -73,5 +73,32 @@ class FeedbackFormView(ZendeskFeedbackView, FormView):
             'Email: {email}\n'
             'Service quality: {service_quality}\n'
             'Feedback: {feedback}'
+        ).format(**data)
+        return description
+
+
+class ContactFormView(ZendeskView, FormView):
+    success_template = 'contact-success.html'
+    template_name = 'contact.html'
+    form_class = forms.ContactForm
+
+    def create_description(self, data):
+
+        # handle not required fields
+        if 'phone_number' not in data:
+            data['phone_number'] = ''
+        if 'company_website' not in data:
+            data['company_website'] = ''
+
+        description = (
+            'Name: {name}\n'
+            'Email: {email}\n'
+            'Job title: {job_title}\n'
+            'Phone number: {phone_number}\n'
+            'Company name: {company_name}\n'
+            'Company website: {company_website}\n'
+            'Country: {country}\n'
+            'Staff number: {staff_number}\n'
+            'Investment description: {description}'
         ).format(**data)
         return description
