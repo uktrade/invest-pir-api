@@ -2,6 +2,7 @@ boto3==1.5.10
 botocore==1.8.24
 dj-database-url==0.4.2
 django==1.11.10
+django-clear-cache==0.3
 django_recaptcha==1.2.0
 django-redis==4.8.0
 django-storages==1.6.5
