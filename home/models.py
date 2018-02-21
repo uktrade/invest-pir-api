@@ -29,8 +29,15 @@ class HomePage(Page):
         from sector.models import SectorPage
         from setup_guide.models import SetupGuidePage
         context = super().get_context(request)
+        sector_cards = SectorPage.objects \
+            .live() \
+            .filter(show_on_frontpage=True) \
+            .order_by('heading')
+        setup_guide_cards = SetupGuidePage.objects \
+            .live() \
+            .order_by('heading')
         context.update(
-            sector_cards=SectorPage.objects.live(),
-            setup_guide_cards=SetupGuidePage.objects.live(),
+            sector_cards=sector_cards,
+            setup_guide_cards=setup_guide_cards,
         )
         return context

@@ -20,7 +20,9 @@ class SetupGuideLandingPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['setup_guide_cards'] = SetupGuidePage.objects.live()
+        context['setup_guide_cards'] = SetupGuidePage.objects \
+            .live() \
+            .order_by("heading")
         return context
 
 

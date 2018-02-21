@@ -31,7 +31,10 @@ class SectorLandingPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['sector_cards'] = SectorPage.objects.live()
+        setup_guide_cards = SectorPage.objects \
+            .live() \
+            .order_by('heading')
+        context['sector_cards'] = setup_guide_cards
         return context
 
 
@@ -39,6 +42,7 @@ class SectorPage(Page):
     # Related sector are implemented as subpages
     subpage_types = ['sector.sectorPage']
 
+    show_on_frontpage = models.BooleanField(default=False)
     description = models.TextField()  # appears in card on external pages
 
     # page fields
@@ -75,6 +79,8 @@ class SectorPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['sector_cards'] = self.get_children().live()
+        context['sector_cards'] = self.get_children() \
+            .live() \
+            .order_by('setupguidepage__heading')
         # pages will return as Page type, use .specific to get sectorPage
         return context
