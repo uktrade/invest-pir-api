@@ -71,6 +71,7 @@ class SectorPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('description'),
+        FieldPanel('show_on_frontpage'),
         ImageChooserPanel('hero_image'),
         FieldPanel('heading'),
         StreamFieldPanel('pullout'),
