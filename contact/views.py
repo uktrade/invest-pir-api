@@ -50,7 +50,7 @@ class ZendeskView:
 
 class ReportIssueFormView(ZendeskView, FormView):
     success_template = 'report_issue_success.html'
-    template_name = 'report_issue.html'
+    template_name = 'contact/report_issue.html'
     form_class = forms.ReportIssueForm
 
     def create_description(self, data):
@@ -64,7 +64,7 @@ class ReportIssueFormView(ZendeskView, FormView):
 
 class FeedbackFormView(ZendeskView, FormView):
     success_template = 'feedback-success.html'
-    template_name = 'feedback.html'
+    template_name = 'contact/feedback.html'
     form_class = forms.FeedbackForm
 
     def create_description(self, data):
@@ -79,7 +79,7 @@ class FeedbackFormView(ZendeskView, FormView):
 
 class ContactFormView(ZendeskView, FormView):
     success_template = 'contact-success.html'
-    template_name = 'contact.html'
+    template_name = 'contact/contact.html'
     form_class = forms.ContactForm
 
     def create_description(self, data):

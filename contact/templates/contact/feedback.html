@@ -1,9 +1,9 @@
-{% extends 'contact/base.html' %}
+{% extends 'includes/contact_base.html' %}
 {% load static from staticfiles %}
 
 {% block content %}
 	<div class="container">
 		<br>
-		{% include 'feedback-form.html' with form=form %}
+		{% include 'contact/feedback-form.html' with form=form %}
 	</div>
 {% endblock %}
