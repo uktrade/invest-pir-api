@@ -61,7 +61,7 @@ class SectorPage(Page):
             ('text', MarkdownBlock()),
             ('stat', CharBlock()),
             ('stat_text', CharBlock()
-             )], max_num=1, min_num=1))
+             )], max_num=1, min_num=0))
     ])
 
     # accordion
