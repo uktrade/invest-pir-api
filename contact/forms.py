@@ -1,5 +1,5 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Fieldset, Field, Button, Submit, HTML
+from crispy_forms.layout import Layout, Fieldset, Field, Submit, HTML
 from captcha.fields import ReCaptchaField
 from django import forms
 from django.utils.translation import ugettext as _
