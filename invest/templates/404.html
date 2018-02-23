@@ -1,9 +1,11 @@
-{% extends "base.html" %}
-
-{% block body_class %}template-404{% endblock %}
+{% extends 'base.html' %}
 
 {% block content %}
-    <h1>Page not found</h1>
+  {% include "includes/heading_plain.html" with page_heading="Page not found" %}
+    <div class="row">
 
-    <h2>Sorry, this page could not be found.</h2>
+      <div class="col-md-6 col-sm-12">
+        <h2>{% trans "Sorry, this page could not be found." %}</h2>
+      </div>
+    </div>
 {% endblock %}
