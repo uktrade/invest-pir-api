@@ -15,6 +15,7 @@ certifi==2018.1.18        # via requests
 chardet==3.0.4            # via requests
 dj-database-url==0.4.2
 django-clear-cache==0.3
+django-crispy-forms==1.7.0
 django-ipware==1.1.6
 django-modelcluster==4.1  # via wagtail
 django-redis==4.8.0
