@@ -399,3 +399,13 @@ nav .container {
     color: #01539e;
     font-size: 3.3rem;
 }
+
+
+/** (crispy) forms customisation **/
+.controls input, .controls textarea {
+    width: 100%;
+}
+
+.controls label {
+    display: block !important;
+}

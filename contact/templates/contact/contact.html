@@ -1,9 +1,10 @@
-{% extends 'includes/contact_base.html' %}
+{% extends 'base.html' %}
 {% load static from staticfiles %}
 
 {% block content %}
-	<div class="container">
-		<br>
-		{% include 'contact/contact-form.html' with form=form %}
-	</div>
+
+  {% include "includes/heading_plain.html" %}
+
+  {% include 'contact/contact-form.html' with form=form %}
+
 {% endblock %}

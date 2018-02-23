@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
 
+    'crispy_forms',
     'modelcluster',
     'storages',
     'taggit',

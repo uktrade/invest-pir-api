@@ -1,3 +1,5 @@
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Fieldset, Field, Button, Submit, HTML
 from captcha.fields import ReCaptchaField
 from django import forms
 from django.utils.translation import ugettext as _
@@ -49,6 +51,13 @@ STAFF_CHOICES = (
 
 
 class ReportIssueForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        self.helper = FormHelper()
+        self.helper.add_input(
+            Submit("submit", _("Submit"), css_class='btn btn_primary')
+        )
+        super().__init__(*args, **kwargs)
+
     name = forms.CharField(label=_('Name'))
     email = forms.EmailField(label=_('Email'))
     feedback = forms.CharField(
@@ -65,6 +74,13 @@ class ReportIssueForm(forms.Form):
 
 
 class FeedbackForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        self.helper = FormHelper()
+        self.helper.add_input(
+            Submit("submit", _("Submit"), css_class='btn btn_primary')
+        )
+        super().__init__(*args, **kwargs)
+
     name = forms.CharField(label=_('Name'))
     email = forms.EmailField(label=_('Email'))
     service_quality = forms.ChoiceField(
@@ -86,13 +102,48 @@ class FeedbackForm(forms.Form):
 
 
 class ContactForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Fieldset(
+                "Contact Information",
+                'name',
+                'job_title',
+                'email',
+                'phone_number',
+            ),
+            Fieldset(
+                "Company information",
+                'company_name',
+                'company_website',
+                'country',
+                'staff_number',
+            ),
+            Fieldset(
+                "Your plans",
+                'description',
+            ),
+            Field('captcha'),
+            HTML("<p>{}</p>".format(
+                _(
+                    "By sending us your details you can confirm that the "
+                    "information you've shared with us is true and you "
+                    "accept our terms and conditions."
+                )
+            )),
+            Submit("submit", _("Submit"), css_class='btn btn_primary')
+        )
+        super().__init__(*args, **kwargs)
+
     name = forms.CharField(label=_('Name'))
     job_title = forms.CharField(label=_('Job title'))
     email = forms.EmailField(label=_('Email address'))
     phone_number = forms.CharField(
         label=_('Phone number (optional)'),
         required=False
+
     )
+
     company_name = forms.CharField(label=_('Company name'))
     company_website = forms.URLField(
         label=_('Website URL'),
@@ -110,9 +161,9 @@ class ContactForm(forms.Form):
     )
     description = forms.CharField(
         label=_('Tell us about your investment'),
-        help_text=_('Tell us about your company and your plans for the UK in'
-                    'terms of size of investment, operational and recruitment'
-                    'plans. Please also tell us what help you would like from'
+        help_text=_('Tell us about your company and your plans for the UK in '
+                    'terms of size of investment, operational and recruitment '
+                    'plans. Please also tell us what help you would like from '
                     'the UK government.'),
         widget=forms.Textarea()
     )

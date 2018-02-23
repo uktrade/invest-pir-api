@@ -2,8 +2,9 @@
 {% load static from staticfiles %}
 
 {% block content %}
-	<div class="container">
-		<br>
-		{% include 'contact/report_issue-form.html' with form=form %}
-	</div>
+
+  {% include "includes/heading_plain.html" %}
+
+  {% include 'contact/report_issue-form.html' with form=form %}
+  
 {% endblock %}
