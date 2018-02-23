@@ -31,6 +31,11 @@ class ZendeskView:
         )
         zenpy_client.tickets.create(ticket)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['success_message'] = _('Your feedback has been submitted')
+        return context
+
     @staticmethod
     def get_or_create_zendesk_user(name, email):
         zendesk_user = ZendeskUser(
@@ -60,6 +65,16 @@ class ReportIssueFormView(ZendeskView, FormView):
             'Feedback: {feedback}'
         ).format(**data)
         return description
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['success_message'] = _(
+            "Your details have been submitted and will be reviewed by our "
+            "team.  "
+            "If we need more information from you, we'll contact you within "
+            "5 working days."
+        )
+        return context
 
 
 class FeedbackFormView(ZendeskView, FormView):

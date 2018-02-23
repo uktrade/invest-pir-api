@@ -1,9 +1,6 @@
-{% extends 'includes/contact_base.html' %}
-{% load staticfiles %}
+{% extends 'base.html' %}
 
 {% block content %}
-	<div class="container">
-		<h1>Your details have been submitted and will be reviewed by our team.
-            If we need more information from you, we'll contact you within 5 working days.</h1>
-	</div>
-{%endblock content %}
+  {% include "includes/heading_plain.html" %}
+  {% include 'include/success-message.html' %}
+{% endblock %}
