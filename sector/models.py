@@ -34,7 +34,6 @@ class SectorLandingPage(Page):
         context['sector_cards'] = self.get_descendants() \
             .live() \
             .order_by('heading')
-        context['sector_cards'] = setup_guide_cards
         return context
 
 
