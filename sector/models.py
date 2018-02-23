@@ -31,7 +31,7 @@ class SectorLandingPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        setup_guide_cards = SectorPage.objects \
+        context['sector_cards'] = self.get_descendants() \
             .live() \
             .order_by('heading')
         context['sector_cards'] = setup_guide_cards
