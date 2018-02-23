@@ -1,12 +1,10 @@
 {% load crispy_forms_tags %}
-{% load trans from i18n %}
 <section id="form">
   <div class="container">
     <div class="row">
 
       <div class="col-md-6 col-sm-12">
         <form role="form" action="{% url 'contact' %}" method="post">
-          {% csrf_token %}
           {% crispy form %}
         </form>
       </div>
