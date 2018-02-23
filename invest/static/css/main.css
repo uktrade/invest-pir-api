@@ -17,6 +17,15 @@ h3 {
     font-weight: 400;
 }
 
+.btn {
+    border-radius: 0;
+    padding: 12px 30px;
+}
+
+.btn-primary {
+    background-color: #006ccc;
+}
+
 /* bs4 customisation - outer elements */
 .container {
     max-width: 1200px !important;
