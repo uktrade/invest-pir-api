@@ -4,6 +4,8 @@ from zenpy.lib.api_objects import Ticket, User as ZendeskUser
 from django.conf import settings
 from django.template.response import TemplateResponse
 from django.views.generic.edit import FormView
+from django.utils.translation import ugettext as _
+
 
 from contact import forms
 
