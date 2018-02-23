@@ -17,6 +17,15 @@ h3 {
     font-weight: 400;
 }
 
+.btn {
+    border-radius: 0;
+    padding: 12px 30px;
+}
+
+.btn-primary {
+    background-color: #006ccc;
+}
+
 /* bs4 customisation - outer elements */
 .container {
     max-width: 1200px !important;
@@ -398,4 +407,21 @@ nav .container {
 #pullout .stat h1 {
     color: #01539e;
     font-size: 3.3rem;
+}
+
+
+/** (crispy) forms customisation **/
+.controls input[type='text'],
+.controls input[type='email'],
+.controls input[type='url'],
+.controls textarea {
+    width: 100%;
+}
+
+.controls input[type='radio'] {
+    margin-right: 15px;
+    float: left;
+}
+.controls label {
+    display: block !important;
 }

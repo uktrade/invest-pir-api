@@ -4,6 +4,8 @@ from zenpy.lib.api_objects import Ticket, User as ZendeskUser
 from django.conf import settings
 from django.template.response import TemplateResponse
 from django.views.generic.edit import FormView
+from django.utils.translation import ugettext as _
+
 
 from contact import forms
 
@@ -30,6 +32,11 @@ class ZendeskView:
             requester_id=zendesk_user.id,
         )
         zenpy_client.tickets.create(ticket)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['success_message'] = _('Your feedback has been submitted')
+        return context
 
     @staticmethod
     def get_or_create_zendesk_user(name, email):
@@ -61,6 +68,17 @@ class ReportIssueFormView(ZendeskView, FormView):
         ).format(**data)
         return description
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['success_message'] = _(
+            "Your details have been submitted and will be reviewed by our "
+            "team.  "
+            "If we need more information from you, we'll contact you within "
+            "5 working days."
+        )
+        context["page"] = dict(heading=_("Report Issue"))
+        return context
+
 
 class FeedbackFormView(ZendeskView, FormView):
     success_template = 'feedback-success.html'
@@ -75,6 +93,11 @@ class FeedbackFormView(ZendeskView, FormView):
             'Feedback: {feedback}'
         ).format(**data)
         return description
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["page"] = dict(heading=_("Feedback"))
+        return context
 
 
 class ContactFormView(ZendeskView, FormView):
@@ -102,3 +125,8 @@ class ContactFormView(ZendeskView, FormView):
             'Investment description: {description}'
         ).format(**data)
         return description
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["page"] = dict(heading=_("Contact Us"))
+        return context

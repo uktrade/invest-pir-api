@@ -1,12 +1,9 @@
-{% load crispy_forms_tags %}
 <section id="form">
   <div class="container">
     <div class="row">
 
       <div class="col-md-6 col-sm-12">
-        <form role="form" action="{% url 'contact' %}" method="post">
-          {% crispy form %}
-        </form>
+        <h1>{{ success_message }}</h1>
       </div>
     </div>
   </div>
