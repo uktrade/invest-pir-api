@@ -411,10 +411,17 @@ nav .container {
 
 
 /** (crispy) forms customisation **/
-.controls input, .controls textarea {
+.controls input[type='text'],
+.controls input[type='email'],
+.controls input[type='url'],
+.controls textarea {
     width: 100%;
 }
 
+.controls input[type='radio'] {
+    margin-right: 15px;
+    float: left;
+}
 .controls label {
     display: block !important;
 }
