@@ -86,14 +86,9 @@ nav.mb-4, nav.my-4 {
 
 nav .container {
     background: inherit;
+    padding-top: 0;
 }
 
-
-#navbar {
-    background: #1e1348;
-    border-bottom: none;
-    margin-bottom: 0 !important;
-}
 
 /* navbar.less */
 .navbar {
