@@ -88,6 +88,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+try:
+    import django_extensions
+    INSTALLED_APPS.append('django_extensions')
+except ImportError:
+    pass
+
 if ENABLE_DEBUG_TOOLBAR:
     INSTALLED_APPS.append('debug_toolbar')
 
