@@ -82,6 +82,6 @@ class SectorPage(Page):
         context = super().get_context(request)
         context['sector_cards'] = self.get_children() \
             .live() \
-            .order_by('setupguidepage__heading')
+            .order_by('sectorpage__heading')
         # pages will return as Page type, use .specific to get sectorPage
         return context
