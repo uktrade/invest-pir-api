@@ -99,6 +99,7 @@ nav .container {
 }
 
 .navbar-brand {
+    padding-top: 25px;
     height: 110px;
 }
 
