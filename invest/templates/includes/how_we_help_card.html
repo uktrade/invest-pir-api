@@ -1,0 +1,16 @@
+{% load image from wagtailimages_tags %}
+{% load markdown from wagtailmarkdown %}
+{% load pageurl from wagtailcore_tags %}
+<div class="col-md-4 col-sm-12">
+  <div class="card">
+      <div class="card-header">
+      {% image card.value.icon fill-64x64 as card_image %}
+      <img src="{{ card_image.url }}" width="64" height="64" class="card-icon">
+    </div>
+    <div class="card-block">
+      <p>
+        {{ card.value.text|markdown }}
+      </p>
+    </div>
+  </div>
+</div>
