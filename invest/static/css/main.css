@@ -86,14 +86,9 @@ nav.mb-4, nav.my-4 {
 
 nav .container {
     background: inherit;
+    padding-top: 0;
 }
 
-
-#navbar {
-    background: #1e1348;
-    border-bottom: none;
-    margin-bottom: 0 !important;
-}
 
 /* navbar.less */
 .navbar {
@@ -104,6 +99,7 @@ nav .container {
 }
 
 .navbar-brand {
+    padding-top: 25px;
     height: 110px;
 }
 
@@ -120,6 +116,8 @@ nav .container {
 .navbar-nav li {
     margin: 0 15px;
     padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .navbar-nav li.active {
@@ -299,6 +297,26 @@ nav .container {
     font-size: 2rem;
 }
 
+/* how we help cards */
+#how-we-help .card-block {
+    min-height: 8rem;
+}
+
+#how-we-help p {
+     text-align: justify;
+}
+
+#how-we-help .card-header {
+    text-align: left !important;
+    background-color: inherit;
+    border-bottom: none;
+    padding-left: 15px;
+}
+
+#how-we-help .card-header img {
+    border-bottom: 2px solid red;
+}
+
 /* setup guide cards */
 #guides {
     background: #fcfbf9;
@@ -409,6 +427,14 @@ nav .container {
     font-size: 3.3rem;
 }
 
+.dark {
+    background-color: #1d1348;
+    color: white;
+}
+
+.dark .container {
+    background-color: inherit;
+}
 
 /** (crispy) forms customisation **/
 .controls input[type='text'],

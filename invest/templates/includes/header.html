@@ -1,11 +1,17 @@
-{% load static %}
+{% load wagtailsettings_tags %}
+{% load image from wagtailimages_tags %}
 {% load navigation_tags %}
 
+{% get_settings %}
 <!-- Static navbar -->
 {% block main_navigation %}
+{% image settings.invest.Branding.logo width-176 as logo %}
+{% image settings.invest.Branding.logo width-352 as logo_2x %}
 <nav class="navbar navbar-expand-md">
   <div class="container">
-    <a class="navbar-brand" href="///"><img src="" alt="HM Government"></a>
+    <a class="navbar-brand" href="///">
+      <img src="{{ logo.url }}" width="{{ logo.width }}" height="{{ logo.height }}" srcset="{{ logo_2x.url }} 2x" alt="{{ logo.alt }}" />
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_menubutton" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
