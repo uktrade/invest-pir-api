@@ -89,7 +89,7 @@ INSTALLED_APPS = [
 ]
 
 try:
-    import django_extensions
+    import django_extensions  # noqa: F401
 except ImportError:
     pass
 else:
