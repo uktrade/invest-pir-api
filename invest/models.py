@@ -1,5 +1,6 @@
 """
-wagtail.contrib.settings - hold global text and images, e.g. for navbar, social buttons
+wagtail.contrib.settings - hold global text and images, e.g.
+for navbar, social buttons
 """
 from django.db import models
 
