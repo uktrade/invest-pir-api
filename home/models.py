@@ -20,12 +20,17 @@ class HomePage(Page):
         related_name='+'
     )
 
-    how_we_help = StreamField([
-        ('items', StructBlock([
-            ('icon', ImageChooserBlock()),
-            ('text', CharBlock()),
-        ]))
-    ], blank=True)
+    how_we_help = StreamField(
+        [
+            (
+                'items',
+                StructBlock([
+                    ('icon', ImageChooserBlock()),
+                    ('text', CharBlock()),
+                ])
+            )
+        ],
+        blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('heading'),
