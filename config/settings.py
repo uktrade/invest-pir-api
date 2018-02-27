@@ -90,9 +90,11 @@ INSTALLED_APPS = [
 
 try:
     import django_extensions
-    INSTALLED_APPS.append('django_extensions')
 except ImportError:
     pass
+else:
+    INSTALLED_APPS.append('django_extensions')
+
 
 if ENABLE_DEBUG_TOOLBAR:
     INSTALLED_APPS.append('debug_toolbar')
