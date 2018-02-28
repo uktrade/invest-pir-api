@@ -6,6 +6,7 @@
 #
 -e git+https://github.com/uktrade/directory-validators.git@v4.2.0#egg=directory_validators
 -e git+https://github.com/stuaxo/django-admin-ip-restrictor.git@feature/block_by_url#egg=django-admin-ip-restrictor
+-e git+https://github.com/City-of-Helsinki/wagtail-svgmap#egg=wagtail-svgmap
 beautifulsoup4==4.6.0     # via wagtail
 bleach==2.1.2             # via wagtail-markdown
 boto3==1.5.10
@@ -46,7 +47,7 @@ six==1.11.0               # via bleach, html5lib, python-dateutil
 unidecode==0.4.21         # via wagtail
 urllib3==1.22             # via requests
 wagtail-markdown==0.5a2.post1
-wagtail==2.0b1
+wagtail==2.0
 webencodings==0.5.1       # via html5lib
 whitenoise==3.3.1
 willow==1.1               # via wagtail
