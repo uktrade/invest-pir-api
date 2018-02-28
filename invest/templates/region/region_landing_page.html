@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+{% include_block page.body %}
+
+{% block body_class %}region_page{% endblock %}
+
+{% block content %}
+  {% include "includes/heading_hero.html" with hero=page.hero %}
+
+  {% include "includes/image_cards.html" with cards=region_cards title="UK Regions" card_descriptions=False %}
+
+  {% if page.subsections %}
+    {% include "includes/accordion.html" with subsections=page.subsections %}
+  {% endif %}
+
+{% endblock %}
