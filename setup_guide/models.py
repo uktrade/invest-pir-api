@@ -3,7 +3,7 @@ from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 
-from invest.blocks import MarkdownAccordionItemBlock
+from invest.blocks.markdown import MarkdownAccordionItemBlock
 
 
 class SetupGuideLandingPage(Page):

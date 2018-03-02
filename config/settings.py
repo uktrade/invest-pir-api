@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'setup_guide',
     'contact',
     'info',
+    'region',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -71,6 +72,7 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
+    'wagtail_svgmap',
 
     'crispy_forms',
     'modelcluster',

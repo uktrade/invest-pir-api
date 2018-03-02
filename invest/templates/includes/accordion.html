@@ -6,7 +6,7 @@
       <div id="accordion" class="col-12">
         {% for subsection in subsections %}
         <div class="card">
-          {% include_block subsection with position=forloop.counter %}
+          {% include_block subsection with position=forloop.counter blah=subsection.value.map.map.svg.url blah2=subsection.value.map.map.rendered_svge %}
         </div>
         {% endfor %}
       </div>

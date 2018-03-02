@@ -7,7 +7,7 @@ from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtailmarkdown.blocks import MarkdownBlock
 
-from invest.blocks import MarkdownAccordionItemBlock
+from invest.blocks.markdown import MarkdownAccordionItemBlock
 
 
 class SectorLandingPage(Page):

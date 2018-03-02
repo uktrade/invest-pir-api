@@ -5,14 +5,14 @@ from wagtail.core.blocks import StructBlock, CharBlock
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail_svgmap.blocks import ImageMapBlock
 from wagtailmarkdown.blocks import MarkdownBlock
 
-from invest.blocks import MarkdownAccordionItemBlock, LocationAccordionItemBlock
+from invest.blocks.markdown import MarkdownAccordionItemBlock
+from invest.blocks.location import LocationAccordionItemBlock
 
 
 class RegionLandingPage(Page):
-    subpage_types = ['region.regionPage']
+    subpage_types = ['region.RegionPage']
 
     # page fields
     heading = models.CharField(max_length=255)
@@ -40,9 +40,6 @@ class RegionLandingPage(Page):
 
 
 class RegionPage(Page):
-    # Related region are implemented as subpages
-    subpage_types = ['region.regionPage']
-
     show_on_frontpage = models.BooleanField(default=False)
     description = models.TextField()  # appears in card on external pages
 

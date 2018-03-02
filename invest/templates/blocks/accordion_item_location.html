@@ -8,12 +8,15 @@
   </div>
   <div id="collapse{{ position }}" class="_collapse">
     <div class="card-block">
-      <div class="col-md-6 col-sm-12">
-        {{ self.info|markdown }}
-      </div>
-      <div class="col-md-6 col-sm-12">
-        {{ self.map.map }}
-      </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            {{ self.info|markdown }}
+          </div>
+          <div class="col-md-6 col-sm-12">
+            {{ self.map.map.rendered_svg|safe }}
+          </div>
+        </div>
+
     </div>
     <div class="card-footer col-md-8 col-sm-12"></div>
   </div>
