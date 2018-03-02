@@ -1,11 +1,9 @@
 from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
-from wagtail.core.blocks import StructBlock, CharBlock
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtailmarkdown.blocks import MarkdownBlock
 
 from invest.blocks.markdown import MarkdownAccordionItemBlock
 from invest.blocks.location import LocationAccordionItemBlock
