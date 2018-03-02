@@ -8,12 +8,12 @@ from wagtail.core.models import Site
 
 @pytest.mark.django_db
 def test_region_landing_page(client):
-    response = client.get('/industries/')
+    response = client.get('/regions/')
     wsgi_request = response.wsgi_request
     wsgi_request.site = Site.find_for_request(wsgi_request)
     context = {
         'request': wsgi_request,
-        "setup_guide_cards": []
+        "regions": []
     }
     html = render_to_string(
         "region/region_landing_page.html",
@@ -24,7 +24,7 @@ def test_region_landing_page(client):
 
 @pytest.mark.django_db
 def test_region_page(client):
-    response = client.get('/industries/aerospace')
+    response = client.get('/regions/uk')
     request = response.wsgi_request
     request.site = Site.find_for_request(request)
     context = {

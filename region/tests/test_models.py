@@ -1,5 +1,5 @@
 from wagtail.tests.utils import WagtailPageTests
-from Region.models import RegionLandingPage, RegionPage
+from region.models import RegionLandingPage, RegionPage
 from home.models import HomePage
 
 
