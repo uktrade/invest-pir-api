@@ -40,7 +40,6 @@ class RegionLandingPage(Page):
 
 
 class RegionPage(Page):
-    show_on_frontpage = models.BooleanField(default=False)
     description = models.TextField()  # appears in card on external pages
 
     # page fields
@@ -54,14 +53,6 @@ class RegionPage(Page):
         related_name='+'
     )
 
-    pullout = StreamField([
-        ('content', StructBlock([
-            ('text', MarkdownBlock()),
-            ('stat', CharBlock()),
-            ('stat_text', CharBlock()
-             )], max_num=1, min_num=0))
-    ], blank=True)
-
     # accordion
     subsections = StreamField([
         ('content', MarkdownAccordionItemBlock()),
@@ -70,9 +61,7 @@ class RegionPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('description'),
-        FieldPanel('show_on_frontpage'),
         ImageChooserPanel('hero_image'),
         FieldPanel('heading'),
-        StreamFieldPanel('pullout'),
         StreamFieldPanel('subsections')
     ]
