@@ -46,7 +46,7 @@ six==1.11.0               # via bleach, html5lib, python-dateutil
 unidecode==0.4.21         # via wagtail
 urllib3==1.22             # via requests
 wagtail-markdown==0.5a2.post1
-wagtail==2.0b1
+wagtail==2.0
 webencodings==0.5.1       # via html5lib
 whitenoise==3.3.1
 willow==1.1               # via wagtail

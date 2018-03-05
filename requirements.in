@@ -12,7 +12,7 @@ gunicorn==19.7.1
 psycopg2==2.7.3.2
 pytz==2017.2              # via django
 raven==6.5.0
-wagtail==2.0b1
+wagtail==2.0
 wagtail-markdown==0.5a2.post1
 whitenoise==3.3.1
 zenpy==1.1.10

@@ -47,7 +47,7 @@ class HomePage(Page):
         context = super().get_context(request)
         sector_cards = SectorPage.objects \
             .live() \
-            .filter(show_on_frontpage=True) \
+            .filter(featured=True) \
             .order_by('heading')
         setup_guide_cards = SetupGuidePage.objects \
             .live() \
@@ -55,5 +55,6 @@ class HomePage(Page):
         context.update(
             sector_cards=sector_cards,
             setup_guide_cards=setup_guide_cards,
+            sector_title="Discover UK Industries",
         )
         return context
