@@ -72,7 +72,6 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
-    'wagtail_svgmap',
 
     'crispy_forms',
     'modelcluster',

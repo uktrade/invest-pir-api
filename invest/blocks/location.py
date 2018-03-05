@@ -1,6 +1,5 @@
-from django.db.models import CASCADE
 from wagtail.core.blocks import StructBlock, CharBlock
-from wagtail_svgmap.blocks import ImageMapBlock
+from wagtail.images.blocks import ImageChooserBlock
 from wagtailmarkdown.blocks import MarkdownBlock
 
 
@@ -11,4 +10,4 @@ class LocationAccordionItemBlock(StructBlock):
     # accordion section
     title = CharBlock(max_length=255)
     info = MarkdownBlock()
-    map = ImageMapBlock(on_delete=CASCADE, null=True)
+    map = ImageChooserBlock()

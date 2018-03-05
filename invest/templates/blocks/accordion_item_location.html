@@ -1,5 +1,6 @@
 {# accordion item containing markdown contain #}
 {% load markdown from wagtailmarkdown %}
+{% load image from wagtailimages_tags %}
 <div class="card">
   <div class="card-header col-md-8 col-sm-12">
     <a class="card-link" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ position }}">
@@ -13,10 +14,9 @@
             {{ self.info|markdown }}
           </div>
           <div class="col-md-6 col-sm-12">
-            {{ self.map.map.rendered_svg|safe }}
+            {% image self.map fill-500x645 %}
           </div>
         </div>
-
     </div>
     <div class="card-footer col-md-8 col-sm-12"></div>
   </div>

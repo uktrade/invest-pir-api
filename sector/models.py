@@ -7,6 +7,7 @@ from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtailmarkdown.blocks import MarkdownBlock
 
+from invest.blocks.location import LocationAccordionItemBlock
 from invest.blocks.markdown import MarkdownAccordionItemBlock
 
 
@@ -31,9 +32,9 @@ class SectorLandingPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        sector_cards = SectorPage.objects \
+        sector_cards = self.get_descendants().type(SectorPage) \
             .live() \
-            .order_by('heading')
+            .order_by('sectorpage__heading')
         context['sector_cards'] = sector_cards
         return context
 
@@ -42,7 +43,7 @@ class SectorPage(Page):
     # Related sector are implemented as subpages
     subpage_types = ['sector.sectorPage']
 
-    show_on_frontpage = models.BooleanField(default=False)
+    featured = models.BooleanField(default=False)
     description = models.TextField()  # appears in card on external pages
 
     # page fields
@@ -67,11 +68,12 @@ class SectorPage(Page):
     # accordion
     subsections = StreamField([
         ('markdown', MarkdownAccordionItemBlock()),
+        ('location', LocationAccordionItemBlock()),
     ])
 
     content_panels = Page.content_panels + [
         FieldPanel('description'),
-        FieldPanel('show_on_frontpage'),
+        FieldPanel('featured'),
         ImageChooserPanel('hero_image'),
         FieldPanel('heading'),
         StreamFieldPanel('pullout'),
@@ -80,7 +82,7 @@ class SectorPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['sector_cards'] = self.get_children() \
+        context['sector_cards'] = self.get_children().type(SectorPage) \
             .live() \
             .order_by('sectorpage__heading')
         # pages will return as Page type, use .specific to get sectorPage

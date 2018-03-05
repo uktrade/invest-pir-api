@@ -19,4 +19,3 @@ zenpy==1.1.10
 
 -e git+https://github.com/stuaxo/django-admin-ip-restrictor.git@feature/block_by_url#egg=django-admin-ip-restrictor
 -e git+https://github.com/uktrade/directory-validators.git@v4.2.0#egg=directory_validators
--e git+https://github.com/City-of-Helsinki/wagtail-svgmap#egg=wagtail-svgmap
