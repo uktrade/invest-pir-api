@@ -55,5 +55,6 @@ class HomePage(Page):
         context.update(
             sector_cards=sector_cards,
             setup_guide_cards=setup_guide_cards,
+            sector_title="Discover UK Industries",
         )
         return context

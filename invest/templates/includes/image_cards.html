@@ -1,11 +1,13 @@
 {# section containing image card #}
 <section id="sector">
+  {% if title != None %}
   <div class="container">
     <div class="row">
       <div class="col-12">
         <h2>{{ title }}</h2>
       </div>
     </div>
+    {% endif %}
     <div class="row">
       <div class="card-deck-wrapper col-12">
         <div class="card-deck">
