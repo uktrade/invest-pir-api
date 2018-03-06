@@ -19,6 +19,40 @@ ZENPY_CREDENTIALS = {
 zenpy_client = Zenpy(timeout=5, **ZENPY_CREDENTIALS)
 
 
+class FormViewMixin:
+    """
+    Allow a wagtail Page to render a FormView.
+
+    Usage:  set view attribute to FormView class
+
+    class SomeFormPage(FormViewMixin, Page):
+        view = SomeFormView
+        ....
+
+    Provides a serve(...) method.   Must be appear before
+    Page in list of superclasses to override serve
+    """
+    def __init__(self, *args, **kwargs):
+        assert getattr(self, "view") is not None, \
+            f"No view supplied to {self}"
+        super().__init__(*args, **kwargs)
+
+    def serve(self, request):
+        """
+        Populate response with context from wagtail as well as
+        FormView
+
+        :param request:
+        :return:
+        """
+        view = self.view.as_view()
+
+        response = view(request)
+        response.context_data['page'] = self
+        response.context_data['self'] = self
+        return response
+
+
 class ZendeskView:
 
     def create_description(self, data):
@@ -76,7 +110,6 @@ class ReportIssueFormView(ZendeskView, FormView):
             "If we need more information from you, we'll contact you within "
             "5 working days."
         )
-        context["page"] = dict(heading=_("Report Issue"))
         return context
 
 
@@ -93,11 +126,6 @@ class FeedbackFormView(ZendeskView, FormView):
             'Feedback: {feedback}'
         ).format(**data)
         return description
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["page"] = dict(heading=_("Feedback"))
-        return context
 
 
 class ContactFormView(ZendeskView, FormView):
@@ -125,8 +153,3 @@ class ContactFormView(ZendeskView, FormView):
             'Investment description: {description}'
         ).format(**data)
         return description
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["page"] = dict(heading=_("Contact Us"))
-        return context
