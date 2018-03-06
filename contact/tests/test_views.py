@@ -6,6 +6,8 @@ import pytest
 from zenpy.lib.api_objects import Ticket, User
 
 from contact import forms
+from contact.models import ContactFormPage, FeedbackFormPage, \
+    ReportIssueFormPage
 from contact.views import ContactFormView, FeedbackFormView, \
     ReportIssueFormView
 
@@ -134,6 +136,21 @@ def contact_request(rf, client, contact_form_data):
     return request
 
 
+@pytest.fixture
+def contact_page():
+    return ContactFormPage(heading="Test Contact Heading")
+
+
+@pytest.fixture
+def feedback_page():
+    return FeedbackFormPage(heading="Test Feedback Heading")
+
+
+@pytest.fixture
+def report_issue_page():
+    return ReportIssueFormPage(heading="Test Report Issue Heading")
+
+
 @pytest.mark.django_db
 @patch('zenpy.lib.api.UserApi.create_or_update')
 @patch('zenpy.lib.api.TicketApi.create')
@@ -175,3 +192,30 @@ def test_contact_form(
     ).format(**contact_form_data)
     assert ticket.description == description
     assert mock_clean_captcha.call_count == 1
+
+
+@pytest.mark.django_db
+def test_contact_page_serve(contact_page, contact_request):
+    response = contact_page.serve(contact_request)
+    context = response.context_data
+
+    assert context["page"] == contact_page
+    assert context["self"] == contact_page
+
+
+@pytest.mark.django_db
+def test_feedback_page_serve(feedback_page, contact_request):
+    response = feedback_page.serve(contact_request)
+    context = response.context_data
+
+    assert context["page"] == feedback_page
+    assert context["self"] == feedback_page
+
+
+@pytest.mark.django_db
+def test_report_issue_page_serve(report_issue_page, contact_request):
+    response = report_issue_page.serve(contact_request)
+    context = response.context_data
+
+    assert context["page"] == report_issue_page
+    assert context["self"] == report_issue_page

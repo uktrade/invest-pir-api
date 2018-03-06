@@ -76,7 +76,6 @@ class ReportIssueFormView(ZendeskView, FormView):
             "If we need more information from you, we'll contact you within "
             "5 working days."
         )
-        context["page"] = dict(heading=_("Report Issue"))
         return context
 
 
@@ -93,11 +92,6 @@ class FeedbackFormView(ZendeskView, FormView):
             'Feedback: {feedback}'
         ).format(**data)
         return description
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["page"] = dict(heading=_("Feedback"))
-        return context
 
 
 class ContactFormView(ZendeskView, FormView):
@@ -125,8 +119,3 @@ class ContactFormView(ZendeskView, FormView):
             'Investment description: {description}'
         ).format(**data)
         return description
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["page"] = dict(heading=_("Contact Us"))
-        return context

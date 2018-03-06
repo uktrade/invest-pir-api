@@ -50,57 +50,6 @@ STAFF_CHOICES = (
 )
 
 
-class ReportIssueForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        self.helper = FormHelper()
-        self.helper.add_input(
-            Submit("submit", _("Submit"), css_class='btn btn_primary')
-        )
-        super().__init__(*args, **kwargs)
-
-    name = forms.CharField(label=_('Name'))
-    email = forms.EmailField(label=_('Email'))
-    feedback = forms.CharField(
-        label=_('Feedback'),
-        help_text=_('Maximum 1200 characters.'),
-        max_length=1200,
-        widget=forms.Textarea,
-        validators=[no_html, not_contains_url_or_email]
-    )
-    captcha = ReCaptchaField(
-        label='',
-        label_suffix='',
-    )
-
-
-class FeedbackForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        self.helper = FormHelper()
-        self.helper.add_input(
-            Submit("submit", _("Submit"), css_class='btn btn_primary')
-        )
-        super().__init__(*args, **kwargs)
-
-    name = forms.CharField(label=_('Name'))
-    email = forms.EmailField(label=_('Email'))
-    service_quality = forms.ChoiceField(
-        widget=forms.RadioSelect,
-        label=_('How did you feel about the service you received today?'),
-        choices=FEEDBACK_SERVICE
-    )
-    feedback = forms.CharField(
-        label=_('How could we improve this service?'),
-        help_text=_(
-            'Please don\'t include any personal or financial information, '
-            'for example your National Insurance or credit card numbers.'),
-        widget=forms.Textarea
-    )
-    captcha = ReCaptchaField(
-        label='',
-        label_suffix='',
-    )
-
-
 class ContactForm(forms.Form):
     def __init__(self, *args, **kwargs):
         self.helper = FormHelper()
@@ -166,6 +115,57 @@ class ContactForm(forms.Form):
                     'plans. Please also tell us what help you would like from '
                     'the UK government.'),
         widget=forms.Textarea()
+    )
+    captcha = ReCaptchaField(
+        label='',
+        label_suffix='',
+    )
+
+
+class FeedbackForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        self.helper = FormHelper()
+        self.helper.add_input(
+            Submit("submit", _("Submit"), css_class='btn btn_primary')
+        )
+        super().__init__(*args, **kwargs)
+
+    name = forms.CharField(label=_('Name'))
+    email = forms.EmailField(label=_('Email'))
+    service_quality = forms.ChoiceField(
+        widget=forms.RadioSelect,
+        label=_('How did you feel about the service you received today?'),
+        choices=FEEDBACK_SERVICE
+    )
+    feedback = forms.CharField(
+        label=_('How could we improve this service?'),
+        help_text=_(
+            'Please don\'t include any personal or financial information, '
+            'for example your National Insurance or credit card numbers.'),
+        widget=forms.Textarea
+    )
+    captcha = ReCaptchaField(
+        label='',
+        label_suffix='',
+    )
+
+
+class ReportIssueForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        self.helper = FormHelper()
+        self.helper.add_input(
+            Submit("submit", _("Submit"), css_class='btn btn_primary')
+        )
+        super().__init__(*args, **kwargs)
+
+    name = forms.CharField(label=_('Name'))
+    email = forms.EmailField(label=_('Email'))
+    feedback = forms.CharField(
+        label=_('Feedback'),
+        help_text=_('Maximum 1200 characters.'),
+        max_length=1200,
+        widget=forms.Textarea,
+        validators=[no_html, not_contains_url_or_email]
     )
     captcha = ReCaptchaField(
         label='',
