@@ -9,7 +9,7 @@ from contact import forms
 from contact.models import ContactFormPage, FeedbackFormPage, \
     ReportIssueFormPage
 from contact.views import ContactFormView, FeedbackFormView, \
-    ReportIssueFormView, FormViewMixin
+    ReportIssueFormView
 
 
 @pytest.fixture
@@ -192,14 +192,6 @@ def test_contact_form(
     ).format(**contact_form_data)
     assert ticket.description == description
     assert mock_clean_captcha.call_count == 1
-
-
-def test_formview_mixin_no_view():
-    class FakeFormView(FormViewMixin):
-        pass
-
-    with pytest.raises(AttributeError):
-        FakeFormView()
 
 
 @pytest.mark.django_db

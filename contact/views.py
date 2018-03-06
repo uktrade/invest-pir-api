@@ -19,40 +19,6 @@ ZENPY_CREDENTIALS = {
 zenpy_client = Zenpy(timeout=5, **ZENPY_CREDENTIALS)
 
 
-class FormViewMixin:
-    """
-    Allow a wagtail Page to render a FormView.
-
-    Usage:  set view attribute to FormView class
-
-    class SomeFormPage(FormViewMixin, Page):
-        view = SomeFormView
-        ....
-
-    Provides a serve(...) method.   Must be appear before
-    Page in list of superclasses to override serve
-    """
-    def __init__(self, *args, **kwargs):
-        if not hasattr(self, "view"):
-            raise AttributeError(f"No view attribute on f{self}")
-        super().__init__(*args, **kwargs)
-
-    def serve(self, request):
-        """
-        Populate response with context from wagtail as well as
-        FormView
-
-        :param request:
-        :return:
-        """
-        view = self.view.as_view()
-
-        response = view(request)
-        response.context_data['page'] = self
-        response.context_data['self'] = self
-        return response
-
-
 class ZendeskView:
 
     def create_description(self, data):
