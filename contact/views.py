@@ -33,8 +33,8 @@ class FormViewMixin:
     Page in list of superclasses to override serve
     """
     def __init__(self, *args, **kwargs):
-        assert getattr(self, "view") is not None, \
-            f"No view supplied to {self}"
+        if not hasattr(self, "view"):
+            raise AttributeError(f"No view attribute on f{self}")
         super().__init__(*args, **kwargs)
 
     def serve(self, request):
