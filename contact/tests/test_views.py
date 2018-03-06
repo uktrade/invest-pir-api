@@ -6,7 +6,8 @@ import pytest
 from zenpy.lib.api_objects import Ticket, User
 
 from contact import forms
-from contact.models import ContactFormPage, FeedbackFormPage, ReportIssueFormPage
+from contact.models import ContactFormPage, FeedbackFormPage, \
+    ReportIssueFormPage
 from contact.views import ContactFormView, FeedbackFormView, \
     ReportIssueFormView, FormViewMixin
 
@@ -150,7 +151,6 @@ def report_issue_page():
     return ReportIssueFormPage(heading="Test Report Issue Heading")
 
 
-
 @pytest.mark.django_db
 @patch('zenpy.lib.api.UserApi.create_or_update')
 @patch('zenpy.lib.api.TicketApi.create')
@@ -227,4 +227,3 @@ def test_report_issue_page_serve(report_issue_page, contact_request):
 
     assert context["page"] == report_issue_page
     assert context["self"] == report_issue_page
-
