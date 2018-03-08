@@ -43,6 +43,7 @@ class HomePage(Page):
         FieldPanel('heading'),
         FieldPanel('sub_heading'),
         ImageChooserPanel('hero_image'),
+        StreamFieldPanel('subsections'),
         StreamFieldPanel('how_we_help')
     ]
 
