@@ -10,5 +10,7 @@
   {% include "includes/heading_hero_tall.html" %}
   {% include "includes/image_cards.html" with cards=sector_cards title="Discover UK Industries" %}
   {% include "includes/setup_guide_cards.html" with cards=setup_guide_cards title="UK Setup Guide" %}
-  {% include "includes/how_we_help_cards.html" with cards=page.how_we_help title="How We Help" header="The Department for International Trade (DIT) helps overseas companies relocate and expand in the UK. Based in British embassies, high commissions and consulates in cities around the world, our investment services team can:" %}
+  {% if page.how_we_help %}
+    {% include "includes/how_we_help_cards.html" with cards=page.how_we_help title="How We Help" header="The Department for International Trade (DIT) helps overseas companies relocate and expand in the UK. Based in British embassies, high commissions and consulates in cities around the world, our investment services team can:" %}
+  {% endif %}
 {% endblock %}

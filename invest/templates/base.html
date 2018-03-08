@@ -24,6 +24,10 @@
     {% endblock content %}
 </main>
 
+{% block footer %}
+    {% include "includes/footer.html" %}
+    {% include "includes/footer_copyright.html" %}
+{% endblock footer %}
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
