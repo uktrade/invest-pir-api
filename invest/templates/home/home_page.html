@@ -8,6 +8,9 @@
 
 {% block content %}
   {% include "includes/heading_hero_tall.html" %}
+  {% if page.subsections %}
+    {% include "includes/accordion.html" with subsections=page.subsections %}
+  {% endif %}
   {% include "includes/image_cards.html" with cards=sector_cards title="Discover UK Industries" %}
   {% include "includes/setup_guide_cards.html" with cards=setup_guide_cards title="UK Setup Guide" %}
   {% if page.how_we_help %}

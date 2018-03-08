@@ -7,6 +7,8 @@ from wagtail.core.models import Page
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 
+from invest.blocks.markdown import MarkdownAccordionItemBlock
+
 
 class HomePage(Page):
     heading = models.CharField(max_length=255)
@@ -19,6 +21,11 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+
+    # accordion
+    subsections = StreamField([
+        ('markdown', MarkdownAccordionItemBlock()),
+    ], null=True)
 
     how_we_help = StreamField(
         [
