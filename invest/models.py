@@ -7,7 +7,7 @@ from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 
 from wagtail.contrib.settings.models import BaseSetting
 from wagtail.contrib.settings.registry import register_setting
-from wagtail.core.blocks import PageChooserBlock, CharBlock, StructBlock, URLBlock
+from wagtail.core.blocks import PageChooserBlock
 from wagtail.core.fields import StreamField
 from wagtail.images.edit_handlers import ImageChooserPanel
 
