@@ -1,0 +1,37 @@
+{% load wagtailsettings_tags %}
+{% load image from wagtailimages_tags %}
+{% load navigation_tags %}
+
+{% get_settings %}
+{% image settings.invest.Branding.logo width-176 as logo %}
+{% image settings.invest.Branding.logo width-352 as logo_2x %}
+
+{% image settings.invest.Branding.footer_logo width-176 as footer_logo %}
+{% image settings.invest.Branding.footer_logo width-352 as footer_logo_2x %}
+
+<section id="footer" class="dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 footer-branding">
+        <img src="{{ logo.url }}" width="{{ logo.width }}" height="{{ logo.height }}" srcset="{{ logo_2x.url }} 2x" alt="{{ logo.alt }}" />
+        <img src="{{ footer_logo.url }}" width="{{ footer_logo.width }}" height="{{ footer_logo.height }}" srcset="{{ footer_logo_2x.url }} 2x" alt="{{ footer_logo.alt }}" />
+      </div>
+      <div class="col-md-10">
+          <ul class="page-nav float-md-right">
+              {# main_menu is defined in base/templatetags/navigation_tags.py #}
+              {% get_site_root as site_root %}
+              {% nav_menu parent=site_root calling_page=self item_class='' %}
+          </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+          <ul class="secondary-nav">
+            {% for block in settings.invest.Branding.footer_secondary_nav %}
+              <li>{{ block.type }}{{ block }}</li>
+            {% endfor %}
+          </ul>
+      </div>
+    </div>
+  </div>
+</section>
