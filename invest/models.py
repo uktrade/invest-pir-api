@@ -42,7 +42,9 @@ class Branding(BaseSetting):
     footer_copyright = models.CharField(max_length=255)
 
     is_beta = models.BooleanField(default=True)
-    beta_bar_text = MarkdownField(default="This is a new service - your feedback will help improve it.")
+    beta_bar_text = MarkdownField(
+        default="This is a new service - your feedback will help improve it."
+    )
 
     panels = [
         ImageChooserPanel('logo'),
