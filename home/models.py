@@ -27,10 +27,17 @@ class HomePage(Page):
         ('markdown', MarkdownAccordionItemBlock()),
     ], null=True)
 
-    sector_title = models.TextField(default="Discover UK Industries", max_length=255)
+    sector_title = models.TextField(
+        default="Discover UK Industries",
+        max_length=255)
 
-    setup_guide_title = models.CharField(default='Set up an overseas business in the UK', max_length=255)
-    setup_guide_lead_in = models.TextField(blank=True, null=True)
+    setup_guide_title = models.CharField(
+        default='Set up an overseas business in the UK',
+        max_length=255)
+
+    setup_guide_lead_in = models.TextField(
+        blank=True,
+        null=True)
 
     how_we_help_title = models.CharField(default='How we help', max_length=255)
     how_we_help_lead_in = models.TextField(blank=True, null=True)
