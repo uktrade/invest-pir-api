@@ -1,0 +1,16 @@
+{% load markdown from wagtailmarkdown %}
+{% load wagtailsettings_tags %}
+
+{% get_settings %}
+{% if settings.invest.Branding.is_beta is True %}
+<section id="beta-bar">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <span class="badge">BETA</span>
+        <span class="text">{{ settings.invest.Branding.beta_bar_text|markdown }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
