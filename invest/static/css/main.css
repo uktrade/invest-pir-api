@@ -144,6 +144,19 @@ nav .container {
     text-decoration: none;
 }
 
+.badge {
+    border-radius: 0;
+    color: white;
+    padding: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 7px;
+    font-size: 1rem;
+}
+
+.badge-primary {
+    background: #01539d;
+}
 /* bs4 customisations - end */
 
 
@@ -195,6 +208,30 @@ nav .container {
     text-justify: auto;
 }
 
+
+#beta-bar .container {
+    padding-top: 0;
+}
+
+#beta-bar .container .row {
+    padding-top: 0;
+}
+
+#beta-bar .badge {
+    background: #01539d;
+}
+
+#beta-bar .text {
+    color: #999999;
+}
+
+#beta-bar .text > p {
+    display: inline;
+}
+
+#beta-bar .text a {
+    color: #1b7cd1;
+}
 
 /** hero component */
 /* #heading_hero used on sector and invest content pages */
