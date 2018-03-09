@@ -403,6 +403,12 @@ nav .container {
     padding: 30px 0;
 }
 
+#pullout .row {
+    border: yellow 2px solid;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 #pullout .container {
     background-color: inherit;
     padding-top: 0;
@@ -414,6 +420,7 @@ nav .container {
     overflow-x: hidden;
     width: 75%;
     margin-top: 16px;
+    padding-right: 15px;
     vertical-align: top;
 }
 
