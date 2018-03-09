@@ -27,6 +27,21 @@ class HomePage(Page):
         ('markdown', MarkdownAccordionItemBlock()),
     ], null=True)
 
+    sector_title = models.TextField(
+        default="Discover UK Industries",
+        max_length=255)
+
+    setup_guide_title = models.CharField(
+        default='Set up an overseas business in the UK',
+        max_length=255)
+
+    setup_guide_lead_in = models.TextField(
+        blank=True,
+        null=True)
+
+    how_we_help_title = models.CharField(default='How we help', max_length=255)
+    how_we_help_lead_in = models.TextField(blank=True, null=True)
+
     how_we_help = StreamField(
         [
             (
@@ -44,6 +59,13 @@ class HomePage(Page):
         FieldPanel('sub_heading'),
         ImageChooserPanel('hero_image'),
         StreamFieldPanel('subsections'),
+
+        FieldPanel('sector_title'),
+        FieldPanel('setup_guide_title'),
+        FieldPanel('setup_guide_lead_in'),
+        FieldPanel('how_we_help_title'),
+        FieldPanel('how_we_help_lead_in'),
+
         StreamFieldPanel('how_we_help')
     ]
 
