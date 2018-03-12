@@ -220,24 +220,32 @@ nav .container {
 
 #beta-bar .container {
     padding-top: 0;
+    height: 30px;
 }
 
 #beta-bar .container .row {
     padding-top: 0;
+    height: auto;
 }
 
 #beta-bar .badge {
     background: #01539d;
     font-weight: bold;
     font-size: .7rem;
+    padding: 4px 15px;
+    margin: 5px;
 }
 
 #beta-bar .text {
     color: #999999;
+    font-size: .8rem;
+    padding: 4px 15px;
+    margin: 5px;
 }
 
 #beta-bar .text > p {
     display: inline;
+    margin: 0;
 }
 
 #beta-bar .text a {
