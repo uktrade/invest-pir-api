@@ -53,7 +53,6 @@ class HomePage(Page):
             )
         ],
         blank=True)
-
     content_panels = Page.content_panels + [
         FieldPanel('heading'),
         FieldPanel('sub_heading'),

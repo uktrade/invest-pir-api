@@ -6,7 +6,9 @@
       <div class="card-header">
       {% image card.value.icon fill-64x64 as card_image %}
       {% image card.value.icon fill-128x128 as card_image_2x %}
-      <img src="{{ card_image.url }}" srcset="{{ card_image_2x.url }} 2x" width="{{ card_image.width }}" height="{{ card_image.height }}" class="card-icon">
+      <span style="height={{ card_image.height }}" class="underline">
+        <img src="{{ card_image.url }}" srcset="{{ card_image_2x.url }} 2x" width="{{ card_image.width }}" height="{{ card_image.height }}" class="card-icon">
+      </span>
     </div>
     <div class="card-block">
       <p>
