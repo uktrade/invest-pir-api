@@ -44,19 +44,15 @@ class HomePage(Page):
 
     how_we_help = StreamField(
         [
-            ('items', StructBlock([
+            (
+                'info',
+                StructBlock([
                     ('icon', ImageChooserBlock()),
                     ('text', CharBlock()),
                 ])
-             ),
-            ('page_link', StructBlock([
-                ('page', PageChooserBlock()),
-                ('text', CharBlock()),
-                ])
-             ),
+            )
         ],
         blank=True)
-
     content_panels = Page.content_panels + [
         FieldPanel('heading'),
         FieldPanel('sub_heading'),
