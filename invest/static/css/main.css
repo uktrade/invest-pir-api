@@ -277,9 +277,11 @@ nav .container {
     color: white;
     background-color: rgba(0, 84, 159, 0.8);
     border-bottom: 4px solid #e41f13;
+    /*
     position: absolute;
     bottom: 0;
     left: 0;
+    */
 }
 
 #heading_hero .heading h1 {
