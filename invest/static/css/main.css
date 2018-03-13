@@ -270,7 +270,7 @@ nav .container {
 
 #heading_hero .jumbotron .container {
     background-color: inherit;
-    padding-top: 30px;
+    padding-top: 40px;
 }
 
 #heading_hero .heading {
@@ -315,7 +315,6 @@ nav .container {
 
 #heading_hero_tall .heading {
     color: white;
-    position: absolute;
     bottom: 0px;
     left: 0px;
     max-height: 400px;
@@ -324,7 +323,7 @@ nav .container {
 #heading_hero_tall .heading h1 {
     text-transform: uppercase;
     font-weight: bolder;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     font-size: 3rem;
     line-height: 1.1em;
 }
