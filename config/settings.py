@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
+    'wagtail.contrib.frontend_cache',
 
     'crispy_forms',
     'modelcluster',
@@ -285,10 +286,20 @@ SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_SECURE = os.getenv('SESSION_COOKIE_SECURE', 'true') == 'true'
 
 SESSION_COOKIE_HTTPONLY = True
+CSRF_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SECURE = True
 
 # Wagtail settings
 WAGTAIL_SITE_NAME = "invest"
+
+CLOUDFRONT_DISTRIBUTION_ID = os.getenv('CLOUDFRONT_DISTRIBUTION_ID')
+if CLOUDFRONT_DISTRIBUTION_ID:
+    WAGTAILFRONTENDCACHE = {
+        'cloudfront': {
+            'BACKEND': 'wagtail.contrib.wagtailfrontendcache.backends.CloudfrontBackend',  # noqa
+            'DISTRIBUTION_ID': CLOUDFRONT_DISTRIBUTION_ID,
+        },
+    }
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
