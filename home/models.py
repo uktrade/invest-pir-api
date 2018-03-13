@@ -45,7 +45,7 @@ class HomePage(Page):
     how_we_help = StreamField(
         [
             (
-                'info',
+                'items',
                 StructBlock([
                     ('icon', ImageChooserBlock()),
                     ('text', CharBlock()),
