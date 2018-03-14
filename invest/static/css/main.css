@@ -452,6 +452,7 @@ nav .container {
 
 #sector .card-img-top {
     max-height: 150px;
+    object-fit: cover;
 }
 
 
