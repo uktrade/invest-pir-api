@@ -1,22 +1,19 @@
-{% load wagtailsettings_tags %}
-{% get_settings %}
 <section id="how-we-help" class="dark">
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <h2>How we help</h2>
+        <h2>{{ title }}</h2>
       </div>
     </div>
     {% if lead_in %}
     <div class="row">
-      <div class="col-6">
+      <div class="col-md-6 col-sm-12">
         <p>{{ lead_in }}</p>
       </div>
     </div>
     {% endif %}
-    {% comment %}how we help cards{% endcomment %}
     <div class="row">
-      <div class="card-deck-wrapper">
+      <div class="card-deck-wrapper col-12">
         <div class="card-deck">
         {% for card in cards %}
           {% include "includes/how_we_help_card.html" %}

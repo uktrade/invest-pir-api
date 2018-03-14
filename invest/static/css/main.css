@@ -400,7 +400,6 @@ nav .container {
 
 #guides .card-block {
     min-height: 360px;
-    min-width: 310px;
 }
 
 #guides h3 {
@@ -459,7 +458,6 @@ nav .container {
 #sector .card-block {
     border: 1px #d8d8d8 solid;
     min-height: 200px;
-    min-width: 310px;
 }
 
 /** pullout component */
