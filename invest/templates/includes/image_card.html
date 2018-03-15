@@ -2,14 +2,14 @@
 {% load markdown from wagtailmarkdown %}
 {% load image from wagtailimages_tags %}
 {% load pageurl from wagtailcore_tags %}
-
 <div class="col-lg-4 col-md-6 col-sm-12">
   <div class="card">
     <div class="card-header">
       <h3><a href="{% pageurl card %}">{{ card.title }}</a></h3>
     </div>
     {% image card.specific.hero_image fill-320x150 as card_image %}
-    <a href="{% pageurl card %}"><img class="card-img-top" src="{{ card_image.url }}"></a>
+    {% image card.specific.hero_image fill-640x300 as card_image_2x %}
+    <a href="{% pageurl card %}"><img class="card-img-top" src="{{ card_image.url }}" srcset="{{ logo_2x.url }} 2x"></a>
     {% if card_descriptions|default_if_none:True %}
     <div class="card-block">
       <p>
