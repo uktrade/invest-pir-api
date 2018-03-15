@@ -297,7 +297,7 @@ CLOUDFRONT_DISTRIBUTION_ID = os.getenv('CLOUDFRONT_DISTRIBUTION_ID')
 if CLOUDFRONT_DISTRIBUTION_ID:
     WAGTAILFRONTENDCACHE = {
         'cloudfront': {
-            'BACKEND': 'wagtail.contrib.frontendcache.backends.CloudfrontBackend',  # noqa
+            'BACKEND': 'wagtail.contrib.frontend_cache.backends.CloudfrontBackend',  # noqa
             'DISTRIBUTION_ID': CLOUDFRONT_DISTRIBUTION_ID,
         },
     }
