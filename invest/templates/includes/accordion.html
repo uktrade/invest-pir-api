@@ -1,13 +1,11 @@
 {# accordion #}
 {% load include_block from wagtailcore_tags %}
 <section id="subsections">
-  <div class="container">
+  <div class="container content content-invest content-underlined">
     <div class="row">
       <div id="accordion" class="col-12">
         {% for subsection in subsections %}
-        <div class="card">
           {% include_block subsection with position=forloop.counter %}
-        </div>
         {% endfor %}
       </div>
     </div>

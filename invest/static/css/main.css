@@ -13,6 +13,10 @@ h1, h2 {
     font-weight: bold;
 }
 
+h2 {
+    font-size: 2.25rem;
+}
+
 h3 {
     font-weight: 400;
 }
@@ -36,14 +40,45 @@ h3 {
 }
 
 /* bs4 customisation - outer elements */
-.container {
+/* TODO - make content-main for sizing */
+section > .container {
     max-width: 1200px !important;
-    padding-right: 60px;
-    padding-left: 60px;
-    padding-top: 30px;
     margin-right: auto;
     margin-left: auto;
+
+}
+
+.content {
+    padding-top: 60px;
+    padding-right: 60px;
+    padding-left: 60px;
+    padding-bottom: 90px;
+}
+
+.content-invest {
     background-color: white;
+}
+
+.content-guides {
+    background-color: #fcfbf9;
+}
+
+.content-underlined {
+    padding-bottom: 0px;
+}
+
+.content-underlined:after {
+    content: "";
+    display: block;
+    padding-top: 90px;
+}
+
+.content-underlined:last-child:after {
+    content: "";
+    border-bottom: #e41f13 2px solid;
+    display: block;
+    margin-left: -15px;
+    margin-right: -15px;
 }
 
 .jumbotron {
@@ -56,9 +91,11 @@ h3 {
     padding-right: 0;
 }
 
+/* **
 .row {
     padding-top: 15px;
-}
+}*/
+
 
 /* bs4 customisation innner elements */
 .card {
@@ -71,7 +108,7 @@ h3 {
 
 .card-header {
     background-color: inherit;
-    padding-bottom: 0 !important;
+    /** padding-bottom: 0 !important; */
 }
 
 .card-block {
@@ -176,15 +213,17 @@ nav .container {
 
 
 #accordion .card-header {
-    border-top: none;
-    border-bottom: solid 1px #d8d8d8;
+    border-top: solid 1px #d8d8d8;
     border-radius: 0 0 0 0 !important;
-    border-left: none;
-    border-right: none;
+    border-bottom: none;
     font-weight: bold;
     font-size: large;
     padding: 15px;
     min-height: 3rem;
+}
+
+#accordion :last-child .card-header  {
+    border-bottom: solid 1px #d8d8d8;
 }
 
 #accordion .card-block {
@@ -204,7 +243,8 @@ nav .container {
 #accordion .card-footer {
     max-height: 1px;
     border-top: none;
-    border-bottom: 1px #d8d8d8 solid;
+    /* border-bottom: 1px #d8d8d8 solid; */
+    background-color: inherit;  /* override bs4 */
     padding-top: 0;
     padding-bottom: 0;
     margin-bottom: 0;
@@ -270,7 +310,7 @@ nav .container {
 
 #heading_hero .jumbotron .container {
     background-color: inherit;
-    padding-top: 30px;
+    padding-top: 40px;
 }
 
 #heading_hero .heading {
@@ -315,7 +355,6 @@ nav .container {
 
 #heading_hero_tall .heading {
     color: white;
-    position: absolute;
     bottom: 0px;
     left: 0px;
     max-height: 400px;
@@ -324,7 +363,7 @@ nav .container {
 #heading_hero_tall .heading h1 {
     text-transform: uppercase;
     font-weight: bolder;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     font-size: 3rem;
     line-height: 1.1em;
 }
@@ -399,7 +438,6 @@ nav .container {
 
 #guides .card-block {
     min-height: 360px;
-    min-width: 310px;
 }
 
 #guides h3 {
@@ -418,7 +456,6 @@ nav .container {
     content: "";
     border-bottom: #e41f13 2px solid;
     display: block;
-    margin-top: 32px;
     margin-left: -15px;
     margin-right: -15px;
 }
@@ -436,12 +473,13 @@ nav .container {
     background: #006dcc;
     color: white;
     display: inline-block;
+    min-height: 40px;
 }
 
 #sector .card-header h3 {
-    padding: 0.25rem;
+    padding: 0.5rem;
     font-size: 1rem;
-    margin: 0 15px;
+    margin: 0 20px;
 }
 
 #sector .card-header h3 a {
@@ -450,13 +488,13 @@ nav .container {
 
 #sector .card-img-top {
     max-height: 150px;
+    object-fit: cover;
 }
 
 
 #sector .card-block {
     border: 1px #d8d8d8 solid;
     min-height: 200px;
-    min-width: 310px;
 }
 
 /** pullout component */
@@ -560,6 +598,7 @@ nav .container {
 #footer .footer-branding img:first-child {
     padding-bottom: 30px;
     height: auto;
+    display: block;f
 }
 
 #footer .page-nav li~li {
