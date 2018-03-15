@@ -9,7 +9,7 @@
     </div>
     {% image card.specific.hero_image fill-320x150 as card_image %}
     {% image card.specific.hero_image fill-640x300 as card_image_2x %}
-    <a href="{% pageurl card %}"><img class="card-img-top" src="{{ card_image.url }}" srcset="{{ logo_2x.url }} 2x"></a>
+    <a href="{% pageurl card %}"><img class="card-img-top" src="{{ card_image.url }}" srcset="{{ card_image_2x.url }} 2x"></a>
     {% if card_descriptions|default_if_none:True %}
     <div class="card-block">
       <p>
