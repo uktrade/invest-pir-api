@@ -75,7 +75,7 @@ section > .container {
 
 .card-header {
     background-color: inherit;
-    /** padding-bottom: 0 !important; */
+    padding: 0;
 }
 
 .card-block {
@@ -434,9 +434,14 @@ nav .container {
 }
 
 /* how we help cards */
+#how-we-help .card {
+    padding: 0;
+}
+
 #how-we-help .card-block {
     min-height: 8rem;
     min-width: 310px;
+    padding: 5px 0 0;
 }
 
 #how-we-help p {
@@ -447,7 +452,6 @@ nav .container {
     text-align: left !important;
     background-color: inherit;
     border-bottom: none;
-    padding-left: 15px;
 }
 
 #how-we-help .card-header .underline {
