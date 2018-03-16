@@ -1,17 +1,13 @@
 <section id="how-we-help" class="dark">
   <div class="container content content-how-we-help content-underlined content-underlined-compact">
-    <div class="row">
-      <div class="col-12">
+    <div class="row {% if lead_in %}content-header-subheader{% else %}content-header{% endif %}">
+      <div class="col-md-6 col-12">
         <h2>{{ title }}</h2>
+        {% if lead_in %}
+          <p>{{ lead_in }}</p>
+        {% endif %}
       </div>
     </div>
-    {% if lead_in %}
-    <div class="row">
-      <div class="col-md-6 col-sm-12">
-        <p>{{ lead_in }}</p>
-      </div>
-    </div>
-    {% endif %}
     <div class="row">
       <div class="card-deck-wrapper col-12">
         <div class="card-deck">

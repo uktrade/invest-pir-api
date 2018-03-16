@@ -79,7 +79,11 @@ section > .container {
 }
 
 .card-block {
-    padding: 15px;
+    padding: 30px;
+}
+
+#sector .card-block {
+    height: 210px;
 }
 
 /** bs4 customisations: disable rounded corners on cards */
@@ -180,6 +184,10 @@ nav .container {
     padding-bottom: 0;
 }
 
+.content-runon {
+    padding-top: 0px;
+}
+
 .content-invest {
     background-color: white;
 }
@@ -202,22 +210,42 @@ nav .container {
     padding-top: 50px;
 }
 
-.content-underlined:last-child:after {
+.content-underlined.content-underlined-flow:after {
+    padding-top: 0;
+    height: 15px;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.content-underlined:after {
     content: "";
     display: block;
     margin-left: -15px;
     margin-right: -15px;
 }
 
-.content-underlined:last-child:after {
+.content-underlined:after {
     border-bottom: #e41f13 2px solid;
 }
 
-.content-footer.content-underlined:last-child:after {
+.content-footer.content-underlined:after {
     border-bottom: 2px solid rgba(255, 255, 255, .5);
 }
 
+.content-footer-secondary {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 0;
+    height: 60px;
+}
 
+.content-header {
+    margin-bottom: 50px;
+}
+
+.content-header-subheader {
+    margin-bottom: 30px;
+}
 
 /* accordion component */
 #accordion {
@@ -329,11 +357,6 @@ nav .container {
     color: white;
     background-color: rgba(0, 84, 159, 0.8);
     border-bottom: 4px solid #e41f13;
-    /*
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    */
 }
 
 #heading_hero .heading h1 {
@@ -368,7 +391,7 @@ nav .container {
 #heading_hero_tall .heading {
     color: white;
     bottom: 0px;
-    left: 0px;
+    left: 20px;
     max-height: 400px;
 }
 
@@ -397,7 +420,7 @@ nav .container {
 #heading_plain .heading {
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 20px;
     border-bottom: 4px solid #e41f13;
 }
 
@@ -456,16 +479,19 @@ nav .container {
     padding-bottom: 15px;
 }
 
-#guides h3 a, #guides h3 a:active {
-    color: blue;
+#guides h3 a:active,
+#guides h3 a:hover,
+#guides h3 a:link,
+#guides h3 a:visited
+{
+    color: #006ccc;
     text-decoration: underline;
-    font-size: smaller;
-
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 /* sector cards */
 #sector .container:last-child:after {
-    content: "";
     border-bottom: #e41f13 2px solid;
     display: block;
     margin-left: -15px;
@@ -570,14 +596,16 @@ nav .container {
 }
 
 /** footer section */
+#footer {
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+}
+
 #footer .page-nav {
-    margin-left: -15px;
-    margin-right: -15px;
     margin-bottom: 0;
+    margin-right: -15px;
     position: absolute;
     bottom: 0;
     right: 0;
-    height: 0.75rem;
 }
 
 #footer .page-nav li {
@@ -592,38 +620,43 @@ nav .container {
 
 #footer .secondary-nav {
     margin-left: -55px;
+    margin-bottom: 0;
 }
 
 #footer .secondary-nav li {
     display: inline;
     list-style-type: none;
-    font-size: 1.1rem;
+    font-size: 0.813rem;
     padding-right: 15px;
     padding-left: 15px;
 }
 
-
-/*
-#footer .row:first-child {
-    padding-top: 20px;
-    padding-bottom: 50px;
-    border-bottom: 2px solid rgba(255, 255, 255, .5);
-}
-*/
-
 #footer .footer-branding img:first-child {
     padding-bottom: 30px;
     height: auto;
-    display: block;f
+    display: block;
 }
 
 #footer .page-nav li~li {
     border-left: 2px solid #dfd5c5;
 }
 
-#footer a {
+#footer a:active,
+#footer a:hover,
+#footer a:link,
+#footer a:visited
+{
     color: #dfd5c5;
 }
+
+#footer .secondary-nav a:active,
+#footer .secondary-nav a:hover,
+#footer .secondary-nav a:link,
+#footer .secondary-nav a:visited
+{
+    text-decoration: underline;
+}
+
 
 #copyright {
     background-color: #160d37;
@@ -632,6 +665,7 @@ nav .container {
 #copyright .container {
     background-color: inherit;
     padding-top: 0;
+    padding-bottom: 0;
 }
 
 #copyright row {
@@ -644,6 +678,8 @@ nav .container {
     font-size: .75rem;
     line-height: 1rem;
     height: 35px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .controls input[type='radio'] {

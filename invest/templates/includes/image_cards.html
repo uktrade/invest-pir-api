@@ -1,8 +1,8 @@
 {# section containing image card #}
-<section id="sector">
+<section id="{{ id }}">
   {% if title != None %}
-  <div class="container content content-invest content-underlined">
-    <div class="row">
+  <div class="container content content-invest content-underlined{% if classes %} {{ classes }}{% endif %}">
+    <div class="row content-header">
       <div class="col-12">
         <h2>{{ title }}</h2>
       </div>
