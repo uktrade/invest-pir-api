@@ -8,7 +8,7 @@
 {% block content %}
   {% include "includes/heading_hero.html" with hero=page.hero %}
 
-  {% include "includes/image_cards.html" with cards=sector_cards title=sector_title card_descriptions=False %}
+  {% include "includes/image_cards.html" with cards=sector_cards title=sector_title card_descriptions=False id="sector" classes="sector-cards" %}
 
   {% if page.subsections %}
     {% include "includes/accordion.html" with subsections=page.subsections %}
