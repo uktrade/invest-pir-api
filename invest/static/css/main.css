@@ -34,7 +34,11 @@ h3 {
     border: 2px solid white;
 }
 
-.dark .btn-link a {
+.dark .btn-link a:active,
+.dark .btn-link a:hover,
+.dark .btn-link a:link,
+.dark .btn-link a:visited
+{
     font-weight: bold;
     text-decoration: none;
 }
@@ -395,6 +399,10 @@ nav .container {
     margin-bottom: 30px;
     font-size: 3rem;
     line-height: 1.1em;
+}
+
+#heading_hero_tall h2 {
+    font-weight: normal;
 }
 
 /* #heading_plain used on auxilery pages */
