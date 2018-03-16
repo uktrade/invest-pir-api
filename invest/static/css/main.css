@@ -131,7 +131,7 @@ nav .container {
 
 .navbar-nav li {
     margin: 0 10px;
-    padding-bottom: 15px;
+    padding-bottom: 18px;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -146,15 +146,13 @@ nav .container {
     background: inherit !important;
 }
 
-.navbar-nav li a {
+.navbar-nav li a:active,
+.navbar-nav li a:link,
+.navbar-nav li a:hover,
+.navbar-nav li a:visited {
     color: white !important;
     font-weight: bold;
-    background: inherit !important;
-}
-
-.navbar-nav li a:hover {
-    color: white !important;
-    font-weight: bold;
+    font-size: .938rem;
     background: inherit !important;
     text-decoration: none;
 }
@@ -172,6 +170,15 @@ nav .container {
 }
 /* bs4 customisations - end */
 
+a:active,
+a:link,
+a:visited {
+    color: #006ccc;
+}
+
+a:hover {
+    color: #00549f;
+}
 
 /* content sections */
 .content {
@@ -256,7 +263,7 @@ nav .container {
     border-radius: 0 0 0 0 !important;
     border-bottom: none;
     font-weight: bold;
-    font-size: large;
+    font-size: 1.5rem;
     padding: 15px;
     min-height: 3rem;
 }
@@ -316,9 +323,16 @@ nav .container {
 
 #beta-bar .text {
     color: #999999;
-    font-size: .8rem;
+    font-size: .813rem;
     padding: 4px 15px;
     margin: 5px;
+}
+
+#beta-bar .text a:active,
+#beta-bar .text a:hover,
+#beta-bar .text a:link,
+#beta-bar .text a:visited {
+    text-decoration: underline;
 }
 
 #beta-bar .text > p {
@@ -328,6 +342,14 @@ nav .container {
 
 #beta-bar .text a {
     color: #1b7cd1;
+}
+
+.heading h1 {
+    font-size: 3.25rem;
+}
+
+.heading h2 {
+    font-size: 1.5rem;
 }
 
 /** hero component */
@@ -490,7 +512,6 @@ nav .container {
 #guides h3 a:link,
 #guides h3 a:visited
 {
-    color: #006ccc;
     text-decoration: underline;
     font-size: 1.5rem;
     font-weight: bold;
