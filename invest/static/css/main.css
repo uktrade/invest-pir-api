@@ -34,7 +34,7 @@ h3 {
     border: 2px solid white;
 }
 
-,dark .btn-link a {
+.dark .btn-link a {
     font-weight: bold;
     text-decoration: none;
 }
