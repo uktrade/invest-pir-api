@@ -268,10 +268,10 @@ a:hover {
     padding: 15px;
 }
 
-#accordion .card-header:active,
-#accordion .card-header:link,
-#accordion .card-header:hover,
-#accordion .card-header:visited {
+#accordion a.card-link:active .card-header,
+#accordion a.card-link:link .card-header,
+#accordion a.card-link:hover .card-header,
+#accordion a.card-link:visited .card-header {
     color: #00549F;
     background-color: #fcfbf9;
 
@@ -317,18 +317,21 @@ a:hover {
     list-style: none;
     padding-left: 15px;
 }
+
 #accordion .card-block ul li:before {
-    margin-top: -.5rem;
     content: '\2022';
-    font-size: 2rem;
-    margin-right: 0.5em;
-    display: inline-block;
     color: #dfd5c5;
+    display: inline-block;
+    margin-right: 0.5em;
+    margin-top: -.5rem;
+    font-size: 2rem;
     position: absolute;
     left: 0;
 }
 
-#accordion .card-block h1 {
+#accordion .card-block h1,
+#accordion .card-block h2,
+#accordion .card-block h3 {
     font-size: 1.5rem;
     padding-bottom: 30px;
 }
