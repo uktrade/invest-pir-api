@@ -15,7 +15,7 @@
     {% if card_descriptions|default_if_none:True %}
       {% spaceless %}
       <div class="card-block">
-        <p>{{ card.specific.description|markdown }}</p>
+        <p>{{ card.specific.description }}</p>
       </div>
       {% endspaceless %}
     {% endif %}

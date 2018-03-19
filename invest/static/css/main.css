@@ -1,5 +1,5 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', 'verdana', 'helvetica', 'arial', sans-serif;
     background-color: #160d37;
 }
 
@@ -34,7 +34,11 @@ h3 {
     border: 2px solid white;
 }
 
-,dark .btn-link a {
+.dark .btn-link a:active,
+.dark .btn-link a:hover,
+.dark .btn-link a:link,
+.dark .btn-link a:visited
+{
     font-weight: bold;
     text-decoration: none;
 }
@@ -127,7 +131,7 @@ nav .container {
 
 .navbar-nav li {
     margin: 0 10px;
-    padding-bottom: 15px;
+    padding-bottom: 18px;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -142,15 +146,13 @@ nav .container {
     background: inherit !important;
 }
 
-.navbar-nav li a {
+.navbar-nav li a:active,
+.navbar-nav li a:link,
+.navbar-nav li a:hover,
+.navbar-nav li a:visited {
     color: white !important;
     font-weight: bold;
-    background: inherit !important;
-}
-
-.navbar-nav li a:hover {
-    color: white !important;
-    font-weight: bold;
+    font-size: .938rem;
     background: inherit !important;
     text-decoration: none;
 }
@@ -168,6 +170,15 @@ nav .container {
 }
 /* bs4 customisations - end */
 
+a:active,
+a:link,
+a:visited {
+    color: #006ccc;
+}
+
+a:hover {
+    color: #00549f;
+}
 
 /* content sections */
 .content {
@@ -252,9 +263,45 @@ nav .container {
     border-radius: 0 0 0 0 !important;
     border-bottom: none;
     font-weight: bold;
-    font-size: large;
+    font-size: 1.5rem;
     padding: 15px;
     min-height: 3rem;
+    background-color: #fcfbf9;
+    color: #00549F;
+}
+
+#accordion .card-header:active,
+#accordion .card-header:link,
+#accordion .card-header:hover,
+#accordion .card-header:visited {
+    color: #00549F;
+}
+
+#accordion .card-header.collapsed {
+    background-color: white;
+}
+
+
+#accordion .card-header.collapsed:active,
+#accordion .card-header.collapsed:link,
+#accordion .card-header.collapsed:hover,
+#accordion .card-header.collapsed:visited {
+    color: #000ccc;
+}
+
+#accordion .card-header:after {
+    color: black;
+    font-weight: bolder;
+    content: '–';
+    font-size: 1.5rem;
+    position: absolute;
+    right: 1.1rem;
+}
+
+#accordion .card-link.collapsed .card-header:after {
+    position: absolute;
+    right: 1.1rem;
+    content: '+';
 }
 
 #accordion :last-child .card-header  {
@@ -262,13 +309,32 @@ nav .container {
 }
 
 #accordion .card-block {
-    padding: 30px 15px 15px 0px;
+    padding: 30px 0 60px;
+    font-size: 1.188rem;
 }
 
-#accordion .card-header:after {
-    float: right;
-    font-weight: bolder;
-    content: '+';
+#accordion .card-block ul {
+    margin: 0 0 1rem;
+}
+
+#accordion .card-block ul li {
+    list-style: none;
+    padding-left: 15px;
+}
+#accordion .card-block ul li:before {
+    margin-top: -.5rem;
+    content: '\2022';
+    font-size: 2rem;
+    margin-right: 0.5em;
+    display: inline-block;
+    color: #dfd5c5;
+    position: absolute;
+    left: 0;
+}
+
+#accordion .card-block h1 {
+    font-size: 1.5rem;
+    padding-bottom: 30px;
 }
 
 #accordion .show .card-footer {
@@ -312,9 +378,16 @@ nav .container {
 
 #beta-bar .text {
     color: #999999;
-    font-size: .8rem;
+    font-size: .813rem;
     padding: 4px 15px;
     margin: 5px;
+}
+
+#beta-bar .text a:active,
+#beta-bar .text a:hover,
+#beta-bar .text a:link,
+#beta-bar .text a:visited {
+    text-decoration: underline;
 }
 
 #beta-bar .text > p {
@@ -324,6 +397,23 @@ nav .container {
 
 #beta-bar .text a {
     color: #1b7cd1;
+}
+
+.home_page .heading h1 {
+    font-family: 'Overpass', 'verdana', 'helvetica', 'arial', sans-serif;
+    font-size: 3.25rem;
+    font-weight: bold;
+}
+
+.heading h1 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.heading h2 {
+    font-size: 1.5rem;
+    font-weight: normal;
 }
 
 /** hero component */
@@ -355,8 +445,6 @@ nav .container {
 
 #heading_hero .heading h1 {
     text-transform: uppercase;
-    font-size: 2rem;
-    font-weight: bold;
     margin-bottom: 15px;
     line-height: 1.1em;
     padding: 25px;
@@ -393,8 +481,11 @@ nav .container {
     text-transform: uppercase;
     font-weight: bolder;
     margin-bottom: 30px;
-    font-size: 3rem;
     line-height: 1.1em;
+}
+
+#heading_hero_tall h2 {
+    font-weight: normal;
 }
 
 /* #heading_plain used on auxilery pages */
@@ -424,7 +515,7 @@ nav .container {
     padding: 25px;
     margin-bottom: 0;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 2.25rem;
 }
 
 /* how we help cards */
@@ -475,6 +566,7 @@ nav .container {
 
 #guides h3 {
     padding-bottom: 15px;
+    min-height: 2.9em;
 }
 
 #guides h3 a:active,
@@ -482,7 +574,6 @@ nav .container {
 #guides h3 a:link,
 #guides h3 a:visited
 {
-    color: #006ccc;
     text-decoration: underline;
     font-size: 1.5rem;
     font-weight: bold;
