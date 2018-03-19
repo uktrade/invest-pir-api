@@ -264,10 +264,8 @@ a:hover {
     border-bottom: none;
     font-weight: bold;
     font-size: 1.5rem;
-    padding: 15px;
     min-height: 3rem;
-    background-color: #fcfbf9;
-    color: #00549F;
+    padding: 15px;
 }
 
 #accordion .card-header:active,
@@ -275,18 +273,16 @@ a:hover {
 #accordion .card-header:hover,
 #accordion .card-header:visited {
     color: #00549F;
+    background-color: #fcfbf9;
+
 }
 
-#accordion .card-header.collapsed {
-    background-color: white;
-}
-
-
-#accordion .card-header.collapsed:active,
-#accordion .card-header.collapsed:link,
-#accordion .card-header.collapsed:hover,
-#accordion .card-header.collapsed:visited {
+#accordion a.card-link.collapsed:active .card-header,
+#accordion a.card-link.collapsed:link .card-header,
+#accordion a.card-link.collapsed:hover .card-header,
+#accordion a.card-link.collapsed:visited .card-header {
     color: #000ccc;
+    background-color: white;
 }
 
 #accordion .card-header:after {
@@ -299,12 +295,12 @@ a:hover {
 }
 
 #accordion .card-link.collapsed .card-header:after {
+    content: '+';
     position: absolute;
     right: 1.1rem;
-    content: '+';
 }
 
-#accordion :last-child .card-header  {
+#accordion .card:nth-last-child(2) .card-header{
     border-bottom: solid 1px #d8d8d8;
 }
 
