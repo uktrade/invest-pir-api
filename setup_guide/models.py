@@ -12,10 +12,12 @@ class SetupGuideLandingPage(Page):
     # page fields
     heading = models.CharField(max_length=255)
     sub_heading = models.CharField(max_length=255)
+    lead_in = models.TextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('heading'),
         FieldPanel('sub_heading'),
+        FieldPanel('lead_in'),
     ]
 
     def get_context(self, request):

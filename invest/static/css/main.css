@@ -1,5 +1,5 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', 'verdana', 'helvetica', 'arial', sans-serif;
     background-color: #160d37;
 }
 
@@ -290,16 +290,17 @@ a:hover {
 }
 
 #accordion .card-header:after {
-    float: right;
+    color: black;
     font-weight: bolder;
     content: '–';
     font-size: 1.5rem;
     position: absolute;
-    right: .1rem;
-    color: black;
+    right: 1.1rem;
 }
 
-#accordion .card-header.collapsed:after {
+#accordion .card-link.collapsed .card-header:after {
+    position: absolute;
+    right: 1.1rem;
     content: '+';
 }
 
@@ -308,9 +309,33 @@ a:hover {
 }
 
 #accordion .card-block {
-    padding: 30px 15px 15px 0px;
+    padding: 30px 0 60px;
+    font-size: 1.188rem;
 }
 
+#accordion .card-block ul {
+    margin: 0 0 1rem;
+}
+
+#accordion .card-block ul li {
+    list-style: none;
+    padding-left: 15px;
+}
+#accordion .card-block ul li:before {
+    margin-top: -.5rem;
+    content: '\2022';
+    font-size: 2rem;
+    margin-right: 0.5em;
+    display: inline-block;
+    color: #dfd5c5;
+    position: absolute;
+    left: 0;
+}
+
+#accordion .card-block h1 {
+    font-size: 1.5rem;
+    padding-bottom: 30px;
+}
 
 #accordion .show .card-footer {
     max-height: 0;
@@ -374,15 +399,20 @@ a:hover {
     color: #1b7cd1;
 }
 
-.heading h1 {
+.home_page .heading h1 {
+    font-family: 'Overpass', 'verdana', 'helvetica', 'arial', sans-serif;
     font-size: 3.25rem;
-    font-family: Overpass, verdana, helvetica, arial;
     font-weight: bold;
+}
+
+.heading h1 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .heading h2 {
     font-size: 1.5rem;
-    font-family: Roboto, verdana, helvetica, arial;
     font-weight: normal;
 }
 
@@ -485,7 +515,7 @@ a:hover {
     padding: 25px;
     margin-bottom: 0;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 2.25rem;
 }
 
 /* how we help cards */
@@ -536,6 +566,7 @@ a:hover {
 
 #guides h3 {
     padding-bottom: 15px;
+    min-height: 2.9em;
 }
 
 #guides h3 a:active,

@@ -6,22 +6,20 @@
 {% image self.map width-1000 as map_2x %}
 
 <div class="card">
-  <div class="card-header col-md-8 col-sm-12">
-    <a class="card-link" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ position }}">
-      {{ self.title }}
-    </a>
-  </div>
-  <div id="collapse{{ position }}" class="_collapse">
-    <div class="card-block">
-        <div class="row">
-          <div class="col-md-6 col-sm-12">
-            {{ self.info|markdown }}
-          </div>
-          <div class="col-md-6 col-sm-12">
-            <img src="{{ map.url }}" width="{{ map.width }}" height="{{ map.height }}" srcset="{{ map_2x.url }} 2x" alt="{{ logo.text }}" />
-          </div>
+  <a class="card-link col-md-8 col-sm-12" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ position }}">
+      <div class="card-header">{{ self.title }}</div>
+  </a>
+</div>
+<div id="collapse{{ position }}" class="_collapse">
+  <div class="card-block">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          {{ self.info|markdown }}
         </div>
-    </div>
-    <div class="card-footer col-md-8 col-sm-12"></div>
+        <div class="col-md-6 col-sm-12">
+          <img src="{{ map.url }}" width="{{ map.width }}" height="{{ map.height }}" srcset="{{ map_2x.url }} 2x" alt="{{ logo.text }}" />
+        </div>
+      </div>
   </div>
+  <div class="card-footer col-md-8 col-sm-12"></div>
 </div>
