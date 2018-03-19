@@ -266,6 +266,41 @@ a:hover {
     font-size: 1.5rem;
     padding: 15px;
     min-height: 3rem;
+    background-color: #fcfbf9;
+    color: #00549F;
+}
+
+#accordion .card-header:active,
+#accordion .card-header:link,
+#accordion .card-header:hover,
+#accordion .card-header:visited {
+    color: #00549F;
+}
+
+#accordion .card-header.collapsed {
+    background-color: white;
+}
+
+
+#accordion .card-header.collapsed:active,
+#accordion .card-header.collapsed:link,
+#accordion .card-header.collapsed:hover,
+#accordion .card-header.collapsed:visited {
+    color: #000ccc;
+}
+
+#accordion .card-header:after {
+    float: right;
+    font-weight: bolder;
+    content: '–';
+    font-size: 1.5rem;
+    position: absolute;
+    right: .1rem;
+    color: black;
+}
+
+#accordion .card-header.collapsed:after {
+    content: '+';
 }
 
 #accordion :last-child .card-header  {
@@ -276,11 +311,6 @@ a:hover {
     padding: 30px 15px 15px 0px;
 }
 
-#accordion .card-header:after {
-    float: right;
-    font-weight: bolder;
-    content: '+';
-}
 
 #accordion .show .card-footer {
     max-height: 0;
@@ -346,10 +376,14 @@ a:hover {
 
 .heading h1 {
     font-size: 3.25rem;
+    font-family: Overpass, verdana, helvetica, arial;
+    font-weight: bold;
 }
 
 .heading h2 {
     font-size: 1.5rem;
+    font-family: Roboto, verdana, helvetica, arial;
+    font-weight: normal;
 }
 
 /** hero component */
@@ -381,8 +415,6 @@ a:hover {
 
 #heading_hero .heading h1 {
     text-transform: uppercase;
-    font-size: 2rem;
-    font-weight: bold;
     margin-bottom: 15px;
     line-height: 1.1em;
     padding: 25px;
@@ -419,7 +451,6 @@ a:hover {
     text-transform: uppercase;
     font-weight: bolder;
     margin-bottom: 30px;
-    font-size: 3rem;
     line-height: 1.1em;
 }
 
