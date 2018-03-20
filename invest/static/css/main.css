@@ -311,6 +311,8 @@ a:hover {
 
 #accordion .card-block ul {
     margin: 0 0 1rem;
+    list-style-position: inside;
+    padding-left: 15px;
 }
 
 #accordion .card-block ul li {
@@ -322,7 +324,7 @@ a:hover {
     content: '\2022';
     color: #dfd5c5;
     display: inline-block;
-    margin-right: 0.5em;
+    margin-right: 0.5rem;
     margin-top: -.5rem;
     font-size: 2rem;
     position: absolute;
@@ -461,12 +463,11 @@ a:hover {
 #heading_hero_tall > .jumbotron .row {
     padding-top: 0;
     position: relative;
-    min-height: 560px;
+    min-height: 495px;
 }
 
 #heading_hero_tall .jumbotron .container {
     background-color: inherit;
-    padding-top: 30px;
 }
 
 #heading_hero_tall .heading {
@@ -480,11 +481,13 @@ a:hover {
     text-transform: uppercase;
     font-weight: bolder;
     margin-bottom: 30px;
-    line-height: 1.1em;
+    line-height: 1.15em;
+    padding-top: 60px;
 }
 
 #heading_hero_tall h2 {
     font-weight: normal;
+    line-height: 2rem;
 }
 
 /* #heading_plain used on auxilery pages */
@@ -494,7 +497,7 @@ a:hover {
 
 #heading_plain .row {
     position: relative;
-    min-height: 225px;
+    min-height: 295px;
 }
 
 #heading_plain .container  {
@@ -526,10 +529,6 @@ a:hover {
     min-height: 8rem;
     min-width: 310px;
     padding: 5px 0 0;
-}
-
-#how-we-help p {
-     text-align: justify;
 }
 
 #how-we-help .card-header {
@@ -644,7 +643,7 @@ a:hover {
 }
 
 #pullout .text {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     display: inline-block;
     overflow-x: hidden;
     width: 75%;
@@ -753,6 +752,7 @@ a:hover {
 #footer .secondary-nav a:link,
 #footer .secondary-nav a:visited
 {
+    color: #d8d8d8;
     text-decoration: underline;
 }
 
@@ -777,8 +777,7 @@ a:hover {
     font-size: .75rem;
     line-height: 1rem;
     height: 35px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 6px;
 }
 
 .controls input[type='radio'] {

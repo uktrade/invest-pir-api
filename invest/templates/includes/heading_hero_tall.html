@@ -1,9 +1,8 @@
 {% load image from wagtailimages_tags %}
 
 {% block header %}
-{% image page.specific.hero_image width-2400 as hero %}
 <section id="heading_hero_tall">
-  <div class="jumbotron" style="background-image: url('{{ hero.url }}'); background-position: center center">
+  <div class="jumbotron" style="background-position: center center; background-size: cover">
     <div class="container">
       <div class="row">
         <div class="col-md-6 heading">
