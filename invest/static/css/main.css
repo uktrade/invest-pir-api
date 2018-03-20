@@ -468,7 +468,6 @@ a:hover {
 
 #heading_hero_tall .jumbotron .container {
     background-color: inherit;
-    padding-top: 30px;
 }
 
 #heading_hero_tall .heading {
@@ -482,11 +481,13 @@ a:hover {
     text-transform: uppercase;
     font-weight: bolder;
     margin-bottom: 30px;
-    line-height: 1.1em;
+    line-height: 1.15em;
+    padding-top: 60px;
 }
 
 #heading_hero_tall h2 {
     font-weight: normal;
+    line-height: 2rem;
 }
 
 /* #heading_plain used on auxilery pages */
