@@ -654,14 +654,19 @@ a:hover {
 }
 
 #pullout .stat {
-    padding-left: 15px;
+    padding-left: 19px;
     border-left: 3px #01539e solid;
     display: inline-block;
 }
 
 #pullout .stat h1 {
     color: #01539e;
-    font-size: 3.3rem;
+    font-size: 4.5rem;
+    font-weight: normal;
+}
+
+#pullout .stat p {
+    font-size: 1.187rem;
 }
 
 .dark {
@@ -674,13 +679,19 @@ a:hover {
 }
 
 /** (crispy) forms customisation **/
-.controls input[type='text'],
 .controls input[type='email'],
+.controls input[type='text'],
 .controls input[type='url'],
+.controls select,
 .controls textarea {
     width: 100%;
     border: 1px black solid;
     border-radius: 0px;
+    height: 3.375rem;
+}
+
+.control-group {
+    margin-bottom: 30px;
 }
 
 /** footer section */
