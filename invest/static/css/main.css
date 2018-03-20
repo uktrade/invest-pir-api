@@ -322,7 +322,7 @@ a:hover {
     content: '\2022';
     color: #dfd5c5;
     display: inline-block;
-    margin-right: 0.5em;
+    margin-right: 0.5rem;
     margin-top: -.5rem;
     font-size: 2rem;
     position: absolute;
@@ -644,7 +644,7 @@ a:hover {
 }
 
 #pullout .text {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     display: inline-block;
     overflow-x: hidden;
     width: 75%;
@@ -753,6 +753,7 @@ a:hover {
 #footer .secondary-nav a:link,
 #footer .secondary-nav a:visited
 {
+    color: #d8d8d8;
     text-decoration: underline;
 }
 
