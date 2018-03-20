@@ -311,6 +311,9 @@ a:hover {
 
 #accordion .card-block ul {
     margin: 0 0 1rem;
+    list-style-position: inside;
+    padding-left: 15px;
+    line-height 30px;
 }
 
 #accordion .card-block ul li {
@@ -428,7 +431,7 @@ a:hover {
 #heading_hero > .jumbotron .row {
     padding-top: 0;
     position: relative;
-    min-height: 225px;
+    min-height: 295px;
 }
 
 #heading_hero .jumbotron .container {
@@ -461,7 +464,7 @@ a:hover {
 #heading_hero_tall > .jumbotron .row {
     padding-top: 0;
     position: relative;
-    min-height: 560px;
+    min-height: 495px;
 }
 
 #heading_hero_tall .jumbotron .container {
@@ -494,7 +497,7 @@ a:hover {
 
 #heading_plain .row {
     position: relative;
-    min-height: 225px;
+    min-height: 295px;
 }
 
 #heading_plain .container  {
