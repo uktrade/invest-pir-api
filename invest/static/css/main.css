@@ -431,7 +431,7 @@ a:hover {
 #heading_hero > .jumbotron .row {
     padding-top: 0;
     position: relative;
-    min-height: 295px;
+    min-height: 225px;
 }
 
 #heading_hero .jumbotron .container {
@@ -529,10 +529,6 @@ a:hover {
     min-height: 8rem;
     min-width: 310px;
     padding: 5px 0 0;
-}
-
-#how-we-help p {
-     text-align: justify;
 }
 
 #how-we-help .card-header {
