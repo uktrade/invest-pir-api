@@ -264,29 +264,25 @@ a:hover {
     border-bottom: none;
     font-weight: bold;
     font-size: 1.5rem;
-    padding: 15px;
     min-height: 3rem;
+    padding: 15px;
+}
+
+#accordion a.card-link:active .card-header,
+#accordion a.card-link:link .card-header,
+#accordion a.card-link:hover .card-header,
+#accordion a.card-link:visited .card-header {
+    color: #00549F;
     background-color: #fcfbf9;
-    color: #00549F;
+
 }
 
-#accordion .card-header:active,
-#accordion .card-header:link,
-#accordion .card-header:hover,
-#accordion .card-header:visited {
-    color: #00549F;
-}
-
-#accordion .card-header.collapsed {
-    background-color: white;
-}
-
-
-#accordion .card-header.collapsed:active,
-#accordion .card-header.collapsed:link,
-#accordion .card-header.collapsed:hover,
-#accordion .card-header.collapsed:visited {
+#accordion a.card-link.collapsed:active .card-header,
+#accordion a.card-link.collapsed:link .card-header,
+#accordion a.card-link.collapsed:hover .card-header,
+#accordion a.card-link.collapsed:visited .card-header {
     color: #000ccc;
+    background-color: white;
 }
 
 #accordion .card-header:after {
@@ -299,12 +295,12 @@ a:hover {
 }
 
 #accordion .card-link.collapsed .card-header:after {
+    content: '+';
     position: absolute;
     right: 1.1rem;
-    content: '+';
 }
 
-#accordion :last-child .card-header  {
+#accordion .card:nth-last-child(2) .card-header{
     border-bottom: solid 1px #d8d8d8;
 }
 
@@ -321,18 +317,21 @@ a:hover {
     list-style: none;
     padding-left: 15px;
 }
+
 #accordion .card-block ul li:before {
-    margin-top: -.5rem;
     content: '\2022';
-    font-size: 2rem;
-    margin-right: 0.5em;
-    display: inline-block;
     color: #dfd5c5;
+    display: inline-block;
+    margin-right: 0.5em;
+    margin-top: -.5rem;
+    font-size: 2rem;
     position: absolute;
     left: 0;
 }
 
-#accordion .card-block h1 {
+#accordion .card-block h1,
+#accordion .card-block h2,
+#accordion .card-block h3 {
     font-size: 1.5rem;
     padding-bottom: 30px;
 }
@@ -655,14 +654,19 @@ a:hover {
 }
 
 #pullout .stat {
-    padding-left: 15px;
+    padding-left: 19px;
     border-left: 3px #01539e solid;
     display: inline-block;
 }
 
 #pullout .stat h1 {
     color: #01539e;
-    font-size: 3.3rem;
+    font-size: 4.5rem;
+    font-weight: normal;
+}
+
+#pullout .stat p {
+    font-size: 1.187rem;
 }
 
 .dark {
@@ -675,13 +679,19 @@ a:hover {
 }
 
 /** (crispy) forms customisation **/
-.controls input[type='text'],
 .controls input[type='email'],
+.controls input[type='text'],
 .controls input[type='url'],
+.controls select,
 .controls textarea {
     width: 100%;
     border: 1px black solid;
     border-radius: 0px;
+    height: 3.375rem;
+}
+
+.control-group {
+    margin-bottom: 30px;
 }
 
 /** footer section */
