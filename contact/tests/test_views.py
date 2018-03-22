@@ -122,6 +122,7 @@ def contact_form_data():
             'name': 'Scrooge McDuck',
             'email': 'sm@example.com',
             'job_title': 'President',
+            'phone_number': '0000000000',
             'company_name': 'Acme',
             'country': 'Duckburg',
             'staff_number': forms.STAFF_CHOICES[0][0],
@@ -178,7 +179,7 @@ def test_contact_form(
     assert ticket.submitter_id == 999
     assert ticket.requester_id == 999
     contact_form_data['company_website'] = ''
-    contact_form_data['phone_number'] = ''
+    contact_form_data['phone_number'] = '0000000000'
     description = (
         'Name: {name}\n'
         'Email: {email}\n'
