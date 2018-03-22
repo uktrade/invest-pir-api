@@ -54,7 +54,7 @@ def test_contact_form_required():
     assert form.fields['name'].required is True
     assert form.fields['email'].required is True
     assert form.fields['job_title'].required is True
-    assert form.fields['phone_number'].required is False
+    assert form.fields['phone_number'].required is True
     assert form.fields['company_name'].required is True
     assert form.fields['company_website'].required is False
     assert form.fields['country'].required is True
@@ -68,6 +68,7 @@ def test_contact_form_accept_valid_data(captcha_stub):
         data={
             'name': 'Scrooge McDuck',
             'email': 'sm@example.com',
+            'phone_number': '0000000000',
             'job_title': 'President',
             'company_name': 'Acme',
             'country': 'Duckburg',

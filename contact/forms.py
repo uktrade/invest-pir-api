@@ -89,7 +89,7 @@ class ContactForm(forms.Form):
     email = forms.EmailField(label=_('Email address'))
     phone_number = forms.CharField(
         label=_('Phone number (optional)'),
-        required=False
+        required=True
 
     )
 
