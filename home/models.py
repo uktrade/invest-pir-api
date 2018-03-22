@@ -1,6 +1,6 @@
 from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.core.blocks import CharBlock, StructBlock
+from wagtail.core.blocks import CharBlock, StructBlock, PageChooserBlock
 from wagtail.core.fields import StreamField
 
 from wagtail.core.models import Page
@@ -44,15 +44,19 @@ class HomePage(Page):
 
     how_we_help = StreamField(
         [
-            (
-                'items',
-                StructBlock([
+            ('items', StructBlock([
                     ('icon', ImageChooserBlock()),
                     ('text', CharBlock()),
                 ])
-            )
+             ),
+            ('page_link', StructBlock([
+                ('page', PageChooserBlock()),
+                ('text', CharBlock()),
+                ])
+             ),
         ],
         blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('heading'),
         FieldPanel('sub_heading'),

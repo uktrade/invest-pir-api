@@ -541,7 +541,6 @@ a:hover {
 }
 
 #how-we-help .card-header {
-    text-align: left !important;
     background-color: inherit;
     border-bottom: none;
 }
@@ -551,6 +550,17 @@ a:hover {
     border-bottom: 2px solid red;
     display: inline-block;
 }
+
+#how-we-help .card-header a.btn:active,
+#how-we-help .card-header a.btn:link,
+#how-we-help .card-header a.btn:hover,
+#how-we-help .card-header a.btn:visited {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 35px;
+}
+
+
 
 /* setup guide cards */
 #guides {
@@ -612,12 +622,14 @@ a:hover {
 
 #sector .card-header h3 {
     padding: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.125rem;
+    font-weight: bold;
     margin: 0 20px;
 }
 
 #sector .card-header h3 a {
     color: white;
+    text-decoration: none;
 }
 
 #sector .card-img-top {
