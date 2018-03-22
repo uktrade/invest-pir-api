@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import dj_database_url
 import os
 
+from django.utils.translation import gettext_lazy as _
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(PROJECT_ROOT)
@@ -52,6 +54,9 @@ ENABLE_REDIS = REDIS_URL is not None
 # Application definition
 
 INSTALLED_APPS = [
+    'wagtail_modeltranslation',    # before apps that need translation
+    'wagtail_modeltranslation.makemigrations',
+
     'invest',
     'home',
     'sector',
@@ -103,6 +108,7 @@ if ENABLE_DEBUG_TOOLBAR:
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',   # position - after: SessionMiddleWare, before: CommonMiddleWare  # noqa
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -175,6 +181,16 @@ else:
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 LANGUAGE_CODE = 'en-gb'
+LANGUAGES = (
+    ('en', _(u'English')),
+    ('de', _(u'German')),
+    ('es', _(u'Spanish')),
+    ('fr', _(u'French')),
+    ('pt', _(u'Portugese')),
+    ('ar', _(u'Arabic')),
+    ('ja', _(u'Japanese')),
+    ('zh', _(u'Chinese')),
+)
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
