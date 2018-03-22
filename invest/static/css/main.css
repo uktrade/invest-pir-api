@@ -556,6 +556,7 @@ a:hover {
 #how-we-help .card-header a.btn:hover,
 #how-we-help .card-header a.btn:visited {
     color: white;
+    font-weight: bold;
     text-decoration: none;
     margin-bottom: 35px;
 }
