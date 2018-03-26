@@ -17,7 +17,7 @@ CODECOV := \
 	fi
 
 test:
-	$(COLLECT_STATIC) && python manage.py update_translation_fields && $(FLAKE8) && $(PYTEST) && $(CODECOV)
+	$(COLLECT_STATIC) && $(FLAKE8) && $(PYTEST) && $(CODECOV)
 
 DJANGO_WEBSERVER := \
 	python manage.py migrate --noinput && \
