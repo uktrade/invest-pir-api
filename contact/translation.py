@@ -4,21 +4,21 @@ from modeltranslation.decorators import register
 
 
 @register(ContactFormPage)
-class SetupGuidePageTranslation(TranslationOptions):
+class ContactFormPageTranslation(TranslationOptions):
     fields = (
         'heading',
     )
 
 
 @register(FeedbackFormPage)
-class SetupGuidePageTranslation(TranslationOptions):
+class FeedbackFormPageTranslation(TranslationOptions):
     fields = (
         'heading',
     )
 
 
 @register(ReportIssueFormPage)
-class SetupGuidePageTranslation(TranslationOptions):
+class ReportIssueFormPageTranslation(TranslationOptions):
     fields = (
         'heading',
     )

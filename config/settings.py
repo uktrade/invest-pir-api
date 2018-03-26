@@ -77,6 +77,7 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
     'wagtail.contrib.frontend_cache',
+    'wagtail_modeltranslation.migrate',
 
     'crispy_forms',
     'modelcluster',

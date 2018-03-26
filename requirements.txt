@@ -18,16 +18,16 @@ dj-database-url==0.4.2
 django-clear-cache==0.3
 django-crispy-forms==1.7.1
 django-ipware==1.1.6
-django-modelcluster==4.1  # via wagtail
+django-modelcluster==3.1  # via wagtail
+django-modeltranslation==0.12.2  # via wagtail-modeltranslation
 django-redis==4.8.0
 django-storages==1.6.5
 django-taggit==0.22.2     # via wagtail
 django-treebeard==4.2.0   # via wagtail
-django==1.11.10
+django==1.11.11
 django_recaptcha==1.2.0
-djangorestframework==3.7.7  # via wagtail
+djangorestframework==3.6.4  # via wagtail
 docutils==0.14            # via botocore
-draftjs-exporter==2.0.0   # via wagtail
 gunicorn==19.7.1
 html5lib==0.999999999     # via bleach, wagtail
 idna==2.6                 # via requests
@@ -46,8 +46,12 @@ s3transfer==0.1.13        # via boto3
 six==1.11.0               # via bleach, html5lib, python-dateutil
 unidecode==0.4.21         # via wagtail
 urllib3==1.22             # via requests
-wagtail==2.0
+wagtail-modeltranslation==0.8.1
+wagtail==1.13.1           # via wagtail-modeltranslation
 webencodings==0.5.1       # via html5lib
 whitenoise==3.3.1
-willow==1.1               # via wagtail
+willow==1.0               # via wagtail
 zenpy==1.1.10
+
+# The following packages are considered to be unsafe in a requirements file:
+setuptools==39.0.1        # via html5lib

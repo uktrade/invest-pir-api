@@ -55,21 +55,21 @@ class ContactForm(forms.Form):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Fieldset(
-                "Contact Information",
+                _("Contact Information"),
                 'name',
                 'job_title',
                 'email',
                 'phone_number',
             ),
             Fieldset(
-                "Company information",
+                _("Company information"),
                 'company_name',
                 'company_website',
                 'country',
                 'staff_number',
             ),
             Fieldset(
-                "Your plans",
+                _("Your plans"),
                 'description',
             ),
             Field('captcha'),

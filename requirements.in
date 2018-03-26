@@ -1,7 +1,7 @@
 boto3==1.5.10
 botocore==1.8.24
 dj-database-url==0.4.2
-django==1.11.10
+django==1.11.11
 django-clear-cache==0.3
 django-crispy-forms==1.7.1
 django_recaptcha==1.2.0
@@ -14,6 +14,7 @@ pytz==2017.2              # via django
 raven==6.5.0
 wagtail==2.0
 #wagtail-markdown==0.5a2.post1
+wagtail-modeltranslation==0.8.1
 whitenoise==3.3.1
 zenpy==1.1.10
 
