@@ -56,6 +56,7 @@ ENABLE_REDIS = REDIS_URL is not None
 INSTALLED_APPS = [
     'wagtail_modeltranslation',    # before apps that need translation
     'wagtail_modeltranslation.makemigrations',
+    'wagtail_modeltranslation.migrate',
 
     'invest',
     'home',
@@ -77,7 +78,6 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
     'wagtail.contrib.frontend_cache',
-    'wagtail_modeltranslation.migrate',
 
     'crispy_forms',
     'modelcluster',
