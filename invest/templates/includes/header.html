@@ -1,7 +1,18 @@
+{% load i18n %}
 {% load wagtailsettings_tags %}
 {% load image from wagtailimages_tags %}
+{% load wagtail_modeltranslation %}
 {% load navigation_tags %}
-
+<section id="languages">
+<div class="container">
+    <div class="content content-compact content-runon card-deck language-selector">
+      {% get_available_languages_wmt as languages %}
+      {% for language in languages %}
+        <div class="lang col-1"><a href="{% change_lang language %}">{{ language|language_name_local|capfirst }}</a></div>
+      {% endfor %}
+    </div>
+</div>
+</section>
 {% get_settings %}
 {% comment %}Static Navbar{% endcomment %}
 {% block main_navigation %}

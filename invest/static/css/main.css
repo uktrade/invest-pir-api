@@ -30,19 +30,6 @@ h3 {
     background-color: #006ccc;
 }
 
-.dark .btn-link {
-    border: 2px solid white;
-}
-
-.dark .btn-link a:active,
-.dark .btn-link a:hover,
-.dark .btn-link a:link,
-.dark .btn-link a:visited
-{
-    font-weight: bold;
-    text-decoration: none;
-}
-
 /* bs4 customisation - outer elements */
 /* TODO - make content-main for sizing */
 section > .container {
@@ -104,6 +91,18 @@ nav .container {
     padding-top: 0;
 }
 
+#languages {
+    min-height: 110px;
+}
+#languages .language-selector {
+    background: white;
+    padding-top: 45px;
+}
+
+#languages .language-selector .lang {
+    font-size: 1.125rem;
+    font-weight: bold;
+}
 
 /* navbar */
 .navbar {
@@ -697,6 +696,19 @@ a:hover {
 
 .dark .container {
     background-color: inherit;
+}
+
+.dark .btn-link {
+    border: 2px solid white;
+}
+
+.dark .btn-link a:active,
+.dark .btn-link a:hover,
+.dark .btn-link a:link,
+.dark .btn-link a:visited
+{
+    font-weight: bold;
+    text-decoration: none;
 }
 
 /** (crispy) forms customisation **/

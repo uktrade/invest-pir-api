@@ -190,7 +190,7 @@ LANGUAGES = (
     ('pt', _(u'Portugese')),
     ('ar', _(u'Arabic')),
     ('ja', _(u'Japanese')),
-    ('zh', _(u'Chinese')),
+    ('zh-cn', _(u'Simplified Chinese')),
 )
 TIME_ZONE = 'UTC'
 USE_I18N = True
