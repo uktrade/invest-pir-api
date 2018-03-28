@@ -91,17 +91,29 @@ nav .container {
     padding-top: 0;
 }
 
-#languages {
+#language-bar {
     min-height: 110px;
 }
-#languages .language-selector {
+#language-bar .language-selector {
     background: white;
     padding-top: 45px;
 }
 
-#languages .language-selector .lang {
+#language-bar .language-selector .lang {
     font-size: 1.125rem;
     font-weight: bold;
+}
+
+.language-toggle {
+    color: #999999;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-weight: bold;
+}
+
+.language-icon {
+    padding-right: 10px;
 }
 
 /* navbar */
