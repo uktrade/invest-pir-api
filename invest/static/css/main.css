@@ -94,6 +94,7 @@ nav .container {
 #language-bar {
     min-height: 110px;
 }
+
 #language-bar .language-selector {
     background: white;
     padding-top: 45px;
@@ -102,6 +103,13 @@ nav .container {
 #language-bar .language-selector .lang {
     font-size: 1.125rem;
     font-weight: bold;
+}
+
+.lang a:active,
+.lang a:hover,
+.lang a:link,
+.lang a:visited {
+    text-decoration: underline;
 }
 
 .language-toggle {
