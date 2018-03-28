@@ -67,10 +67,6 @@ section > .container {
     padding: 30px;
 }
 
-#sector .card-block {
-    height: 210px;
-}
-
 /** bs4 customisations: disable rounded corners on cards */
 .card-header:first-child {
     border-radius: 0;
@@ -617,6 +613,10 @@ a:hover {
 }
 
 /* sector cards */
+#sector .card-block {
+    height: 210px;
+}
+
 #sector .container:last-child:after {
     border-bottom: #e41f13 2px solid;
     display: block;
@@ -661,6 +661,12 @@ a:hover {
 #sector .card-block {
     border: 1px #d8d8d8 solid;
     min-height: 200px;
+}
+
+/** markdown pages */
+#markdown-page h1,
+#markdown-page h2,{
+    font-size: 1.562rem;
 }
 
 /** pullout component */
