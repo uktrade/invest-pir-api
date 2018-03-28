@@ -296,7 +296,7 @@ a:hover {
 #accordion a.card-link.collapsed:link .card-header,
 #accordion a.card-link.collapsed:hover .card-header,
 #accordion a.card-link.collapsed:visited .card-header {
-    color: #000ccc;
+    color: #006ccc;
     background-color: white;
 }
 
