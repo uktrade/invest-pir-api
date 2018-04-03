@@ -181,7 +181,7 @@ else:
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
-LANGUAGE_CODE = 'en-gb'
+LANGUAGE_CODE = 'en'
 LANGUAGES = (
     ('en', _(u'English')),
     ('de', _(u'German')),

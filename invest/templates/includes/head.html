@@ -1,6 +1,5 @@
 {% load static from static %}
 {% load wagtailcore_tags wagtailimages_tags %}
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -75,8 +74,6 @@
               background-image: url('{{ hero_960.url }}');
             }
           }
-
-
           @media
           (min-device-pixel-ratio: 2),
           (min-resolution: 192dpi) {
@@ -84,9 +81,6 @@
               background-image: url('{{ hero_3840.url }}');
             }
           }
-
-
-
     </style>
     {% endif %}
     {% block head-extra %}
