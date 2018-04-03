@@ -5,7 +5,7 @@
     <div class="content content-compact content-runon card-deck language-selector">
       {% get_available_languages_wmt as languages %}
       {% for language in languages %}
-        <div class="lang col-sm-2 col-md-1"><a href="{% change_lang language %}">{{ language|language_name_local|capfirst }}</a></div>
+        <div class="lang col-sm-3 col-md-2 col-xl-1"><a href="{% change_lang language %}">{{ language|language_name_local|capfirst }}</a></div>
       {% endfor %}
     </div>
 </div>
