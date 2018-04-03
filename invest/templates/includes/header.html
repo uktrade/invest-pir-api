@@ -3,24 +3,14 @@
 {% load image from wagtailimages_tags %}
 {% load wagtail_modeltranslation %}
 {% load navigation_tags %}
-<section id="language-bar" class="collapse">
-<div class="container">
-    <div class="content content-compact content-runon card-deck language-selector">
-      {% get_available_languages_wmt as languages %}
-      {% for language in languages %}
-        <div class="lang col-1"><a href="{% change_lang language %}">{{ language|language_name_local|capfirst }}</a></div>
-      {% endfor %}
-    </div>
-</div>
-</section>
-{% get_settings %}
+{% include "includes/header_language_bar.html" %}
 {% comment %}Static Navbar{% endcomment %}
 {% block main_navigation %}
+{% get_settings %}
 {% image settings.invest.Branding.logo width-176 as logo %}
 {% image settings.invest.Branding.logo width-352 as logo_2x %}
 {% image settings.invest.Branding.language_choice_icon width-20 as language_choice_icon %}
 {% image settings.invest.Branding.language_choice_icon width-40 as language_choice_icon_2x %}
-{% get_current_language as lang_code %}
 <nav class="navbar navbar-expand-md">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -30,6 +20,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbar_menubutton">
+      {% get_current_language as lang_code %}
       <div class="mr-auto language-toggle" data-toggle="collapse" data-target="#language-bar"><img class="language-icon" src="{{ language_choice_icon.url }}" srcset="{{ language_choice_icon_2x.url }} 2x" alt="{{ language_chooser_icon.alt }}">{{ lang_code|upper }}</div>
       <ul class="navbar-nav mr-auto">
         {# main_menu is defined in base/templatetags/navigation_tags.py #}
