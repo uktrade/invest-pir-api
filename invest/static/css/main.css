@@ -248,6 +248,9 @@ a:hover {
     border-bottom: #e41f13 2px solid;
 }
 
+.content-footer .page-nav {
+
+}
 .content-footer.content-underlined:after {
     border-bottom: 2px solid rgba(255, 255, 255, .5);
 }
@@ -376,7 +379,7 @@ a:hover {
 
 #beta-bar .container {
     padding-top: 0;
-    height: 30px;
+    min-height: 30px;
 }
 
 #beta-bar .container .row {
