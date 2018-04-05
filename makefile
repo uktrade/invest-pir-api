@@ -22,7 +22,7 @@ test:
 DJANGO_WEBSERVER := \
 	python manage.py migrate --noinput && \
 	python manage.py sync_page_translation_fields --noinput && \
-	pythoh manage.py update_translation_fields && \
+	python manage.py update_translation_fields && \
 	python manage.py collectstatic --noinput && \
 	python manager.py clear_cache && \
 	python manage.py runserver 0.0.0.0:$$PORT
