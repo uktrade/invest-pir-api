@@ -1,6 +1,9 @@
 # virtually admin.yp
 
-from investment_report.models import FrontPage
+from investment_report.models import (
+    Sector, Market,
+    SectorOverview
+)
 
 from wagtail.contrib.modeladmin.options import (
     ModelAdmin, modeladmin_register
@@ -23,10 +26,21 @@ class SingletonPage(PermissionHelper):
         return self.model.objects.count() < 1
 
 
-class FrontPageAdmin(ModelAdmin):
-    model = FrontPage
-    permission_helper_class = SingletonPage
-    menu_label = 'Front Page'
+class SectorOverViewAdmin(ModelAdmin):
+    model = SectorOverview
+    menu_label = 'Sector Overview'
 
 
-modeladmin_register(FrontPageAdmin)
+class SectorAdmin(ModelAdmin):
+    model = Sector
+    menu_label = 'Sector List'
+
+
+class MarketAdmin(ModelAdmin):
+    model = Market
+    menu_label = 'Market List'
+
+
+modeladmin_register(SectorOverViewAdmin)
+modeladmin_register(SectorAdmin)
+modeladmin_register(MarketAdmin)
