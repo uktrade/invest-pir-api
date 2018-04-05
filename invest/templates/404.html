@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+  {% include "includes/heading_plain.html" with page_heading="Page not found" %}
+  <section class="error">
+    <div class="container content content-invest">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <h2>{% trans "Sorry, this page could not be found." %}</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

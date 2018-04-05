@@ -1,0 +1,7 @@
+-r requirements.in
+
+flake8
+pytest
+pytest-cov
+pytest-django
+pytest-sugar

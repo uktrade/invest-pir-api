@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+    {% include "includes/heading_plain.html" %}
+		{% include 'contact/feedback-form.html' with form=form %}
+{% endblock %}

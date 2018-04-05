@@ -1,0 +1,15 @@
+{% load image from wagtailimages_tags %}
+{% block header %}
+<section id="heading_hero_tall">
+  <div class="jumbotron" style="background-position: center center; background-size: cover">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 heading">
+          <h1>{% if page.heading != None %}{{ page.heading }}{% else %}{{ page_heading }}{% endif %}</h1>
+          <h2>{% if page.sub_heading != None %}{{ page.sub_heading }}{% else %}{{ page_sub_heading }}{% endif %}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

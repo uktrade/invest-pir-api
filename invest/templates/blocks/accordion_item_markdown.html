@@ -1,0 +1,14 @@
+{# accordion item containing markdown contain #}
+{% load markdown from wagtailmarkdown %}
+<div class="card">
+    <a class="card-link collapsed col-md-8 col-sm-12" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ position }}">
+        <div class="card-header">{{ self.title }}</div>
+    </a>
+</div>
+<div id="collapse{{ position }}" class="collapse">
+  <div class="card-block offset-md-1 col-md-7 col-sm-12">
+    {{ self.content|markdown }}
+  </div>
+  <div class="card-footer col-md-8 col-sm-12"></div>
+</div>
+

@@ -1,0 +1,34 @@
+{% load i18n %}
+{% load wagtailsettings_tags %}
+{% load image from wagtailimages_tags %}
+{% load wagtail_modeltranslation %}
+{% load navigation_tags %}
+{% include "includes/header_language_bar.html" %}
+{% comment %}Static Navbar{% endcomment %}
+{% block main_navigation %}
+{% get_settings %}
+{% image settings.invest.Branding.logo width-176 as logo %}
+{% image settings.invest.Branding.logo width-352 as logo_2x %}
+{% image settings.invest.Branding.language_choice_icon width-20 as language_choice_icon %}
+{% image settings.invest.Branding.language_choice_icon width-40 as language_choice_icon_2x %}
+<nav class="navbar navbar-expand-md">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="{{ logo.url }}" width="{{ logo.width }}" height="{{ logo.height }}" srcset="{{ logo_2x.url }} 2x" alt="{{ logo.alt }}" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_menubutton" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar_menubutton">
+      {% get_current_language as lang_code %}
+      <div class="mr-auto language-toggle" data-toggle="collapse" data-target="#language-bar"><img class="language-icon" src="{{ language_choice_icon.url }}" srcset="{{ language_choice_icon_2x.url }} 2x" alt="{{ language_chooser_icon.alt }}">{{ lang_code|upper }}</div>
+      <ul class="navbar-nav mr-auto">
+        {# main_menu is defined in base/templatetags/navigation_tags.py #}
+        {% get_site_root as site_root %}
+        {% nav_menu parent=site_root calling_page=self %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% endblock %}
