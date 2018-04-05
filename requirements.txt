@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
--e git+https://github.com/uktrade/directory-validators.git@v4.2.0#egg=directory_validators
+directory-validators==4.5.1
 -e git+https://github.com/stuaxo/django-admin-ip-restrictor.git@feature/block_by_url#egg=django-admin-ip-restrictor
 -e git+https://github.com/infoportugal/wagtail-modeltranslation.git#egg=wagtail-modeltranslation
 beautifulsoup4==4.6.0     # via wagtail

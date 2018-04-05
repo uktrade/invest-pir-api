@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'setup_guide',
     'contact',
     'info',
+    'investment_report',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -93,6 +94,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'wagtail.contrib.modeladmin',
 ]
 
 try:
