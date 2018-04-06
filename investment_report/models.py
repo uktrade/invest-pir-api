@@ -1,7 +1,10 @@
 from bs4 import BeautifulSoup
 
+from sorl.thumbnail import ImageField
+
 from django.db import models
 from django.utils.html import format_html
+
 
 from wagtail.core.fields import StreamField
 from wagtailmarkdown.blocks import MarkdownBlock
@@ -24,7 +27,26 @@ class Market(models.Model):
         return self.name
 
 
+class MarketLogo(models.Model):
+    name = models.CharField(max_length=255)
+    image = ImageField()
+
+    def __str__(self):
+        return self.name
+
+
+class SectorLogo(models.Model):
+    name = models.CharField(max_length=255)
+    image = ImageField()
+
+    def __str__(self):
+        return self.name
+
+
 class PDFSection(models.Model):
+    SINGLETON = False
+    content = models.TextField()
+
     class Meta:
         abstract = True
 
@@ -40,64 +62,68 @@ class PDFSection(models.Model):
 
 class SectorOverview(PDFSection):
     SECTION = 1
-    content = models.TextField()
+    NAME = '1 - Sector Overview'
     sector = models.ForeignKey(Sector, unique=True)
 
 
 class KillerFacts(PDFSection):
     SECTION = 2
-    content = models.TextField()
+    NAME = '2 - Killer Facts'
     sector = models.ForeignKey(Sector, unique=True)
 
 
 class MacroContextBetweenCountries(PDFSection):
     SECTION = 3
-    content = models.TextField()
-    sector = models.ForeignKey(Market, unique=True)
+    NAME = '3 - Macro Context'
+    market = models.ForeignKey(Market, unique=True)
 
 
 class UKMarketOverview(PDFSection):
     SECTION = 4
-    content = models.TextField()
+    SINGLETON = True
+    NAME = '4 - UK Market Overview'
 
 
 class UKBusinessInfo(PDFSection):
     SECTION = 5
-    content = models.TextField()
+    SINGLETON = True
+    NAME = '5 - Business Overview'
 
 
 class UKGeographicOverview(PDFSection):
     SECTION = 6
-    content = models.TextField()
+    SINGLETON = True
+    NAME = '6 - Business Overview'
 
 
 class TalentAndEducationGeneric(PDFSection):
     SECTION = 7
-    content = models.TextField()
+    SINGLETON = True
+    NAME = '7.1 - Talent & Education (Generic)'
 
 
 class TalentAndEducationBySector(PDFSection):
     SECTION = 7
-    content = models.TextField()
-    sector = models.ForeignKey(Market, unique=True)
+    sector = models.ForeignKey(Sector, unique=True)
+    NAME = '7.2 - Talent & Education (Sector)'
 
 
 class SectorInitiatives(PDFSection):
     SECTION = 8
-    content = models.TextField()
-    sector = models.ForeignKey(Market, unique=True)
+    sector = models.ForeignKey(Sector, unique=True)
+    NAME = '8 - Sector Initiatives'
 
 
 class RDandInnovation(PDFSection):
     SECTION = 9
-    content = models.TextField()
-    sector = models.ForeignKey(Market, unique=True)
+    NAME = '9 - R&D and Innovation'
+    sector = models.ForeignKey(Sector, unique=True)
 
 
 class RDandInnovationCaseStudy(PDFSection):
     SECTION = 10
-    content = models.TextField()
-    sector = models.ForeignKey(Market, unique=True)
+    market = models.ForeignKey(Sector, unique=True)
+    NAME = '10 - Case Study'
 
 
 class WhoIsHere:
@@ -112,19 +138,22 @@ class VideoCaseStudy:
     Todo:
     """
     SECTION = 12
-    sector = models.ForeignKey(Market, unique=True)
+    sector = models.ForeignKey(Sector, unique=True)
 
 
 class ServicesOfferedByDIT(PDFSection):
     SECTION = 13
-    content = models.TextField()
+    SINGLETON = True
+    NAME = '13 - Services Offered'
 
 
 class CallToAction(PDFSection):
     SECTION = 14
-    content = models.TextField()
+    SINGLETON = True
+    NAME = '14 - Call to action'
 
 
 class Testimonials(PDFSection):
     SECTION = 15
-    content = models.TextField()
+    SINGLETON = True
+    NAME = '15 - Testimonials'

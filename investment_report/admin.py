@@ -1,8 +1,7 @@
 # virtually admin.yp
 
 from investment_report.models import (
-    Sector, Market,
-    SectorOverview
+    PDFSection, Market, Sector, MarketLogo, SectorLogo
 )
 
 from wagtail.contrib.modeladmin.options import (
@@ -26,21 +25,45 @@ class SingletonPage(PermissionHelper):
         return self.model.objects.count() < 1
 
 
-class SectorOverViewAdmin(ModelAdmin):
-    model = SectorOverview
-    menu_label = 'Sector Overview'
+for klass in PDFSection.__subclasses__():
+    """
+    I can't be arrsed to create another 14 nearly identical classes
 
+    Auto generate the admin for PDF section
+    """
+    Admin = type(
+        '{}Admin'.format(klass),
+        (ModelAdmin, ),
+        {
+            'model': klass,
+            'permission_helper_class': (
+                SingletonPage if klass.SINGLETON else PermissionHelper
+            ),
+            'menu_order': klass.SECTION,
+            'menu_label': klass.NAME
+        }
+    )
 
-class SectorAdmin(ModelAdmin):
-    model = Sector
-    menu_label = 'Sector List'
+    modeladmin_register(Admin)
 
 
 class MarketAdmin(ModelAdmin):
     model = Market
-    menu_label = 'Market List'
 
 
-modeladmin_register(SectorOverViewAdmin)
-modeladmin_register(SectorAdmin)
+class SectorAdmin(ModelAdmin):
+    model = Sector
+
+
+class MarketLogoAdmin(ModelAdmin):
+    model = MarketLogo
+
+
+class SectorLogoAdmin(ModelAdmin):
+    model = SectorLogo
+
+
 modeladmin_register(MarketAdmin)
+modeladmin_register(SectorAdmin)
+modeladmin_register(MarketLogoAdmin)
+modeladmin_register(SectorLogoAdmin)
