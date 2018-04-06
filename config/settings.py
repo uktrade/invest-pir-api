@@ -95,6 +95,8 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'wagtail.contrib.modeladmin',
+    'markdownx',
+    'sorl.thumbnail',
 ]
 
 try:
@@ -335,3 +337,5 @@ RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
 RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
 # NOCAPTCHA = True turns on version 2 of recaptcha
 NOCAPTCHA = os.getenv('NOCAPTCHA') != 'false'
+
+MARKDOWNX_MARKDOWN_EXTENSIONS = ['markdown.extensions.footnotes']

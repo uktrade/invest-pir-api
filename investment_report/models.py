@@ -12,6 +12,8 @@ from wagtail.admin.edit_handlers import StreamFieldPanel
 
 from investment_report.utils import markdown_fragment
 
+from markdownx.models import MarkdownxField
+
 
 class Sector(models.Model):
     name = models.CharField(max_length=255)
@@ -45,14 +47,14 @@ class SectorLogo(models.Model):
 
 class PDFSection(models.Model):
     SINGLETON = False
-    content = models.TextField()
+    SECTION = 999
+    content = MarkdownxField()
 
     class Meta:
         abstract = True
 
     def __str__(self):
-        frag = self.to_html_fragment()
-        return format_html(frag)
+        return self.content[:10]
 
     def to_html_fragment(self):
         return markdown_fragment(self.content)
@@ -62,68 +64,90 @@ class PDFSection(models.Model):
 
 class SectorOverview(PDFSection):
     SECTION = 1
-    NAME = '1 - Sector Overview'
     sector = models.ForeignKey(Sector, unique=True)
+
+    class Meta:
+        verbose_name = verbose_name_plural = '1 - Sector Overview'
 
 
 class KillerFacts(PDFSection):
     SECTION = 2
-    NAME = '2 - Killer Facts'
     sector = models.ForeignKey(Sector, unique=True)
+
+    class Meta:
+        verbose_name = verbose_name_plural = '2 - Killer Facts'
 
 
 class MacroContextBetweenCountries(PDFSection):
     SECTION = 3
-    NAME = '3 - Macro Context'
     market = models.ForeignKey(Market, unique=True)
+
+    class Meta:
+        verbose_name = verbose_name_plural = '3 - Macro Context'
 
 
 class UKMarketOverview(PDFSection):
     SECTION = 4
     SINGLETON = True
-    NAME = '4 - UK Market Overview'
+
+    class Meta:
+        verbose_name = verbose_name_plural = '4 - UK Market Overview'
 
 
 class UKBusinessInfo(PDFSection):
     SECTION = 5
     SINGLETON = True
-    NAME = '5 - Business Overview'
+
+    class Meta:
+        verbose_name = verbose_name_plural = '5 - Business Overview'
 
 
 class UKGeographicOverview(PDFSection):
     SECTION = 6
     SINGLETON = True
-    NAME = '6 - Business Overview'
+
+    class Meta:
+        verbose_name = verbose_name_plural = '6 - Business Overview'
 
 
 class TalentAndEducationGeneric(PDFSection):
-    SECTION = 7
+    SECTION = 7.1
     SINGLETON = True
-    NAME = '7.1 - Talent & Education (Generic)'
+
+    class Meta:
+        verbose_name = verbose_name_plural = '7.1 - Talent & Education (Generic)'
 
 
 class TalentAndEducationBySector(PDFSection):
-    SECTION = 7
+    SECTION = 7.2
     sector = models.ForeignKey(Sector, unique=True)
-    NAME = '7.2 - Talent & Education (Sector)'
+
+    class Meta:
+        verbose_name = verbose_name_plural = '7.2 - Talent & Education (Sector)'
 
 
 class SectorInitiatives(PDFSection):
     SECTION = 8
     sector = models.ForeignKey(Sector, unique=True)
-    NAME = '8 - Sector Initiatives'
+
+    class Meta:
+        verbose_name = verbose_name_plural = '8 - Sector Initiatives'
 
 
 class RDandInnovation(PDFSection):
     SECTION = 9
-    NAME = '9 - R&D and Innovation'
     sector = models.ForeignKey(Sector, unique=True)
+
+    class Meta:
+        verbose_name = verbose_name_plural = '9 - R&D and Innovation'
 
 
 class RDandInnovationCaseStudy(PDFSection):
     SECTION = 10
     market = models.ForeignKey(Sector, unique=True)
-    NAME = '10 - Case Study'
+
+    class Meta:
+        verbose_name = verbose_name_plural = '10 - Case Study'
 
 
 class WhoIsHere:
@@ -144,16 +168,22 @@ class VideoCaseStudy:
 class ServicesOfferedByDIT(PDFSection):
     SECTION = 13
     SINGLETON = True
-    NAME = '13 - Services Offered'
+
+    class Meta:
+        verbose_name = verbose_name_plural = '13 - Services Offered'
 
 
 class CallToAction(PDFSection):
     SECTION = 14
     SINGLETON = True
-    NAME = '14 - Call to action'
+
+    class Meta:
+        verbose_name = verbose_name_plural = '14 - Call to action'
 
 
 class Testimonials(PDFSection):
     SECTION = 15
     SINGLETON = True
-    NAME = '15 - Testimonials'
+
+    class Meta:
+        verbose_name = verbose_name_plural = '15 - Testimonials'

@@ -1,28 +1,57 @@
 # virtually admin.yp
+from django.shortcuts import redirect
 
 from investment_report.models import (
     PDFSection, Market, Sector, MarketLogo, SectorLogo
 )
 
-from wagtail.contrib.modeladmin.options import (
-    ModelAdmin, modeladmin_register
-)
+from django.apps import apps
+from django.contrib import admin
 
-from wagtail.contrib.modeladmin.helpers.permission import PermissionHelper
+from markdownx.admin import MarkdownxModelAdmin
+from sorl.thumbnail.admin import AdminImageMixin
 
 
+class InvestmentReportAdminSite(admin.AdminSite):
+    site_header = 'Investment Report Generator'
 
-class SingletonPage(PermissionHelper):
-    """
-    Allows the admin to only create a single copy of a page.
-    """
+    def get_app_list(self, request):
+        """
+        Order app list by the section attribute.
+        """
+        app_list = super().get_app_list(request)
 
-    def user_can_create(self, user):
+        for app in app_list:
+            for model in app['models']:
+                model['order'] = getattr(
+                    apps.get_model(app['app_label'], model['object_name']), 'SECTION', -1
+                )
+
+            app['models'].sort(key=lambda x: x['order'])
+
+        return app_list
+
+    def app_index(self, request, app_label, extra_context=None):
+        """
+        Hide the app index. Just duplicate functionality.
+        """
+        return redirect('reportadmin:index')
+
+
+admin_site = InvestmentReportAdminSite(name='reportadmin')
+
+
+class PDFAdmin(MarkdownxModelAdmin, admin.ModelAdmin):
+
+    def has_add_permission(self, request):
         """
         Return a boolean to indicate whether `user` is permitted to create new
         instances of `self.model`
         """
-        return self.model.objects.count() < 1
+        if self.model.SINGLETON:
+            return self.model.objects.count() < 1
+        else:
+            return True
 
 
 for klass in PDFSection.__subclasses__():
@@ -33,37 +62,33 @@ for klass in PDFSection.__subclasses__():
     """
     Admin = type(
         '{}Admin'.format(klass),
-        (ModelAdmin, ),
+        (PDFAdmin, ),
         {
             'model': klass,
-            'permission_helper_class': (
-                SingletonPage if klass.SINGLETON else PermissionHelper
-            ),
             'menu_order': klass.SECTION,
-            'menu_label': klass.NAME
         }
     )
 
-    modeladmin_register(Admin)
+    admin_site.register(klass, Admin)
 
 
-class MarketAdmin(ModelAdmin):
-    model = Market
+class MarketAdmin(admin.ModelAdmin):
+    pass
 
 
-class SectorAdmin(ModelAdmin):
-    model = Sector
+class SectorAdmin(admin.ModelAdmin):
+    pass
 
 
-class MarketLogoAdmin(ModelAdmin):
-    model = MarketLogo
+class MarketLogoAdmin(AdminImageMixin, admin.ModelAdmin):
+    pass
 
 
-class SectorLogoAdmin(ModelAdmin):
-    model = SectorLogo
+class SectorLogoAdmin(AdminImageMixin, admin.ModelAdmin):
+    pass
 
 
-modeladmin_register(MarketAdmin)
-modeladmin_register(SectorAdmin)
-modeladmin_register(MarketLogoAdmin)
-modeladmin_register(SectorLogoAdmin)
+admin_site.register(Market, MarketAdmin)
+admin_site.register(Sector, SectorAdmin)
+admin_site.register(MarketLogo, MarketLogoAdmin)
+admin_site.register(SectorLogo, SectorLogoAdmin)

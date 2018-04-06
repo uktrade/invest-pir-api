@@ -7,8 +7,17 @@ from django.contrib import admin
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 
+from investment_report.admin import admin_site as investment_report_admin
+
+from markdownx import urls as markdownx
+
 urlpatterns = i18n_patterns(
+    url(r'^markdownx/', include(markdownx)),
     url(r'^django-admin/', include(admin.site.urls)),
+
+    url(r'^investment-report-admin/',
+        include(investment_report_admin.urls)
+    ),
 
     url(r'^admin/', include(wagtailadmin_urls)),
     # url(r'^documents/', include(wagtaildocs_urls)),
@@ -21,6 +30,8 @@ urlpatterns = i18n_patterns(
     # Alternatively, if you want Wagtail pages to be served from a subpath
     # of your site, rather than the site root:
     #    url(r'^pages/', include(wagtail_urls)),
+
+
     prefix_default_language=False)
 
 
