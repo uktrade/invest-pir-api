@@ -10,8 +10,6 @@ from wagtail.core.fields import StreamField
 from wagtailmarkdown.blocks import MarkdownBlock
 from wagtail.admin.edit_handlers import StreamFieldPanel
 
-from investment_report.utils import markdown_fragment
-
 from markdownx.models import MarkdownxField
 
 
@@ -57,6 +55,7 @@ class PDFSection(models.Model):
         return self.content[:10]
 
     def to_html_fragment(self):
+        from investment_report.utils import markdown_fragment
         return markdown_fragment(self.content)
 
 
@@ -107,7 +106,7 @@ class UKGeographicOverview(PDFSection):
     SINGLETON = True
 
     class Meta:
-        verbose_name = verbose_name_plural = '6 - Business Overview'
+        verbose_name = verbose_name_plural = '6 - Geographic Overview'
 
 
 class TalentAndEducationGeneric(PDFSection):
@@ -144,7 +143,7 @@ class RDandInnovation(PDFSection):
 
 class RDandInnovationCaseStudy(PDFSection):
     SECTION = 10
-    market = models.ForeignKey(Sector, unique=True)
+    sector = models.ForeignKey(Sector, unique=True)
 
     class Meta:
         verbose_name = verbose_name_plural = '10 - Case Study'

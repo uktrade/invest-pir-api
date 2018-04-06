@@ -19,6 +19,8 @@ urlpatterns = i18n_patterns(
         include(investment_report_admin.urls)
     ),
 
+    url(r'^investment-report/', include('investment_report.urls')),
+
     url(r'^admin/', include(wagtailadmin_urls)),
     # url(r'^documents/', include(wagtaildocs_urls)),
 
