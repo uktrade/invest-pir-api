@@ -41,7 +41,8 @@ ALLOWED_HOSTS = [
     os.getenv('ALLOWED_HOSTS', '*').split(',')
 ]
 
-RESTRICT_ADMIN = True  # block the django admin at /django-admin
+RESTRICT_ADMIN = os.getenv('RESTRICT_ADMIN') != 'false'
+
 RESTRICT_URLS = ['^admin/*']  # block the wagtail admin
 ALLOWED_ADMIN_IPS = [item.strip()
                      for item in
