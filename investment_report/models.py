@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+from collections import OrderedDict
 
 from sorl.thumbnail import ImageField
 
@@ -186,3 +187,10 @@ class Testimonials(PDFSection):
 
     class Meta:
         verbose_name = verbose_name_plural = '15 - Testimonials'
+
+
+sections = sorted(PDFSection.__subclasses__(), key=lambda x: x.SECTION)
+
+page_registry = OrderedDict({
+    m.__name__: m for m in sections
+})
