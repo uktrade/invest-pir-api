@@ -1,0 +1,69 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8">
+    <title>{% trans "Investment Report" %}</title>
+  </head>
+  <body>
+    {% autoescape off %}
+    <section>
+      {{ sector_overview.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ killer_facts.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ uk_market_overview.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ uk_geo_overview.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ talent_and_education_generic.to_html_fragment }}
+      {{ talent_and_education_by_sector.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ sector_initiatives.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ r_and_d_and_innovation.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ r_and_d_and_innovation_case_study.to_html_fragment }}
+    </section>
+
+    {% endautoescape %}
+
+    <section>
+      <h1>{% trans "11: Who's here?" %}</h1>
+    </section>
+
+    <section>
+      <h1>{% trans "12: Video Case Study" %}</h1>
+    </section>
+
+    {% autoescape off %}
+    <section>
+      {{ services_offered_by_dit.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ call_to_action.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ testimonials.to_html_fragment }}
+    </section>
+
+    {% endautoescape %}
+  </body>
+</html>
+

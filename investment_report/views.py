@@ -17,4 +17,3 @@ def investment_report(request, market, sector):
     return HttpResponse(
         str(investment_report_generator(market, sector))
     )
-    return HttpResponse(str(document))

@@ -1,7 +1,9 @@
 import markdown
 
 from bs4 import BeautifulSoup
-from investment_report.models import PDFSection
+from django.template.loader import render_to_string
+from investment_report.models import *
+
 
 
 def bs_parse(html):
@@ -13,25 +15,47 @@ def markdown_fragment(a_str):
 
 
 def investment_report_generator(market, sector):
-    document = bs_parse('<body></body>')
+    context = {}
 
-    for klass in PDFSection.__subclasses__():
+    context['sector_overview'] = SectorOverview.objects.filter(
+        sector=sector
+    ).first()
 
-        if hasattr(klass, 'sector'):
-            page = klass.objects.filter(sector=sector).first()
-        elif hasattr(klass, 'market'):
-            page = klass.objects.filter(market=market).first()
-        else:
-            page = klass.objects.first()
+    context['killer_facts'] = KillerFacts.objects.filter(
+        sector=sector
+    ).first()
 
-        if page:
-            page_section = bs_parse('<section></section>')
-            page_section.section['class'] = page._meta.model_name
+    context['macro_context'] = MacroContextBetweenCountries.objects.filter(
+        market=market
+    ).first()
 
-            page_section.section.append(
-                bs_parse(page.to_html_fragment())
-            )
+    context['uk_market_overview'] = UKMarketOverview.objects.first()
+    context['uk_business_info'] = UKBusinessInfo.objects.first()
+    context['uk_geo_overview'] = UKGeographicOverview.objects.first()
+    context['talent_and_education_generic'] = TalentAndEducationGeneric.objects.first()
 
-            document.body.append(page_section)
+    context['talent_and_education_by_sector'] = TalentAndEducationBySector.objects.filter(
+        sector=sector
+    ).first()
 
-    return document
+    context['sector_initiatives'] = SectorInitiatives.objects.filter(
+        sector=sector
+    ).first()
+
+    context['r_and_d_and_innovation'] = RDandInnovation.objects.filter(
+        sector=sector
+    ).first()
+
+    context['r_and_d_and_innovation_case_study'] = RDandInnovationCaseStudy.objects.filter(
+        sector=sector
+    ).first()
+
+    context['who_is_here'] = []
+    context['video_case_study'] = {}
+
+
+    context['services_offered_by_dit'] = ServicesOfferedByDIT.objects.first()
+    context['call_to_action'] = CallToAction.objects.first()
+    context['testimonials'] = Testimonials.objects.first()
+
+    return render_to_string('investment_report.html', context=context)
