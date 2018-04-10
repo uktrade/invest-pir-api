@@ -18,6 +18,42 @@ body {
   margin-left: 17.639mm;
   margin-right: 17.639mm;
   margin-bottom: 17.639mm;
+  border-top: solid 0.5pt $black;
+
+  @top-left {
+    content: counter(page);
+    font-family: "Interstate";
+    color: $black;
+    font-size: 9pt;
+    padding-top: 14pt;
+  }
+}
+
+@media print {
+    header.onlyprint {
+        position: fixed; /* Display only on print page (each) */
+        top: -11.642mm; /* Because it's header */
+        font-family: "Interstate";
+        color: $black;
+        font-size: 9pt;
+        padding-top: 14pt;
+        width: 1000mm;
+    }
+
+    #unionjackheader {
+        width: $column + $columnGap;
+        float: left;
+    }
+
+    #headerslogan {
+        float: left;
+        letter-spacing: -0.7pt;
+    }
+
+    header.onlyprint img {
+      width: 9.876mm;
+      margin-left: 3.1mm;
+    }
 }
 
 .page-break {
@@ -52,11 +88,11 @@ sup {
   }
 }
 
-section > p:first-of-type {
+section > p:first-of-type, section > ul:first-of-type {
   margin-top: 13.406mm;
 }
 
-section > p {
+section > p, section > ul > li {
   margin-top: 0.8rem;
   margin-bottom: 0.8rem;
 }

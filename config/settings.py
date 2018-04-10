@@ -340,3 +340,4 @@ RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
 NOCAPTCHA = os.getenv('NOCAPTCHA') != 'false'
 
 MARKDOWNX_MARKDOWN_EXTENSIONS = ['markdown.extensions.footnotes']
+MARKDOWNX_UPLOAD_CONTENT_TYPES = ['image/png', 'image/svg+xml']

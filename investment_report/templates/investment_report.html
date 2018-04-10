@@ -6,8 +6,19 @@
     <title>{% trans "Investment Report" %}</title>
     <link rel="stylesheet" href="{% static "build/investment-report.css" %}" />
   </head>
+
   <body class="A4">
     {% autoescape off %}
+
+    <header class="onlyprint">
+      
+      <div id="unionjackheader">
+        <img src="{% static "images/unionjack.png" %}"/>
+      </div>
+
+      <div id="headerslogan">{% trans "Expand your business to Britain" %}</div>
+    </header>
+
     <section>
       <h1>{% trans "Contents" %}</h1>
     </section>

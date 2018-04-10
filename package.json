@@ -4,6 +4,7 @@
   "description": "[Invest](https://invest.great.gov.uk/)",
   "main": "index.js",
   "dependencies": {
+    "postcss-automath": "^1.0.1",
     "sass": "^1.1.1"
   },
   "devDependencies": {
