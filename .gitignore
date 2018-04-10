@@ -104,3 +104,4 @@ node_modules/
 # Generated files
 config/staticfiles
 *.css.map
+static/build/

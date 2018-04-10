@@ -1,0 +1,85 @@
+$red: #b00d23;
+$black: #1e1348;
+
+$column: 25.42mm;
+$columnGap: 4.586mm;
+
+
+body {
+  font-family: "Interstate";
+  color: $black;
+  font-size: 14pt;
+  line-height: 130%;
+}
+
+@page {
+  size: A4;
+  margin-top: 11.642mm;
+  margin-left: 17.639mm;
+  margin-right: 17.639mm;
+  margin-bottom: 17.639mm;
+}
+
+.page-break {
+  page-break-after: always;
+}
+
+h1 {
+  margin-top: 17.639mm;
+  font-weight: bold;
+  font-size: 30pt;
+  padding-bottom: 8.164mm;
+  border-bottom: solid $red 6pt;
+  letter-spacing: -1.75pt;
+}
+
+section {
+  margin-left: 29.885mm;
+  position: relative;
+}
+
+sup {
+  position: relative;
+  display: inline;
+  vertical-align: baseline;
+  top: -0.5em;
+  font-size: 0.7rem;
+  left: -0.1rem;
+
+  a {
+    text-decoration: none;
+    color: $black;
+  }
+}
+
+section > p:first-of-type {
+  margin-top: 13.406mm;
+}
+
+section > p {
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.footnote {
+  hr {display: none;}
+  ol {margin: 0; padding: 0; width: $column;}
+
+  li {
+    margin-top: 0.3rem;
+  }
+
+  font-size: 8pt;
+  position: absolute;
+  bottom: 4pt;
+  left: -30mm;
+
+  p {
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  p a {
+    display: none;
+  }
+}

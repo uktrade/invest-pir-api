@@ -1,12 +1,19 @@
-{% load i18n %}
+{% load i18n static %}
 <!DOCTYPE html>
-<html>
+<html nomarginboxes disallowselectionprint>
   <head>
     <meta charset="utf8">
     <title>{% trans "Investment Report" %}</title>
+    <link rel="stylesheet" href="{% static "build/investment-report.css" %}" />
   </head>
-  <body>
+  <body class="A4">
     {% autoescape off %}
+    <section>
+      <h1>{% trans "Contents" %}</h1>
+    </section>
+
+    <div class="page-break"></div>
+
     <section>
       {{ sector_overview.to_html_fragment }}
     </section>
