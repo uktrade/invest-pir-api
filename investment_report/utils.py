@@ -3,7 +3,7 @@ import markdown
 from bs4 import BeautifulSoup
 from django.template.loader import render_to_string
 from investment_report.models import *
-
+from investment_report.markdown import CustomFootnoteExtension
 
 
 def bs_parse(html):
@@ -11,7 +11,7 @@ def bs_parse(html):
 
 
 def markdown_fragment(a_str):
-    return markdown.markdown(a_str, extensions=['markdown.extensions.footnotes'])
+    return markdown.markdown(a_str, extensions=[CustomFootnoteExtension()])
 
 
 def investment_report_generator(market, sector):

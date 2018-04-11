@@ -19,15 +19,28 @@
       <div id="headerslogan">{% trans "Expand your business to Britain" %}</div>
     </header>
 
+
+
     <section>
       <h1>{% trans "Contents" %}</h1>
     </section>
 
     <div class="page-break"></div>
 
-    <section>
-      {{ sector_overview.to_html_fragment }}
+    <section class="sectoroverview">
+
+      <div class="sectoroverview__body">
+        <div class="sectoroverview__body__text">
+        {{ sector_overview.to_html_fragment }}
+        </div>
+      </div>
+
+
+      <div class="sectoroverview__footer" style="background-image: url({{sector_overview.footer_image.url}})"><span></span></div>
     </section>
+
+
+    <div class="page-break"></div>
 
     <section>
       {{ killer_facts.to_html_fragment }}

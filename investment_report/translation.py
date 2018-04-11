@@ -6,6 +6,4 @@ from modeltranslation.decorators import register
 for klass in PDFSection.__subclasses__():
     @register(klass)
     class PageTranslation(TranslationOptions):
-        fields = (
-            'content',
-        )
+        fields = tuple(klass.TRANSLATION_FIELDS)

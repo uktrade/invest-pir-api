@@ -60,6 +60,10 @@ body {
   page-break-after: always;
 }
 
+section {
+  position: relative;
+}
+
 h1 {
   margin-top: 17.639mm;
   font-weight: bold;
@@ -67,11 +71,6 @@ h1 {
   padding-bottom: 8.164mm;
   border-bottom: solid $red 6pt;
   letter-spacing: -1.75pt;
-}
-
-section {
-  margin-left: 29.885mm;
-  position: relative;
 }
 
 sup {
@@ -97,6 +96,10 @@ section > p, section > ul > li {
   margin-bottom: 0.8rem;
 }
 
+.relative {
+  position: relative;
+}
+
 .footnote {
   hr {display: none;}
   ol {margin: 0; padding: 0; width: $column;}
@@ -108,7 +111,7 @@ section > p, section > ul > li {
   font-size: 8pt;
   position: absolute;
   bottom: 4pt;
-  left: -30mm;
+  margin-left: 0  - $column - $columnGap;
 
   p {
     margin: 0;
@@ -119,3 +122,30 @@ section > p, section > ul > li {
     display: none;
   }
 }
+
+.sectoroverview {
+  width: 172.674mm;
+  height: 267.343mm;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* up */
+.sectoroverview__body {
+  overflow: hidden;
+}
+
+.sectoroverview__body__text {
+  margin-left: $column + $columnGap;
+  margin-bottom: $column;
+  position: relative;
+}
+
+.sectoroverview__footer {
+  background: blue;
+  flex-grow: 1;
+  background-size: cover;
+  background-position: center;
+}
+

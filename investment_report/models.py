@@ -47,6 +47,8 @@ class SectorLogo(models.Model):
 class PDFSection(models.Model):
     SINGLETON = False
     SECTION = 999
+    TRANSLATION_FIELDS = ['content']
+
     content = MarkdownxField()
 
     class Meta:
@@ -64,7 +66,11 @@ class PDFSection(models.Model):
 
 class SectorOverview(PDFSection):
     SECTION = 1
+    TRANSLATION_FIELDS = PDFSection.TRANSLATION_FIELDS + ['footer_image_copy']
+
     sector = models.ForeignKey(Sector, unique=True)
+    footer_image = models.ImageField()
+    footer_image_copy = models.TextField(blank=True)
 
     class Meta:
         verbose_name = verbose_name_plural = '1 - Sector Overview'
