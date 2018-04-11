@@ -1,0 +1,100 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<html nomarginboxes disallowselectionprint>
+  <head>
+    <meta charset="utf8">
+    <title>{% trans "Investment Report" %}</title>
+    <link rel="stylesheet" href="{% static "build/investment-report.css" %}" />
+  </head>
+
+  <body class="A4">
+    {% autoescape off %}
+
+    <header class="onlyprint">
+      
+      <div id="unionjackheader">
+        <img src="{% static "images/unionjack.png" %}"/>
+      </div>
+
+      <div id="headerslogan">{% trans "Expand your business to Britain" %}</div>
+    </header>
+
+
+
+    <section>
+      <h1>{% trans "Contents" %}</h1>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section class="sectoroverview">
+
+      <div class="sectoroverview__body">
+        <div class="sectoroverview__body__text">
+        {{ sector_overview.to_html_fragment }}
+        </div>
+      </div>
+
+
+      <div class="sectoroverview__footer" style="background-image: url({{sector_overview.footer_image.url}})"><span></span></div>
+    </section>
+
+
+    <div class="page-break"></div>
+
+    <section>
+      {{ killer_facts.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ uk_market_overview.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ uk_geo_overview.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ talent_and_education_generic.to_html_fragment }}
+      {{ talent_and_education_by_sector.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ sector_initiatives.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ r_and_d_and_innovation.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ r_and_d_and_innovation_case_study.to_html_fragment }}
+    </section>
+
+    {% endautoescape %}
+
+    <section>
+      <h1>{% trans "11: Who's here?" %}</h1>
+    </section>
+
+    <section>
+      <h1>{% trans "12: Video Case Study" %}</h1>
+    </section>
+
+    {% autoescape off %}
+    <section>
+      {{ services_offered_by_dit.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ call_to_action.to_html_fragment }}
+    </section>
+
+    <section>
+      {{ testimonials.to_html_fragment }}
+    </section>
+
+    {% endautoescape %}
+  </body>
+</html>
+

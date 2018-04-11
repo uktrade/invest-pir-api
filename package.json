@@ -1,0 +1,26 @@
+{
+  "name": "pir-rollokb",
+  "version": "1.0.0",
+  "description": "[Invest](https://invest.great.gov.uk/)",
+  "main": "index.js",
+  "dependencies": {
+    "postcss-automath": "^1.0.1",
+    "sass": "^1.1.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^7.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "precss": "^3.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/mcsaatchi/pir-rollokb.git"
+  },
+  "author": "",
+  "license": "MC Saatchi",
+  "homepage": "https://bitbucket.org/mcsaatchi/pir-rollokb#readme"
+}

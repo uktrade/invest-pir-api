@@ -41,8 +41,7 @@ ALLOWED_HOSTS = [
     os.getenv('ALLOWED_HOSTS', '*').split(',')
 ]
 
-RESTRICT_ADMIN = os.getenv('RESTRICT_ADMIN') != 'false'
-
+RESTRICT_ADMIN = True  # block the django admin at /django-admin
 RESTRICT_URLS = ['^admin/*']  # block the wagtail admin
 ALLOWED_ADMIN_IPS = [item.strip()
                      for item in
@@ -65,6 +64,7 @@ INSTALLED_APPS = [
     'setup_guide',
     'contact',
     'info',
+    'investment_report',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -94,6 +94,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'wagtail.contrib.modeladmin',
+    'markdownx',
+    'sorl.thumbnail',
 ]
 
 try:
@@ -142,6 +145,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -193,6 +197,11 @@ LANGUAGES = (
     ('ja', _(u'Japanese')),
     ('zh-cn', _(u'Simplified Chinese')),
 )
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
@@ -235,11 +244,6 @@ if DEBUG:
                 'handlers': ['console'],
                 'level': 'ERROR',
                 'propagate': True,
-            },
-            '': {
-                'handlers': ['console'],
-                'level': 'DEBUG',
-                'propagate': False,
             },
         }
     }
@@ -334,3 +338,6 @@ RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
 RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
 # NOCAPTCHA = True turns on version 2 of recaptcha
 NOCAPTCHA = os.getenv('NOCAPTCHA') != 'false'
+
+MARKDOWNX_MARKDOWN_EXTENSIONS = ['markdown.extensions.footnotes']
+MARKDOWNX_UPLOAD_CONTENT_TYPES = ['image/png', 'image/svg+xml']
