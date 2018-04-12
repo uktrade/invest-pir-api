@@ -66,11 +66,15 @@ class PDFSection(models.Model):
 
 class SectorOverview(PDFSection):
     SECTION = 1
-    TRANSLATION_FIELDS = PDFSection.TRANSLATION_FIELDS + ['footer_image_copy']
+    TRANSLATION_FIELDS = (
+        PDFSection.TRANSLATION_FIELDS + 
+        ['footer_image_copy', 'footer_image_copy_attribution']
+    )
 
     sector = models.ForeignKey(Sector, unique=True)
     footer_image = models.ImageField()
     footer_image_copy = models.TextField(blank=True)
+    footer_image_copy_attribution = models.TextField(blank=True)
 
     class Meta:
         verbose_name = verbose_name_plural = '1 - Sector Overview'
