@@ -3,6 +3,8 @@ $black: #1e1348;
 
 $column: 25.42mm;
 $columnGap: 4.586mm;
+$pageMargin: 17.639mm;
+$pageMarginTop: 11.642mm;
 
 
 body {
@@ -14,10 +16,10 @@ body {
 
 @page {
   size: A4;
-  margin-top: 11.642mm;
-  margin-left: 17.639mm;
-  margin-right: 17.639mm;
-  margin-bottom: 17.639mm;
+  margin-top: $pageMarginTop;
+  margin-left: $pageMargin;
+  margin-right: $pageMargin;
+  margin-bottom: $pageMargin;
   border-top: solid 0.5pt $black;
 
   @top-left {
@@ -68,9 +70,10 @@ h1 {
   margin-top: 17.639mm;
   font-weight: bold;
   font-size: 30pt;
-  padding-bottom: 8.164mm;
+  padding-bottom: 5.564mm;
   border-bottom: solid $red 6pt;
   letter-spacing: -1.75pt;
+  line-height: 100%;
 }
 
 sup {
@@ -87,22 +90,49 @@ sup {
   }
 }
 
-section > p:first-of-type, section > ul:first-of-type {
+.toc {
+  margin-top: 55mm;
+}
+
+.toc ol {
+  list-style: decimal inside none;
+  padding-left: 0;
+  margin-left: 0;
+  margin-top: 13.5mm;
+}
+
+.toc li {
+  margin-top: 2.5mm;
+}
+
+
+
+.section-body > p:first-of-type, .section-body > ul:first-of-type {
   margin-top: 13.406mm;
 }
 
-section > p, section > ul > li {
+.section-body > p, .section-body > ul > li {
   margin-top: 0.8rem;
   margin-bottom: 0.8rem;
+}
+
+
+.section-body ul {
+  margin-left: 0;
+  padding-left: 0.45cm;
 }
 
 .relative {
   position: relative;
 }
 
+.content-margin { 
+  margin-left: $column + $columnGap;
+}
+
 .footnote {
   hr {display: none;}
-  ol {margin: 0; padding: 0; width: $column;}
+  ol {margin: 0; padding: 0; width: $column; list-style-type: none;}
 
   li {
     margin-top: 0.3rem;
@@ -115,6 +145,7 @@ section > p, section > ul > li {
 
   p {
     margin: 0;
+    margin-top: 0;
     line-height: 1.1;
   }
 
@@ -122,6 +153,8 @@ section > p, section > ul > li {
     display: none;
   }
 }
+
+/* special case flexbox layout */
 
 .sectoroverview {
   width: 172.674mm;
@@ -147,5 +180,33 @@ section > p, section > ul > li {
   flex-grow: 1;
   background-size: cover;
   background-position: center;
+  color: white;
+  overflow: hidden;
 }
 
+.sectoroverview__footer__copy {
+  font-style: italic;
+  font-family: "Georgia";
+  font-size: 25.74pt;
+  margin-top: 11.35mm;
+  margin-left: 9.244mm;
+  width: 50%;
+  line-height: 33.1pt;
+}
+
+.sectoroverview__footer__attribution {
+  font-size: 10.1pt;
+  width: 50%;
+  margin-top: 2mm;
+  margin-left: 9.244mm;
+}
+
+.full-page h1 {
+  margin-top: 22.639mm;
+  margin-bottom: 0;
+}
+
+.full-page__spread {
+  height: 225.97mm;
+  background: lightgrey;
+}

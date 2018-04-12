@@ -11,18 +11,34 @@
     {% autoescape off %}
 
     <header class="onlyprint">
-      
       <div id="unionjackheader">
         <img src="{% static "images/unionjack.png" %}"/>
       </div>
-
       <div id="headerslogan">{% trans "Expand your business to Britain" %}</div>
     </header>
 
 
-
-    <section>
-      <h1>{% trans "Contents" %}</h1>
+    <section class="toc">
+      <div class="section-body content-margin">
+        <h1>{% trans "Contents" %}</h1>
+        <ol>
+          <li> {% trans "Sector overview" %}</li>
+          <li> {% trans "Killer facts" %}</li>
+          <li> {% trans "Macro Context Between Countries" %}</li>
+          <li> {% trans "UK Market Overview" %}</li>
+          <li> {% trans "UK Business Overview" %}</li>
+          <li> {% trans "UK Geographic Overview" %}</li>
+          <li> {% trans "Talent & Education" %}</li>
+          <li> {% trans "Sector Initiatives" %}</li>
+          <li> {% trans "Network and Support" %}</li>
+          <li> {% trans "R&D and Innovation" %}</li>
+          <li> {% trans "R&D Innovation Case Study" %}</li>
+          <li> {% trans "Video Case Study" %}</li>
+          <li> {% trans "Who's Here?" %}</li>
+          <li> {% trans "Services offered by DIT?" %}</li>
+          <li> {% trans "Call to Action" %}</li>
+        </ol>
+      </div>
     </section>
 
     <div class="page-break"></div>
@@ -30,30 +46,58 @@
     <section class="sectoroverview">
 
       <div class="sectoroverview__body">
-        <div class="sectoroverview__body__text">
+        <div class="section-body sectoroverview__body__text">
         {{ sector_overview.to_html_fragment }}
         </div>
       </div>
 
-
-      <div class="sectoroverview__footer" style="background-image: url({{sector_overview.footer_image.url}})"><span></span></div>
+      <div class="sectoroverview__footer"
+           style="background-image: url({{sector_overview.footer_image.url}})">
+          <div class="sectoroverview__footer__copy">
+            {{sector_overview.footer_image_copy}}
+          </div>
+          <div class="sectoroverview__footer__attribution">
+            {{sector_overview.footer_image_copy_attribution}}
+          </div>
+      </div>
     </section>
 
 
     <div class="page-break"></div>
 
-    <section>
-      {{ killer_facts.to_html_fragment }}
+    <section class="text-large">
+      <div class="section-body content-margin">
+        {{ killer_facts.to_html_fragment }}
+      </div>
     </section>
 
-    <section>
-      {{ uk_market_overview.to_html_fragment }}
+
+    <section class="text-large">
+      <div class="section-body content-margin">
+        {{ macro_context.to_html_fragment }}
+      </div>
     </section>
 
-    <section>
-      {{ uk_geo_overview.to_html_fragment }}
+
+    <div class="page-break"></div>
+
+    <section class="full-page">
+      <h1>{% trans "4. UK Market Overview" %}</h1>
+      <div class="full-page__spread"></div>
     </section>
 
+
+    <div class="page-break"></div>
+
+    <section class="full-page">
+      <h1>{% trans "5. UK Business Info" %}</h1>
+      <div class="full-page__spread"></div>
+    </section>
+
+    <div class="page-break"></div>
+    
+
+    <!--
     <section>
       {{ talent_and_education_generic.to_html_fragment }}
       {{ talent_and_education_by_sector.to_html_fragment }}
@@ -93,6 +137,7 @@
     <section>
       {{ testimonials.to_html_fragment }}
     </section>
+    --!>
 
     {% endautoescape %}
   </body>
