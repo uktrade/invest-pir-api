@@ -395,3 +395,8 @@ sup {
 .r_and_d_and_innovation_case_study img {
   margin-top: -13mm
 }
+
+#marketoverview-image {
+  margin-left: 5.5mm;
+  margin-top: $pageMarginTop;
+}

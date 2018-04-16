@@ -92,15 +92,20 @@
 
     <section class="full-page side-footnote">
       <h1>{% trans "4. UK Market Overview" %}</h1>
-      <div class="full-page__spread"></div>
+      <div class="full-page__spread"
+           style="background-image: url({{ uk_market_overview.background_image.url }})">
+        <img id="marketoverview-image" src="{{ uk_market_overview.body_image.url }}"/>
+      </div>
     </section>
-
 
     <div class="page-break"></div>
 
     <section class="full-page side-footnote">
       <h1>{% trans "5. A Great Place to Do Business" %}</h1>
-      <div class="full-page__spread"></div>
+      <div class="full-page__spread flex centered_body"
+           style="background-image: url({{ uk_business_info.background_image.url }})">
+        <img src="{{ uk_business_info.body_image.url }}"/>
+      </div>
     </section>
 
     <div class="page-break"></div>
@@ -125,7 +130,7 @@
     <section class="full-page side-footnote">
       <h1>{% trans "9. The UK Government is doing..." %}</h1>
       <div class="full-page__spread centered_body flex"
-           style="background: url({{ network_and_support.background_image.url }})">
+           style="background-image: url({{ network_and_support.background_image.url }})">
         <div class="centered_body__body secondary-page">
           {{ network_and_support.to_html_fragment }}
         <div>
@@ -168,7 +173,7 @@
 
     <section class=full-page contact>
       <div class="full-page__spread centered_body contact flex"
-           style="background: url({{ contact.background_image.url }})">
+           style="background-image: url({{ contact.background_image.url }})">
         <div class="centered_body__body secondary-page">
           <h3>{{ contact.title }}</h3>
           <ul>

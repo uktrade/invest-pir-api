@@ -99,6 +99,15 @@ class MacroContextBetweenCountries(PDFSection):
 class UKMarketOverview(PDFSection):
     SECTION = 4
     SINGLETON = True
+    TRANSLATION_FIELDS = []
+
+    def __str__(self):
+        return '4 - UK Market Overview'
+
+    # No body
+    content = None
+    body_image = models.FileField()
+    background_image = models.ImageField()
 
     class Meta:
         verbose_name = verbose_name_plural = '4 - UK Market Overview'
@@ -107,9 +116,18 @@ class UKMarketOverview(PDFSection):
 class UKBusinessInfo(PDFSection):
     SECTION = 5
     SINGLETON = True
+    TRANSLATION_FIELDS = []
+
+    def __str__(self):
+        return '5 - Business Info'
+
+    # No body
+    content = None
+    body_image = models.FileField()
+    background_image = models.ImageField()
 
     class Meta:
-        verbose_name = verbose_name_plural = '5 - Business Overview'
+        verbose_name = verbose_name_plural = '5 - Business Info'
 
 
 class UKGeographicOverview(PDFSection):
