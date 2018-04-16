@@ -14,6 +14,8 @@ def investment_report(request, market, sector):
     if lang:
         translation.activate(lang)
 
+    company = request.GET.get('company')
+
     return HttpResponse(
-        str(investment_report_generator(market, sector))
+        str(investment_report_generator(market, sector, company))
     )

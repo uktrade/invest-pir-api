@@ -10,6 +10,16 @@
   <body class="A4">
     {% autoescape off %}
 
+
+    <div class="front-page__headermask"></div>
+    <section class="front-page">
+      <div class="front-page__body">
+      </div>
+    </section>
+
+    <div class="page-break"></div>
+    <div class="counter-reset"></div>
+
     <header class="onlyprint">
       <div id="unionjackheader">
         <img src="{% static "images/unionjack.png" %}"/>
@@ -17,46 +27,45 @@
       <div id="headerslogan">{% trans "Expand your business to Britain" %}</div>
     </header>
 
-
     <section class="toc">
       <div class="section-body content-margin">
         <h1>{% trans "Contents" %}</h1>
         <ol>
-          <li> {% trans "Sector overview" %}</li>
-          <li> {% trans "Killer facts" %}</li>
-          <li> {% trans "Macro Context Between Countries" %}</li>
+          <li> {% trans "A Great Home for $COMPANY" %}</li>
+          <li> {% trans "Achieving Great Things in $SECTOR" %}</li>
+          <li> {% trans "Links That Are Already Strong" %}</li>
           <li> {% trans "UK Market Overview" %}</li>
-          <li> {% trans "UK Business Overview" %}</li>
-          <li> {% trans "UK Geographic Overview" %}</li>
-          <li> {% trans "Talent & Education" %}</li>
-          <li> {% trans "Sector Initiatives" %}</li>
-          <li> {% trans "Network and Support" %}</li>
-          <li> {% trans "R&D and Innovation" %}</li>
-          <li> {% trans "R&D Innovation Case Study" %}</li>
+          <li> {% trans "A Great Place to Do Business" %}</li>
+          <li> {% trans "Opportunities from Coast to Coast" %}</li>
+          <li> {% trans "The Smart Workforce $COMPANY Needs" %}</li>
+          <li> {% trans "$SECTOR in the UK: Going from Strength to Strength" %}</li>
+          <li> {% trans "The UK Government is doing great things for $SECTOR" %}</li>
+          <li> {% trans "A Nation of $SECTOR Innovators" %}</li>
+          <li> {% trans "Case Study" %}</li>
           <li> {% trans "Video Case Study" %}</li>
           <li> {% trans "Who's Here?" %}</li>
-          <li> {% trans "Services offered by DIT?" %}</li>
-          <li> {% trans "Call to Action" %}</li>
+          <li> {% trans "Great Things Await - Take the Next Step" %}</li>
+          <li> {% trans "A Flying Start - How We Can Get You Going" %}</li>
         </ol>
       </div>
     </section>
 
     <div class="page-break"></div>
 
-    <section class="sectoroverview">
+    <section class="singlepage-withfooter side-footnote">
 
-      <div class="sectoroverview__body">
-        <div class="section-body sectoroverview__body__text">
+      <div class="singlepage-withfooter__body">
+        <div class="section-body singlepage-withfooter__body__text">
         {{ sector_overview.to_html_fragment }}
         </div>
       </div>
 
-      <div class="sectoroverview__footer"
+      <div class="singlepage-withfooter__footer"
            style="background-image: url({{sector_overview.footer_image.url}})">
-          <div class="sectoroverview__footer__copy">
+          <div class="singlepage-withfooter__footer__copy">
             {{sector_overview.footer_image_copy}}
           </div>
-          <div class="sectoroverview__footer__attribution">
+          <div class="singlepage-withfooter__footer__attribution">
             {{sector_overview.footer_image_copy_attribution}}
           </div>
       </div>
@@ -65,14 +74,14 @@
 
     <div class="page-break"></div>
 
-    <section class="text-large">
+    <section class="text-large side-footnote relative">
       <div class="section-body content-margin">
         {{ killer_facts.to_html_fragment }}
       </div>
     </section>
 
 
-    <section class="text-large">
+    <section class="text-large side-footnote relative">
       <div class="section-body content-margin">
         {{ macro_context.to_html_fragment }}
       </div>
@@ -81,7 +90,7 @@
 
     <div class="page-break"></div>
 
-    <section class="full-page">
+    <section class="full-page side-footnote">
       <h1>{% trans "4. UK Market Overview" %}</h1>
       <div class="full-page__spread"></div>
     </section>
@@ -89,46 +98,90 @@
 
     <div class="page-break"></div>
 
-    <section class="full-page">
-      <h1>{% trans "5. UK Business Info" %}</h1>
+    <section class="full-page side-footnote">
+      <h1>{% trans "5. A Great Place to Do Business" %}</h1>
       <div class="full-page__spread"></div>
     </section>
 
     <div class="page-break"></div>
     
+    <section class="secondary-page dark-list content-margin side-footnote">
+      {{ uk_geo_overview.to_html_fragment }}
+    </section>
 
-    <!--
-    <section>
+    <section class="section-body secondary-page content-margin side-footnote talent_and_education_by_sector dark-list inside-list relative">
       {{ talent_and_education_generic.to_html_fragment }}
       {{ talent_and_education_by_sector.to_html_fragment }}
     </section>
 
-    <section>
+    <div class="page-break"></div>
+
+    <section class="secondary-page sector-initiatives bottom-footnote">
       {{ sector_initiatives.to_html_fragment }}
     </section>
 
-    <section>
+    <div class="page-break"></div>
+
+    <section class="full-page side-footnote">
+      <h1>{% trans "9. The UK Government is doing..." %}</h1>
+      <div class="full-page__spread centered_body flex"
+           style="background: url({{ network_and_support.background_image.url }})">
+        <div class="centered_body__body secondary-page">
+          {{ network_and_support.to_html_fragment }}
+        <div>
+      </div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section class="secondary-page content-margin">
       {{ r_and_d_and_innovation.to_html_fragment }}
+      <span class="r_and_d_and_innovation_case_study">{{ r_and_d_and_innovation_case_study.to_html_fragment }}</span>
+      {{ video_case_study.to_html_fragment }}
     </section>
 
-    <section>
-      {{ r_and_d_and_innovation_case_study.to_html_fragment }}
+    <section class="full-page side-footnote">
+      <h1>{% trans "13. Who's here" %}</h1>
+      <div class="full-page__spread"></div>
     </section>
 
-    {% endautoescape %}
+    <section class="singlepage-withfooter side-footnote secondary-page">
 
-    <section>
-      <h1>{% trans "11: Who's here?" %}</h1>
+      <div class="singlepage-withfooter__body">
+        <div class="section-body singlepage-withfooter__body__text">
+        {{ services_offered_by_dit.to_html_fragment }}
+        </div>
+      </div>
+
+      <div class="singlepage-withfooter__footer"
+           style="background-image: url({{services_offered_by_dit.footer_image.url}})">
+          <div class="singlepage-withfooter__footer__copy">
+            {{services_offered_by_dit.footer_image_copy}}
+          </div>
+          <div class="singlepage-withfooter__footer__attribution">
+            {{services_offered_by_dit.footer_image_copy_attribution}}
+          </div>
+      </div>
     </section>
 
-    <section>
-      <h1>{% trans "12: Video Case Study" %}</h1>
+    <div class="page-break"></div>
+
+    <section class=full-page contact>
+      <div class="full-page__spread centered_body contact flex"
+           style="background: url({{ contact.background_image.url }})">
+        <div class="centered_body__body secondary-page">
+          <h3>{{ contact.title }}</h3>
+          <ul>
+            <li>{{ contact.website }}</li>
+            <li>{{ contact.email }}</li>
+            <li>{{ contact.phone }}</li>
+          </ul>
+          {{ contact.to_html_fragment }}
+        <div>
+      </div>
     </section>
 
-    {% autoescape off %}
-    <section>
-      {{ services_offered_by_dit.to_html_fragment }}
-    </section>
+    <!--
 
     <section>
       {{ call_to_action.to_html_fragment }}

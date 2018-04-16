@@ -144,59 +144,88 @@ class SectorInitiatives(PDFSection):
         verbose_name = verbose_name_plural = '8 - Sector Initiatives'
 
 
-class RDandInnovation(PDFSection):
+class NetworkAndSupport(PDFSection):
     SECTION = 9
-    sector = models.ForeignKey(Sector, unique=True)
+    background_image = models.ImageField()
 
     class Meta:
-        verbose_name = verbose_name_plural = '9 - R&D and Innovation'
+        verbose_name = verbose_name_plural = '9 - Network And Support'
 
 
-class RDandInnovationCaseStudy(PDFSection):
+class RDandInnovation(PDFSection):
     SECTION = 10
     sector = models.ForeignKey(Sector, unique=True)
 
     class Meta:
-        verbose_name = verbose_name_plural = '10 - Case Study'
+        verbose_name = verbose_name_plural = '10 - R&D and Innovation'
+
+
+class RDandInnovationCaseStudy(PDFSection):
+    SECTION = 11
+    sector = models.ForeignKey(Sector, unique=True)
+
+    class Meta:
+        verbose_name = verbose_name_plural = '11 - Case Study'
 
 
 class WhoIsHere:
     """
     Not a model
     """
-    SECTION = 11
+    SECTION = 12
 
 
-class VideoCaseStudy:
+class VideoCaseStudy(PDFSection):
     """
     Todo:
     """
-    SECTION = 12
+    SECTION = 13
     sector = models.ForeignKey(Sector, unique=True)
 
 
 class ServicesOfferedByDIT(PDFSection):
-    SECTION = 13
+    SECTION = 14
     SINGLETON = True
+    footer_image = models.ImageField()
 
     class Meta:
-        verbose_name = verbose_name_plural = '13 - Services Offered'
+        verbose_name = verbose_name_plural = '14 - Services Offered'
 
 
 class CallToAction(PDFSection):
-    SECTION = 14
-    SINGLETON = True
-
-    class Meta:
-        verbose_name = verbose_name_plural = '14 - Call to action'
-
-
-class Testimonials(PDFSection):
     SECTION = 15
     SINGLETON = True
 
     class Meta:
-        verbose_name = verbose_name_plural = '15 - Testimonials'
+        verbose_name = verbose_name_plural = '15 - Call to action'
+
+
+
+class Contact(PDFSection):
+    SECTION = 17
+    SINGLETON = True
+
+    TRANSLATION_FIELDS = (
+        PDFSection.TRANSLATION_FIELDS + 
+        ['title', ]
+    )
+
+    title = models.CharField(max_length=255)
+    website = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    phone = models.CharField(max_length=255)
+    background_image = models.ImageField()
+
+    class Meta:
+        verbose_name = verbose_name_plural = '17 - Contact'
+
+
+class Testimonials(PDFSection):
+    SECTION = 16
+    SINGLETON = True
+
+    class Meta:
+        verbose_name = verbose_name_plural = '16 - Testimonials'
 
 
 sections = sorted(PDFSection.__subclasses__(), key=lambda x: x.SECTION)

@@ -14,12 +14,13 @@ def markdown_fragment(a_str):
     return markdown.markdown(a_str, extensions=[CustomFootnoteExtension()])
 
 
-def investment_report_generator(market, sector):
+def investment_report_generator(market, sector, company_name):
     context = {}
 
     context['sector_overview'] = SectorOverview.objects.filter(
         sector=sector
     ).first()
+
 
     context['killer_facts'] = KillerFacts.objects.filter(
         sector=sector
@@ -33,6 +34,7 @@ def investment_report_generator(market, sector):
     context['uk_business_info'] = UKBusinessInfo.objects.first()
     context['uk_geo_overview'] = UKGeographicOverview.objects.first()
     context['talent_and_education_generic'] = TalentAndEducationGeneric.objects.first()
+    context['network_and_support'] = NetworkAndSupport.objects.first()
 
     context['talent_and_education_by_sector'] = TalentAndEducationBySector.objects.filter(
         sector=sector
@@ -51,11 +53,19 @@ def investment_report_generator(market, sector):
     ).first()
 
     context['who_is_here'] = []
-    context['video_case_study'] = {}
+    context['video_case_study'] = VideoCaseStudy.objects.filter(
+        sector=sector
+    ).first()
 
 
     context['services_offered_by_dit'] = ServicesOfferedByDIT.objects.first()
     context['call_to_action'] = CallToAction.objects.first()
     context['testimonials'] = Testimonials.objects.first()
+
+
+    context['contact'] = Contact.objects.first()
+
+    context['sector'] = sector.name.title()
+    context['company'] = company_name
 
     return render_to_string('investment_report.html', context=context)
