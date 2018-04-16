@@ -12,6 +12,7 @@ body {
   color: $black;
   font-size: 14pt;
   line-height: 130%;
+  margin: 0;
 }
 
 @page {
@@ -23,7 +24,7 @@ body {
   border-top: solid 0.5pt $black;
 
   @top-left {
-    content: counter(page);
+    content: counter(page); 
     font-family: "Interstate";
     color: $black;
     font-size: 9pt;
@@ -31,9 +32,27 @@ body {
   }
 }
 
+.conter-reset {
+  counter-reset: page;
+}
+
+@page :first {
+  margin-top: $pageMarginTop;
+  margin-left: $pageMarginTop;
+  margin-right: $pageMarginTop;
+  margin-bottom: $pageMarginTop;
+  padding: 0;
+  border-top: none;
+
+  @top-left {
+    content: " ";
+  }
+}
+
 @media print {
     header.onlyprint {
         position: fixed; /* Display only on print page (each) */
+        /* because this is taken from the first page margins, I need to adjust */
         top: -11.642mm; /* Because it's header */
         font-family: "Interstate";
         color: $black;
@@ -43,8 +62,9 @@ body {
     }
 
     #unionjackheader {
-        width: $column + $columnGap;
+        width: $column + $columnGap - 2mm;
         float: left;
+        margin-left: 2mm;
     }
 
     #headerslogan {
@@ -60,10 +80,6 @@ body {
 
 .page-break {
   page-break-after: always;
-}
-
-section {
-  position: relative;
 }
 
 h1 {
@@ -90,6 +106,26 @@ sup {
   }
 }
 
+.front-page {
+  width: 100%;
+  height: 297mm - ($pageMarginTop * 2);
+  background: lightgrey;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.front-page__headermask {
+  width: 100%;
+  height: $pageMarginTop;
+  background: white;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0 - $pageMarginTop
+}
+
 .toc {
   margin-top: 55mm;
 }
@@ -105,13 +141,15 @@ sup {
   margin-top: 2.5mm;
 }
 
+.section {
+  overflow: hidden;
+}
 
-
-.section-body > p:first-of-type, .section-body > ul:first-of-type {
+.section-body > p, .section-body > ul, .section-body > ol {
   margin-top: 13.406mm;
 }
 
-.section-body > p, .section-body > ul > li {
+.section-body > p, .section-body > ul > li, .section-body > ol > li {
   margin-top: 0.8rem;
   margin-bottom: 0.8rem;
 }
@@ -122,6 +160,11 @@ sup {
   padding-left: 0.45cm;
 }
 
+.section-body ol {
+  padding-left: 1cm;
+  margin-top: $pageMarginTop / 2;
+}
+
 .relative {
   position: relative;
 }
@@ -130,7 +173,11 @@ sup {
   margin-left: $column + $columnGap;
 }
 
-.footnote {
+.flex {
+  display: flex;
+}
+
+.side-footnote .footnote {
   hr {display: none;}
   ol {margin: 0; padding: 0; width: $column; list-style-type: none;}
 
@@ -156,8 +203,8 @@ sup {
 
 /* special case flexbox layout */
 
-.sectoroverview {
-  width: 172.674mm;
+.singlepage-withfooter {
+  width: 174.674mm;
   height: 267.343mm;
   position: relative;
   display: flex;
@@ -165,17 +212,17 @@ sup {
 }
 
 /* up */
-.sectoroverview__body {
+.singlepage-withfooter__body {
   overflow: hidden;
 }
 
-.sectoroverview__body__text {
+.singlepage-withfooter__body__text {
   margin-left: $column + $columnGap;
   margin-bottom: $column;
   position: relative;
 }
 
-.sectoroverview__footer {
+.singlepage-withfooter__footer {
   background: blue;
   flex-grow: 1;
   background-size: cover;
@@ -184,7 +231,7 @@ sup {
   overflow: hidden;
 }
 
-.sectoroverview__footer__copy {
+.singlepage-withfooter__footer__copy {
   font-style: italic;
   font-family: "Georgia";
   font-size: 25.74pt;
@@ -194,7 +241,7 @@ sup {
   line-height: 33.1pt;
 }
 
-.sectoroverview__footer__attribution {
+.singlepage-withfooter__footer__attribution {
   font-size: 10.1pt;
   width: 50%;
   margin-top: 2mm;
@@ -209,4 +256,142 @@ sup {
 .full-page__spread {
   height: 225.97mm;
   background: lightgrey;
+  background-size: cover;
+  background-position: center;
+}
+
+.secondary-page {
+  font-size: 12pt;
+  line-height: 125%;
+}
+
+.secondary-page img {
+  width: 100%;
+}
+
+.dark-list > ul {
+  background: #f1ede8;
+  margin-top: 8mm;
+  margin-bottom: 8mm;
+  margin-left: 8mm;
+  margin-right: 8mm;
+
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 8mm;
+  padding-right: 8mm;
+  overflow: hidden;
+
+  & > li {
+    margin-top: 8mm;
+    margin-bottom: 8mm;
+  }
+}
+
+.talent_and_education_by_sector {
+  margin-top: 17.639mm;
+}
+
+.sector-initiatives {
+  & > p, & > ul, & > h2, & > h3, & > h4, & > h5, & > h6 {
+    margin-left: $column + $columnGap;
+  }
+
+  h1 {
+    width: 174.674mm;
+    margin-bottom: 0;
+  } 
+  
+  & > h2, & > h3, & > h4, & > h5, & > h6 {
+    margin-top: $pageMarginTop;
+  }
+
+  img {
+    margin-top: $pageMarginTop;
+    margin-bottom: -1em;
+    margin-left: 0 - ( $column + $columnGap);
+    width: 174.674mm;
+    border-top: solid $red 6pt;
+  }
+
+  p:first-of-type > img {
+    margin-top: -1em;
+    margin-bottom: -1em;
+    border-top: none;
+    border-bottom: none;
+  }
+
+}
+
+.bottom-footnote .footnote {
+  border-top: solid $red 1pt;
+  font-size: 8pt;
+  hr {display: none;}
+  margin-left: $column + $columnGap;
+  margin-top: $pageMarginTop;
+  padding-top: 2mm;
+
+  ol {margin: 0; padding: 0; list-style-type: none;}
+
+  li {
+    margin-top: 0.3rem;
+  }
+
+  p {
+    margin: 0;
+    margin-top: 0;
+    line-height: 1.1;
+  }
+
+  p a {
+    display: none;
+  }
+}
+
+.centered_body {
+  align-items: center;
+  justify-content: center;
+}
+
+.centered_body__body {
+  background: white;
+  width: 128.435mm - (2 * 6.49mm);
+  overflow: hidden;
+  padding-top: 9.42mm;
+  padding-bottom: 9.42mm;
+  padding-left: 6.49mm;
+  padding-right: 6.49mm;
+}
+
+.centered_body__body > *:first-of-type {
+  margin-top: 0
+}
+
+.centered_body__body > *:last-of-type {
+  margin-bottom: 0
+}
+
+.centered_body.contact {
+  margin-top: 20mm;
+  border-top: solid $red 6pt;
+}
+
+.contact .centered_body__body {
+  width: 115mm - (9.7mm * 2);
+  padding-left: 9.7mm;
+  padding-right: 9.7mm;
+}
+
+.contact h3 {
+  font-size: 12pt;
+}
+
+.contact.full-page__spread {
+  height: 245.97mm;
+  background-size: cover;
+  background-position: center;
+}
+
+.r_and_d_and_innovation_case_study img {
+  margin-top: -13mm
 }
