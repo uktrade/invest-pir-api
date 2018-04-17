@@ -386,6 +386,15 @@ sup {
   font-size: 12pt;
 }
 
+.contact ul {
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.contact ul li {
+  margin-top: 0.5rem;
+}
+
 .contact.full-page__spread {
   height: 245.97mm;
   background-size: cover;
@@ -399,4 +408,27 @@ sup {
 #marketoverview-image {
   margin-left: 5.5mm;
   margin-top: $pageMarginTop;
+}
+
+.whos-here {
+  ul {
+    width: 145mm;
+    height: 110mm;
+    list-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    overflow: hidden;
+    display: block;
+    margin-top: 58mm;
+  }
+
+  li {
+    margin: 3.2mm;
+    width: 41.7mm;
+    height: 30.839mm;
+    background: white;
+    float: left;
+    display: block;
+  }
 }
