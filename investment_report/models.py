@@ -63,6 +63,21 @@ class PDFSection(models.Model):
 
 
 # Begin spam of table models.
+class FrontPage(PDFSection):
+    SECTION = 0
+    SINGLETON = True
+    TRANSLATION_FIELDS = []
+
+    def __str__(self):
+        return '4 - UK Market Overview'
+
+    # No body
+    content = None
+    background_image = models.FileField()
+
+    class Meta:
+        verbose_name = verbose_name_plural = '0 - Front Page'
+
 
 class SectorOverview(PDFSection):
     SECTION = 1
@@ -186,11 +201,19 @@ class RDandInnovationCaseStudy(PDFSection):
         verbose_name = verbose_name_plural = '11 - Case Study'
 
 
-class WhoIsHere:
-    """
-    Not a model
-    """
+class WhoIsHere(PDFSection):
     SECTION = 12
+    TRANSLATION_FIELDS = []
+    background_image = models.ImageField()
+
+    def __str__(self):
+        return '12 - Who\'s here background'
+
+    # No body
+    content = None
+
+    class Meta:
+        verbose_name = verbose_name_plural = '12 - Who\'s here (background image)'
 
 
 class VideoCaseStudy(PDFSection):
