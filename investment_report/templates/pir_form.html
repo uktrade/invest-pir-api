@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+
+  <section>
+    <div class="container content content-invest">
+
+      <div class="row  justify-content-center ">
+        <div class="mb-5 text-center">
+          <h1>DIT Personalised Investment Report</h1>
+          <p class="mt-3 h5 mx-5">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Fusce et enim id justo sollicitudin elementum. Nam dignissim
+              ultricies faucibus. Vivamus in orci dolor. Cras in efficitur
+              justo. Nunc vel metus quis ligula scelerisque tincidunt. 
+          </p>
+        </div>
+      </div>
+
+      <div class="row  justify-content-center">
+        <div class="col-md-6">
+
+          <form action="{% url 'pir' %}" method="post" class="form">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">Create Report</button>
+            {% endbuttons %}
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

@@ -55,3 +55,5 @@ willow==1.1               # via wagtail
 zenpy==1.1.10
 sorl-thumbnail==12.4.1
 django-markdownx==2.0.22
+django-countries==5.2
+django-bootstrap4==0.0.6

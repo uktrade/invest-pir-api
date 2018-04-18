@@ -97,6 +97,8 @@ INSTALLED_APPS = [
     'wagtail.contrib.modeladmin',
     'markdownx',
     'sorl.thumbnail',
+    'django_countries',
+    'bootstrap4'
 ]
 
 try:

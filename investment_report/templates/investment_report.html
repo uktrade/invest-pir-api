@@ -1,10 +1,10 @@
-{% load i18n static %}
+{% load i18n static custom_static %}
 <!DOCTYPE html>
 <html nomarginboxes disallowselectionprint>
   <head>
     <meta charset="utf8">
     <title>{% trans "Investment Report" %}</title>
-    <link rel="stylesheet" href="{% static "build/investment-report.css" %}" />
+    <link rel="stylesheet" href="{% custom_static "build/investment-report.css" %}" />
   </head>
 
   <body class="A4">
@@ -62,7 +62,7 @@
       </div>
 
       <div class="singlepage-withfooter__footer"
-           style="background-image: url({{sector_overview.footer_image.url}})">
+           style="background-image: url({% custom_media sector_overview.footer_image %})">
           <div class="singlepage-withfooter__footer__copy">
             {{sector_overview.footer_image_copy}}
           </div>
@@ -94,8 +94,8 @@
     <section class="full-page side-footnote">
       <h1>{% trans "4. UK Market Overview" %}</h1>
       <div class="full-page__spread"
-           style="background-image: url({{ uk_market_overview.background_image.url }})">
-        <img id="marketoverview-image" src="{{ uk_market_overview.body_image.url }}"/>
+           style="background-image: url({% custom_media uk_market_overview.background_image %})">
+        <img id="marketoverview-image" src="{% custom_media uk_market_overview.body_image %}"/>
       </div>
     </section>
 
@@ -104,8 +104,8 @@
     <section class="full-page side-footnote">
       <h1>{% trans "5. A Great Place to Do Business" %}</h1>
       <div class="full-page__spread flex centered_body"
-           style="background-image: url({{ uk_business_info.background_image.url }})">
-        <img src="{{ uk_business_info.body_image.url }}"/>
+           style="background-image: url({% custom_media uk_business_info.background_image %})">
+        <img src="{% custom_media uk_business_info.body_image %}"/>
       </div>
     </section>
 
@@ -131,7 +131,7 @@
     <section class="full-page side-footnote">
       <h1>{% trans "9. The UK Government is doing..." %}</h1>
       <div class="full-page__spread centered_body flex"
-           style="background-image: url({{ network_and_support.background_image.url }})">
+           style="background-image: url({% custom_media network_and_support.background_image %})">
         <div class="centered_body__body secondary-page">
           {{ network_and_support.to_html_fragment }}
         <div>
@@ -151,7 +151,7 @@
     <section class="full-page side-footnote whos-here">
       <h1>{% trans "13. Who's here" %}</h1>
       <div class="full-page__spread section"
-           style="background-image: url({{ who_is_here.background_image.url }})">
+           style="background-image: url({% custom_media who_is_here.background_image %})">
           <ul>
             <li></li>
             <li></li>
@@ -173,7 +173,7 @@
       </div>
 
       <div class="singlepage-withfooter__footer"
-           style="background-image: url({{services_offered_by_dit.footer_image.url}})">
+           style="background-image: url({% custom_media services_offered_by_dit.footer_image %})">
           <div class="singlepage-withfooter__footer__copy">
             {{services_offered_by_dit.footer_image_copy}}
           </div>
@@ -187,7 +187,7 @@
 
     <section class=full-page contact>
       <div class="full-page__spread centered_body contact flex"
-           style="background-image: url({{ contact.background_image.url }})">
+           style="background-image: url({% custom_media contact.background_image %})">
         <div class="centered_body__body secondary-page">
           <h3>{{ contact.title }}</h3>
           <ul>

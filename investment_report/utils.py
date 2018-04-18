@@ -1,10 +1,14 @@
-import markdown
+import os
 import base64
+import datetime
 
 from bs4 import BeautifulSoup
+
+from django.conf import settings
 from django.template.loader import render_to_string
+
 from investment_report.models import *
-from investment_report.markdown import CustomFootnoteExtension
+from investment_report.markdown import CustomFootnoteExtension, custom_markdown
 
 
 def bs_parse(html):
@@ -12,12 +16,12 @@ def bs_parse(html):
 
 
 def markdown_fragment(a_str):
-    return markdown.markdown(a_str, extensions=[CustomFootnoteExtension()])
+    return custom_markdown(a_str)
 
 
-def investment_report_generator(market, sector, company_name):
+def investment_report_generator(market, sector, company_name, local=True):
     context = {}
-
+    context['local'] = True
 
     context['sector_overview'] = SectorOverview.objects.filter(
         sector=sector
@@ -78,6 +82,8 @@ def investment_report_generator(market, sector, company_name):
     if company_name:
         svg_data = context['front_page'].background_image.read()
         context['front_page_svg'] = base64.b64encode(svg_data.replace(b'$COMPANY', company_name.encode('utf8')))
+
+    context['settings'] = settings
 
     result_html = render_to_string('investment_report.html', context=context)
 
