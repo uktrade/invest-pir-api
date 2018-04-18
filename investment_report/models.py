@@ -10,10 +10,12 @@ from markdownx.models import MarkdownxField
 
 
 class Sector(models.Model):
+    TRANSLATION_FIELDS = ['display_name']
     name = models.CharField(max_length=255)
+    display_name = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.name
+        return self.display_name
 
 
 class Market(models.Model):
