@@ -6,11 +6,6 @@ from sorl.thumbnail import ImageField
 from django.db import models
 from django.utils.html import format_html
 
-
-from wagtail.core.fields import StreamField
-from wagtailmarkdown.blocks import MarkdownBlock
-from wagtail.admin.edit_handlers import StreamFieldPanel
-
 from markdownx.models import MarkdownxField
 
 
@@ -56,10 +51,6 @@ class PDFSection(models.Model):
 
     def __str__(self):
         return self.content[:10]
-
-    def to_html_fragment(self):
-        from investment_report.utils import markdown_fragment
-        return markdown_fragment(self.content)
 
 
 # Begin spam of table models.
