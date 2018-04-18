@@ -15,13 +15,9 @@ def bs_parse(html):
     return BeautifulSoup(html, 'html.parser')
 
 
-def markdown_fragment(a_str):
-    return custom_markdown(a_str)
-
-
 def investment_report_generator(market, sector, company_name, local=True):
     context = {}
-    context['local'] = True
+    context['local'] = local
 
     context['sector_overview'] = SectorOverview.objects.filter(
         sector=sector

@@ -22,3 +22,10 @@ def custom_media(context, file_field):
         return 'file://' + file_field.path
 
     return file_field.url
+
+
+@register.simple_tag(takes_context=True)
+def markdown(context, markdown_field):
+    from investment_report.markdown import custom_markdown
+    return custom_markdown(markdown_field, local=context['local'])
+

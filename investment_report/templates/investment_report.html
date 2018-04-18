@@ -23,7 +23,7 @@
 
     <header class="onlyprint">
       <div id="unionjackheader">
-        <img src="{% static "images/unionjack.png" %}"/>
+        <img src="{% custom_static "images/unionjack.png" %}"/>
       </div>
       <div id="headerslogan">{% trans "Expand your business to Britain" %}</div>
     </header>
@@ -57,7 +57,7 @@
 
       <div class="singlepage-withfooter__body">
         <div class="section-body singlepage-withfooter__body__text">
-        {{ sector_overview.to_html_fragment }}
+        {% markdown sector_overview.content %}
         </div>
       </div>
 
@@ -77,14 +77,14 @@
 
     <section class="text-large side-footnote relative">
       <div class="section-body content-margin">
-        {{ killer_facts.to_html_fragment }}
+        {% markdown killer_facts.content %}
       </div>
     </section>
 
 
     <section class="text-large side-footnote relative">
       <div class="section-body content-margin">
-        {{ macro_context.to_html_fragment }}
+        {% markdown macro_context.content %}
       </div>
     </section>
 
@@ -112,18 +112,18 @@
     <div class="page-break"></div>
     
     <section class="secondary-page dark-list content-margin side-footnote">
-      {{ uk_geo_overview.to_html_fragment }}
+      {% markdown uk_geo_overview.content %}
     </section>
 
     <section class="section-body secondary-page content-margin side-footnote talent_and_education_by_sector dark-list inside-list relative">
-      {{ talent_and_education_generic.to_html_fragment }}
-      {{ talent_and_education_by_sector.to_html_fragment }}
+      {% markdown talent_and_education_generic.content %}
+      {% markdown talent_and_education_by_sector.content %}
     </section>
 
     <div class="page-break"></div>
 
     <section class="secondary-page sector-initiatives bottom-footnote">
-      {{ sector_initiatives.to_html_fragment }}
+      {% markdown sector_initiatives.content %}
     </section>
 
     <div class="page-break"></div>
@@ -133,7 +133,7 @@
       <div class="full-page__spread centered_body flex"
            style="background-image: url({% custom_media network_and_support.background_image %})">
         <div class="centered_body__body secondary-page">
-          {{ network_and_support.to_html_fragment }}
+          {% markdown network_and_support.content %}
         <div>
       </div>
     </section>
@@ -141,9 +141,9 @@
     <div class="page-break"></div>
 
     <section class="secondary-page content-margin">
-      {{ r_and_d_and_innovation.to_html_fragment }}
-      <span class="r_and_d_and_innovation_case_study">{{ r_and_d_and_innovation_case_study.to_html_fragment }}</span>
-      <span class="r_and_d_and_innovation_case_study">{{ video_case_study.to_html_fragment }}</span>
+      {% markdown r_and_d_and_innovation.content %}
+      <span class="r_and_d_and_innovation_case_study">{% markdown r_and_d_and_innovation_case_study.content %}</span>
+      <span class="r_and_d_and_innovation_case_study">{% markdown video_case_study.content %}</span>
     </section>
 
     <div class="page-break"></div>
@@ -168,7 +168,7 @@
 
       <div class="singlepage-withfooter__body">
         <div class="section-body singlepage-withfooter__body__text">
-        {{ services_offered_by_dit.to_html_fragment }}
+        {% markdown services_offered_by_dit.content %}
         </div>
       </div>
 
@@ -195,21 +195,10 @@
             <li>{{ contact.email }}</li>
             <li>{{ contact.phone }}</li>
           </ul>
-          {{ contact.to_html_fragment }}
+          {% markdown contact.content %}
         <div>
       </div>
     </section>
-
-    <!--
-
-    <section>
-      {{ call_to_action.to_html_fragment }}
-    </section>
-
-    <section>
-      {{ testimonials.to_html_fragment }}
-    </section>
-    --!>
 
     {% endautoescape %}
   </body>
