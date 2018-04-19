@@ -70,9 +70,10 @@ def investment_report_generator(market, sector, company_name, local=True):
     context['sector'] = sector.name.title()
     context['company'] = company_name
 
+    context['front_page'] = FrontPage.objects.filter(
+        sector=sector
+    ).first()
 
-
-    context['front_page'] = FrontPage.objects.first()
     context['who_is_here'] = WhoIsHere.objects.first()
 
     if company_name:
