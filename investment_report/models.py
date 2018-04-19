@@ -46,7 +46,13 @@ class PDFSection(models.Model):
     SECTION = 999
     TRANSLATION_FIELDS = ['content']
 
-    content = MarkdownxField()
+    content = MarkdownxField(
+        help_text=(
+            'Markdown input. Please refer to '
+            'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet '
+            'for intructions. Images may be dragged and droped into the editor'
+        )
+    )
 
     class Meta:
         abstract = True
@@ -58,15 +64,16 @@ class PDFSection(models.Model):
 # Begin spam of table models.
 class FrontPage(PDFSection):
     SECTION = 0
-    SINGLETON = True
+    SINGLETON = False
     TRANSLATION_FIELDS = []
 
     def __str__(self):
-        return '4 - UK Market Overview'
+        return 'Front page'
 
     # No body
     content = None
     background_image = models.FileField()
+    sector = models.ForeignKey(Sector, unique=True)
 
     class Meta:
         verbose_name = verbose_name_plural = '0 - Front Page'
@@ -80,9 +87,17 @@ class SectorOverview(PDFSection):
     )
 
     sector = models.ForeignKey(Sector, unique=True)
-    footer_image = models.ImageField()
-    footer_image_copy = models.TextField(blank=True)
-    footer_image_copy_attribution = models.TextField(blank=True)
+    footer_image = models.ImageField(
+        help_text='Image at bottom of this page'
+    )
+    footer_image_copy = models.TextField(
+        blank=True, 
+        help_text='Text overlayed on image'
+    )
+    footer_image_copy_attribution = models.TextField(
+        blank=True,
+        help_text='Smaller text overlayed on image'
+    )
 
     class Meta:
         verbose_name = verbose_name_plural = '1 - Sector Overview'
@@ -114,7 +129,14 @@ class UKMarketOverview(PDFSection):
 
     # No body
     content = None
-    body_image = models.FileField()
+    body_image = models.FileField(
+        help_text=(
+            'Fact sheet SVG overlayed on background of background. Don\'t edit '
+            'unless you know what you are doing. Viewbox needs to be carefully '
+            'calibrated here'
+        )
+    )
+
     background_image = models.ImageField()
 
     class Meta:
@@ -131,7 +153,14 @@ class UKBusinessInfo(PDFSection):
 
     # No body
     content = None
-    body_image = models.FileField()
+    body_image = models.FileField(
+        help_text=(
+            'Fact sheet SVG overlayed on background of background. Don\'t edit '
+            'unless you know what you are doing. Viewbox needs to be carefully '
+            'calibrated here'
+        )
+    )
+
     background_image = models.ImageField()
 
     class Meta:
@@ -220,7 +249,9 @@ class VideoCaseStudy(PDFSection):
 class ServicesOfferedByDIT(PDFSection):
     SECTION = 14
     SINGLETON = True
-    footer_image = models.ImageField()
+    footer_image = models.ImageField(
+        help_text='Image at bottom of this page'
+    )
 
     class Meta:
         verbose_name = verbose_name_plural = '14 - Services Offered'
