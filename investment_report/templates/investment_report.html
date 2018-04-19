@@ -199,9 +199,9 @@
         <div class="centered_body__body secondary-page">
           <h3>{{ contact.title }}</h3>
           <ul>
-            <li>{{ contact.website }}</li>
-            <li>{{ contact.email }}</li>
-            <li>{{ contact.phone }}</li>
+            <li style="list-style-image: url('{% custom_static "images/mouse.svg" %}');">{{ contact.website }}</li>
+            <li style="list-style-image: url('{% custom_static "images/mail.svg" %}');">{{ contact.email }}</li>
+            <li style="list-style-image: url('{% custom_static "images/phone.svg" %}')";>{{ contact.phone }}</li>
           </ul>
           {% markdown contact.content %}
         <div>
