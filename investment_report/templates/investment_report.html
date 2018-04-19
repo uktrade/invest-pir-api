@@ -153,12 +153,20 @@
       <div class="full-page__spread section"
            style="background-image: url({% custom_media who_is_here.background_image %})">
           <ul>
-            {% ml for ml in market_logos %}
-            <li><img src="{{ ml.image }}"></li>
+            {% for ml in market_logos %}
+            <li>
+                <div class="table-cell">
+                  <img src="{% custom_media ml.image %}"/>
+                </div>
+            </li>
             {% endfor %}
 
-            {% sl for sl in sector_logos %}
-            <li><img src="{{ sl.image }}"></li>
+            {% for sl in sector_logos %}
+            <li>
+              <div class="table-cell">
+                <img src="{% custom_media sl.image %}"/>
+              </div>
+            </li>
             {% endfor %}
           </ul>
       </div>

@@ -430,5 +430,24 @@ sup {
     background: white;
     float: left;
     display: block;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 5mm;
   }
+
+  img {
+    max-width: 100%;
+    max-height: 22mm;
+  }
+
+  .table-cell {
+    height: 22mm;
+    width: 32mm;
+    vertical-align: middle;
+    text-align: center;
+  }
+}
+
+.table-cell {
+  display: table-cell;
 }
