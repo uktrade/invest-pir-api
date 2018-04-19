@@ -82,6 +82,10 @@ def investment_report_generator(market, sector, company_name, local=True):
 
     context['settings'] = settings
 
+
+    context['market_logos'] = MarketLogo.objects.filter(market=market)[:4]
+    context['sector_logos'] = SectorLogo.objects.filter(market=market)[:4]
+
     result_html = render_to_string('investment_report.html', context=context)
 
     result_html = (

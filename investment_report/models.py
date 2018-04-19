@@ -28,6 +28,7 @@ class Market(models.Model):
 class MarketLogo(models.Model):
     name = models.CharField(max_length=255)
     image = ImageField()
+    market = models.ForeignKey(Market)
 
     def __str__(self):
         return self.name
@@ -36,6 +37,7 @@ class MarketLogo(models.Model):
 class SectorLogo(models.Model):
     name = models.CharField(max_length=255)
     image = ImageField()
+    market = models.ForeignKey(Sector)
 
     def __str__(self):
         return self.name
