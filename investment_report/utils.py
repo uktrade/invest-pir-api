@@ -1,6 +1,10 @@
+import glob
 import os
 import base64
 import datetime
+
+from django_countries import data
+from countries_plus.models import Country
 
 from bs4 import BeautifulSoup
 
@@ -96,3 +100,17 @@ def investment_report_generator(market, sector, company_name, local=True):
     )
 
     return result_html
+
+def get_countries():
+    country_files = glob.glob('investment_report/countries/*.txt')
+    countries = {}
+
+    name_to_code = {v:k for k,v in  data.COUNTRIES.items()}
+
+    for file_name in country_files:
+        with open(file_name) as f:
+            countries[file_name.split('/')[-1][:-4]] = [
+                Country.objects.get(iso=name_to_code[a]) for a in f.read().split('\n') if a
+            ]
+
+    return countries

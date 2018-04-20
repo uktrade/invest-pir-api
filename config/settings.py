@@ -98,6 +98,7 @@ INSTALLED_APPS = [
     'markdownx',
     'sorl.thumbnail',
     'django_countries',
+    'countries_plus',
     'bootstrap4'
 ]
 

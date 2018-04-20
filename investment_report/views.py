@@ -35,7 +35,7 @@ def investment_report_form(request):
         form = PIRForm(request.POST)
 
         if form.is_valid():
-            market = Market.objects.first()
+            market = form.cleaned_data['market']
             sector = form.cleaned_data['sector']
             company = form.cleaned_data['company']
             email = form.cleaned_data['email']

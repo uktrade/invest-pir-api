@@ -6,6 +6,7 @@ from sorl.thumbnail import ImageField
 from django.db import models
 from django.utils.html import format_html
 
+from countries_plus.models import Country
 from markdownx.models import MarkdownxField
 
 
@@ -18,8 +19,10 @@ class Sector(models.Model):
         return self.display_name
 
 
+
 class Market(models.Model):
     name = models.CharField(max_length=255)
+    countries = models.ManyToManyField(Country)
 
     def __str__(self):
         return self.name

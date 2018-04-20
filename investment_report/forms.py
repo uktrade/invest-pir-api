@@ -11,3 +11,13 @@ class PIRForm(forms.Form):
     name = forms.CharField(required=True)
     company = forms.CharField(required=True)
     email = forms.EmailField(required=True)
+
+    def clean_market(self):
+        data = self.cleaned_data['market']
+
+        market = Market.objects.filter(countries__iso=data).first()
+
+        if not market:
+            raise forms.ValidationError("No market found for country.")
+
+        return market
