@@ -4,6 +4,7 @@ import weasyprint
 
 from hashlib import md5
 
+from django.template import RequestContext, loader
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.http import HttpResponse
@@ -80,3 +81,8 @@ def investment_report_download(request):
         'download_link': path,
         'email': request.session['report']['email']
     })
+
+
+def admin_table(request):
+    template = loader.get_template('investment_report_table.html')
+    return HttpResponse(template.render())
