@@ -2,7 +2,10 @@ import os
 import datetime
 import weasyprint
 
+from itertools import product
 from hashlib import md5
+from collections import namedtuple
+
 
 from django.template import RequestContext, loader
 from django.shortcuts import render, get_object_or_404, redirect
@@ -11,7 +14,10 @@ from django.http import HttpResponse
 from django.utils import translation
 from django.conf import settings
 
-from investment_report.utils import investment_report_generator
+from investment_report.utils import (
+    investment_report_generator, available_reports, get_investment_report_data
+)
+
 from investment_report.models import Market, Sector
 from investment_report.forms import PIRForm
 
@@ -85,4 +91,29 @@ def investment_report_download(request):
 
 def admin_table(request):
     template = loader.get_template('investment_report_table.html')
-    return HttpResponse(template.render())
+
+    markets = list(Market.objects.values_list('name', flat=True))
+    sectors = list(Sector.objects.values_list('name', flat=True))
+    languages = dict(settings.LANGUAGES).keys()
+
+    reports = available_reports()
+
+    return HttpResponse(template.render(context={
+        'languages': languages,
+        'markets': markets,
+        'sectors': sectors,
+        'reports': reports
+    }))
+
+def admin_table_detail(request, lang, market, sector):
+    template = loader.get_template('investment_report_table_detail.html')
+    translation.activate(lang)
+
+    market = get_object_or_404(Market, name=market)
+    sector = get_object_or_404(Sector, name=sector)
+    ctx = get_investment_report_data(market, sector)
+
+    translation.activate(settings.LANGUAGE_CODE)
+    return HttpResponse(template.render(context={
+        'pages': ctx,
+    }))

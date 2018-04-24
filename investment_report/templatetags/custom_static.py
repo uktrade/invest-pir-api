@@ -3,6 +3,7 @@ import os
 from django import template
 from django.templatetags.static import static
 from django.conf import settings
+from django.urls import reverse
 
 
 register = template.Library()
@@ -29,3 +30,13 @@ def markdown(context, markdown_field):
     from investment_report.markdown import custom_markdown
     return custom_markdown(markdown_field, local=context['local'])
 
+
+@register.simple_tag
+def is_report_availible(reports, lang, market, sector):
+    detail_url = reverse('reportadmin:validation_table_detail', args=(lang, market, sector,))
+
+
+    if sector in reports.get(lang, {}).get(market, []):
+        return '<td><a href="{}">💚</a></td>'.format(detail_url)
+    else:
+        return '<td><a href="{}">❌</a></td>'.format(detail_url)

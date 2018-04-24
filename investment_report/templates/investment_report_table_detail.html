@@ -1,0 +1,94 @@
+{% extends "admin/base_site.html" %}
+{% load custom_static %}
+
+{% block content %}
+
+      <table>
+        <tr>
+          <th>Page Type</th>
+          <th>Created</th>
+        </tr>
+
+        <tr>
+          <td>Sector Overview</td>
+          <td>{% if pages.sector_overview %}There{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>Killer Facts</td>
+          <td>{% if pages.killer_facts %}There{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>Macro Context Between Countries</td>
+          <td>{% if pages.macro_context %}There{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>UK Market Overview</td>
+          <td>{% if pages.uk_market_overview %}There{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>UK Business Info</td>
+          <td>{% if pages.uk_business_info %}There{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>UK Geo Overview</td>
+          <td>{% if pages.uk_geo_overview %}There{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>TalentAndEducationGeneric</td>
+          <td>{% if pages.talent_and_education_generic %}There{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>TalentAndEducationBySector</td>
+          <td>{% if pages.talent_and_education_by_sector %}There{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>NetworkAndSupport</td>
+          <td>{% if pages.network_and_support %}There{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>SectorInitiatives</td>
+          <td>{% if pages.sector_initiatives %}There{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>RDandInnovation</td>
+          <td>{% if pages.r_and_d_and_innovation %}There{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>RDandInnovation</td>
+          <td>{% if pages.r_and_d_and_innovation_case_study %}There{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>RDandInnovation</td>
+          <td>{% if pages.r_and_d_and_innovation_case_study %}There{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>VideoCaseStudy</td>
+          <td>{% if pages.video_case_study %}There{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>ServicesOfferedByDIT</td>
+          <td>{% if pages.services_offered_by_dit %}There{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>Contact</td>
+          <td>{% if pages.services_offered_by_dit %}There{% endif %}</td>
+        </tr>
+
+    </table>
+
+{% endblock %}

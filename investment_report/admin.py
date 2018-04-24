@@ -39,12 +39,14 @@ class InvestmentReportAdminSite(admin.AdminSite):
         return redirect('reportadmin:index')
 
     def get_urls(self):
-        from investment_report.views import admin_table
+        from investment_report.views import admin_table, admin_table_detail
         from django.conf.urls import url
 
         urls = super(InvestmentReportAdminSite, self).get_urls()
         urls = [
-            url(r'^validation-table/$', self.admin_view(admin_table))
+            url(r'^validation-table/(?P<lang>[\w-]+)/(?P<market>[\w-]+)/(?P<sector>[\w-]+)/$',
+                self.admin_view(admin_table_detail), name='validation_table_detail'),
+            url(r'^validation-table/$', self.admin_view(admin_table), name='validation_table'),
         ] + urls
         return urls
 
