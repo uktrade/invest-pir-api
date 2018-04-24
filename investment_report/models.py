@@ -19,7 +19,6 @@ class Sector(models.Model):
         return self.display_name
 
 
-
 class Market(models.Model):
     name = models.CharField(max_length=255)
     countries = models.ManyToManyField(Country)
@@ -127,7 +126,7 @@ class MacroContextBetweenCountries(PDFSection):
 class UKMarketOverview(PDFSection):
     SECTION = 4
     SINGLETON = True
-    TRANSLATION_FIELDS = []
+    TRANSLATION_FIELDS = ['body_image']
 
     def __str__(self):
         return '4 - UK Market Overview'
@@ -151,7 +150,7 @@ class UKMarketOverview(PDFSection):
 class UKBusinessInfo(PDFSection):
     SECTION = 5
     SINGLETON = True
-    TRANSLATION_FIELDS = []
+    TRANSLATION_FIELDS = ['body_image']
 
     def __str__(self):
         return '5 - Business Info'
