@@ -201,6 +201,8 @@ LANGUAGES = (
     ('zh-cn', _(u'Simplified Chinese')),
 )
 
+MODELTRANSLATION_FALLBACK_LANGUAGES = tuple()
+
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
