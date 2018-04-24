@@ -91,4 +91,8 @@
 
     </table>
 
+    {% if valid %}
+      <a href="{% url 'investment_report_pdf' lang market sector %}">Download PDF</a>
+    {% endif %}
+
 {% endblock %}

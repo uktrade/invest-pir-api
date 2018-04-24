@@ -5,6 +5,7 @@ import weasyprint
 from itertools import product
 from hashlib import md5
 from collections import namedtuple
+from io import BytesIO
 
 
 from django.template import RequestContext, loader
@@ -13,16 +14,18 @@ from django.urls import reverse
 from django.http import HttpResponse
 from django.utils import translation
 from django.conf import settings
+from wsgiref.util import FileWrapper
 
 from investment_report.utils import (
-    investment_report_generator, available_reports, get_investment_report_data
+    investment_report_generator, available_reports, get_investment_report_data,
+    valid_context,
 )
 
 from investment_report.models import Market, Sector
 from investment_report.forms import PIRForm
 
-# Create your views here.
-def investment_report(request, market, sector):
+
+def investment_report_html(request, lang, market, sector):
     market = get_object_or_404(Market, name=market)
     sector = get_object_or_404(Sector, name=sector)
 
@@ -30,11 +33,33 @@ def investment_report(request, market, sector):
     if lang:
         translation.activate(lang)
 
-    company = request.GET.get('company')
+    company = request.GET.get('company', 'You')
 
     return HttpResponse(
         str(investment_report_generator(market, sector, company, local=False))
     )
+
+
+def investment_report_pdf(request, lang, market, sector):
+    response = HttpResponse(content_type='application/pdf')
+
+    market = get_object_or_404(Market, name=market)
+    sector = get_object_or_404(Sector, name=sector)
+    translation.activate(lang)
+
+    company = request.GET.get('company', 'You')
+
+    html = investment_report_generator(market, sector, company, local=True)
+    doc = weasyprint.HTML(string=html)
+    io_file = BytesIO()
+    doc.write_pdf(io_file)
+    
+    pdf = io_file.getvalue()
+    io_file.close()
+    response.write(pdf)
+
+    translation.activate(settings.LANGUAGE_CODE)
+    return response
 
 
 def investment_report_form(request):
@@ -105,6 +130,7 @@ def admin_table(request):
         'reports': reports
     }))
 
+
 def admin_table_detail(request, lang, market, sector):
     template = loader.get_template('investment_report_table_detail.html')
     translation.activate(lang)
@@ -114,6 +140,11 @@ def admin_table_detail(request, lang, market, sector):
     ctx = get_investment_report_data(market, sector)
 
     translation.activate(settings.LANGUAGE_CODE)
+
     return HttpResponse(template.render(context={
+        'lang': lang,
+        'market': market.name,
+        'sector': sector.name,
         'pages': ctx,
+        'valid': valid_context(ctx)
     }))
