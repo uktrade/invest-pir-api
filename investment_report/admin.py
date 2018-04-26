@@ -11,6 +11,7 @@ from django.contrib import admin
 from markdownx.admin import MarkdownxModelAdmin
 from sorl.thumbnail.admin import AdminImageMixin
 from modeltranslation.admin import TranslationAdmin
+from moderation.admin import ModerationAdmin
 
 
 class InvestmentReportAdminSite(admin.AdminSite):
@@ -54,7 +55,7 @@ class InvestmentReportAdminSite(admin.AdminSite):
 admin_site = InvestmentReportAdminSite(name='reportadmin')
 
 
-class PDFAdmin(MarkdownxModelAdmin, TranslationAdmin, admin.ModelAdmin):
+class PDFAdmin(MarkdownxModelAdmin, TranslationAdmin, ModerationAdmin):
 
     def has_add_permission(self, request):
         """
