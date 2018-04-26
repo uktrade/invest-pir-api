@@ -23,7 +23,7 @@ class CustomFootnoteExtension(FootnoteExtension):
 class ImagePattern(inlinepatterns.ImagePattern):
     def sanitize_url(self, url):
         url = super().sanitize_url(url)
-        if self.markdown.local:
+        if getattr(self.markdown, 'local', False):
             if url.startswith(settings.MEDIA_URL):
                 url = url[len(settings.MEDIA_URL):]
 
