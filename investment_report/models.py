@@ -77,7 +77,7 @@ class FrontPage(PDFSection):
     # No body
     content = None
     background_image = models.FileField()
-    sector = models.ForeignKey(Sector, unique=True)
+    sector = models.ForeignKey(Sector)
 
     class Meta:
         verbose_name = verbose_name_plural = '0 - Front Page'
@@ -90,7 +90,7 @@ class SectorOverview(PDFSection):
         ['footer_image_copy', 'footer_image_copy_attribution']
     )
 
-    sector = models.ForeignKey(Sector, unique=True)
+    sector = models.ForeignKey(Sector)
     footer_image = models.ImageField(
         help_text='Image at bottom of this page'
     )
@@ -109,7 +109,7 @@ class SectorOverview(PDFSection):
 
 class KillerFacts(PDFSection):
     SECTION = 2
-    sector = models.ForeignKey(Sector, unique=True)
+    sector = models.ForeignKey(Sector)
 
     class Meta:
         verbose_name = verbose_name_plural = '2 - Killer Facts'
@@ -117,7 +117,7 @@ class KillerFacts(PDFSection):
 
 class MacroContextBetweenCountries(PDFSection):
     SECTION = 3
-    market = models.ForeignKey(Market, unique=True)
+    market = models.ForeignKey(Market)
 
     class Meta:
         verbose_name = verbose_name_plural = '3 - Macro Context'
@@ -189,7 +189,7 @@ class TalentAndEducationGeneric(PDFSection):
 
 class TalentAndEducationBySector(PDFSection):
     SECTION = 7.2
-    sector = models.ForeignKey(Sector, unique=True)
+    sector = models.ForeignKey(Sector)
 
     class Meta:
         verbose_name = verbose_name_plural = '7.2 - Talent & Education (Sector)'
@@ -197,7 +197,7 @@ class TalentAndEducationBySector(PDFSection):
 
 class SectorInitiatives(PDFSection):
     SECTION = 8
-    sector = models.ForeignKey(Sector, unique=True)
+    sector = models.ForeignKey(Sector)
 
     class Meta:
         verbose_name = verbose_name_plural = '8 - Sector Initiatives'
@@ -213,7 +213,7 @@ class NetworkAndSupport(PDFSection):
 
 class RDandInnovation(PDFSection):
     SECTION = 10
-    sector = models.ForeignKey(Sector, unique=True)
+    sector = models.ForeignKey(Sector)
 
     class Meta:
         verbose_name = verbose_name_plural = '10 - R&D and Innovation'
@@ -221,7 +221,7 @@ class RDandInnovation(PDFSection):
 
 class RDandInnovationCaseStudy(PDFSection):
     SECTION = 11
-    sector = models.ForeignKey(Sector, unique=True)
+    sector = models.ForeignKey(Sector)
 
     class Meta:
         verbose_name = verbose_name_plural = '11 - Case Study'
@@ -247,7 +247,7 @@ class VideoCaseStudy(PDFSection):
     Todo:
     """
     SECTION = 13
-    sector = models.ForeignKey(Sector, unique=True)
+    sector = models.ForeignKey(Sector)
 
 
 class ServicesOfferedByDIT(PDFSection):
