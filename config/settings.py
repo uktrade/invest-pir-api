@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'wagtail_modeltranslation',    # before apps that need translation
     'wagtail_modeltranslation.makemigrations',
     'wagtail_modeltranslation.migrate',
+    'moderation',
 
     'invest',
     'home',
@@ -92,6 +93,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'wagtail.contrib.modeladmin',
@@ -99,7 +101,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'django_countries',
     'countries_plus',
-    'bootstrap4'
+    'bootstrap4',
 ]
 
 try:
@@ -346,3 +348,4 @@ NOCAPTCHA = os.getenv('NOCAPTCHA') != 'false'
 
 MARKDOWNX_MARKDOWN_EXTENSIONS = ['markdown.extensions.footnotes']
 MARKDOWNX_UPLOAD_CONTENT_TYPES = ['image/png', 'image/svg+xml']
+SITE_ID = 1

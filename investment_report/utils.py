@@ -3,6 +3,7 @@ import os
 import base64
 import datetime
 import copy
+import functools
 
 from django_countries import data
 from countries_plus.models import Country
@@ -12,9 +13,12 @@ from bs4 import BeautifulSoup
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils import translation
+from django.core.exceptions import ObjectDoesNotExist
 
 from investment_report.models import *
 from investment_report.markdown import CustomFootnoteExtension, custom_markdown
+
+from moderation.models import MODERATION_STATUS_PENDING
 
 SECTION_KEYS = [
     'front_page', 'sector_overview', 'killer_facts', 'macro_context',
@@ -25,72 +29,97 @@ SECTION_KEYS = [
     'services_offered_by_dit', 'contact',
 ]
 
-def filter_translations(klass, **kwargs):
+def filter_translations_and_moderation(klass, **kwargs):
     """
     I'd normally be using a manager for this, but the
     querysets are fucked with translations
+
+    Todo test this.
     """
     query_params = {
         f: '' for f in klass.TRANSLATION_FIELDS
     }
 
-    qs = klass.objects.exclude(**query_params)
+    moderated = kwargs.pop('moderated', True)
 
-    return qs.filter(**kwargs).first()
+    if moderated:
+        return klass.objects.exclude(**query_params).filter(**kwargs).first()
+    else:
+        obj = klass.unmoderated_objects.exclude(
+            **query_params
+        ).filter(**kwargs).first()
+
+        # Unmoderated objects means something's in the queue
+        # it means something is live.
+
+        if obj:
+            try:
+                return obj.moderated_object.changed_object
+            except ObjectDoesNotExist:
+                # Happens if object isn't registered with moderation
+                return obj
+            else:
+                # This will happen if the object isn't registered with the moderation
+                # system
+                return obj
+        else:
+            return klass.objects.exclude(**query_params).filter(**kwargs).first()
 
 
-def get_investment_report_data(market, sector, company_name=None):
+def get_investment_report_data(market, sector, company_name=None, moderated=True):
     context = {}
 
-    context['front_page'] = filter_translations(
+    filter_ = functools.partial(filter_translations_and_moderation, moderated=moderated)
+
+    context['front_page'] = filter_(
         FrontPage, sector=sector
     )
 
-    context['sector_overview'] = filter_translations(
+    context['sector_overview'] = filter_(
         SectorOverview, sector=sector
     )
 
-    context['killer_facts'] = filter_translations(
+    context['killer_facts'] = filter_(
         KillerFacts, sector=sector
     )
 
-    context['macro_context'] = filter_translations(
+    context['macro_context'] = filter_(
         MacroContextBetweenCountries, market=market
     )
 
-    context['uk_market_overview'] = filter_translations(UKMarketOverview)
-    context['uk_business_info'] = filter_translations(UKBusinessInfo)
-    context['uk_geo_overview'] = filter_translations(UKGeographicOverview)
+    context['uk_market_overview'] = filter_(UKMarketOverview)
+    context['uk_business_info'] = filter_(UKBusinessInfo)
+    context['uk_geo_overview'] = filter_(UKGeographicOverview)
 
-    context['talent_and_education_generic'] = filter_translations(TalentAndEducationGeneric)
-    context['talent_and_education_by_sector'] = filter_translations(
+    context['talent_and_education_generic'] = filter_(TalentAndEducationGeneric)
+    context['talent_and_education_by_sector'] = filter_(
         TalentAndEducationBySector, sector=sector
     )
 
-    context['network_and_support'] = filter_translations(NetworkAndSupport)
+    context['network_and_support'] = filter_(NetworkAndSupport)
 
-    context['sector_initiatives'] = filter_translations(
+    context['sector_initiatives'] = filter_(
         SectorInitiatives, sector=sector
     )
 
-    context['r_and_d_and_innovation'] = filter_translations(
+    context['r_and_d_and_innovation'] = filter_(
         RDandInnovation, sector=sector
     )
 
-    context['r_and_d_and_innovation_case_study'] = filter_translations(
+    context['r_and_d_and_innovation_case_study'] = filter_(
         RDandInnovationCaseStudy, sector=sector
     )
 
-    context['video_case_study'] = filter_translations(
+    context['video_case_study'] = filter_(
         VideoCaseStudy, sector=sector
     )
 
-    context['services_offered_by_dit'] = filter_translations(ServicesOfferedByDIT)
-    context['contact'] = filter_translations(Contact)
+    context['services_offered_by_dit'] = filter_(ServicesOfferedByDIT)
+    context['contact'] = filter_(Contact)
 
     context['sector'] = sector.name.title()
 
-    context['who_is_here'] = filter_translations(
+    context['who_is_here'] = filter_(
         WhoIsHere
     )
 
@@ -108,8 +137,8 @@ def get_investment_report_data(market, sector, company_name=None):
     return context
 
 
-def investment_report_generator(market, sector, company_name=None, local=True):
-    context = get_investment_report_data(market, sector, company_name)
+def investment_report_generator(market, sector, company_name=None, local=True, moderated=True):
+    context = get_investment_report_data(market, sector, company_name, moderated)
     context['local'] = local
 
     result_html = render_to_string('investment_report.html', context=context)

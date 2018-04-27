@@ -14,6 +14,8 @@ from django.urls import reverse
 from django.http import HttpResponse
 from django.utils import translation
 from django.conf import settings
+
+
 from wsgiref.util import FileWrapper
 
 from investment_report.utils import (
@@ -40,7 +42,7 @@ def investment_report_html(request, lang, market, sector):
     )
 
 
-def investment_report_pdf(request, lang, market, sector):
+def investment_report_pdf(request, lang, market, sector, moderated=True):
     response = HttpResponse(content_type='application/pdf')
 
     market = get_object_or_404(Market, name=market)
@@ -49,7 +51,10 @@ def investment_report_pdf(request, lang, market, sector):
 
     company = request.GET.get('company', 'You')
 
-    html = investment_report_generator(market, sector, company, local=True)
+    html = investment_report_generator(
+        market, sector, company, local=True, moderated=moderated
+    )
+
     doc = weasyprint.HTML(string=html)
     io_file = BytesIO()
     doc.write_pdf(io_file)
@@ -137,7 +142,8 @@ def admin_table_detail(request, lang, market, sector):
 
     market = get_object_or_404(Market, name=market)
     sector = get_object_or_404(Sector, name=sector)
-    ctx = get_investment_report_data(market, sector)
+    pages_moderated = get_investment_report_data(market, sector, moderated=True)
+    pages_unmorderated = get_investment_report_data(market, sector, moderated=False)
 
     translation.activate(settings.LANGUAGE_CODE)
 
@@ -145,6 +151,7 @@ def admin_table_detail(request, lang, market, sector):
         'lang': lang,
         'market': market.name,
         'sector': sector.name,
-        'pages': ctx,
-        'valid': valid_context(ctx)
+        'pages_moderated': pages_moderated,
+        'pages_unmorderated': pages_unmorderated,
+        'valid': valid_context(pages_moderated)
     }))

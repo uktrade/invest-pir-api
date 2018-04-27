@@ -2,16 +2,21 @@
 from django.shortcuts import redirect
 
 from investment_report.models import (
-    PDFSection, Market, Sector, MarketLogo, SectorLogo
+    PDFSection, Market, Sector, MarketLogo, SectorLogo, SectorOverview
 )
 
 from django.apps import apps
 from django.contrib import admin
+from django.db import models
+from django.contrib import admin
+
+from moderation.admin import ModerationAdmin, ModeratedObjectAdmin
+from moderation.models import ModeratedObject
+from moderation.helpers import automoderate
 
 from markdownx.admin import MarkdownxModelAdmin
 from sorl.thumbnail.admin import AdminImageMixin
 from modeltranslation.admin import TranslationAdmin
-from moderation.admin import ModerationAdmin
 
 
 class InvestmentReportAdminSite(admin.AdminSite):
@@ -55,17 +60,41 @@ class InvestmentReportAdminSite(admin.AdminSite):
 admin_site = InvestmentReportAdminSite(name='reportadmin')
 
 
-class PDFAdmin(MarkdownxModelAdmin, TranslationAdmin, ModerationAdmin):
+class PDFAdmin(MarkdownxModelAdmin, TranslationAdmin, ModerationAdmin, admin.ModelAdmin):
 
-    def has_add_permission(self, request):
-        """
-        Return a boolean to indicate whether `user` is permitted to create new
-        instances of `self.model`
-        """
-        if self.model.SINGLETON:
-            return self.model.objects.count() < 1
-        else:
-            return True
+    def save_model(self, request, obj, form, change):
+        # This is because django-model translations monkey patches
+        # the base manager object causing the base manager to inherit
+        # from a user defined manager.
+
+        # This breaks object saving because when determining to do
+        # an INSERT or an UPDATE, it does a test to see if the object
+        # is in the _base_manager queryset. In our case it won't be if:
+        # 
+        # The object hasn't been approved yet as the _base_manager query
+        # will be searching for an object that's in a published state
+        # 
+        # Sorry to all that have read this. 1 day deadlines and coubled
+        # together django solutions are sometimes a bit awful.
+        #
+        # [Vomits]
+        #
+        #               %%%%%%
+        #              %%%% = =
+        #              %%C    >
+        #               _)' _( .' ,
+        #            __/ |_/\   " *. o
+        #           /` \_\ \/     %`= '_  .
+        #          /  )   \/|      .^',*. ,
+        #         /' /-   o/       - " % '_
+        #        /\_/     <       = , ^ ~ .
+        #        )_o|----'|          .`  '
+        #    ___// (_  - (\
+        #   ///-(    \'   \\ b'ger
+        obj.__class__._base_manager.__class__ = models.Manager
+
+        obj.save()
+        automoderate(obj, request.user)
 
 
 for klass in PDFSection.__subclasses__():
@@ -106,3 +135,6 @@ admin_site.register(Market, MarketAdmin)
 admin_site.register(Sector, SectorAdmin)
 admin_site.register(MarketLogo, MarketLogoAdmin)
 admin_site.register(SectorLogo, SectorLogoAdmin)
+
+admin.site.unregister(ModeratedObject)
+admin_site.register(ModeratedObject, ModeratedObjectAdmin)

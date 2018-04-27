@@ -2,12 +2,14 @@ from bs4 import BeautifulSoup
 from collections import OrderedDict
 
 from sorl.thumbnail import ImageField
+from django.utils import timezone
 
 from django.db import models
 from django.utils.html import format_html
 
 from countries_plus.models import Country
 from markdownx.models import MarkdownxField
+from django.contrib.auth.models import User
 
 
 class Sector(models.Model):
