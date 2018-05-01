@@ -1,6 +1,7 @@
 import os
 import datetime
 import weasyprint
+import json
 
 from itertools import product
 from hashlib import md5
@@ -103,6 +104,7 @@ def investment_report_form(request):
             })
 
     return render(request, 'pir_form.html', context={
+        'reports': json.dumps(available_reports()),
         'form': PIRForm()
     })
 

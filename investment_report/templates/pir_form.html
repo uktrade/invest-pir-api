@@ -1,32 +1,45 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load bootstrap4 %}
+{% load static %}
+
 
 {% block content %}
-
+<link rel="stylesheet" type="text/css" href="{% static "pir_form.css" %}" />
+<script>
+window.reports = {% autoescape off %}{{ reports }}{% endautoescape %};
+</script>
 
   <section>
-    <div class="container content content-invest">
-
-      <div class="row  justify-content-center ">
-        <div class="mb-5 text-center">
-          <h1>{% trans "DIT Personalised Investment Report" %}</h1>
-          <p class="mt-3 h5 mx-5">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Fusce et enim id justo sollicitudin elementum. Nam dignissim
-              ultricies faucibus. Vivamus in orci dolor. Cras in efficitur
-              justo. Nunc vel metus quis ligula scelerisque tincidunt. 
-          </p>
+      <div id="formexplain" class="row justify-content-center ">
+        <div class="col-md-12">
+            <div class="container">
+                <div class="panel-section">
+                    <h1>Personalised Investment Report:</h1>
+                    <ul>
+                        <li>practical support and information about taking your investment forward</li>
+                        <li>insights into the UK market</li>
+                        <li>help building connections</li>
+                    </ul>
+                    <p>The team may put you in touch with a UK government office in your region to support you with advice relevant to your country.</p>
+                </div>
+            </div>
         </div>
       </div>
 
-      <div class="row  justify-content-center">
+
+    <div class="container content content-invest">
+
+      <div class="row  dit-form-section">
         <div class="col-md-6">
 
-          <form action="{% url 'pir' %}" method="post" class="form">
+          <form action="{% url 'pir' %}" method="post" class="form  dit-form-section__body">
             {% csrf_token %}
             {% bootstrap_form form %}
             {% buttons %}
+
+            <p style="padding-left: 0;">By sending us your details you confirm that the information you've shared with us is true and you accept our <a href="">terms and conditions.</a></p>
+
             <button type="submit" class="btn btn-primary">{% trans "Create Report" %}</button>
             {% endbuttons %}
           </form>

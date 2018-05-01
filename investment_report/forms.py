@@ -8,9 +8,19 @@ class PIRForm(forms.Form):
     sector = forms.ModelChoiceField(
         queryset=Sector.objects.all(), required=True,
     )
-    name = forms.CharField(required=True)
-    company = forms.CharField(required=True)
-    email = forms.EmailField(required=True)
+    name = forms.CharField(
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': ''})
+    )
+    company = forms.CharField(
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': ''})
+    )
+
+    email = forms.EmailField(
+        required=True,
+        widget=forms.EmailInput(attrs={'placeholder': ''})
+    )
 
     def clean_market(self):
         data = self.cleaned_data['market']
