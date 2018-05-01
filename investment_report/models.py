@@ -64,7 +64,13 @@ class PDFSection(models.Model):
         abstract = True
 
     def __str__(self):
-        return self.content[:10]
+        if hasattr(self, 'sector'):
+            return 'Sector: {}'.format(self.sector.name.title())
+
+        if hasattr(self, 'market'):
+            return 'Market: {}'.format(self.market.name.title())
+
+        return 'Generic'
 
 
 # Begin spam of table models.
@@ -130,9 +136,6 @@ class UKMarketOverview(PDFSection):
     SINGLETON = True
     TRANSLATION_FIELDS = ['body_image']
 
-    def __str__(self):
-        return '4 - UK Market Overview'
-
     # No body
     content = None
     body_image = models.FileField(
@@ -153,9 +156,6 @@ class UKBusinessInfo(PDFSection):
     SECTION = 5
     SINGLETON = True
     TRANSLATION_FIELDS = ['body_image']
-
-    def __str__(self):
-        return '5 - Business Info'
 
     # No body
     content = None
@@ -233,9 +233,6 @@ class WhoIsHere(PDFSection):
     SECTION = 12
     TRANSLATION_FIELDS = []
     background_image = models.ImageField()
-
-    def __str__(self):
-        return '12 - Who\'s here background'
 
     # No body
     content = None
