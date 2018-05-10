@@ -10,12 +10,14 @@
   <body class="A4">
     {% autoescape off %}
 
+    <section class="front-page"
+             style="
+               background-image: url({% custom_media front_page.background_image %});
+               background-size: cover;
+            ">
 
-    <div class="front-page__headermask"></div>
-    <section class="front-page">
-      <div class="front-page__body">
-        <img style="width:100%;" src="data:image/svg+xml;base64,{{ front_page_svg }}"/>
-      </div>
+      <div class="front-page__title">{% blocktrans %}The UK: A Great Home for:<br>{{ company }}{% endblocktrans %}</div>
+      <img class="front-page__logo" src="{% custom_static "images/frontpagebottomrightlogo.png" %}"/>
     </section>
 
     <div class="page-break"></div>

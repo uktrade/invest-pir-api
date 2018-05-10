@@ -125,8 +125,6 @@ def get_investment_report_data(market, sector, company_name=None, moderated=True
 
     if company_name:
         context['company'] = company_name
-        svg_data = context['front_page'].background_image.read()
-        context['front_page_svg'] = base64.b64encode(svg_data.replace(b'$COMPANY', company_name.encode('utf8')))
 
     context['settings'] = settings
 

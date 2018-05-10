@@ -107,23 +107,32 @@ sup {
 }
 
 .front-page {
-  width: 100%;
-  height: 297mm - ($pageMarginTop * 2);
+  width: 210mm;
+  height: 297mm;
   background: lightgrey;
-  position: absolute;
-  left: 0;
-  top: 0;
+  left: -$pageMarginTop;
+  top: -$pageMarginTop;
   z-index: 2;
+  position: relative;
 }
 
-.front-page__headermask {
-  width: 100%;
-  height: $pageMarginTop;
-  background: white;
+.front-page__logo {
+  top: 240mm;
+  left: 137mm;
   position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 0 - $pageMarginTop
+  display: block;
+  width: 55.183mm;
+}
+
+.front-page__title {
+  left: 17.339mm;
+  top: 11.097mm;
+  position: absolute;
+  display: block;
+  font-size: 30pt;
+  line-height: 30pt;
+  font-weight: bold;
+  color: white;
 }
 
 .toc {
