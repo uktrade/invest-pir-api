@@ -4,9 +4,12 @@ import base64
 import datetime
 import copy
 import functools
+import weasyprint
 
 from django_countries import data
 from countries_plus.models import Country
+from io import BytesIO
+from PyPDF2 import PdfFileMerger
 
 from bs4 import BeautifulSoup
 
@@ -126,6 +129,7 @@ def get_investment_report_data(market, sector, company_name=None, moderated=True
     if company_name:
         context['company'] = company_name
 
+    context['last_page'] = LastPage.objects.first()
     context['settings'] = settings
 
 
@@ -135,11 +139,13 @@ def get_investment_report_data(market, sector, company_name=None, moderated=True
     return context
 
 
-def investment_report_generator(market, sector, company_name=None, local=True, moderated=True):
+def investment_report_html_generator(market, sector, company_name=None, local=True, moderated=True):
     context = get_investment_report_data(market, sector, company_name, moderated)
     context['local'] = local
 
     result_html = render_to_string('investment_report.html', context=context)
+    last_page_html = render_to_string('investment_report_last_page.html', context=context)
+
     result_html = (
         result_html
             .replace('$SECTOR', sector.name.title())
@@ -149,7 +155,30 @@ def investment_report_generator(market, sector, company_name=None, local=True, m
     if company_name:
         result_html = result_html.replace('$COMPANY', company_name)
 
-    return result_html
+    return (result_html, last_page_html)
+
+
+def investment_report_pdf_generator(*args, **kwargs):
+    pages = investment_report_html_generator(*args, **kwargs)
+
+    files = []
+    for p in pages:
+        _file = BytesIO()
+        weasyprint.HTML(string=p).write_pdf(_file)
+        files.append(_file)
+
+    merger = PdfFileMerger()
+
+    for f in files:
+        merger.append(f)
+
+    pdf = BytesIO()
+    merger.write(pdf)
+
+    for f in files:
+        f.close()
+
+    return pdf
 
 
 def get_countries():

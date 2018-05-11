@@ -49,6 +49,13 @@ body {
   }
 }
 
+@page :last {
+
+  @top-left {
+    content: " ";
+  }
+}
+
 @media print {
     header.onlyprint {
         position: fixed; /* Display only on print page (each) */
@@ -103,7 +110,12 @@ sup {
   a {
     text-decoration: none;
     color: $black;
-  }
+  } 
+}
+
+blockquote {
+  font-style: italic;
+  font-family: "Georgia";
 }
 
 .front-page {
@@ -133,6 +145,16 @@ sup {
   line-height: 30pt;
   font-weight: bold;
   color: white;
+}
+
+.last-page {
+  width: 210mm;
+  height: 297mm;
+  background: lightgrey;
+  left: -$pageMargin;
+  top: -$pageMarginTop;
+  z-index: 20000;
+  position: relative;
 }
 
 .toc {
@@ -167,6 +189,7 @@ sup {
 .section-body ul {
   margin-left: 0;
   padding-left: 0.45cm;
+  list-style-type: disc;
 }
 
 .section-body ol {
@@ -290,6 +313,7 @@ sup {
   padding-left: 8mm;
   padding-right: 8mm;
   overflow: hidden;
+  list-style-type: disc !important;
 
   & > li {
     margin-top: 8mm;
@@ -411,7 +435,7 @@ sup {
   background-position: center;
 }
 
-.r_and_d_and_innovation_case_study img {
+.r_and_d_and_innovation_case_study h1 + p > img {
   margin-top: -13mm
 }
 

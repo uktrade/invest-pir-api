@@ -4,7 +4,10 @@ gulp.task('css', function () {
   var postcss    = require('gulp-postcss');
   var sourcemaps = require('gulp-sourcemaps');
 
-  return gulp.src('static/src/investment-report.css')
+  return gulp.src([
+    'static/src/investment-report.css',
+    'static/src/investment-report-last-page.css'
+  ])
     .pipe( sourcemaps.init() )
     .pipe( postcss() )
     .pipe( sourcemaps.write('.') )

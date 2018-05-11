@@ -1,14 +1,16 @@
 import os
 import datetime
-import weasyprint
 import json
+import shutil
 
 from itertools import product
 from hashlib import md5
 from collections import namedtuple
 from io import BytesIO
 
+from PyPDF2 import PdfFileMerger
 
+from django.template.loader import render_to_string
 from django.template import RequestContext, loader
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
@@ -20,11 +22,11 @@ from django.conf import settings
 from wsgiref.util import FileWrapper
 
 from investment_report.utils import (
-    investment_report_generator, available_reports, get_investment_report_data,
-    valid_context,
+    investment_report_html_generator, available_reports, get_investment_report_data,
+    valid_context, investment_report_pdf_generator
 )
 
-from investment_report.models import Market, Sector
+from investment_report.models import Market, Sector, LastPage
 from investment_report.forms import PIRForm
 
 
@@ -39,7 +41,7 @@ def investment_report_html(request, lang, market, sector):
     company = request.GET.get('company', 'You')
 
     return HttpResponse(
-        str(investment_report_generator(market, sector, company, local=False))
+        str(investment_report_html_generator(market, sector, company, local=False)[0])
     )
 
 
@@ -52,16 +54,12 @@ def investment_report_pdf(request, lang, market, sector, moderated=True):
 
     company = request.GET.get('company', 'You')
 
-    html = investment_report_generator(
+    pdf_file = investment_report_pdf_generator(
         market, sector, company, local=True, moderated=moderated
     )
 
-    doc = weasyprint.HTML(string=html)
-    io_file = BytesIO()
-    doc.write_pdf(io_file)
-    
-    pdf = io_file.getvalue()
-    io_file.close()
+    pdf = pdf_file.getvalue()
+    pdf_file.close()
     response.write(pdf)
 
     translation.activate(settings.LANGUAGE_CODE)
@@ -88,13 +86,11 @@ def investment_report_form(request):
                 'hash': pdf_hash
             }
 
-            doc = weasyprint.HTML(
-                string=investment_report_generator(market, sector, company)
-            )
-
-            doc.write_pdf(
-                os.path.join(settings.MEDIA_ROOT, pdf_hash)
-            )
+            pdf_file = investment_report_pdf_generator(market, sector, company)
+            pdf_file.seek(0)
+            with open(os.path.join(settings.MEDIA_ROOT, pdf_hash), 'wb') as f:
+                shutil.copyfileobj(pdf_file, f, length=131072)
+            pdf_file.close()
 
             return redirect('pir_download')
 

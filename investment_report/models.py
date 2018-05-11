@@ -285,15 +285,15 @@ class Contact(PDFSection):
     background_image = models.ImageField()
 
     class Meta:
-        verbose_name = verbose_name_plural = '17 - Contact'
+        verbose_name = verbose_name_plural = '15 - Contact'
 
 
-class Testimonials(PDFSection):
+class LastPage(PDFSection):
     SECTION = 16
     SINGLETON = True
 
     class Meta:
-        verbose_name = verbose_name_plural = '16 - Testimonials'
+        verbose_name = verbose_name_plural = '16 - Last Page'
 
 
 sections = sorted(PDFSection.__subclasses__(), key=lambda x: x.SECTION)

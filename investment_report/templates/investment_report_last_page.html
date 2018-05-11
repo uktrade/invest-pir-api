@@ -1,0 +1,34 @@
+{% load i18n static custom_static %}
+<!DOCTYPE html>
+<html nomarginboxes disallowselectionprint>
+  <head>
+    <meta charset="utf8">
+    <title>{% trans "Investment Report" %}</title>
+    <link rel="stylesheet" href="{% custom_static "build/investment-report-last-page.css" %}" />
+  </head>
+
+  <body class="A4">
+    {% autoescape off %}
+
+    <section class="front-page"
+             style="
+            ">
+
+  <img class="front-page__logo" src="{% custom_static "images/frontpagebottomrightlogo.png" %}"/>
+  <div class="wrapper">
+    <div class="content">
+    </div>
+    <div class="footer">
+    <div class="footer__header">
+      <img width="38.267mm" src="{% custom_static "images/dit.png" %}" />
+      <p>invest.great.gov.uk</p>
+    </div>
+    <div class="footer__body">
+      {% markdown last_page.content %}
+    </div>
+  </div>
+    </section>
+    {% endautoescape %}
+  </body>
+</html>
+
