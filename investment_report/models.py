@@ -222,11 +222,22 @@ class RDandInnovation(PDFSection):
 
 
 class RDandInnovationCaseStudy(PDFSection):
-    SECTION = 11
+    SECTION = 11.1
     sector = models.ForeignKey(Sector)
 
     class Meta:
         verbose_name = verbose_name_plural = '11 - Case Study'
+
+
+class VideoCaseStudy(PDFSection):
+    """
+    Todo:
+    """
+    SECTION = 11.2
+    sector = models.ForeignKey(Sector)
+
+    class Meta:
+        verbose_name = verbose_name_plural = '11.1 Video case study'
 
 
 class WhoIsHere(PDFSection):
@@ -241,23 +252,15 @@ class WhoIsHere(PDFSection):
         verbose_name = verbose_name_plural = '12 - Who\'s here (background image)'
 
 
-class VideoCaseStudy(PDFSection):
-    """
-    Todo:
-    """
-    SECTION = 13
-    sector = models.ForeignKey(Sector)
-
-
 class ServicesOfferedByDIT(PDFSection):
-    SECTION = 14
+    SECTION = 13
     SINGLETON = True
     footer_image = models.ImageField(
         help_text='Image at bottom of this page'
     )
 
     class Meta:
-        verbose_name = verbose_name_plural = '14 - Services Offered'
+        verbose_name = verbose_name_plural = '13 - Services Offered'
 
 
 class CallToAction(PDFSection):
@@ -265,12 +268,11 @@ class CallToAction(PDFSection):
     SINGLETON = True
 
     class Meta:
-        verbose_name = verbose_name_plural = '15 - Call to action'
-
+        verbose_name = verbose_name_plural = '14 - Call to action'
 
 
 class Contact(PDFSection):
-    SECTION = 17
+    SECTION = 15
     SINGLETON = True
 
     TRANSLATION_FIELDS = (
