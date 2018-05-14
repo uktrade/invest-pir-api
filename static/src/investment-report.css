@@ -8,11 +8,15 @@ $pageMarginTop: 11.642mm;
 
 
 body {
-  font-family: "Interstate";
+  font-family: "Invesco Interstate Light";
   color: $black;
   font-size: 14pt;
   line-height: 130%;
   margin: 0;
+}
+
+ul {
+  list-style-type: none !important;
 }
 
 @page {
@@ -25,7 +29,7 @@ body {
 
   @top-left {
     content: counter(page); 
-    font-family: "Interstate";
+    font-family: "Invesco Interstate Light";
     color: $black;
     font-size: 9pt;
     padding-top: 14pt;
@@ -61,7 +65,7 @@ body {
         position: fixed; /* Display only on print page (each) */
         /* because this is taken from the first page margins, I need to adjust */
         top: -11.642mm; /* Because it's header */
-        font-family: "Interstate";
+        font-family: "Invesco Interstate Light";
         color: $black;
         font-size: 9pt;
         padding-top: 14pt;
@@ -91,6 +95,7 @@ body {
 
 h1 {
   margin-top: 17.639mm;
+  font-family: "Invesco Interstate Bold";
   font-weight: bold;
   font-size: 30pt;
   padding-bottom: 5.564mm;
@@ -189,8 +194,31 @@ blockquote {
 .section-body ul {
   margin-left: 0;
   padding-left: 0.45cm;
-  list-style-type: disc;
 }
+
+
+ul li {
+  position: relative;
+}
+
+
+ul li:before {
+  content: '\00a0';
+  width: 4px;
+  height: 4px;
+  background: #1e1348;
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  top: 0.55em;
+  left: -0.7em;
+}
+
+
+.contact li:before {
+  display: none;
+}
+
 
 .section-body ol {
   padding-left: 1cm;
@@ -264,8 +292,7 @@ blockquote {
 }
 
 .singlepage-withfooter__footer__copy {
-  font-style: italic;
-  font-family: "Georgia";
+  font-family: "Georgia Italic";
   font-size: 25.74pt;
   margin-top: 11.35mm;
   margin-left: 9.244mm;
@@ -313,7 +340,7 @@ blockquote {
   padding-left: 8mm;
   padding-right: 8mm;
   overflow: hidden;
-  list-style-type: disc !important;
+  list-style-type: none;
 
   & > li {
     margin-top: 8mm;
