@@ -26,7 +26,7 @@ from investment_report.utils import (
     valid_context, investment_report_pdf_generator
 )
 
-from investment_report.models import Market, Sector, LastPage
+from investment_report.models import Market, Sector, LastPage, PIRRequest
 from investment_report.forms import PIRForm
 
 
@@ -75,6 +75,9 @@ def investment_report_form(request):
             sector = form.cleaned_data['sector']
             company = form.cleaned_data['company']
             email = form.cleaned_data['email']
+
+            # Log request
+            PIRRequest.objects.create(**form.cleaned_data)
 
             pdf_hash = '{}{}{}{}.pdf'.format(
                 market.name, sector, company,

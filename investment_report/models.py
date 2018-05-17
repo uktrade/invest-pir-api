@@ -12,6 +12,14 @@ from markdownx.models import MarkdownxField
 from django.contrib.auth.models import User
 
 
+class PIRRequest(models.Model):
+    market = models.ForeignKey('Market')
+    sector = models.ForeignKey('Sector')
+    name = models.CharField(max_length=255)
+    company = models.CharField(max_length=255)
+    email = models.EmailField()
+
+
 class Sector(models.Model):
     TRANSLATION_FIELDS = ['display_name']
     name = models.CharField(max_length=255)
