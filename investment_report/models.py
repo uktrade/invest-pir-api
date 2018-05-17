@@ -80,7 +80,7 @@ class FrontPage(PDFSection):
     TRANSLATION_FIELDS = []
 
     def __str__(self):
-        return 'Front page'
+        return 'Front page - {}'.format(self.sector)
 
     # No body
     content = None
@@ -181,16 +181,8 @@ class UKGeographicOverview(PDFSection):
         verbose_name = verbose_name_plural = '6 - Geographic Overview'
 
 
-class TalentAndEducationGeneric(PDFSection):
-    SECTION = 7.1
-    SINGLETON = True
-
-    class Meta:
-        verbose_name = verbose_name_plural = '7.1 - Talent & Education (Generic)'
-
-
 class TalentAndEducationBySector(PDFSection):
-    SECTION = 7.2
+    SECTION = 7
     sector = models.ForeignKey(Sector)
 
     class Meta:
@@ -205,20 +197,21 @@ class SectorInitiatives(PDFSection):
         verbose_name = verbose_name_plural = '8 - Sector Initiatives'
 
 
-class NetworkAndSupport(PDFSection):
-    SECTION = 9
-    background_image = models.ImageField()
-
-    class Meta:
-        verbose_name = verbose_name_plural = '9 - Network And Support'
-
-
 class RDandInnovation(PDFSection):
-    SECTION = 10
+    SECTION = 9
     sector = models.ForeignKey(Sector)
 
     class Meta:
-        verbose_name = verbose_name_plural = '10 - R&D and Innovation'
+        verbose_name = verbose_name_plural = '9 - R&D and Innovation'
+
+
+class NetworkAndSupport(PDFSection):
+    SECTION = 10
+    background_image = models.ImageField()
+    sector = models.ForeignKey(Sector)
+
+    class Meta:
+        verbose_name = verbose_name_plural = '10 - Network And Support'
 
 
 class RDandInnovationCaseStudy(PDFSection):
