@@ -26,7 +26,7 @@ from moderation.models import MODERATION_STATUS_PENDING
 SECTION_KEYS = [
     'front_page', 'sector_overview', 'killer_facts', 'macro_context',
     'uk_market_overview', 'uk_business_info', 'uk_geo_overview',
-    'talent_and_education_generic', 'talent_and_education_by_sector',
+    'talent_and_education_by_sector',
     'network_and_support', 'sector_initiatives', 'r_and_d_and_innovation', 
     'who_is_here', 'r_and_d_and_innovation_case_study', 'video_case_study', 
     'services_offered_by_dit', 'contact',
@@ -94,12 +94,14 @@ def get_investment_report_data(market, sector, company_name=None, moderated=True
     context['uk_business_info'] = filter_(UKBusinessInfo)
     context['uk_geo_overview'] = filter_(UKGeographicOverview)
 
-    context['talent_and_education_generic'] = filter_(TalentAndEducationGeneric)
     context['talent_and_education_by_sector'] = filter_(
         TalentAndEducationBySector, sector=sector
     )
 
-    context['network_and_support'] = filter_(NetworkAndSupport)
+    context['network_and_support'] = filter_(
+        NetworkAndSupport,
+        sector=sector
+    )
 
     context['sector_initiatives'] = filter_(
         SectorInitiatives, sector=sector

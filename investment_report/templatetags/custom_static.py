@@ -4,6 +4,7 @@ from django import template
 from django.templatetags.static import static
 from django.conf import settings
 from django.urls import reverse
+from investment_report.markdown import custom_markdown
 
 
 register = template.Library()
@@ -19,15 +20,15 @@ def custom_static(context, format_string):
 
 @register.simple_tag(takes_context=True)
 def custom_media(context, file_field):
-    if 'local' in context and context['local'] == True:
+    if 'local' in context and context['local'] == True and hasattr(file_field, 'path'):
         return 'file://' + file_field.path
 
-    return file_field.url
+    if hasattr(file_field, 'url'):
+        return file_field.url
 
 
 @register.simple_tag(takes_context=True)
 def markdown(context, markdown_field):
-    from investment_report.markdown import custom_markdown
     return custom_markdown(markdown_field, local=context['local'])
 
 

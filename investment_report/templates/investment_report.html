@@ -28,6 +28,7 @@
         <img src="{% custom_static "images/unionjack.png" %}"/>
       </div>
       <div id="headerslogan">{% trans "Expand your business to Britain" %}</div>
+      <div id="borderbottomheader"></div>
     </header>
 
     <section class="toc">
@@ -42,8 +43,8 @@
           <li> {% trans "Opportunities from Coast to Coast" %}</li>
           <li> {% trans "The Smart Workforce $COMPANY Needs" %}</li>
           <li> {% trans "$SECTOR in the UK: Going from Strength to Strength" %}</li>
-          <li> {% trans "The UK Government is doing great things for $SECTOR" %}</li>
           <li> {% trans "A Nation of $SECTOR Innovators" %}</li>
+          <li> {% trans "The UK Government is doing great things for $SECTOR" %}</li>
           <li> {% trans "Case Study" %}</li>
           <li> {% trans "Video Case Study" %}</li>
           <li> {% trans "Who's Here?" %}</li>
@@ -77,14 +78,13 @@
 
     <div class="page-break"></div>
 
-    <section class="text-large side-footnote relative">
+    <section class="text-large side-footnote page-break-avoid relative">
       <div class="section-body content-margin">
         {% markdown killer_facts.content %}
       </div>
     </section>
 
-
-    <section class="text-large side-footnote relative">
+    <section class="text-large side-footnote page-break-avoid relative">
       <div class="section-body content-margin">
         {% markdown macro_context.content %}
       </div>
@@ -117,9 +117,7 @@
       {% markdown uk_geo_overview.content %}
     </section>
 
-    <section class="section-body secondary-page content-margin side-footnote talent_and_education_by_sector dark-list inside-list relative">
-      {% markdown talent_and_education_generic.content %}
-      <div class="page-break"></div>
+    <section class="section-body secondary-page content-margin side-footnote talent_and_education_by_sector dark-list inside-list relative page-break-avoid">
       {% markdown talent_and_education_by_sector.content %}
     </section>
 
@@ -131,22 +129,23 @@
 
     <div class="page-break"></div>
 
+    <section class="secondary-page content-margin side-footnote relative">
+      {% markdown r_and_d_and_innovation.content %}
+      <span class="r_and_d_and_innovation_case_study">{% markdown r_and_d_and_innovation_case_study.content %}</span>
+      <span class="r_and_d_and_innovation_case_study">{% markdown video_case_study.content %}</span>
+    </section>
+
+    <div class="page-break"></div>
+
+
     <section class="full-page side-footnote">
-      <h1>{% trans "9. We’re doing great things for $Sector" %}</h1>
+      <h1>{% trans "10. We’re doing great things for $Sector" %}</h1>
       <div class="full-page__spread centered_body flex"
            style="background-image: url({% custom_media network_and_support.background_image %})">
         <div class="centered_body__body secondary-page">
           {% markdown network_and_support.content %}
         <div>
       </div>
-    </section>
-
-    <div class="page-break"></div>
-
-    <section class="secondary-page content-margin">
-      {% markdown r_and_d_and_innovation.content %}
-      <span class="r_and_d_and_innovation_case_study">{% markdown r_and_d_and_innovation_case_study.content %}</span>
-      <span class="r_and_d_and_innovation_case_study">{% markdown video_case_study.content %}</span>
     </section>
 
     <div class="page-break"></div>

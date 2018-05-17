@@ -17,22 +17,27 @@ body {
 
 ul {
   list-style-type: none !important;
+  page-break-inside: avoid;
 }
+
+p {
+  page-break-inside: avoid;
+}
+
 
 @page {
   size: A4;
-  margin-top: $pageMarginTop;
+  margin-top: $pageMarginTop + 5mm;
   margin-left: $pageMargin;
   margin-right: $pageMargin;
   margin-bottom: $pageMargin;
-  border-top: solid 0.5pt $black;
 
   @top-left {
     content: counter(page); 
     font-family: "Invesco Interstate Light";
     color: $black;
     font-size: 9pt;
-    padding-top: 14pt;
+    padding-top: 0pt;
   }
 }
 
@@ -64,7 +69,7 @@ ul {
     header.onlyprint {
         position: fixed; /* Display only on print page (each) */
         /* because this is taken from the first page margins, I need to adjust */
-        top: -11.642mm; /* Because it's header */
+        top: -11.642mm - 5mm; /* Because it's header */
         font-family: "Invesco Interstate Light";
         color: $black;
         font-size: 9pt;
@@ -83,6 +88,14 @@ ul {
         letter-spacing: -0.7pt;
     }
 
+    #borderbottomheader {
+      width: 210mm - (2 * $pageMargin);
+      height: 0.25pt;
+      position: absolute;
+      background: $black;
+      top: 11.5mm;
+    }
+
     header.onlyprint img {
       width: 9.876mm;
       margin-left: 3.1mm;
@@ -93,8 +106,12 @@ ul {
   page-break-after: always;
 }
 
+.page-break-avoid {
+  page-break-inside: avoid;
+}
+
 h1 {
-  margin-top: 17.639mm;
+  margin-top: $pageMargin - 5mm;
   font-family: "Invesco Interstate Bold";
   font-weight: bold;
   font-size: 30pt;
@@ -110,7 +127,7 @@ sup {
   vertical-align: baseline;
   top: -0.5em;
   font-size: 0.7rem;
-  left: -0.1rem;
+  left: -0rem;
 
   a {
     text-decoration: none;
@@ -243,6 +260,7 @@ ul li:before {
 
   li {
     margin-top: 0.3rem;
+    overflow-wrap: break-word;
   }
 
   font-size: 8pt;
@@ -265,7 +283,7 @@ ul li:before {
 
 .singlepage-withfooter {
   width: 174.674mm;
-  height: 267.343mm;
+  height: 267.343mm - 6mm;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -292,7 +310,8 @@ ul li:before {
 }
 
 .singlepage-withfooter__footer__copy {
-  font-family: "Georgia Italic";
+  font-style: italic;
+  font-family: "Georgia";
   font-size: 25.74pt;
   margin-top: 11.35mm;
   margin-left: 9.244mm;
@@ -308,7 +327,7 @@ ul li:before {
 }
 
 .full-page h1 {
-  margin-top: 22.639mm;
+  margin-top: 22.639mm - 5mm;
   margin-bottom: 0;
 }
 
@@ -329,6 +348,7 @@ ul li:before {
 }
 
 .dark-list > ul {
+  page-break-inside: avoid;
   background: #f1ede8;
   margin-top: 8mm;
   margin-bottom: 8mm;
@@ -367,19 +387,19 @@ ul li:before {
   }
 
   img {
-    margin-top: $pageMarginTop;
-    margin-bottom: -1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
     margin-left: 0 - ( $column + $columnGap);
     width: 174.674mm;
     border-top: solid $red 6pt;
   }
 
   p:first-of-type > img {
-    margin-top: -1em;
-    margin-bottom: -1em;
+    margin-top: -1rem;
     border-top: none;
     border-bottom: none;
   }
+
 
 }
 
