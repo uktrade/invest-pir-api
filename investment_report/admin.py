@@ -2,7 +2,7 @@
 from django.shortcuts import redirect
 
 from investment_report.models import (
-    PDFSection, Market, Sector, MarketLogo, SectorLogo, SectorOverview
+    PDFSection, Market, Sector, MarketLogo, SectorLogo, SectorOverview, PIRRequest
 )
 
 import django
@@ -124,6 +124,10 @@ for klass in PDFSection.__subclasses__():
     )
 
     admin_site.register(klass, Admin)
+
+
+class PIRRequestAdmin(admin.ModelAdmin):
+    pass
 
 
 class MarketAdmin(admin.ModelAdmin):
@@ -253,9 +257,11 @@ class CustomModeratedObjectAdmin(ModeratedObjectAdmin):
             extra_context=extra_context)
 
 
+
 admin_site.register(ModeratedObject, CustomModeratedObjectAdmin)
 admin_site.register(Market, MarketAdmin)
 admin_site.register(Sector, SectorAdmin)
+admin_site.register(PIRRequest, PIRRequestAdmin)
 admin_site.register(MarketLogo, MarketLogoAdmin)
 admin_site.register(SectorLogo, SectorLogoAdmin)
 admin.site.unregister(ModeratedObject)
