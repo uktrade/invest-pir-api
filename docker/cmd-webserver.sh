@@ -1,8 +1,10 @@
 #!/bin/bash -xe
 
 cd /usr/src/app
+./node_modules/.bin/gulp css
 python manage.py migrate --noinput
 python manage.py update_translation_fields
+python manage.py update_countries_plus --noinput
 python manage.py collectstatic --noinput
 python manage.py sync_page_translation_fields --noinput
 gunicorn config.wsgi --bind 0.0.0.0:$PORT --log-file -

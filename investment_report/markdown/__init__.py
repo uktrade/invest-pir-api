@@ -20,7 +20,7 @@ class CustomFootnoteExtension(FootnoteExtension):
         return div
 
 
-class ImagePattern(inlinepatterns.ImagePattern):
+class CustomImagePattern(inlinepatterns.ImagePattern):
     def sanitize_url(self, url):
         url = super().sanitize_url(url)
         if getattr(self.markdown, 'local', False):
@@ -32,8 +32,8 @@ class ImagePattern(inlinepatterns.ImagePattern):
         return url
 
 # Monkey Patch image url
-inlinepatterns.ImagePattern = ImagePattern
 from markdown import Markdown
+inlinepatterns.ImagePattern = CustomImagePattern
 
 def custom_markdown(a_str, local=True):
     md = Markdown(extensions=[CustomFootnoteExtension()])
