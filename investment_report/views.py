@@ -30,7 +30,7 @@ from investment_report.models import Market, Sector, LastPage, PIRRequest
 from investment_report.forms import PIRForm
 
 
-def investment_report_html(request, lang, market, sector):
+def investment_report_html(request, lang, market, sector, moderated=True):
     market = get_object_or_404(Market, name=market)
     sector = get_object_or_404(Sector, name=sector)
 
@@ -41,7 +41,9 @@ def investment_report_html(request, lang, market, sector):
     company = request.GET.get('company', 'You')
 
     return HttpResponse(
-        str(investment_report_html_generator(market, sector, company, local=False)[0])
+        str(investment_report_html_generator(
+            market, sector, company, local=False, moderated=moderated
+        )[0])
     )
 
 

@@ -10,6 +10,9 @@ urlpatterns = [
     url('current/(?P<lang>[\w-]+)/(?P<market>[\w-]+)/(?P<sector>[\w-]+)/pdf',
         views.investment_report_pdf, name='investment_report_pdf'),
 
-    url('(?P<lang>[\w-]+)/(?P<market>[\w-]+)/(?P<sector>[\w-]+)/html',
-        views.investment_report_html, name='investment_report_html'),
+    url('preview/(?P<lang>[\w-]+)/(?P<market>[\w-]+)/(?P<sector>[\w-]+)/html',
+        views.investment_report_html, {'moderated': False}, name='investment_report_html'),
+
+    url('current/(?P<lang>[\w-]+)/(?P<market>[\w-]+)/(?P<sector>[\w-]+)/html',
+        views.investment_report_html, {'moderated': True}, name='investment_report_html'),
 ]
