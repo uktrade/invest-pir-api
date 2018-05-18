@@ -52,6 +52,10 @@ ENABLE_REDIS = REDIS_URL is not None
 # Application definition
 
 INSTALLED_APPS = [
+
+    'whitenoise.runserver_nostatic',
+    'django.contrib.staticfiles',
+    'storages',
     'wagtail_modeltranslation',    # before apps that need translation
     'wagtail_modeltranslation.makemigrations',
     'wagtail_modeltranslation.migrate',
@@ -81,7 +85,6 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'modelcluster',
-    'storages',
     'taggit',
     'wagtailmarkdown',
     'captcha',
@@ -92,8 +95,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'whitenoise.runserver_nostatic',
-    'django.contrib.staticfiles',
     'wagtail.contrib.modeladmin',
     'markdownx',
     'sorl.thumbnail',
@@ -217,16 +218,14 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 if AWS_ACCESS_KEY_ID is None:
     MEDIA_URL = '/media/'
 else:
-    MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    MEDIA_URL = "https://%s/media/" % AWS_S3_CUSTOM_DOMAIN
+    DEFAULT_FILE_STORAGE = 'config.s3.MediaRootS3BotoStorage'
+    STATICFILES_STORAGE = 'config.s3.StaticRootS3BotoStorage'
 
 # Static files served with Whitenoise and AWS Cloudfront
 # http://whitenoise.evans.io/en/stable/django.html#instructions-for-amazon-cloudfront
 # http://whitenoise.evans.io/en/stable/django.html#restricting-cloudfront-to-static-files
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_HOST = os.environ.get('STATIC_HOST', '')
-STATIC_URL = STATIC_HOST + '/static/'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_URL = "https://%s/static/" % AWS_S3_CUSTOM_DOMAIN
 
 # Logging for development
 if DEBUG:

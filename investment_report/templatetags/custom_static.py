@@ -12,19 +12,26 @@ register = template.Library()
 
 @register.simple_tag(takes_context=True)
 def custom_static(context, format_string):
-    if 'local' in context and context['local'] == True:
-        return 'file://' + os.path.join(settings.STATIC_ROOT, format_string)
+    if settings.AWS_ACCESS_KEY_ID is None:
+        if 'local' in context and context['local'] == True:
+            return 'file://' + os.path.join(settings.STATIC_ROOT, format_string)
 
     return static(format_string)
 
 
 @register.simple_tag(takes_context=True)
 def custom_media(context, file_field):
-    if 'local' in context and context['local'] == True and hasattr(file_field, 'path'):
-        return 'file://' + file_field.path
+    if file_field:
+        if settings.AWS_ACCESS_KEY_ID is None:
+            if 'local' in context and context['local'] == True and hasattr(file_field, 'path'):
+                return 'file://' + file_field.path
 
-    if hasattr(file_field, 'url'):
-        return file_field.url
+            if hasattr(file_field, 'url'):
+                return file_field.url
+
+        else:
+            return file_field.url
+
 
 
 @register.simple_tag(takes_context=True)

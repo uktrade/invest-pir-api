@@ -29,7 +29,11 @@ class CustomImagePattern(inlinepatterns.ImagePattern):
 
             return 'file://' + os.path.join(settings.MEDIA_ROOT, url)
 
-        return url
+        if settings.AWS_S3_CUSTOM_DOMAIN:
+            url = 'https://{}{}'.format(settings.AWS_S3_CUSTOM_DOMAIN, url)
+            return url
+        else:
+            return url
 
 # Monkey Patch image url
 from markdown import Markdown

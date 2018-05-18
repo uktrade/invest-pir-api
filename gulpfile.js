@@ -11,7 +11,7 @@ gulp.task('css', function () {
     .pipe( sourcemaps.init() )
     .pipe( postcss() )
     .pipe( sourcemaps.write('.') )
-    .pipe( gulp.dest('staticfiles/build/') );
+    .pipe( gulp.dest('investment_report/static/build/') );
 });
 
 
