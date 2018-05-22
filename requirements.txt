@@ -25,7 +25,6 @@ django-markdownx==2.0.22
 django-model-utils==3.1.1
 django-modelcluster==4.1
 django-modeltranslation==0.12.2
-django-moderation==0.5.0
 django-recaptcha==1.2.0
 django-redis==4.8.0
 django-reversion==2.0.13
@@ -78,6 +77,7 @@ wagtail-markdown==0.5a3
 -e git+https://github.com/infoportugal/wagtail-modeltranslation.git@a61136e0281279ed213fe90da67ee62e6eb6acfb#egg=wagtail_modeltranslation
 wcwidth==0.1.7
 -e git+git://github.com/Kozea/WeasyPrint.git@5727e57859b7603d4e06589b22c524456a114b1c#egg=WeasyPrint
+-e git+git://github.com/dominno/django-moderation.git@8d98d35d7b39993046997f053d1f72e7a585fb3f#egg=django_moderation
 webencodings==0.5.1
 whitenoise==3.3.1
 Willow==1.1
