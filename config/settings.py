@@ -311,10 +311,6 @@ RAVEN_CONFIG = {
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_SECURE = os.getenv('SESSION_COOKIE_SECURE', 'true') == 'true'
 
-SESSION_COOKIE_HTTPONLY = True
-CSRF_COOKIE_HTTPONLY = True
-CSRF_COOKIE_SECURE = True
-
 # Wagtail settings
 WAGTAIL_SITE_NAME = "invest"
 
