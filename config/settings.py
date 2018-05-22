@@ -161,6 +161,7 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_DEFAULT_REGION=os.environ.get('AWS_DEFAULT_REGION', 'eu-west-1')
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
@@ -341,3 +342,12 @@ NOCAPTCHA = os.getenv('NOCAPTCHA') != 'false'
 MARKDOWNX_MARKDOWN_EXTENSIONS = ['markdown.extensions.footnotes']
 MARKDOWNX_UPLOAD_CONTENT_TYPES = ['image/png', 'image/jpeg', 'image/svg+xml']
 SITE_ID = 1
+
+EMAIL_BACKEND = 'django_amazon_ses.EmailBackend'
+DEFAULT_FROM_EMAIL = os.getenv('EMAIL_FROM', 'rollokb@gmail.com')
+
+
+MODERATION_MODERATORS = [item.strip()
+    for item in
+    os.getenv('MODERATION_MODERATORS', 'rollokb@gmail.com').split(',')
+]
