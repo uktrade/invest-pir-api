@@ -19,6 +19,7 @@ class PIRRequest(models.Model):
     company = models.CharField(max_length=255)
     email = models.EmailField()
     date_created = models.DateField(default=timezone.now)
+    pdf = models.FileField()
 
 
 class Sector(models.Model):

@@ -17,6 +17,7 @@ from django.urls import reverse
 from django.http import HttpResponse
 from django.utils import translation
 from django.conf import settings
+from django.core.files import File
 
 
 from wsgiref.util import FileWrapper
@@ -78,25 +79,21 @@ def investment_report_form(request):
             company = form.cleaned_data['company']
             email = form.cleaned_data['email']
 
-            # Log request
-            PIRRequest.objects.create(**form.cleaned_data)
+            pdf_file = investment_report_pdf_generator(market, sector, company)
+            pdf_file.seek(0)
 
             pdf_hash = '{}{}{}{}.pdf'.format(
                 market.name, sector, company,
                 datetime.date.today().isoformat()
             )
 
-            request.session['report'] = {
-                'email': email,
-                'hash': pdf_hash
-            }
-
-            pdf_file = investment_report_pdf_generator(market, sector, company)
-            pdf_file.seek(0)
-            with open(os.path.join(settings.MEDIA_ROOT, pdf_hash), 'wb') as f:
-                shutil.copyfileobj(pdf_file, f, length=131072)
+            # Log request
+            pir_request = PIRRequest(**form.cleaned_data)
+            pir_request.pdf.save(pdf_hash, File(pdf_file))
+            pir_request.save()
             pdf_file.close()
 
+            request.session['pir_request'] = pir_request.id
             return redirect('pir_download')
 
         else:
@@ -105,18 +102,17 @@ def investment_report_form(request):
             })
 
     return render(request, 'pir_form.html', context={
-        'reports': json.dumps(available_reports()),
         'form': PIRForm()
     })
 
 
 def investment_report_download(request):
-    if 'report' not in request.session:
+    if 'pir_request' not in request.session:
         return redirect('pir')
 
-    path = os.path.join(settings.MEDIA_URL, request.session['report']['hash'])
+    pir_request = PIRRequest.objects.get(id=request.session['pir_request'])
 
     return render(request, 'pir_download.html', context={
-        'download_link': path,
-        'email': request.session['report']['email']
+        'download_link': pir_request.pdf.url,
+        'email': pir_request.email
     })
