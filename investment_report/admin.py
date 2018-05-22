@@ -11,6 +11,7 @@ from django.apps import apps
 from django.contrib import admin
 from django.db import models
 from django.contrib import admin
+from django.contrib.sites.models import Site
 from django.contrib.contenttypes.models import ContentType
 
 from moderation.admin import ModerationAdmin, ModeratedObjectAdmin
@@ -251,7 +252,6 @@ admin_site.register(MarketLogo, MarketLogoAdmin)
 admin_site.register(SectorLogo, SectorLogoAdmin)
 admin_site.register(User, UserAdmin)
 admin_site.register(Group, GroupAdmin)
+admin_site.register(Site, admin.ModelAdmin)
 
 admin.site.unregister(ModeratedObject)
-
-
