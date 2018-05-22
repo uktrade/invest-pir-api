@@ -28,6 +28,9 @@ from django.contrib.contenttypes.models import ContentType
 from markdownx.admin import MarkdownxModelAdmin
 from sorl.thumbnail.admin import AdminImageMixin
 from modeltranslation.admin import TranslationAdmin
+from django.contrib.auth.admin import (
+    User, Group, UserAdmin, GroupAdmin
+)
 
 
 class InvestmentReportAdminSite(admin.AdminSite):
@@ -246,4 +249,9 @@ admin_site.register(Sector, SectorAdmin)
 admin_site.register(PIRRequest, PIRRequestAdmin)
 admin_site.register(MarketLogo, MarketLogoAdmin)
 admin_site.register(SectorLogo, SectorLogoAdmin)
+admin_site.register(User, UserAdmin)
+admin_site.register(Group, GroupAdmin)
+
 admin.site.unregister(ModeratedObject)
+
+
