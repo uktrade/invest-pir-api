@@ -56,37 +56,14 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'storages',
-    'wagtail_modeltranslation',    # before apps that need translation
-    'wagtail_modeltranslation.makemigrations',
-    'wagtail_modeltranslation.migrate',
+    'modeltranslation',
     'moderation',
 
-    'invest',
-    'home',
-    'sector',
-    'setup_guide',
-    'contact',
-    'info',
     'investment_report',
-
-    'wagtail.contrib.forms',
-    'wagtail.contrib.redirects',
-    'wagtail.contrib.settings',
-    'wagtail.embeds',
-    'wagtail.sites',
-    'wagtail.users',
-    'wagtail.snippets',
-    'wagtail.documents',
-    'wagtail.images',
-    'wagtail.search',
-    'wagtail.admin',
-    'wagtail.core',
-    'wagtail.contrib.frontend_cache',
 
     'crispy_forms',
     'modelcluster',
     'taggit',
-    'wagtailmarkdown',
     'captcha',
     'clear_cache',
 
@@ -95,7 +72,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'wagtail.contrib.modeladmin',
     'markdownx',
     'sorl.thumbnail',
     'django_countries',
@@ -125,8 +101,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'wagtail.core.middleware.SiteMiddleware',
-    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 if ENABLE_DEBUG_TOOLBAR:

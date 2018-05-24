@@ -4,9 +4,6 @@ from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import admin
 
-from wagtail.admin import urls as wagtailadmin_urls
-from wagtail.core import urls as wagtail_urls
-
 from investment_report.admin import admin_site as investment_report_admin
 from investment_report.views import api
 from investment_report.views import form as form_views
