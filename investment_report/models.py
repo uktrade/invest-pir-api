@@ -1,3 +1,5 @@
+import datetime
+
 from bs4 import BeautifulSoup
 from collections import OrderedDict
 
@@ -10,9 +12,11 @@ from django.utils.html import format_html
 from countries_plus.models import Country
 from markdownx.models import MarkdownxField
 from django.contrib.auth.models import User
+from django.core.files import File
 
 
 class PIRRequest(models.Model):
+    country = models.ForeignKey(Country)
     market = models.ForeignKey('Market')
     sector = models.ForeignKey('Sector')
     name = models.CharField(max_length=255)
@@ -20,6 +24,29 @@ class PIRRequest(models.Model):
     email = models.EmailField()
     date_created = models.DateField(default=timezone.now)
     pdf = models.FileField()
+
+
+    def create_pdf(self, notify=True):
+        from investment_report.utils import (
+            investment_report_pdf_generator, send_investment_email
+        )
+
+        pdf_hash = '{}{}{}{}.pdf'.format(
+            self.market.name, self.sector.name, self.company,
+            datetime.date.today().isoformat()
+        )
+
+        pdf_file = investment_report_pdf_generator(
+            self.market, self.sector, self.company
+        )
+
+        self.pdf.save(pdf_hash, File(pdf_file))
+        self.save()
+
+        pdf_file.close()
+
+        if notify:
+            send_investment_email(self)
 
 
 class Sector(models.Model):

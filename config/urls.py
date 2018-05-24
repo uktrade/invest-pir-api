@@ -8,34 +8,21 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 
 from investment_report.admin import admin_site as investment_report_admin
-from investment_report import views as investment_report_views
+from investment_report.views import api
+from investment_report.views import form as form_views
+
 
 from markdownx import urls as markdownx
 
 urlpatterns = i18n_patterns(
     url(r'^markdownx/', include(markdownx)),
-    url(r'^django-admin/', include(admin.site.urls)),
-
 
     # PIR Stuff
     url(r'^admin/', include(investment_report_admin.urls)),
+    url(r'^api/pir/', api.PIRAPI.as_view(), name='pir_api'),
     url(r'^investment-report/', include('investment_report.urls')),
-    url(r'PIR/thankyou', investment_report_views.investment_report_download, name='pir_download'),
-    url(r'PIR', investment_report_views.investment_report_form, name='pir'),
-
-
-    url(r'^admin/', include(wagtailadmin_urls)),
-    # url(r'^documents/', include(wagtaildocs_urls)),
-
-    # For anything not caught by a more specific rule above, hand over to
-    # Wagtail's page serving mechanism. This should be the last pattern in
-    # the list:
-    # url(r'', include(wagtail_urls)),
-
-    # Alternatively, if you want Wagtail pages to be served from a subpath
-    # of your site, rather than the site root:
-    #    url(r'^pages/', include(wagtail_urls)),
-
+    url(r'thankyou', form_views.investment_report_download, name='pir_download'),
+    url(r'', form_views.investment_report_form, name='pir'),
 
     prefix_default_language=False)
 

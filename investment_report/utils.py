@@ -17,6 +17,7 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils import translation
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.mail import send_mail
 
 from investment_report.models import *
 from investment_report.markdown import CustomFootnoteExtension, custom_markdown
@@ -180,7 +181,23 @@ def investment_report_pdf_generator(*args, **kwargs):
     for f in files:
         f.close()
 
+    pdf.seek(0)
+
     return pdf
+
+
+def send_investment_email(pir_report):
+    message_text = render_to_string('pir_email.txt', context={'report': pir_report})
+    message_html = render_to_string('pir_email.html', context={'report': pir_report})
+
+    send_mail(
+        'Personalised investment report',
+        message_text,
+        settings.DEFAULT_FROM_EMAIL,
+        [pir_report.email],
+        fail_silently=False,
+        html_message=message_html
+    )
 
 
 def get_countries():

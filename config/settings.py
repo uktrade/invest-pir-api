@@ -101,6 +101,7 @@ INSTALLED_APPS = [
     'django_countries',
     'countries_plus',
     'bootstrap4',
+    'rest_framework',
 ]
 
 try:
