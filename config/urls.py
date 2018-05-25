@@ -6,20 +6,16 @@ from django.contrib import admin
 
 from investment_report.admin import admin_site as investment_report_admin
 from investment_report.views import api
-from investment_report.views import form as form_views
 
 
 from markdownx import urls as markdownx
 
 urlpatterns = i18n_patterns(
     url(r'^markdownx/', include(markdownx)),
-
     # PIR Stuff
     url(r'^admin/', include(investment_report_admin.urls)),
     url(r'^api/pir/', api.PIRAPI.as_view(), name='pir_api'),
     url(r'^investment-report/', include('investment_report.urls')),
-    url(r'thankyou', form_views.investment_report_download, name='pir_download'),
-    url(r'', form_views.investment_report_form, name='pir'),
 
     prefix_default_language=False)
 
