@@ -16,7 +16,7 @@ from django.core.files import File
 
 
 class PIRRequest(models.Model):
-    country = models.ForeignKey(Country)
+    country = models.ForeignKey(Country, null=True)
     market = models.ForeignKey('Market')
     sector = models.ForeignKey('Sector')
     name = models.CharField(max_length=255)
