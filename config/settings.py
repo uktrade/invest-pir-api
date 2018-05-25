@@ -326,3 +326,13 @@ MODERATION_MODERATORS = [item.strip()
     for item in
     os.getenv('MODERATION_MODERATORS', 'rollokb@gmail.com').split(',')
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'config.permissions.SignatureCheckPermission',
+    )
+}
+
+
+SIGNATURE_SECRET = os.getenv('SIGNATURE_SECRET', 'abc')
