@@ -52,7 +52,6 @@ ENABLE_REDIS = REDIS_URL is not None
 # Application definition
 
 INSTALLED_APPS = [
-
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'storages',
@@ -287,9 +286,6 @@ RAVEN_CONFIG = {
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_SECURE = os.getenv('SESSION_COOKIE_SECURE', 'true') == 'true'
 
-# Wagtail settings
-WAGTAIL_SITE_NAME = "invest"
-
 CLOUDFRONT_DISTRIBUTION_ID = os.getenv('CLOUDFRONT_DISTRIBUTION_ID')
 if CLOUDFRONT_DISTRIBUTION_ID:
     WAGTAILFRONTENDCACHE = {
@@ -298,21 +294,6 @@ if CLOUDFRONT_DISTRIBUTION_ID:
             'DISTRIBUTION_ID': CLOUDFRONT_DISTRIBUTION_ID,
         },
     }
-
-# Base URL to use when referring to full URLs within the Wagtail admin backend
-# e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://invest.great.gov.uk'
-
-# Zendesk
-ZENDESK_SUBDOMAIN = os.environ['ZENDESK_SUBDOMAIN']
-ZENDESK_TOKEN = os.environ['ZENDESK_TOKEN']
-ZENDESK_EMAIL = os.environ['ZENDESK_EMAIL']
-
-# Google Recaptcha
-RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
-RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
-# NOCAPTCHA = True turns on version 2 of recaptcha
-NOCAPTCHA = os.getenv('NOCAPTCHA') != 'false'
 
 MARKDOWNX_MARKDOWN_EXTENSIONS = ['markdown.extensions.footnotes']
 MARKDOWNX_UPLOAD_CONTENT_TYPES = ['image/png', 'image/jpeg', 'image/svg+xml']
