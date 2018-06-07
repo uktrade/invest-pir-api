@@ -6,6 +6,7 @@ from unittest.mock import patch
 from django.urls import reverse, resolve
 from django.conf import settings
 from rest_framework.test import APITestCase
+
 from countries_plus.models import Country
 
 from config.celery import app as celeryapp
@@ -62,7 +63,8 @@ class PIRAPITestCase(APITestCase):
             'company': 'XXX',
             'email': 'test@example.com',
             'country': 'US',
-            'sector': 'tech'
+            'sector': 'tech',
+            'lang': 'en'
         }, format='json')
 
         self.assertEquals(res.status_code, 201)
