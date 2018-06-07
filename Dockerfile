@@ -49,6 +49,9 @@ RUN npm install
 
 
 ADD requirements.txt /usr/src/app/
+
+# Because directory-signature-auth uses pip internals
+RUN pip install pip==9
 # Different src directory for pip to prevent 'pip install -e' packages to be installed in /usr/src/app/
 RUN pip install --no-cache-dir -r requirements.txt --src /usr/local/src
 
