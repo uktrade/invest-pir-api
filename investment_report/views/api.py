@@ -1,4 +1,3 @@
-from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -26,12 +25,22 @@ class PIRAPI(APIView):
 
             create_pdf.delay(serializer.instance.id)
 
-            return Response(serializer.data)
+            return Response(serializer.data, status=201)
 
         # Invalid serializer
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=400)
 
-    def get(self, request):
-        requests = PIRRequest.objects.all()
-        serializer = PIRSerializer(requests, many=True)
-        return Response(serializer.data)
+    def get(self, request, identifier=None):
+        if identifier:
+            try:
+                request = PIRRequest.objects.get(id=identifier)
+            except PIRRequest.ObjectDoesNotExist:
+                return Response({'error': 'object not found'}, status=404)
+
+            serializer = PIRSerializer(request)
+            return Response(serializer.data)
+
+        else:
+            requests = PIRRequest.objects.all()
+            serializer = PIRSerializer(requests, many=True)
+            return Response(serializer.data)
