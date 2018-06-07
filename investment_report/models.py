@@ -1,4 +1,5 @@
 import datetime
+import uuid
 
 from bs4 import BeautifulSoup
 from collections import OrderedDict
@@ -8,6 +9,8 @@ from django.utils import timezone
 
 from django.db import models
 from django.utils.html import format_html
+from django.utils import translation
+from django.utils.text import slugify
 
 from countries_plus.models import Country
 from markdownx.models import MarkdownxField
@@ -24,6 +27,7 @@ class PIRRequest(models.Model):
     market = models.ForeignKey('Market')
     sector = models.ForeignKey('Sector')
     name = models.CharField(max_length=255)
+    lang = models.CharField(max_length=255, default='en')
     company = models.CharField(max_length=255)
     email = models.EmailField()
     date_created = models.DateField(default=timezone.now)
@@ -31,23 +35,25 @@ class PIRRequest(models.Model):
 
 
     def create_pdf(self, notify=True):
+        with translation.override(self.lang):
+            pdf_hash = (
+                '{}-{}-{}-{}.pdf'.format(
+                    self.company, self.lang, datetime.date.today().isoformat(),
+                    str(uuid.uuid4()).split('-')[0]
+                )
+            )
 
-        pdf_hash = '{}{}{}{}.pdf'.format(
-            self.market.name, self.sector.name, self.company,
-            datetime.date.today().isoformat()
-        )
+            pdf_file = investment_report_pdf_generator(
+                self.market, self.sector, self.company
+            )
 
-        pdf_file = investment_report_pdf_generator(
-            self.market, self.sector, self.company
-        )
+            self.pdf.save(pdf_hash, File(pdf_file))
+            self.save()
 
-        self.pdf.save(pdf_hash, File(pdf_file))
-        self.save()
+            pdf_file.close()
 
-        pdf_file.close()
-
-        if notify:
-            send_investment_email(self)
+            if notify:
+                send_investment_email(self)
 
 
 class Sector(models.Model):
