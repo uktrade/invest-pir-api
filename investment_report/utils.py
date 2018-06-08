@@ -11,8 +11,6 @@ from countries_plus.models import Country
 from io import BytesIO
 from PyPDF2 import PdfFileMerger
 
-from bs4 import BeautifulSoup
-
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils import translation
@@ -21,18 +19,7 @@ from django.core.mail import send_mail
 from django.db.models import Q
 
 from investment_report.models import *
-from investment_report.markdown import CustomFootnoteExtension, custom_markdown
 
-from moderation.models import MODERATION_STATUS_PENDING
-
-SECTION_KEYS = [
-    'front_page', 'sector_overview', 'killer_facts', 'macro_context',
-    'uk_market_overview', 'uk_business_info', 'uk_geo_overview',
-    'talent_and_education_by_sector',
-    'network_and_support', 'sector_initiatives', 'r_and_d_and_innovation', 
-    'who_is_here', 'r_and_d_and_innovation_case_study', 'video_case_study', 
-    'services_offered_by_dit', 'contact',
-]
 
 def filter_translations_and_moderation(klass, **kwargs):
     """
@@ -259,33 +246,30 @@ def valid_context(context):
 
 
 def available_reports():
-    markets = Market.objects.filter(name='china')
+    markets = Market.objects.all()
 
     report_by_lang = {}
 
     for lang in dict(settings.LANGUAGES).keys():
-        translation.activate(lang)
+        with translation.override(lang):
+            report_options = {}
 
-        report_options = {}
+            for m in markets:
 
-        for m in markets:
+                sectors_availible = []
 
-            sectors_availible = []
+                sectors = Sector.objects.all()
 
-            sectors = Sector.objects.all()
+                for s in sectors:
+                    if valid_context(
+                        get_investment_report_data(m, s)
+                    ):
+                        sectors_availible.append(s.name)
 
-            for s in sectors:
-                if valid_context(
-                    get_investment_report_data(m, s)
-                ):
-                    sectors_availible.append(s.name)
+                if sectors_availible:
+                    report_options[m.name] = sectors_availible
 
-            if sectors_availible:
-                report_options[m.name] = sectors_availible
-
-        if report_options:
-            report_by_lang[lang] = report_options
-
-    translation.activate(settings.LANGUAGE_CODE)
+            if report_options:
+                report_by_lang[lang] = report_options
 
     return report_by_lang

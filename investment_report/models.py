@@ -35,6 +35,11 @@ class PIRRequest(models.Model):
 
 
     def create_pdf(self, notify=True):
+        from investment_report.utils import (
+            investment_report_pdf_generator, send_investment_email
+        )
+
+
         with translation.override(self.lang):
             pdf_hash = (
                 '{}-{}-{}-{}.pdf'.format(

@@ -1,4 +1,6 @@
 import django_countries
+
+from django.conf import settings
 from countries_plus.models import Country
 
 from rest_framework import serializers
@@ -30,6 +32,11 @@ class PIRSerializer(serializers.ModelSerializer):
         many=False,
         required=True,
         slug_field='name'
+    )
+
+    lang = serializers.ChoiceField(
+        choices=[l[0] for l in settings.LANGUAGES],
+        default=settings.LANGUAGE_CODE
     )
 
     name = serializers.CharField(required=True)
