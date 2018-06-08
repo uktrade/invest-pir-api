@@ -17,10 +17,6 @@ from markdownx.models import MarkdownxField
 from django.contrib.auth.models import User
 from django.core.files import File
 
-from investment_report.utils import (
-    investment_report_pdf_generator, send_investment_email
-)
-
 
 class PIRRequest(models.Model):
     country = models.ForeignKey(Country, null=True)
