@@ -256,7 +256,7 @@ MODERATION_MODERATORS = [item.strip()
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-#        'config.permissions.SignatureCheckPermission',
+        'config.permissions.SignatureCheckPermission',
     )
 }
 
