@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 import dj_database_url
 import os
+import ssl
 
 from django.utils.translation import gettext_lazy as _
 
@@ -201,78 +202,31 @@ else:
 # http://whitenoise.evans.io/en/stable/django.html#restricting-cloudfront-to-static-files
 STATIC_URL = "https://%s/static/" % AWS_S3_CUSTOM_DOMAIN
 
-# Logging for development
-if DEBUG:
-    LOGGING = {
-        'version': 1,
-        'disable_existing_loggers': False,
-        'filters': {
-            'require_debug_false': {
-                '()': 'django.utils.log.RequireDebugFalse'
-            }
-        },
-        'handlers': {
-            'console': {
-                'level': 'DEBUG',
-                'class': 'logging.StreamHandler',
-            },
-        },
-        'loggers': {
-            'django.request': {
-                'handlers': ['console'],
-                'level': 'ERROR',
-                'propagate': True,
-            },
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
         }
-    }
-else:
-    # Sentry logging
-    LOGGING = {
-        'version': 1,
-        'disable_existing_loggers': False,
-        'root': {
-            'level': 'WARNING',
-            'handlers': ['sentry'],
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
         },
-        'formatters': {
-            'verbose': {
-                'format': '%(levelname)s %(asctime)s %(module)s '
-                          '%(process)d %(thread)d %(message)s'
-            },
-        },
-        'handlers': {
-            'sentry': {
-                'level': 'ERROR',
-                'class': (
-                    'raven.contrib.django.raven_compat.handlers.SentryHandler'
-                ),
-                'tags': {'custom-tag': 'x'},
-            },
-            'console': {
-                'level': 'DEBUG',
-                'class': 'logging.StreamHandler',
-                'formatter': 'verbose'
-            }
-        },
-        'loggers': {
-            'raven': {
-                'level': 'DEBUG',
-                'handlers': ['console'],
-                'propagate': False,
-            },
-            'sentry.errors': {
-                'level': 'DEBUG',
-                'handlers': ['console'],
-                'propagate': False,
-            },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
         },
     }
+}
 
-SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT', 'true') == 'true'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 USE_X_FORWARDED_HOST = True
-SECURE_HSTS_SECONDS = int(os.getenv('SECURE_HSTS_SECONDS', '16070400'))
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 # Sentry
 RAVEN_CONFIG = {
@@ -285,15 +239,6 @@ RAVEN_CONFIG = {
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_SECURE = os.getenv('SESSION_COOKIE_SECURE', 'true') == 'true'
-
-CLOUDFRONT_DISTRIBUTION_ID = os.getenv('CLOUDFRONT_DISTRIBUTION_ID')
-if CLOUDFRONT_DISTRIBUTION_ID:
-    WAGTAILFRONTENDCACHE = {
-        'cloudfront': {
-            'BACKEND': 'wagtail.contrib.frontend_cache.backends.CloudfrontBackend',  # noqa
-            'DISTRIBUTION_ID': CLOUDFRONT_DISTRIBUTION_ID,
-        },
-    }
 
 MARKDOWNX_MARKDOWN_EXTENSIONS = ['markdown.extensions.footnotes']
 MARKDOWNX_UPLOAD_CONTENT_TYPES = ['image/png', 'image/jpeg', 'image/svg+xml']
@@ -311,11 +256,23 @@ MODERATION_MODERATORS = [item.strip()
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'config.permissions.SignatureCheckPermission',
+#        'config.permissions.SignatureCheckPermission',
     )
 }
 
 
 SIGNATURE_SECRET = os.getenv('SIGNATURE_SECRET', 'abc')
 
-CELERY_BROKER_URL = REDIS_URL
+if REDIS_URL:
+    REDIS_BASIC_URL = REDIS_URL.replace('rediss://', 'redis://')
+    REDIS_CELERY_DB = os.getenv('REDIS_CELERY_DB', '1')
+    CELERY_BROKER_URL = '{}/{}'.format(REDIS_BASIC_URL, REDIS_CELERY_DB)
+    if 'rediss://' in REDIS_URL:
+        CELERY_REDIS_BACKEND_USE_SSL = {
+            'ssl_cert_reqs': ssl.CERT_NONE
+        }
+        CELERY_BROKER_USE_SSL = CELERY_REDIS_BACKEND_USE_SSL
+
+    CELERY_WORKER_LOG_FORMAT = (
+        "[%(asctime)s: %(levelname)s/%(processName)s] [%(name)s] %(message)s"
+    )

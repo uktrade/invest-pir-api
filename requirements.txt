@@ -85,4 +85,4 @@ webencodings==0.5.1
 whitenoise==3.3.1
 Willow==1.1
 zenpy==1.1.10
--e git+https://git@github.com/uktrade/directory-signature-auth.git@v1.0.0#egg=directory-signature-auth
+-e git+https://github.com/rollokb/directory-signature-auth@feature/pip10#egg=directory-signature-auth

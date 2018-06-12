@@ -177,6 +177,10 @@ def investment_report_pdf_generator(*args, **kwargs):
     :params - same as investment_report_html_generator
     :return BytesIO - containing pdf
     """
+
+    # Don't generate pdfs locally
+
+    kwargs['local'] = False
     pages = investment_report_html_generator(*args, **kwargs)
 
     files = []
