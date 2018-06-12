@@ -1,5 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.reverse import reverse
 
 from investment_report.metadata import RelatedFieldMetadata
 from investment_report.serializers import PIRSerializer
@@ -25,7 +26,13 @@ class PIRAPI(APIView):
 
             create_pdf.delay(serializer.instance.id)
 
-            return Response(serializer.data, status=201)
+            resp = Response(serializer.data, status=201)
+
+            resp['Location'] = reverse(
+                'pir_api_detail', args=[serializer.instance.id], request=request
+            )
+
+            return resp
 
         # Invalid serializer
         return Response(serializer.errors, status=400)
