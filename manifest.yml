@@ -8,4 +8,5 @@ applications:
     SECURE_HSTS_SECONDS: 0
     SECURE_SSL_REDIRECT: false
     SITE_ID: 1
-    TEST: false
+    TEST: false 
+  buildpack: https://github.com/cloudfoundry/multi-buildpack.git#v1.0.2
