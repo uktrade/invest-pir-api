@@ -1,3 +1,4 @@
+import logging
 import datetime
 import uuid
 
@@ -17,9 +18,11 @@ from markdownx.models import MarkdownxField
 from django.contrib.auth.models import User
 from django.core.files import File
 
-from investment_report.utils import (
-    investment_report_pdf_generator, send_investment_email
-)
+from notifications_python_client.errors import HTTPError
+
+
+logger = logging.getLogger(__name__)
+
 
 class PIRRequest(models.Model):
     country = models.ForeignKey(Country, null=True)
@@ -34,7 +37,9 @@ class PIRRequest(models.Model):
 
 
     def create_pdf(self, notify=True):
-
+        from investment_report.utils import (
+            investment_report_pdf_generator, send_investment_email
+        )
 
         with translation.override(self.lang):
             pdf_hash = (
@@ -54,7 +59,10 @@ class PIRRequest(models.Model):
             pdf_file.close()
 
             if notify:
-                send_investment_email(self)
+                try:
+                    send_investment_email(self)
+                except HTTPError as e:
+                    logger.error('Failed to send email {}'.format(e.message))
 
 
 class Sector(models.Model):

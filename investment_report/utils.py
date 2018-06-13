@@ -20,6 +20,7 @@ from django.db.models import Q
 
 from investment_report.models import *
 
+from notifications_python_client.notifications import NotificationsAPIClient
 
 def filter_translations_and_moderation(klass, **kwargs):
     """
@@ -206,16 +207,14 @@ def investment_report_pdf_generator(*args, **kwargs):
 
 
 def send_investment_email(pir_report):
-    message_text = render_to_string('pir_email.txt', context={'report': pir_report})
-    message_html = render_to_string('pir_email.html', context={'report': pir_report})
-
-    send_mail(
-        'Personalised investment report',
-        message_text,
-        settings.DEFAULT_FROM_EMAIL,
-        [pir_report.email],
-        fail_silently=False,
-        html_message=message_html
+    notifications_client = NotificationsAPIClient(settings.GOV_NOTIFY_API_KEY)
+    notifications_client.send_email_notification(
+        email_address=pir_report.email,
+        template_id='e3de8ca4-929e-4c9a-bd9c-7892a7761664',
+        personalisation={
+            'name': pir_report.name,
+            'pir_url': pir_report.pdf.url
+        }
     )
 
 

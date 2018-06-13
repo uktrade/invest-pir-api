@@ -276,3 +276,6 @@ if REDIS_URL:
     CELERY_WORKER_LOG_FORMAT = (
         "[%(asctime)s: %(levelname)s/%(processName)s] [%(name)s] %(message)s"
     )
+
+
+GOV_NOTIFY_API_KEY = os.getenv('GOV_NOTIFY_API_KEY')
