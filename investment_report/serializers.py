@@ -1,6 +1,8 @@
 import django_countries
 
 from django.conf import settings
+from django.utils.html import escape
+
 from countries_plus.models import Country
 
 from rest_framework import serializers
@@ -69,6 +71,9 @@ class PIRSerializer(serializers.ModelSerializer):
             market = Market.objects.get(countries=country)
 
         data['market'] = market
+
+        data['name'] = escape(data['name'])
+        data['company'] = escape(data['company'])
 
         return data
 
