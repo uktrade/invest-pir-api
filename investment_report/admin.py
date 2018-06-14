@@ -113,7 +113,7 @@ for klass in PDFSection.__subclasses__():
 
 
 class PIRRequestAdmin(admin.ModelAdmin):
-    pass
+    change_list_template = "admin/pir_request_list.html"
 
 
 class MarketAdmin(admin.ModelAdmin):

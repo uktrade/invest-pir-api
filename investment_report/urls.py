@@ -15,4 +15,6 @@ urlpatterns = [
 
     url('current/(?P<lang>[\w-]+)/(?P<market>[\w-]+)/(?P<sector>[\w-]+)/html',
         utils.investment_report_html, {'moderated': True}, name='investment_report_html'),
+
+    url('pir_csv', utils.pir_csv, name='pir_csv')
 ]
