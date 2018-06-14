@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.utils import translation
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 
 from investment_report.utils import (
@@ -11,6 +12,7 @@ from investment_report.utils import (
 from investment_report.models import Market, Sector
 
 
+@login_required
 def investment_report_html(request, lang, market, sector, moderated=True):
     """
     Used for previewing on dev
@@ -28,6 +30,7 @@ def investment_report_html(request, lang, market, sector, moderated=True):
         )
 
 
+@login_required
 def investment_report_pdf(request, lang, market, sector, moderated=True):
     """
     Used for previewing on the admin
