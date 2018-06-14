@@ -15,7 +15,6 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils import translation
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.mail import send_mail
 from django.db.models import Q
 
 from investment_report.models import *
@@ -210,7 +209,7 @@ def send_investment_email(pir_report):
     notifications_client = NotificationsAPIClient(settings.GOV_NOTIFY_API_KEY)
     notifications_client.send_email_notification(
         email_address=pir_report.email,
-        template_id='e3de8ca4-929e-4c9a-bd9c-7892a7761664',
+        template_id=settings.EMAIL_UUID,
         personalisation={
             'name': pir_report.name,
             'pir_url': pir_report.pdf.url
