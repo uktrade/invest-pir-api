@@ -13,6 +13,7 @@ from django.db import models
 from django.contrib import admin
 from django.contrib.sites.models import Site
 from django.contrib.contenttypes.models import ContentType
+from django.conf import settings
 
 from moderation.admin import ModerationAdmin, ModeratedObjectAdmin
 from moderation.models import ModeratedObject
@@ -32,6 +33,18 @@ from modeltranslation.admin import TranslationAdmin
 from django.contrib.auth.admin import (
     User, Group, UserAdmin, GroupAdmin
 )
+
+def _get_pdf_args(obj):
+    _market = Market.objects.first()
+    _sector = Sector.objects.first()
+
+    if hasattr(obj, 'market'):
+        _market = obj.market
+
+    if hasattr(obj, 'sector'):
+        _sector = obj.sector
+
+    return (_market.name, _sector.name)
 
 
 class InvestmentReportAdminSite(admin.AdminSite):
@@ -57,7 +70,65 @@ class InvestmentReportAdminSite(admin.AdminSite):
 admin_site = InvestmentReportAdminSite(name='reportadmin')
 
 
-class PDFAdmin(MarkdownxModelAdmin, TranslationAdmin, ModerationAdmin, admin.ModelAdmin):
+class PDFPreviewMixin:
+
+    def get_pdf_links(self, moderated_object):
+        changed_object = None
+        live_object = None
+
+        # if the moderation object is not approved there will be a changed object
+        if moderated_object.status != MODERATION_STATUS_APPROVED:
+            changed_object = moderated_object.changed_object
+
+            # In a ready state there will be a live object too
+            if moderated_object.state == MODERATION_READY_STATE:
+                live_object = moderated_object.content_object
+        # If it's already been approved there will just be a live object
+        else:
+            live_object = moderated_object.content_object
+
+        res = {}
+
+        if changed_object:
+            res['preview'] = urlresolvers.reverse(
+                'preview_investment_report_pdf', args=('en', *_get_pdf_args(changed_object))
+            )
+
+        if live_object:
+            res['live'] = urlresolvers.reverse(
+                'investment_report_pdf', args=('en', *_get_pdf_args(live_object))
+            )
+
+        return res
+
+
+class PDFAdmin(MarkdownxModelAdmin, TranslationAdmin, ModerationAdmin, admin.ModelAdmin, PDFPreviewMixin):
+    change_form_template = "pdf_changeform.html"
+
+    def change_view(self, request, object_id, extra_context={}):
+        try:
+            model = self.model.objects.get(id=object_id)
+
+            preview_links = [
+                (
+                    'Preview PDF {}'.format(l[0]),
+                    urlresolvers.reverse(
+                        'preview_investment_report_pdf', args=(
+                        l[0], *_get_pdf_args(model)
+                    ))
+                )
+                for l in settings.LANGUAGES
+            ]
+
+        except self.model.DoesNotExist:
+            preview_links = None
+
+        return super(PDFAdmin, self).change_view(
+            request,
+            object_id,
+            extra_context={
+                'preview': preview_links
+            })
 
     def save_model(self, request, obj, form, change):
         # This is because django-model translations monkey patches
@@ -132,54 +203,8 @@ class SectorLogoAdmin(AdminImageMixin, admin.ModelAdmin):
     pass
 
 
-class CustomModeratedObjectAdmin(ModeratedObjectAdmin):
+class CustomModeratedObjectAdmin(ModeratedObjectAdmin, PDFPreviewMixin):
     change_form_template = 'admin/moderate_object.html'
-
-
-    def get_pdf_links(self, moderated_object):
-        market = Market.objects.first()
-        sector = Sector.objects.first()
-
-        def _get_pdf_args(obj):
-            _market = market
-            _sector = sector
-
-            if hasattr(obj, 'market'):
-                _market = obj.market
-
-            if hasattr(obj, 'sector'):
-                _sector = obj.sector
-
-            return (_market.name, _sector.name)
-
-        changed_object = None
-        live_object = None
-
-        # if the moderation object is not approved there will be a changed object
-        if moderated_object.status != MODERATION_STATUS_APPROVED:
-            changed_object = moderated_object.changed_object
-
-            # In a ready state there will be a live object too
-            if moderated_object.state == MODERATION_READY_STATE:
-                live_object = moderated_object.content_object
-        # If it's already been approved there will just be a live object
-        else:
-            live_object = moderated_object.content_object
-
-        res = {}
-
-        if changed_object:
-            res['preview'] = urlresolvers.reverse(
-                'preview_investment_report_pdf', args=('en', *_get_pdf_args(changed_object))
-            )
-
-        if live_object:
-            res['live'] = urlresolvers.reverse(
-                'investment_report_pdf', args=('en', *_get_pdf_args(live_object))
-            )
-
-        return res
-
 
     def change_view(self, request, object_id, extra_context=None):
         """
