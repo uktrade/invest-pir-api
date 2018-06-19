@@ -260,7 +260,7 @@ class NetworkAndSupport(PDFSection):
     sector = models.ForeignKey(Sector)
 
     class Meta:
-        verbose_name = verbose_name_plural = '10 - Network And Support'
+        verbose_name = verbose_name_plural = '11 - Network And Support'
 
 
 class RDandInnovationCaseStudy(PDFSection):
@@ -268,7 +268,7 @@ class RDandInnovationCaseStudy(PDFSection):
     sector = models.ForeignKey(Sector)
 
     class Meta:
-        verbose_name = verbose_name_plural = '11 - Case Study'
+        verbose_name = verbose_name_plural = '10 - Case Study'
 
 
 class VideoCaseStudy(PDFSection):
@@ -279,7 +279,7 @@ class VideoCaseStudy(PDFSection):
     sector = models.ForeignKey(Sector)
 
     class Meta:
-        verbose_name = verbose_name_plural = '11.1 Video case study'
+        verbose_name = verbose_name_plural = '10.1 Video case study'
 
 
 class WhoIsHere(PDFSection):
