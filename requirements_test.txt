@@ -4,36 +4,30 @@
 #
 #    pip-compile --output-file requirements_test.txt requirements_test.in
 #
--e git+https://github.com/uktrade/directory-validators.git@v4.2.0#egg=directory_validators
 attrs==17.4.0             # via pytest
-beautifulsoup4==4.6.0     # via wagtail
-bleach==2.1.2             # via wagtail-markdown
 boto3==1.5.10
 botocore==1.8.24
 cachetools==2.0.1         # via zenpy
 certifi==2018.1.18        # via requests
 chardet==3.0.4            # via requests
 coverage==4.4.2           # via pytest-cov
+directory-validators==4.5.1
 dj-database-url==0.4.2
-django-modelcluster==4.0  # via wagtail
+django-clear-cache==0.3
+django-crispy-forms==1.7.1
+django-redis==4.8.0
 django-storages==1.6.5
-django-taggit==0.22.2     # via wagtail
-django-treebeard==4.2.0   # via wagtail
-django==1.11.9
+django==1.11.13
 django_recaptcha==1.2.0
-djangorestframework==3.7.7  # via wagtail
 docutils==0.14            # via botocore
-draftjs-exporter==2.0.0   # via wagtail
 flake8==3.5.0
 gunicorn==19.7.1
-html5lib==0.999999999     # via bleach, wagtail
 idna==2.6                 # via requests
 jmespath==0.9.3           # via boto3, botocore
-markdown==2.6.11          # via wagtail-markdown
 mccabe==0.6.1             # via flake8
-olefile==0.44             # via pillow
-phonenumberslite==7.7.4
-pillow==4.2.1             # via wagtail
+olefile==0.44             # via directory-validators, pillow
+phonenumberslite==7.7.4   # via directory-validators
+pillow==4.2.1             # via directory-validators
 pluggy==0.6.0             # via pytest
 psycopg2==2.7.3.2
 py==1.5.2                 # via pytest
@@ -44,17 +38,14 @@ pytest-django==3.1.2
 pytest-sugar==0.9.0
 pytest==3.3.2
 python-dateutil==2.6.1    # via botocore, zenpy
-pytz==2017.2              # via django, django-modelcluster
+pytz==2017.2
 raven==6.5.0
-requests==2.18.4          # via wagtail, zenpy
+redis==2.10.6             # via django-redis
+requests==2.18.4          # via zenpy
 s3transfer==0.1.13        # via boto3
-six==1.11.0               # via bleach, html5lib, pytest, python-dateutil
+six==1.11.0               # via pytest, python-dateutil
 termcolor==1.1.0          # via pytest-sugar
-unidecode==0.4.21         # via wagtail
 urllib3==1.22             # via requests
-wagtail-markdown==0.5a2.post1
-wagtail==2.0b1
-webencodings==0.5.1       # via html5lib
+waitress==1.1.0
 whitenoise==3.3.1
-willow==1.1               # via wagtail
 zenpy==1.1.10
