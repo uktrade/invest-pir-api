@@ -1,4 +1,4 @@
-boto3==1.5.10
+boto3
 botocore==1.8.24
 dj-database-url==0.4.2
 django==1.11.13
@@ -28,3 +28,6 @@ sorl-thumbnail==12.4.1
 django-countries==5.2
 django-countries-plus==1.2.1
 notifications-python-client==4.8.2
+WeasyPrint==0.42.3
+PyPDF2==1.26.0
+

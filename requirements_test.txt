@@ -5,15 +5,25 @@
 #    pip-compile --output-file requirements_test.txt requirements_test.in
 #
 amqp==2.3.2               # via kombu
+asn1crypto==0.24.0        # via cryptography
 attrs==17.4.0             # via pytest
+aws-xray-sdk==0.95        # via moto
 billiard==3.5.0.3         # via celery
 boto3==1.5.10
+boto==2.48.0              # via moto
 botocore==1.8.24
 cachetools==2.0.1         # via zenpy
+cairocffi==0.8.1          # via cairosvg, weasyprint
+cairosvg==2.1.3           # via weasyprint
 celery[redis]==4.1.0
 certifi==2018.1.18        # via requests
+cffi==1.11.5              # via cairocffi, cryptography, weasyprint
 chardet==3.0.4            # via requests
+cookies==2.2.1            # via moto
 coverage==4.4.2           # via pytest-cov
+cryptography==2.2.2       # via moto
+cssselect2==0.2.1         # via cairosvg, weasyprint
+defusedxml==0.5.0         # via cairosvg
 directory-validators==4.5.1
 dj-database-url==0.4.2
 django-clear-cache==0.3
@@ -32,42 +42,65 @@ django-treebeard==4.2.0
 django==1.11.13
 django_recaptcha==1.2.0
 djangorestframework==3.6.4
+docker-pycreds==0.3.0     # via docker
+docker==3.4.0             # via moto
 docopt==0.6.2             # via notifications-python-client
 docutils==0.14            # via botocore
 flake8==3.5.0
 future==0.16.0            # via notifications-python-client
 gunicorn==19.7.1
-idna==2.6                 # via requests
+html5lib==1.0.1           # via weasyprint
+idna==2.6                 # via cryptography, requests
+jinja2==2.10              # via moto
 jmespath==0.9.3           # via boto3, botocore
+jsondiff==1.1.1           # via moto
+jsonpickle==0.9.6         # via aws-xray-sdk
 kombu==4.2.1              # via celery
 markdown==2.6.11          # via django-markdownx
+markupsafe==1.0           # via jinja2
 mccabe==0.6.1             # via flake8
+mock==2.0.0               # via moto
 monotonic==1.5            # via notifications-python-client
+moto==1.3.1
 notifications-python-client==4.8.2
 olefile==0.44             # via directory-validators, pillow
+pbr==4.0.4                # via mock
+pdfrw==0.4                # via weasyprint
 phonenumberslite==7.7.4   # via directory-validators
-pillow==4.2.1             # via directory-validators, django-markdownx
+pillow==4.2.1             # via cairosvg, directory-validators, django-markdownx
 pluggy==0.6.0             # via pytest
 psycopg2==2.7.3.2
 py==1.5.2                 # via pytest
+pyaml==17.12.1            # via moto
 pycodestyle==2.3.1        # via flake8
+pycparser==2.18           # via cffi
 pyflakes==1.6.0           # via flake8
 pyjwt==1.6.4              # via notifications-python-client
+pypdf2==1.26.0
+pyphen==0.9.4             # via weasyprint
 pytest-cov==2.5.1
 pytest-django==3.1.2
 pytest-sugar==0.9.0
 pytest==3.3.2
-python-dateutil==2.6.1    # via botocore, zenpy
+python-dateutil==2.6.1    # via botocore, moto, zenpy
 pytz==2017.2
+pyyaml==3.12              # via pyaml
 raven==6.5.0
 redis==2.10.6             # via celery, django-redis
-requests==2.18.4          # via django-countries-plus, notifications-python-client, zenpy
+requests==2.18.4          # via aws-xray-sdk, django-countries-plus, docker, moto, notifications-python-client, zenpy
 s3transfer==0.1.13        # via boto3
-six==1.11.0               # via django-countries-plus, pytest, python-dateutil
+six==1.11.0               # via cryptography, django-countries-plus, docker, docker-pycreds, html5lib, mock, moto, pytest, python-dateutil, websocket-client
 sorl-thumbnail==12.4.1
 termcolor==1.1.0          # via pytest-sugar
+tinycss2==0.6.1           # via cairosvg, cssselect2, weasyprint
 urllib3==1.22             # via requests
 vine==1.1.4               # via amqp
 waitress==1.1.0
+weasyprint==0.42.3
+webencodings==0.5.1       # via html5lib, tinycss2
+websocket-client==0.48.0  # via docker
+werkzeug==0.14.1          # via moto
 whitenoise==3.3.1
+wrapt==1.10.11            # via aws-xray-sdk
+xmltodict==0.11.0         # via moto
 zenpy==1.1.10
