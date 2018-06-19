@@ -1,0 +1,95 @@
+{% extends "admin/base.html" %}
+{% load custom_static %}
+
+{% block content %}
+
+      <table>
+        <tr>
+          <th>Page Type</th>
+          <th>Created</th>
+        </tr>
+
+        <tr>
+          <td>Sector Overview</td>
+          <td>{% if pages_moderated.sector_overview %}💚{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>Killer Facts</td>
+          <td>{% if pages_moderated.killer_facts %}💚{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>Macro Context Between Countries</td>
+          <td>{% if pages_moderated.macro_context %}💚{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>UK Market Overview</td>
+          <td>{% if pages_moderated.uk_market_overview %}💚{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>UK Business Info</td>
+          <td>{% if pages_moderated.uk_business_info %}💚{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>UK Geo Overview</td>
+          <td>{% if pages_moderated.uk_geo_overview %}💚{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>TalentAndEducationBySector</td>
+          <td>{% if pages_moderated.talent_and_education_by_sector %}💚{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>NetworkAndSupport</td>
+          <td>{% if pages_moderated.network_and_support %}💚{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>SectorInitiatives</td>
+          <td>{% if pages_moderated.sector_initiatives %}💚{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>RDandInnovation</td>
+          <td>{% if pages_moderated.r_and_d_and_innovation %}💚{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>RDandInnovation</td>
+          <td>{% if pages_moderated.r_and_d_and_innovation_case_study %}💚{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>RDandInnovation</td>
+          <td>{% if pages_moderated.r_and_d_and_innovation_case_study %}💚{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>VideoCaseStudy</td>
+          <td>{% if pages_moderated.video_case_study %}💚{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>ServicesOfferedByDIT</td>
+          <td>{% if pages_moderated.services_offered_by_dit %}💚{% endif %}</td>
+        </tr>
+
+        <tr>
+          <td>Contact</td>
+          <td>{% if pages_moderated.services_offered_by_dit %}💚{% endif %}</td>
+        </tr>
+
+    </table>
+
+    {% if valid %}
+      <a href="{% url 'investment_report_pdf' lang market sector %}">Download PDF</a>
+      <br/>
+      <a href="{% url 'preview_investment_report_pdf' lang market sector %}">Download Unmoderated PDF</a>
+    {% endif %}
+
+{% endblock %}

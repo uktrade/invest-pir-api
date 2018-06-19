@@ -1,0 +1,52 @@
+{% extends "admin/base.html" %}
+{% load custom_static %}
+
+{% block content %}
+
+<style>
+
+table{
+    width: 100%;
+    min-width: 1200px;
+    margin-top: 2rem;
+}
+
+table td{
+  padding: 5px;
+}
+
+table tr:nth-child(odd){
+  background-color: lightgrey;
+}
+
+table td:first-child{
+  background-color: grey;
+  min-width: 150px;
+}
+
+</style>
+{% for lang in languages %}
+
+      <table>
+        <tr>
+          <th>{{lang}}</th>
+          {% for market in markets %}
+            <th>{{ market }}</th>
+          {% endfor %}
+        </tr>
+
+        {% for sector in sectors %}
+          <tr>
+              <td>{{ sector }}</td>
+            {% for market in markets %}
+              {% autoescape off %}
+                {% is_report_availible reports lang market sector %}
+              {% endautoescape %}
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </table>
+
+{% endfor %}
+
+{% endblock %}

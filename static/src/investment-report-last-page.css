@@ -1,0 +1,76 @@
+$red: #b00d23;
+$black: #1e1348;
+$column: 25.42mm;
+$columnGap: 4.586mm;
+$pageMargin: 17.639mm;
+$pageMarginTop: 11.642mm;
+
+
+body {
+  font-family: "Interstate";
+  color: $black;
+  font-size: 9pt;
+  line-height: 110%;
+  margin: 0;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+  background-color: $black;
+}
+
+.front-page {
+  width: 210mm;
+  height: 297mm;
+  padding-top: $pageMarginTop;
+  padding-left: $pageMargin;
+  padding-right: $pageMargin;
+  padding-bottom: $pageMargin;
+  z-index: 2;
+  position: relative;
+  overflow: hidden;
+}
+
+.front-page__logo {
+  width: 38mm;
+  position: absolute;
+}
+
+
+.wrapper {
+  display: flex;
+  height: 265mm;
+  width: 210mm - ($pageMargin * 2);
+  flex-direction: column;
+}
+.content {
+  flex: 1;
+}
+
+.footer {
+  color: white;
+}
+
+.footer__header {
+  border-bottom: solid 6pt $red;
+  padding-top: 10mm;
+  overflow: hidden;
+}
+
+.footer__header img {
+  width: 38.267mm;
+  position: relative;
+  top: -5mm;
+}
+
+.footer__header p {
+  float: right;
+  font-size: 16pt;
+}
+
+.footer__body {
+  width: 108.175mm;
+  font-size: 9pt;
+  padding-top:10mm;
+}

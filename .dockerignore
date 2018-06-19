@@ -1,0 +1,39 @@
+# Python
+
+__pycache__/
+*/__pycache__/
+*/*/__pycache__/
+*/*/*/__pycache__/
+*.py[cod]
+*/*.py[cod]
+*/*/*.py[cod]
+*/*/*/*.py[cod]
+
+# JS
+node_modules/
+
+# Local envs
+*/docker/.env
+
+.dockerignore
+Dockerfile
+db.sqlite3
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+coverage.xml
+*,cover
+*.log
+.git
+.DS_Store
+
+config/media/

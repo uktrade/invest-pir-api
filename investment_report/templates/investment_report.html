@@ -1,0 +1,216 @@
+{% load i18n static custom_static %}
+<!DOCTYPE html>
+<html nomarginboxes disallowselectionprint>
+  <head>
+    <meta charset="utf8">
+    <title>{% trans "Investment Report" %}</title>
+    <link rel="stylesheet" href="{% custom_static "build/investment-report.css" %}" />
+  </head>
+
+  <body class="A4">
+    {% autoescape off %}
+
+    <section class="front-page"
+             style="
+               background-image: url({% custom_media front_page.background_image %});
+               background-size: cover;
+            ">
+
+      <div class="front-page__title">{% blocktrans %}The UK: A Great Home for:<br>{{ company }}{% endblocktrans %}</div>
+      <img class="front-page__logo" src="{% custom_static "images/frontpagebottomrightlogo.png" %}"/>
+    </section>
+
+    <div class="page-break"></div>
+    <div class="counter-reset"></div>
+
+    <header class="onlyprint">
+      <div id="unionjackheader">
+        <img src="{% custom_static "images/unionjack.png" %}"/>
+      </div>
+      <div id="headerslogan">{% trans "Expand your business to Britain" %}</div>
+      <div id="borderbottomheader"></div>
+    </header>
+
+    <section class="toc">
+      <div class="section-body content-margin">
+        <h1>{% trans "Contents" %}</h1>
+        <ol>
+          <li> {% trans "A Great Home for $COMPANY" %}</li>
+          <li> {% trans "Achieving Great Things in $SECTOR" %}</li>
+          <li> {% trans "Links That Are Already Strong" %}</li>
+          <li> {% trans "UK Market Overview" %}</li>
+          <li> {% trans "A Great Place to Do Business" %}</li>
+          <li> {% trans "Opportunities from Coast to Coast" %}</li>
+          <li> {% trans "The Smart Workforce $COMPANY Needs" %}</li>
+          <li> {% trans "$SECTOR in the UK: Going from Strength to Strength" %}</li>
+          <li> {% trans "A Nation of $SECTOR Innovators" %}</li>
+          <li> {% trans "The UK Government is doing great things for $SECTOR" %}</li>
+          <li> {% trans "Case Study" %}</li>
+          <li> {% trans "Video Case Study" %}</li>
+          <li> {% trans "Who's Here?" %}</li>
+          <li> {% trans "Great Things Await - Take the Next Step" %}</li>
+          <li> {% trans "A Flying Start - How We Can Get You Going" %}</li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section class="singlepage-withfooter side-footnote">
+
+      <div class="singlepage-withfooter__body">
+        <div class="section-body singlepage-withfooter__body__text">
+        {% markdown sector_overview.content %}
+        </div>
+      </div>
+
+      <div class="singlepage-withfooter__footer"
+           style="background-image: url({% custom_media sector_overview.footer_image %})">
+          <div class="singlepage-withfooter__footer__copy">
+            {{sector_overview.footer_image_copy}}
+          </div>
+          <div class="singlepage-withfooter__footer__attribution">
+            {{sector_overview.footer_image_copy_attribution}}
+          </div>
+      </div>
+    </section>
+
+
+    <div class="page-break"></div>
+
+    <section class="text-large side-footnote page-break-avoid relative">
+      <div class="section-body content-margin">
+        {% markdown killer_facts.content %}
+      </div>
+    </section>
+
+    <section class="text-large side-footnote page-break-avoid relative">
+      <div class="section-body content-margin">
+        {% markdown macro_context.content %}
+      </div>
+    </section>
+
+
+    <div class="page-break"></div>
+
+    <section class="full-page side-footnote">
+      <h1>{% trans "4. UK Market Overview" %}</h1>
+      <div class="full-page__spread"
+           style="background-image: url({% custom_media uk_market_overview.background_image %})">
+        <img id="marketoverview-image" src="{% custom_media uk_market_overview.body_image %}"/>
+      </div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section class="full-page side-footnote">
+      <h1>{% trans "5. A Great Place to Do Business" %}</h1>
+      <div class="full-page__spread flex centered_body"
+           style="background-image: url({% custom_media uk_business_info.background_image %})">
+        <img src="{% custom_media uk_business_info.body_image %}"/>
+      </div>
+    </section>
+
+    <div class="page-break"></div>
+    
+    <section class="secondary-page dark-list content-margin side-footnote">
+      {% markdown uk_geo_overview.content %}
+    </section>
+
+    <section class="section-body secondary-page content-margin side-footnote talent_and_education_by_sector dark-list inside-list relative page-break-avoid">
+      {% markdown talent_and_education_by_sector.content %}
+    </section>
+
+    <div class="page-break"></div>
+
+    <section class="secondary-page sector-initiatives bottom-footnote">
+      {% markdown sector_initiatives.content %}
+    </section>
+
+    <div class="page-break"></div>
+
+    <section class="secondary-page content-margin side-footnote relative">
+      {% markdown r_and_d_and_innovation.content %}
+      <span class="r_and_d_and_innovation_case_study">{% markdown r_and_d_and_innovation_case_study.content %}</span>
+      <span class="r_and_d_and_innovation_case_study">{% markdown video_case_study.content %}</span>
+    </section>
+
+    <div class="page-break"></div>
+
+
+    <section class="full-page side-footnote">
+      <h1>{% trans "10. We’re doing great things for $Sector" %}</h1>
+      <div class="full-page__spread centered_body flex"
+           style="background-image: url({% custom_media network_and_support.background_image %})">
+        <div class="centered_body__body secondary-page">
+          {% markdown network_and_support.content %}
+        <div>
+      </div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section class="full-page side-footnote whos-here">
+      <h1>{% trans "12. Who's here" %}</h1>
+      <div class="full-page__spread section"
+           style="background-image: url({% custom_media who_is_here.background_image %})">
+          <ul>
+            {% for ml in market_logos %}
+            <li>
+                <div class="table-cell">
+                  <img src="{% custom_media ml.image %}"/>
+                </div>
+            </li>
+            {% endfor %}
+
+            {% for sl in sector_logos %}
+            <li>
+              <div class="table-cell">
+                <img src="{% custom_media sl.image %}"/>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+      </div>
+    </section>
+
+    <section class="singlepage-withfooter side-footnote secondary-page">
+
+      <div class="singlepage-withfooter__body">
+        <div class="section-body singlepage-withfooter__body__text">
+        {% markdown services_offered_by_dit.content %}
+        </div>
+      </div>
+
+      <div class="singlepage-withfooter__footer"
+           style="background-image: url({% custom_media services_offered_by_dit.footer_image %})">
+          <div class="singlepage-withfooter__footer__copy">
+            {{services_offered_by_dit.footer_image_copy}}
+          </div>
+          <div class="singlepage-withfooter__footer__attribution">
+            {{services_offered_by_dit.footer_image_copy_attribution}}
+          </div>
+      </div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section class=full-page contact>
+      <div class="full-page__spread centered_body contact flex"
+           style="background-image: url({% custom_media contact.background_image %})">
+        <div class="centered_body__body secondary-page">
+          <h3>{{ contact.title }}</h3>
+          <ul>
+            <li style="list-style-image: url('{% custom_static "images/mouse.svg" %}');">{{ contact.website }}</li>
+            <li style="list-style-image: url('{% custom_static "images/mail.svg" %}');">{{ contact.email }}</li>
+            <li style="list-style-image: url('{% custom_static "images/phone.svg" %}')";>{{ contact.phone }}</li>
+          </ul>
+          {% markdown contact.content %}
+        <div>
+      </div>
+    </section>
+
+    {% endautoescape %}
+  </body>
+</html>
+

@@ -1,0 +1,774 @@
+[
+{
+    "model": "investment_report.sector",
+    "pk": 1,
+    "fields": {
+        "name": "tech",
+        "display_name": "Technology",
+        "display_name_en": "Technology",
+        "display_name_de": null,
+        "display_name_es": null,
+        "display_name_fr": null,
+        "display_name_pt": null,
+        "display_name_ar": null,
+        "display_name_ja": null,
+        "display_name_zh_cn": null
+    }
+},
+{
+    "model": "investment_report.sector",
+    "pk": 2,
+    "fields": {
+        "name": "automotive",
+        "display_name": "Automotive",
+        "display_name_en": "Automotive",
+        "display_name_de": null,
+        "display_name_es": null,
+        "display_name_fr": null,
+        "display_name_pt": null,
+        "display_name_ar": null,
+        "display_name_ja": null,
+        "display_name_zh_cn": null
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 4,
+    "fields": {
+        "name": "africa",
+        "countries": [
+            "DZ",
+            "AO",
+            "BJ",
+            "BW",
+            "BF",
+            "BI",
+            "CM",
+            "CV",
+            "CF",
+            "TD",
+            "KM",
+            "CD",
+            "DJ",
+            "EG",
+            "GQ",
+            "ER",
+            "ET",
+            "GA",
+            "GM",
+            "GH",
+            "GN",
+            "GW",
+            "CI",
+            "KE",
+            "LS",
+            "LR",
+            "LY",
+            "MG",
+            "MW",
+            "ML",
+            "MR",
+            "MU",
+            "YT",
+            "MA",
+            "MZ",
+            "NA",
+            "NE",
+            "NG",
+            "CG",
+            "RW",
+            "SH",
+            "ST",
+            "SN",
+            "SL",
+            "SO",
+            "ZA",
+            "SS",
+            "SD",
+            "SZ",
+            "TZ",
+            "TG",
+            "TN",
+            "UG",
+            "EH",
+            "ZM",
+            "ZW"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 5,
+    "fields": {
+        "name": "canada",
+        "countries": [
+            "CA",
+            "PM"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 6,
+    "fields": {
+        "name": "china",
+        "countries": [
+            "CN",
+            "HK",
+            "MO",
+            "MN",
+            "KP"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 7,
+    "fields": {
+        "name": "europe",
+        "countries": [
+            "AX",
+            "AL",
+            "AD",
+            "AT",
+            "BY",
+            "BE",
+            "BA",
+            "BG",
+            "HR",
+            "CY",
+            "CZ",
+            "DK",
+            "EE",
+            "FO",
+            "FI",
+            "TF",
+            "GI",
+            "GR",
+            "GL",
+            "GG",
+            "HU",
+            "IS",
+            "IE",
+            "IM",
+            "JE",
+            "LV",
+            "LI",
+            "LT",
+            "LU",
+            "MK",
+            "MT",
+            "MD",
+            "MC",
+            "ME",
+            "NL",
+            "NO",
+            "PL",
+            "PT",
+            "RO",
+            "RU",
+            "SM",
+            "RS",
+            "SK",
+            "SI",
+            "SJ",
+            "SE",
+            "CH",
+            "UA",
+            "GB",
+            "VA"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 8,
+    "fields": {
+        "name": "france",
+        "countries": [
+            "FR"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 9,
+    "fields": {
+        "name": "germany",
+        "countries": [
+            "DE"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 10,
+    "fields": {
+        "name": "india",
+        "countries": [
+            "IN"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 11,
+    "fields": {
+        "name": "italy",
+        "countries": [
+            "IT"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 12,
+    "fields": {
+        "name": "japan",
+        "countries": [
+            "JP"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 13,
+    "fields": {
+        "name": "latac",
+        "countries": [
+            "AI",
+            "AG",
+            "AR",
+            "AW",
+            "BS",
+            "BB",
+            "BZ",
+            "BM",
+            "BO",
+            "BQ",
+            "BV",
+            "BR",
+            "VG",
+            "KY",
+            "CL",
+            "CO",
+            "CR",
+            "CU",
+            "CW",
+            "DM",
+            "DO",
+            "EC",
+            "SV",
+            "FK",
+            "GF",
+            "GD",
+            "GP",
+            "GT",
+            "GY",
+            "HT",
+            "HN",
+            "JM",
+            "MQ",
+            "MX",
+            "MS",
+            "NI",
+            "PA",
+            "PY",
+            "PE",
+            "PR",
+            "BL",
+            "KN",
+            "LC",
+            "MF",
+            "VC",
+            "SX",
+            "GS",
+            "SR",
+            "TT",
+            "TC",
+            "VI",
+            "UY",
+            "VE"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 14,
+    "fields": {
+        "name": "middleeast",
+        "countries": [
+            "BH",
+            "IR",
+            "IQ",
+            "IL",
+            "JO",
+            "KW",
+            "LB",
+            "OM",
+            "PS",
+            "QA",
+            "SA",
+            "SY",
+            "AE",
+            "YE"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 16,
+    "fields": {
+        "name": "oceania",
+        "countries": [
+            "AS",
+            "AU",
+            "CX",
+            "CC",
+            "CK",
+            "TL",
+            "FJ",
+            "PF",
+            "GU",
+            "HM",
+            "KI",
+            "MH",
+            "FM",
+            "NR",
+            "NC",
+            "NZ",
+            "NU",
+            "NF",
+            "MP",
+            "PW",
+            "PG",
+            "PN",
+            "WS",
+            "SB",
+            "TK",
+            "TO",
+            "TV",
+            "UM",
+            "VU",
+            "WF"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 17,
+    "fields": {
+        "name": "russia",
+        "countries": [
+            "AF",
+            "AM",
+            "AZ",
+            "GE",
+            "KZ",
+            "KG",
+            "RU",
+            "TJ",
+            "TM",
+            "UZ"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 18,
+    "fields": {
+        "name": "s_asia",
+        "countries": [
+            "BD",
+            "BT",
+            "IO",
+            "MV",
+            "PK",
+            "RE",
+            "SC",
+            "LK"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 19,
+    "fields": {
+        "name": "se_asia",
+        "countries": [
+            "BN",
+            "KH",
+            "ID",
+            "LA",
+            "MY",
+            "MM",
+            "NP",
+            "PH",
+            "SG",
+            "TW",
+            "TH",
+            "VN"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 20,
+    "fields": {
+        "name": "southkorea",
+        "countries": [
+            "KP"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 21,
+    "fields": {
+        "name": "spain",
+        "countries": [
+            "ES"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 22,
+    "fields": {
+        "name": "turkey",
+        "countries": [
+            "TR"
+        ]
+    }
+},
+{
+    "model": "investment_report.market",
+    "pk": 23,
+    "fields": {
+        "name": "usa",
+        "countries": [
+            "US"
+        ]
+    }
+},
+{
+    "model": "investment_report.sectorlogo",
+    "pk": 1,
+    "fields": {
+        "name": "bmw",
+        "image": "sectorimages/bmw.png",
+        "sector": 1
+    }
+},
+{
+    "model": "investment_report.sectorlogo",
+    "pk": 2,
+    "fields": {
+        "name": "honda",
+        "image": "sectorimages/honda.png",
+        "sector": 1
+    }
+},
+{
+    "model": "investment_report.sectorlogo",
+    "pk": 3,
+    "fields": {
+        "name": "nissan",
+        "image": "sectorimages/nissan.png",
+        "sector": 1
+    }
+},
+{
+    "model": "investment_report.sectorlogo",
+    "pk": 4,
+    "fields": {
+        "name": "toyota",
+        "image": "sectorimages/toyota.png",
+        "sector": 1
+    }
+},
+{
+    "model": "investment_report.frontpage",
+    "pk": 1,
+    "fields": {
+        "background_image": "fristpage-huewie.svg",
+        "sector": 1
+    }
+},
+{
+    "model": "investment_report.sectoroverview",
+    "pk": 2,
+    "fields": {
+        "content": "aaaaaaaaam\r\n====\r\n\r\nIllegal defamatory content",
+        "content_en": "aaaaaaaaam\r\n====\r\n\r\nIllegal defamatory content",
+        "content_de": "",
+        "content_es": "",
+        "content_fr": "",
+        "content_pt": "",
+        "content_ar": "",
+        "content_ja": "",
+        "content_zh_cn": "",
+        "sector": 1,
+        "footer_image": "profile_EoEXQu4.jpg",
+        "footer_image_copy": "",
+        "footer_image_copy_en": "",
+        "footer_image_copy_de": "",
+        "footer_image_copy_es": "",
+        "footer_image_copy_fr": "",
+        "footer_image_copy_pt": "",
+        "footer_image_copy_ar": "",
+        "footer_image_copy_ja": "",
+        "footer_image_copy_zh_cn": "",
+        "footer_image_copy_attribution": "",
+        "footer_image_copy_attribution_en": "",
+        "footer_image_copy_attribution_de": "",
+        "footer_image_copy_attribution_es": "",
+        "footer_image_copy_attribution_fr": "",
+        "footer_image_copy_attribution_pt": "",
+        "footer_image_copy_attribution_ar": "",
+        "footer_image_copy_attribution_ja": "",
+        "footer_image_copy_attribution_zh_cn": ""
+    }
+},
+{
+    "model": "investment_report.killerfacts",
+    "pk": 1,
+    "fields": {
+        "content": "2. Achieving Great Things in $SECTOR\r\n====\r\n\r\n* UK tech is present in 95% of the world\u2019s mobile phones.[^1]\r\n* Europe\u2019s largest e-commerce market.[^2]\r\n* \u00a328bn has been invested in UK tech over the past five years\r\n* 18 of the 47 European Unicorns are in the UK.[^3]\r\n* The largest digital tech sector in the world after silicon valley and New York.\r\n\r\n[^1]: ARM technology\r\n[^2]: Tech Nation 2017\r\n[^3]: GB Bullhound",
+        "content_en": "2. Achieving Great Things in $SECTOR\r\n====\r\n\r\n* UK tech is present in 95% of the world\u2019s mobile phones.[^1]\r\n* Europe\u2019s largest e-commerce market.[^2]\r\n* \u00a328bn has been invested in UK tech over the past five years\r\n* 18 of the 47 European Unicorns are in the UK.[^3]\r\n* The largest digital tech sector in the world after silicon valley and New York.\r\n\r\n[^1]: ARM technology\r\n[^2]: Tech Nation 2017\r\n[^3]: GB Bullhound",
+        "content_de": "",
+        "content_es": "",
+        "content_fr": "",
+        "content_pt": "",
+        "content_ar": "",
+        "content_ja": "",
+        "content_zh_cn": "",
+        "sector": 1
+    }
+},
+{
+    "model": "investment_report.macrocontextbetweencountries",
+    "pk": 2,
+    "fields": {
+        "content": "3. Links That Are Already Strong\r\n====\r\n\r\n* Companies from China & Hong Kong participated in 557 new investment projects in 2016-17[^1].\r\n* The UK and China are now linked by a new rail freight service, which carries goods 7,500 miles across seven countries between London and the Chinese manufacturing city of Yiwu[^2].\r\n* 23% of China\u2019s investment into the EU between 2000 and 2016 went to the UK[^3].\r\n\r\n[^1]: DIT Inward Investment Results Tables 2017\r\n[^2]: Business Insider UK\r\n[^3]: Business Insider UK",
+        "content_en": "3. Links That Are Already Strong\r\n====\r\n\r\n* Companies from China & Hong Kong participated in 557 new investment projects in 2016-17[^1].\r\n* The UK and China are now linked by a new rail freight service, which carries goods 7,500 miles across seven countries between London and the Chinese manufacturing city of Yiwu[^2].\r\n* 23% of China\u2019s investment into the EU between 2000 and 2016 went to the UK[^3].\r\n\r\n[^1]: DIT Inward Investment Results Tables 2017\r\n[^2]: Business Insider UK\r\n[^3]: Business Insider UK",
+        "content_de": "",
+        "content_es": "",
+        "content_fr": "",
+        "content_pt": "",
+        "content_ar": "",
+        "content_ja": "",
+        "content_zh_cn": "",
+        "market": 6
+    }
+},
+{
+    "model": "investment_report.ukmarketoverview",
+    "pk": 1,
+    "fields": {
+        "body_image": "marketoverview-01_8nOH5nv.svg",
+        "body_image_en": "marketoverview-01_8nOH5nv.svg",
+        "body_image_de": "",
+        "body_image_es": "",
+        "body_image_fr": "",
+        "body_image_pt": "",
+        "body_image_ar": "",
+        "body_image_ja": "",
+        "body_image_zh_cn": "",
+        "background_image": "marketoverviewimage.png"
+    }
+},
+{
+    "model": "investment_report.ukbusinessinfo",
+    "pk": 1,
+    "fields": {
+        "body_image": "info-01_5cuWe5c.svg",
+        "body_image_en": "info-01_5cuWe5c.svg",
+        "body_image_de": "",
+        "body_image_es": "",
+        "body_image_fr": "",
+        "body_image_pt": "",
+        "body_image_ar": "",
+        "body_image_ja": "",
+        "body_image_zh_cn": "",
+        "background_image": "businessinfoimage.png"
+    }
+},
+{
+    "model": "investment_report.ukgeographicoverview",
+    "pk": 1,
+    "fields": {
+        "content": "6. Opportunities from Coast to Coast\r\n===\r\n\r\nThere are abundant opportunities for investment to be found across the UK. \r\n\r\nClick here to find out more about:\r\n\r\n* Opportunities for businesses in your sector in the different regions of the UK\r\n* Business clusters - where similar business, suppliers and supporting organisations share a geographical location\r\n* Opportunities to access research and development facilities and expertise",
+        "content_en": "6. Opportunities from Coast to Coast\r\n===\r\n\r\nThere are abundant opportunities for investment to be found across the UK. \r\n\r\nClick here to find out more about:\r\n\r\n* Opportunities for businesses in your sector in the different regions of the UK\r\n* Business clusters - where similar business, suppliers and supporting organisations share a geographical location\r\n* Opportunities to access research and development facilities and expertise",
+        "content_de": "",
+        "content_es": "",
+        "content_fr": "",
+        "content_pt": "",
+        "content_ar": "",
+        "content_ja": "",
+        "content_zh_cn": ""
+    }
+},
+{
+    "model": "investment_report.talentandeducationgeneric",
+    "pk": 3,
+    "fields": {
+        "content": "7. The Smart Workforce $COMPANY Needs\r\n====\r\n\r\nThe UK is the No.1 rated major European economy for growing, retaining and attracting global talent[^1]. Home to four of the world\u2019s top ten Universities: Oxford, Cambridge, University College London and Imperial College London.[^2]\r\n\r\nIn 2017 the government launched its Digital Strategy to support the UK\u2019s world-leading digital economy.\r\n\r\nIt will work with the industry to create millions more training schemes and aims to ensure that the UK is the best place in the world to set up and grow a digital business. \r\n\r\nExperiencing six years of continuous growth across the tech sector with new jobs being created 2.8x faster than in the rest of the economy, there are now 1.64 million people employed in the digital tech sector in the UK. \r\n\r\n[^1]: Instead, Human Capital Leadership Institute: The Global Talent Competitive Index 2017\r\n[^2]: QS World University Rankings 2016-17",
+        "content_en": "7. The Smart Workforce $COMPANY Needs\r\n====\r\n\r\nThe UK is the No.1 rated major European economy for growing, retaining and attracting global talent[^1]. Home to four of the world\u2019s top ten Universities: Oxford, Cambridge, University College London and Imperial College London.[^2]\r\n\r\nIn 2017 the government launched its Digital Strategy to support the UK\u2019s world-leading digital economy.\r\n\r\nIt will work with the industry to create millions more training schemes and aims to ensure that the UK is the best place in the world to set up and grow a digital business. \r\n\r\nExperiencing six years of continuous growth across the tech sector with new jobs being created 2.8x faster than in the rest of the economy, there are now 1.64 million people employed in the digital tech sector in the UK. \r\n\r\n[^1]: Instead, Human Capital Leadership Institute: The Global Talent Competitive Index 2017\r\n[^2]: QS World University Rankings 2016-17",
+        "content_de": "",
+        "content_es": "",
+        "content_fr": "",
+        "content_pt": "",
+        "content_ar": "",
+        "content_ja": "",
+        "content_zh_cn": ""
+    }
+},
+{
+    "model": "investment_report.talentandeducationbysector",
+    "pk": 1,
+    "fields": {
+        "content": "Examples of how the UK is fostering skills to lead the world in technology development include:\r\n\r\n * The Alan Turing Institute is a joint venture between five of the world\u2019s best universities. It is the UK\u2019s national centre of expertise in data science.\r\n * Many institutions nationwide offer MSc courses in \u2018big data\u2019 analytics\r\n * The nation\u2019s expertise is supported by academic \u2018centres of excellence\u2019 in cyber security R&D at thirteen universities., with other universities developing new programmes.\r\n * In addition, funding and mentorships for start-ups, and Europe\u2019s first cyber security accelerator, CyLon, exist in the UK.  (UK Government https://www.gov.uk/government/publications/cyber-security-research-capability-academic-centres-of-excellence)\r\n * The UK is also a pioneer in AI, with academic institutions leading in AI, data science and visualisation",
+        "content_en": "Examples of how the UK is fostering skills to lead the world in technology development include:\r\n\r\n * The Alan Turing Institute is a joint venture between five of the world\u2019s best universities. It is the UK\u2019s national centre of expertise in data science.\r\n * Many institutions nationwide offer MSc courses in \u2018big data\u2019 analytics\r\n * The nation\u2019s expertise is supported by academic \u2018centres of excellence\u2019 in cyber security R&D at thirteen universities., with other universities developing new programmes.\r\n * In addition, funding and mentorships for start-ups, and Europe\u2019s first cyber security accelerator, CyLon, exist in the UK.  (UK Government https://www.gov.uk/government/publications/cyber-security-research-capability-academic-centres-of-excellence)\r\n * The UK is also a pioneer in AI, with academic institutions leading in AI, data science and visualisation",
+        "content_de": "",
+        "content_es": "",
+        "content_fr": "",
+        "content_pt": "",
+        "content_ar": "",
+        "content_ja": "",
+        "content_zh_cn": "",
+        "sector": 1
+    }
+},
+{
+    "model": "investment_report.sectorinitiatives",
+    "pk": 1,
+    "fields": {
+        "content": "8. $SECTOR in the UK: Going from Strength to Strength\r\n====\r\n\r\n![](/media/markdownx/3ed4c65c-ca3c-4414-bedc-0ee7267c4f4d.png)\r\n\r\n### Fintech\r\n\r\n\r\nThe UK FinTech sector generated about \u00a36.6billion of revenue in 20151, ranking  first amongst the world\u2019s FinTech hubs for having the strongest FinTech ecosystem.[^1]\r\n\r\nThe UK has a robust regulatory and policy environment to support growth and innovation in FinTech, The UK has become home to some of the largest FinTech IPOs including Worldplay, which was the biggest fintech IPO in 2015[^1].\r\n\r\nFintech was the leading sector for investment in 2017, with UK financial technology firms attracting a record \u00a31.34 billion in VC funding[^2].\r\n\r\n\r\n![](/media/markdownx/31276d18-1d77-45cd-8842-c4dc31a8536d.png)\r\n\r\n### Data Analytics and Centres\r\n\r\n\r\nThe UK has one of the world\u2019s strongest and most developed \u2018big data\u2019 sectors, with a well-developed cloud, data centre and high-performance computing support infrastructure.\r\n\r\nThe UK\u2019s research councils have invested over \u00a3300m in big data analytics projects.\r\n\r\nHome of the largest data centre market in Europe, as an early entrant into the sector, the UK has built up a complex, diverse and successful business ecosystem, enabling the UK to become a world-leader in the provision of digital services worldwide.\r\n\r\nChanges in data protection legislation (GDPR) will lead to new opportunities in the UK data centre market, which will contribute to a predicted annual growth of 3.4%.\r\n\r\n<div class=\"page-break\"></div>\r\n\r\n### Cyber Security\r\n\r\nThe UK is largest, most concentrated and accessible cyber-security market in Europe,\r\n\r\nThe UK Government is investing \u00a31.9bn in cyber security over the next five years[^3]\r\n\r\nGreat Britain and Northern Ireland are served by an industry employing over 100,000 people.\r\n\r\nFuelling this growing skillset is a new National Cyber Security Strategy; a new National Cyber Security Centre; and a Cyber Growth Partnership \u2013 an online platform across industry, academia and government that maps the UK\u2019s cyber capabilities.\r\n\r\n### 5G\r\n\r\nThe UK is at the forefront of the global adoption of 5G. The UK\u2019s 5G Testbeds & Trials Programme will harness the power of 5G Network Architecture and Protocols to further the UK\u2019s leadership.\r\n\r\nThe UK already has a competitive advantage due to strengths in scientific research, engineering talent, and a corporate ecosystem of relevant technology companies. \r\n\r\n\u00a325 million of funding is available from the Department for Digital, Culture, Media & Sport (DCMS) 5G Testbeds and Trials Programme[^4].\r\n\r\n\r\n[^1]: http://www.telegraph.co.uk/finance/markets/11928088/Worldpay\u2010floats\u2010in\u2010largest\u2010London\u2010IPOthis\u2010year.html\r\n[^2]: Pitchbook Dec 2017 http://www.londonandpartners.com/media-centre/press-releases/2017/20180105-2017-record-year-for-london-and-uk-tech-investment\r\n[^3]: gov.uk\r\n[^4]: https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/652263/DCMS_5G_Prospectus.pdf",
+        "content_en": "8. $SECTOR in the UK: Going from Strength to Strength\r\n====\r\n\r\n![](/media/markdownx/3ed4c65c-ca3c-4414-bedc-0ee7267c4f4d.png)\r\n\r\n### Fintech\r\n\r\n\r\nThe UK FinTech sector generated about \u00a36.6billion of revenue in 20151, ranking  first amongst the world\u2019s FinTech hubs for having the strongest FinTech ecosystem.[^1]\r\n\r\nThe UK has a robust regulatory and policy environment to support growth and innovation in FinTech, The UK has become home to some of the largest FinTech IPOs including Worldplay, which was the biggest fintech IPO in 2015[^1].\r\n\r\nFintech was the leading sector for investment in 2017, with UK financial technology firms attracting a record \u00a31.34 billion in VC funding[^2].\r\n\r\n\r\n![](/media/markdownx/31276d18-1d77-45cd-8842-c4dc31a8536d.png)\r\n\r\n### Data Analytics and Centres\r\n\r\n\r\nThe UK has one of the world\u2019s strongest and most developed \u2018big data\u2019 sectors, with a well-developed cloud, data centre and high-performance computing support infrastructure.\r\n\r\nThe UK\u2019s research councils have invested over \u00a3300m in big data analytics projects.\r\n\r\nHome of the largest data centre market in Europe, as an early entrant into the sector, the UK has built up a complex, diverse and successful business ecosystem, enabling the UK to become a world-leader in the provision of digital services worldwide.\r\n\r\nChanges in data protection legislation (GDPR) will lead to new opportunities in the UK data centre market, which will contribute to a predicted annual growth of 3.4%.\r\n\r\n<div class=\"page-break\"></div>\r\n\r\n### Cyber Security\r\n\r\nThe UK is largest, most concentrated and accessible cyber-security market in Europe,\r\n\r\nThe UK Government is investing \u00a31.9bn in cyber security over the next five years[^3]\r\n\r\nGreat Britain and Northern Ireland are served by an industry employing over 100,000 people.\r\n\r\nFuelling this growing skillset is a new National Cyber Security Strategy; a new National Cyber Security Centre; and a Cyber Growth Partnership \u2013 an online platform across industry, academia and government that maps the UK\u2019s cyber capabilities.\r\n\r\n### 5G\r\n\r\nThe UK is at the forefront of the global adoption of 5G. The UK\u2019s 5G Testbeds & Trials Programme will harness the power of 5G Network Architecture and Protocols to further the UK\u2019s leadership.\r\n\r\nThe UK already has a competitive advantage due to strengths in scientific research, engineering talent, and a corporate ecosystem of relevant technology companies. \r\n\r\n\u00a325 million of funding is available from the Department for Digital, Culture, Media & Sport (DCMS) 5G Testbeds and Trials Programme[^4].\r\n\r\n\r\n[^1]: http://www.telegraph.co.uk/finance/markets/11928088/Worldpay\u2010floats\u2010in\u2010largest\u2010London\u2010IPOthis\u2010year.html\r\n[^2]: Pitchbook Dec 2017 http://www.londonandpartners.com/media-centre/press-releases/2017/20180105-2017-record-year-for-london-and-uk-tech-investment\r\n[^3]: gov.uk\r\n[^4]: https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/652263/DCMS_5G_Prospectus.pdf",
+        "content_de": "",
+        "content_es": "",
+        "content_fr": "",
+        "content_pt": "",
+        "content_ar": "",
+        "content_ja": "",
+        "content_zh_cn": "",
+        "sector": 1
+    }
+},
+{
+    "model": "investment_report.networkandsupport",
+    "pk": 1,
+    "fields": {
+        "content": "The Government is fully committed to helping the UK maintain its position as a leading digital nation.\r\n\r\n\r\nOur help for early stage innovation as well as research and development (R&D) is second to none. You can take advantage of a number of tax incentives including:\r\n\r\n* Seed Enterprise Investment Scheme \u2013 a model for tax efficient investment at the seed and angel phase which is attracting new investors into the technology and start up environment\r\n\r\n* R&D tax credits \u2013 small and medium sized companies can write R&D investment off against tax to a rate of 230%\r\n\r\n* The Patent Box enables companies to apply a lower rate of Corporation Tax to profits earned from its patented inventions\r\n\r\n* The Government has invested more than \u00a3200 million in a network of Technology and Innovation Centres supporting the commercialisation of new technologies. Innovate UK, the UK\u2019s innovation support agency, invests in R&D related to strategic sector development targets.\r\n\r\n* The UK also offers a number of world-class digital start-up programmes and opportunities for angel investment.\r\n\r\nAll of these measures complement our low level of corporation tax, which is set to drop to 17% by 2020.",
+        "content_en": "The Government is fully committed to helping the UK maintain its position as a leading digital nation.\r\n\r\n\r\nOur help for early stage innovation as well as research and development (R&D) is second to none. You can take advantage of a number of tax incentives including:\r\n\r\n* Seed Enterprise Investment Scheme \u2013 a model for tax efficient investment at the seed and angel phase which is attracting new investors into the technology and start up environment\r\n\r\n* R&D tax credits \u2013 small and medium sized companies can write R&D investment off against tax to a rate of 230%\r\n\r\n* The Patent Box enables companies to apply a lower rate of Corporation Tax to profits earned from its patented inventions\r\n\r\n* The Government has invested more than \u00a3200 million in a network of Technology and Innovation Centres supporting the commercialisation of new technologies. Innovate UK, the UK\u2019s innovation support agency, invests in R&D related to strategic sector development targets.\r\n\r\n* The UK also offers a number of world-class digital start-up programmes and opportunities for angel investment.\r\n\r\nAll of these measures complement our low level of corporation tax, which is set to drop to 17% by 2020.",
+        "content_de": "",
+        "content_es": "",
+        "content_fr": "",
+        "content_pt": "",
+        "content_ar": "",
+        "content_ja": "",
+        "content_zh_cn": "",
+        "background_image": "networkandsupport_xbzYLro.png"
+    }
+},
+{
+    "model": "investment_report.rdandinnovation",
+    "pk": 1,
+    "fields": {
+        "content": "10. R&D and Innovation\r\n===\r\n\r\nThe UK offers investors and entrepreneurs an ideal testing ground from new enterprises and technologies with a mature market, tech savvy early adopting consumer footprint and an ideal launchpad for international expansion.\r\n\r\nThe UK government encourages investment, with a reduction of corporation tax to 17% by 2020, the most competitive tax regime in the G20, research and development tax credits, and a Patent Box tax regime for intellectual property revenues. Technology-friendly regulation also supports innovation with tax reliefs for R&D.",
+        "content_en": "10. R&D and Innovation\r\n===\r\n\r\nThe UK offers investors and entrepreneurs an ideal testing ground from new enterprises and technologies with a mature market, tech savvy early adopting consumer footprint and an ideal launchpad for international expansion.\r\n\r\nThe UK government encourages investment, with a reduction of corporation tax to 17% by 2020, the most competitive tax regime in the G20, research and development tax credits, and a Patent Box tax regime for intellectual property revenues. Technology-friendly regulation also supports innovation with tax reliefs for R&D.",
+        "content_de": "",
+        "content_es": "",
+        "content_fr": "",
+        "content_pt": "",
+        "content_ar": "",
+        "content_ja": "",
+        "content_zh_cn": "",
+        "sector": 1
+    }
+},
+{
+    "model": "investment_report.rdandinnovationcasestudy",
+    "pk": 1,
+    "fields": {
+        "content": "11. Dyn Case Study\r\n====\r\n\r\n\r\n![](/media/markdownx/c876fd12-a3ff-4ff5-a129-34913c326ea9.png)\r\n\r\n\r\n\r\nDyn is a US company that optimises the performance of companies\u2019 network systems. In the UK, Dyn found the perfect base from which to access customers across the world - as well as a significant domestic market.\r\n\r\nThe diversity of talent available locally in the UK gave Dyn the capability to rapidly grow internationally, particularly as it serves customers across cultures using multiple languages.\r\n\r\nThe UK\u2019s strategic location allows Dyn\u2019s teams to reach all points in Europe within 2 to 3 hours. They are never far from another market opportunity.\r\n\r\nDyn have received significant support from the UK Government both in the UK and it help grow their exports across Europe.\r\n\t\t\r\n>  \u201cThe overarching characteristic that the UK brings to us is mobility. And when I think about mobility, I think about that from a talent pool perspective. I think of it from a tax perspective. And I think about it from an access perspective\u201d Paul Heywood, EMEA Managing Director, Dyn",
+        "content_en": "11. Dyn Case Study\r\n====\r\n\r\n\r\n![](/media/markdownx/c876fd12-a3ff-4ff5-a129-34913c326ea9.png)\r\n\r\n\r\n\r\nDyn is a US company that optimises the performance of companies\u2019 network systems. In the UK, Dyn found the perfect base from which to access customers across the world - as well as a significant domestic market.\r\n\r\nThe diversity of talent available locally in the UK gave Dyn the capability to rapidly grow internationally, particularly as it serves customers across cultures using multiple languages.\r\n\r\nThe UK\u2019s strategic location allows Dyn\u2019s teams to reach all points in Europe within 2 to 3 hours. They are never far from another market opportunity.\r\n\r\nDyn have received significant support from the UK Government both in the UK and it help grow their exports across Europe.\r\n\t\t\r\n>  \u201cThe overarching characteristic that the UK brings to us is mobility. And when I think about mobility, I think about that from a talent pool perspective. I think of it from a tax perspective. And I think about it from an access perspective\u201d Paul Heywood, EMEA Managing Director, Dyn",
+        "content_de": "",
+        "content_es": "",
+        "content_fr": "",
+        "content_pt": "",
+        "content_ar": "",
+        "content_ja": "",
+        "content_zh_cn": "",
+        "sector": 1
+    }
+},
+{
+    "model": "investment_report.whoishere",
+    "pk": 1,
+    "fields": {
+        "background_image": "whosherebackground.png"
+    }
+},
+{
+    "model": "investment_report.videocasestudy",
+    "pk": 1,
+    "fields": {
+        "content": "12. Video case study\r\n====\r\n\r\n![](/media/markdownx/7f6a0302-3b5d-40a3-be04-f4da2019da68.png)\r\n\r\n\r\nClick here to find out why the UK had all the right \u2018personal chemistry\u2019 for online business matchmaking service AboutMatch.\r\n\r\n> \u201cThe Government was very proactive and helpful. They offered free market research which is an amazing service for a business like ours and gave us a good head start\u201d Sharon Melamed, Managing Director, AboutMatch",
+        "content_en": "12. Video case study\r\n====\r\n\r\n![](/media/markdownx/7f6a0302-3b5d-40a3-be04-f4da2019da68.png)\r\n\r\n\r\nClick here to find out why the UK had all the right \u2018personal chemistry\u2019 for online business matchmaking service AboutMatch.\r\n\r\n> \u201cThe Government was very proactive and helpful. They offered free market research which is an amazing service for a business like ours and gave us a good head start\u201d Sharon Melamed, Managing Director, AboutMatch",
+        "content_de": "",
+        "content_es": "",
+        "content_fr": "",
+        "content_pt": "",
+        "content_ar": "",
+        "content_ja": "",
+        "content_zh_cn": "",
+        "sector": 1
+    }
+},
+{
+    "model": "investment_report.servicesofferedbydit",
+    "pk": 1,
+    "fields": {
+        "content": "14: Great Things Await \u2013 Take the Next Step\r\n====\r\n\r\nThe Department for International Trade helps overseas companies locate and grow in the UK.\r\n\r\nOur services to international investors in the UK are free of charge. Our dealings are always \u2018Commercial in Confidence\u2019.\r\n\r\nWe can assist by:\r\n\r\n1. Helping to assess opportunities with bespoke market research to identify the best location\r\n2. Assistance with visa applications and entry to the UK\r\n3. Access to grants and incentives\r\n4. Advice on recruitment and training including salary benchmarking\r\n5. Helping you to build connections with businesses across your sectors\r\n6. Tailored assistance for entrepreneurs",
+        "content_en": "14: Great Things Await \u2013 Take the Next Step\r\n====\r\n\r\nThe Department for International Trade helps overseas companies locate and grow in the UK.\r\n\r\nOur services to international investors in the UK are free of charge. Our dealings are always \u2018Commercial in Confidence\u2019.\r\n\r\nWe can assist by:\r\n\r\n1. Helping to assess opportunities with bespoke market research to identify the best location\r\n2. Assistance with visa applications and entry to the UK\r\n3. Access to grants and incentives\r\n4. Advice on recruitment and training including salary benchmarking\r\n5. Helping you to build connections with businesses across your sectors\r\n6. Tailored assistance for entrepreneurs",
+        "content_de": "",
+        "content_es": "",
+        "content_fr": "",
+        "content_pt": "",
+        "content_ar": "",
+        "content_ja": "",
+        "content_zh_cn": "",
+        "footer_image": "servicesoffered.png"
+    }
+},
+{
+    "model": "investment_report.contact",
+    "pk": 1,
+    "fields": {
+        "content": "Investment staff at a British embassy, high commission or trade of ce can also put investors in touch with the Investment Services Team.\r\n\r\nFor more information on how to set up a business in the UK, please visit **invest.great.gov.uk/int/setup-guide/**",
+        "content_en": "Investment staff at a British embassy, high commission or trade of ce can also put investors in touch with the Investment Services Team.\r\n\r\nFor more information on how to set up a business in the UK, please visit **invest.great.gov.uk/int/setup-guide/**",
+        "content_de": "",
+        "content_es": "",
+        "content_fr": "",
+        "content_pt": "",
+        "content_ar": "",
+        "content_ja": "",
+        "content_zh_cn": "",
+        "title": "Contact DIT\u2019s Investment Services Team",
+        "title_en": "Contact DIT\u2019s Investment Services Team",
+        "title_de": null,
+        "title_es": null,
+        "title_fr": null,
+        "title_pt": null,
+        "title_ar": null,
+        "title_ja": null,
+        "title_zh_cn": null,
+        "website": "invest.great.gov.uk/int/contact",
+        "email": "enquiries@ukti-invest.com",
+        "phone": "+44(0) 207 000 9012",
+        "background_image": "contact.png"
+    }
+}
+]
