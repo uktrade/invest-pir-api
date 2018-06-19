@@ -1,4 +1,3 @@
-from functools import partial
 from django.conf.urls import url
 
 from investment_report.views import utils

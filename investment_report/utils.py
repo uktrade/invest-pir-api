@@ -1,25 +1,21 @@
 import glob
-import os
-import base64
-import datetime
 import copy
 import functools
 import weasyprint
 
 from django_countries import data
-from countries_plus.models import Country
 from io import BytesIO
 from PyPDF2 import PdfFileMerger
 
 from django.conf import settings
 from django.template.loader import render_to_string
-from django.utils import translation
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 
 from investment_report.models import *
 
 from notifications_python_client.notifications import NotificationsAPIClient
+
 
 def filter_translations_and_moderation(klass, **kwargs):
     """

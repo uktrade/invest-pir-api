@@ -2,20 +2,16 @@ import logging
 import datetime
 import uuid
 
-from bs4 import BeautifulSoup
 from collections import OrderedDict
 
 from sorl.thumbnail import ImageField
 from django.utils import timezone
 
 from django.db import models
-from django.utils.html import format_html
 from django.utils import translation
-from django.utils.text import slugify
 
 from countries_plus.models import Country
 from markdownx.models import MarkdownxField
-from django.contrib.auth.models import User
 from django.core.files import File
 
 from notifications_python_client.errors import HTTPError

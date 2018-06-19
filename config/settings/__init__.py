@@ -79,7 +79,6 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'django_countries',
     'countries_plus',
-    'bootstrap4',
     'rest_framework',
 ]
 
@@ -203,6 +202,9 @@ else:
 # Static files served with Whitenoise and AWS Cloudfront
 # http://whitenoise.evans.io/en/stable/django.html#instructions-for-amazon-cloudfront
 # http://whitenoise.evans.io/en/stable/django.html#restricting-cloudfront-to-static-files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+if not os.path.exists(STATIC_ROOT):
+    os.makedirs(STATIC_ROOT)
 STATIC_URL = "https://%s/static/" % AWS_S3_CUSTOM_DOMAIN
 
 LOGGING = {

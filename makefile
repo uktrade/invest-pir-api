@@ -39,22 +39,19 @@ docker_run:
 	docker-compose up --build
 
 DOCKER_SET_DEBUG_ENV_VARS := \
-	export INVEST_DEBUG=true; \
-	export INVEST_PORT=8005; \
-	export INVEST_REDIS_URL=redis://127.0.0.1:6379/1; \
-	export INVEST_SECRET_KEY=secret; \
-	export INVEST_SESSION_COOKIE_SECURE=false; \
-	export INVEST_SECURE_HSTS_SECONDS=0; \
-	export INVEST_SECURE_SSL_REDIRECT=false; \
-	export INVEST_SITE_ID=1; \
-	export INVEST_TEST=true; \
-	export INVEST_DATABASE_URL=sqlite:///hardcopy.sqlite3; \
-	export INVEST_ZENDESK_EMAIL=debug; \
-	export INVEST_ZENDESK_SUBDOMAIN=debugdebugdebug; \
-	export INVEST_ZENDESK_TOKEN=debug; \
-	export INVEST_RECAPTCHA_PUBLIC_KEY=debug; \
-	export INVEST_RECAPTCHA_PRIVATE_KEY=debug; \
-	export INVEST_NOCAPTCHA=false
+	export PIR_API_DEBUG=true; \
+	export PIR_API_PORT=8005; \
+	export PIR_API_REDIS_URL=redis://127.0.0.1:6379/1; \
+	export PIR_API_SECRET_KEY=secret; \
+	export PIR_API_SESSION_COOKIE_SECURE=false; \
+	export PIR_API_SECURE_HSTS_SECONDS=0; \
+	export PIR_API_SECURE_SSL_REDIRECT=false; \
+	export PIR_API_SITE_ID=1; \
+	export PIR_API_TEST=true; \
+	export PIR_API_DATABASE_URL=sqlite:///hardcopy.sqlite3; \
+	export PIR_API_RECAPTCHA_PUBLIC_KEY=debug; \
+	export PIR_API_RECAPTCHA_PRIVATE_KEY=debug; \
+	export PIR_API_NOCAPTCHA=false
 
 docker_test_env_files:
 	$(DOCKER_SET_DEBUG_ENV_VARS) && \
@@ -96,9 +93,6 @@ DEBUG_SET_ENV_VARS := \
 	export SESSION_COOKIE_SECURE=false; \
 	export SECURE_HSTS_SECONDS=0; \
 	export SECURE_SSL_REDIRECT=false; \
-	export ZENDESK_EMAIL=debug; \
-	export ZENDESK_SUBDOMAIN=debugdebugdebug; \
-	export ZENDESK_TOKEN=debug; \
 	export RECAPTCHA_PUBLIC_KEY=debug; \
 	export RECAPTCHA_PRIVATE_KEY=debug; \
 	export NOCAPTCHA=false

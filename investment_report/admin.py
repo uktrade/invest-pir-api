@@ -1,18 +1,15 @@
 # virtually admin.yp
-from django.shortcuts import redirect
 
 from investment_report.models import (
-    PDFSection, Market, Sector, MarketLogo, SectorLogo, SectorOverview, PIRRequest
+    PDFSection, Market, Sector, MarketLogo, SectorLogo, PIRRequest
 )
 
 import django
 from django.core import urlresolvers
 from django.apps import apps
-from django.contrib import admin
 from django.db import models
 from django.contrib import admin
 from django.contrib.sites.models import Site
-from django.contrib.contenttypes.models import ContentType
 from django.conf import settings
 
 from moderation.admin import ModerationAdmin, ModeratedObjectAdmin
@@ -20,11 +17,8 @@ from moderation.models import ModeratedObject
 from moderation.helpers import automoderate
 from moderation import moderation
 from moderation.diff import get_changes_between_models
-from moderation.constants import (MODERATION_READY_STATE,
-                        MODERATION_DRAFT_STATE,
-                        MODERATION_STATUS_REJECTED,
-                        MODERATION_STATUS_APPROVED,
-                        MODERATION_STATUS_PENDING)
+from moderation.constants import MODERATION_READY_STATE, \
+    MODERATION_STATUS_APPROVED
 
 from django.contrib.contenttypes.models import ContentType
 from markdownx.admin import MarkdownxModelAdmin
