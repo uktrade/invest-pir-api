@@ -135,24 +135,7 @@ class PDFAdmin(MarkdownxModelAdmin, TranslationAdmin, ModerationAdmin, admin.Mod
         # 
         # The object hasn't been approved yet as the _base_manager query
         # will be searching for an object that's in a published state
-        # 
-        # Sorry to all that have read this. 1 day deadlines and coubled
-        # together django solutions are sometimes a bit awful.
-        #
-        # [Vomits]
-        #
-        #               %%%%%%
-        #              %%%% = =
-        #              %%C    >
-        #               _)' _( .' ,
-        #            __/ |_/\   " *. o
-        #           /` \_\ \/     %`= '_  .
-        #          /  )   \/|      .^',*. ,
-        #         /' /-   o/       - " % '_
-        #        /\_/     <       = , ^ ~ .
-        #        )_o|----'|          .`  '
-        #    ___// (_  - (\
-        #   ///-(    \'   \\ b'ger
+
         obj.__class__._base_manager.__class__ = models.Manager
 
         obj.save()
@@ -161,8 +144,6 @@ class PDFAdmin(MarkdownxModelAdmin, TranslationAdmin, ModerationAdmin, admin.Mod
 
 for klass in PDFSection.__subclasses__():
     """
-    I can't be arrsed to create another 14 nearly identical classes
-
     Auto generate the admin for PDF section
     """
     Admin = type(

@@ -24,9 +24,9 @@ def filter_translations_and_moderation(klass, **kwargs):
 
 
     I'd normally be using a manager for this, but the
-    querysets are fucked with translations
+    querysets are not working because of translations
 
-    Everything here takes place within the django lanauge context.
+    Everything here takes place within the django langauge context.
     """
 
     # Model kwargs used to exclude models if the translation

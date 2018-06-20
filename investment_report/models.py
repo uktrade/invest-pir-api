@@ -31,7 +31,6 @@ class PIRRequest(models.Model):
     date_created = models.DateField(default=timezone.now)
     pdf = models.FileField()
 
-
     def create_pdf(self, notify=True):
         from investment_report.utils import (
             investment_report_pdf_generator, send_investment_email
