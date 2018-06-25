@@ -250,12 +250,12 @@ MARKDOWNX_UPLOAD_CONTENT_TYPES = ['image/png', 'image/jpeg', 'image/svg+xml']
 SITE_ID = 1
 
 EMAIL_BACKEND = 'django_amazon_ses.EmailBackend'
-DEFAULT_FROM_EMAIL = os.getenv('EMAIL_FROM', 'rollokb@gmail.com')
+DEFAULT_FROM_EMAIL = os.getenv('EMAIL_FROM')
 
 
 MODERATION_MODERATORS = [item.strip()
     for item in
-    os.getenv('MODERATION_MODERATORS', 'rollokb@gmail.com').split(',')
+    os.getenv('MODERATION_MODERATORS', '').split(',')
 ]
 
 
