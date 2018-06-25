@@ -17,7 +17,7 @@ class TestCase(SimpleTestCase):
 
             self.assertEquals(
                 res2, (
-                    '<p><img alt=""src="https://test'
+                    '<p><img alt="" src="https://test'
                     '/media/markdownx/test.png" /></p>'
                 )
             )
