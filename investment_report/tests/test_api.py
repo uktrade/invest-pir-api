@@ -17,6 +17,7 @@ from moto import mock_s3, mock_ses
 
 DATA = b'data...'
 
+
 @mock_s3
 @mock_ses
 class PIRAPITestCase(APITestCase):
@@ -31,12 +32,12 @@ class PIRAPITestCase(APITestCase):
             name='USA',
         )
 
-        sector = Sector.objects.create(
+        Sector.objects.create(
             name='tech',
             display_name='tech',
         )
 
-        market.countries=[country]
+        market.countries = [country]
         market.save()
 
         self.mock_ses = mock_ses()
@@ -45,12 +46,18 @@ class PIRAPITestCase(APITestCase):
         self.mock_s3.start()
         self.mock_ses.start()
 
-        self.patcher = patch('investment_report.utils.investment_report_pdf_generator')
+        self.patcher = patch(
+            'investment_report.utils.investment_report_pdf_generator'
+        )
+
         self.mock_generator = self.patcher.start()
         self.mock_generator.return_value = BytesIO(DATA)
-        self.conn = boto3.resource('s3', region_name=settings.AWS_DEFAULT_REGION)
-        self.conn.create_bucket(Bucket=settings.AWS_STORAGE_BUCKET_NAME)
+        self.conn = boto3.resource(
+            's3',
+            region_name=settings.AWS_DEFAULT_REGION
+        )
 
+        self.conn.create_bucket(Bucket=settings.AWS_STORAGE_BUCKET_NAME)
 
     def tearDown(self):
         self.mock_generator.stop()

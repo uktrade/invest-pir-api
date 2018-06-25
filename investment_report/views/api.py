@@ -29,7 +29,8 @@ class PIRAPI(APIView):
             resp = Response(serializer.data, status=201)
 
             resp['Location'] = reverse(
-                'pir_api_detail', args=[serializer.instance.id], request=request
+                'pir_api_detail', args=[serializer.instance.id],
+                request=request
             )
 
             return resp
