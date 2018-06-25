@@ -17,7 +17,8 @@ urlpatterns = i18n_patterns(
     url(r'^investment-report/', include('investment_report.urls')),
 
     url(r'^api/pir/$', api.PIRAPI.as_view(), name='pir_api'),
-    url(r'^api/pir/(?P<identifier>\d+)/$', api.PIRAPI.as_view(), name='pir_api_detail'),
+    url(r'^api/pir/(?P<identifier>\d+)/$',
+        api.PIRAPI.as_view(), name='pir_api_detail'),
 
     prefix_default_language=False)
 

@@ -1,5 +1,5 @@
 from rest_framework.metadata import SimpleMetadata
-from rest_framework import serializers 
+from rest_framework import serializers
 from django.utils.encoding import force_text
 
 
@@ -30,7 +30,7 @@ class RelatedFieldMetadata(SimpleMetadata):
                     for name in
                     field.queryset.values_list('name', flat=True)
                 ]
-                
+
             if field.field_name == 'sector':
                 field_info['choices'] = [
                     {

@@ -142,7 +142,7 @@ class FrontPage(PDFSection):
 class SectorOverview(PDFSection):
     SECTION = 1
     TRANSLATION_FIELDS = (
-        PDFSection.TRANSLATION_FIELDS + 
+        PDFSection.TRANSLATION_FIELDS +
         ['footer_image_copy', 'footer_image_copy_attribution']
     )
 
@@ -151,7 +151,7 @@ class SectorOverview(PDFSection):
         help_text='Image at bottom of this page'
     )
     footer_image_copy = models.TextField(
-        blank=True, 
+        blank=True,
         help_text='Text overlayed on image'
     )
     footer_image_copy_attribution = models.TextField(
@@ -190,9 +190,7 @@ class UKMarketOverview(PDFSection):
         help_text=(
             'Fact sheet SVG overlayed on background of background. Don\'t edit '
             'unless you know what you are doing. Viewbox needs to be carefully '
-            'calibrated here'
-        )
-    )
+            'calibrated here'))
 
     background_image = models.ImageField()
 
@@ -211,9 +209,7 @@ class UKBusinessInfo(PDFSection):
         help_text=(
             'Fact sheet SVG overlayed on background of background. Don\'t edit '
             'unless you know what you are doing. Viewbox needs to be carefully '
-            'calibrated here'
-        )
-    )
+            'calibrated here'))
 
     background_image = models.ImageField()
 
@@ -317,7 +313,7 @@ class Contact(PDFSection):
     SINGLETON = True
 
     TRANSLATION_FIELDS = (
-        PDFSection.TRANSLATION_FIELDS + 
+        PDFSection.TRANSLATION_FIELDS +
         ['title', ]
     )
 

@@ -10,7 +10,7 @@ from markdown import inlinepatterns
 class CustomFootnoteExtension(FootnoteExtension):
     def makeFootnotesDiv(self, root):
         div = super().makeFootnotesDiv(root)
-        
+
         if div:
             # Put numbers in list text
             notes = div.findall('.//li')
@@ -36,9 +36,11 @@ class CustomImagePattern(inlinepatterns.ImagePattern):
         else:
             return url
 
+
 # Monkey Patch image url
 from markdown import Markdown
 inlinepatterns.ImagePattern = CustomImagePattern
+
 
 def custom_markdown(a_str, local=True):
     md = Markdown(extensions=[CustomFootnoteExtension()])

@@ -7,4 +7,3 @@ CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 
 REST_FRAMEWORK = {}
 EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
-

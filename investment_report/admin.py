@@ -28,6 +28,7 @@ from django.contrib.auth.admin import (
     User, Group, UserAdmin, GroupAdmin
 )
 
+
 def _get_pdf_args(obj):
     _market = Market.objects.first()
     _sector = Sector.objects.first()
@@ -53,8 +54,8 @@ class InvestmentReportAdminSite(admin.AdminSite):
         for app in app_list:
             for model in app['models']:
                 model['order'] = getattr(
-                    apps.get_model(app['app_label'], model['object_name']), 'SECTION', -1
-                )
+                    apps.get_model(
+                        app['app_label'], model['object_name']), 'SECTION', -1)
 
             app['models'].sort(key=lambda x: x['order'])
 
@@ -70,7 +71,8 @@ class PDFPreviewMixin:
         changed_object = None
         live_object = None
 
-        # if the moderation object is not approved there will be a changed object
+        # if the moderation object is not approved there will be a changed
+        # object
         if moderated_object.status != MODERATION_STATUS_APPROVED:
             changed_object = moderated_object.changed_object
 
@@ -85,18 +87,23 @@ class PDFPreviewMixin:
 
         if changed_object:
             res['preview'] = urlresolvers.reverse(
-                'preview_investment_report_pdf', args=('en', *_get_pdf_args(changed_object))
-            )
+                'preview_investment_report_pdf', args=(
+                    'en', *_get_pdf_args(changed_object)))
 
         if live_object:
             res['live'] = urlresolvers.reverse(
-                'investment_report_pdf', args=('en', *_get_pdf_args(live_object))
-            )
+                'investment_report_pdf', args=(
+                    'en', *_get_pdf_args(live_object)))
 
         return res
 
 
-class PDFAdmin(MarkdownxModelAdmin, TranslationAdmin, ModerationAdmin, admin.ModelAdmin, PDFPreviewMixin):
+class PDFAdmin(
+        MarkdownxModelAdmin,
+        TranslationAdmin,
+        ModerationAdmin,
+        admin.ModelAdmin,
+        PDFPreviewMixin):
     change_form_template = "pdf_changeform.html"
 
     def change_view(self, request, object_id, extra_context={}):
@@ -108,8 +115,8 @@ class PDFAdmin(MarkdownxModelAdmin, TranslationAdmin, ModerationAdmin, admin.Mod
                     'Preview PDF {}'.format(lang[0]),
                     urlresolvers.reverse(
                         'preview_investment_report_pdf', args=(
-                        lang[0], *_get_pdf_args(model)
-                    ))
+                            lang[0], *_get_pdf_args(model)
+                        ))
                 )
                 for lang in settings.LANGUAGES
             ]
@@ -132,7 +139,7 @@ class PDFAdmin(MarkdownxModelAdmin, TranslationAdmin, ModerationAdmin, admin.Mod
         # This breaks object saving because when determining to do
         # an INSERT or an UPDATE, it does a test to see if the object
         # is in the _base_manager queryset. In our case it won't be if:
-        # 
+        #
         # The object hasn't been approved yet as the _base_manager query
         # will be searching for an object that's in a published state
 
@@ -227,7 +234,7 @@ class CustomModeratedObjectAdmin(ModeratedObjectAdmin, PDFPreviewMixin):
 
         try:
             preview_links = self.get_pdf_links(moderated_object)
-        except:
+        except BaseException:
             preview_links = None
 
         extra_context = {
@@ -241,7 +248,6 @@ class CustomModeratedObjectAdmin(ModeratedObjectAdmin, PDFPreviewMixin):
             request,
             object_id,
             extra_context=extra_context)
-
 
 
 admin_site.register(ModeratedObject, CustomModeratedObjectAdmin)
