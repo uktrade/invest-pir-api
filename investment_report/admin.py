@@ -105,13 +105,13 @@ class PDFAdmin(MarkdownxModelAdmin, TranslationAdmin, ModerationAdmin, admin.Mod
 
             preview_links = [
                 (
-                    'Preview PDF {}'.format(l[0]),
+                    'Preview PDF {}'.format(lang[0]),
                     urlresolvers.reverse(
                         'preview_investment_report_pdf', args=(
-                        l[0], *_get_pdf_args(model)
+                        lang[0], *_get_pdf_args(model)
                     ))
                 )
-                for l in settings.LANGUAGES
+                for lang in settings.LANGUAGES
             ]
 
         except self.model.DoesNotExist:

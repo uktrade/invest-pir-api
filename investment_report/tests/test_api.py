@@ -45,7 +45,7 @@ class PIRAPITestCase(APITestCase):
         self.mock_s3.start()
         self.mock_ses.start()
 
-        self.patcher = patch('investment_report.models.investment_report_pdf_generator')
+        self.patcher = patch('investment_report.utils.investment_report_pdf_generator')
         self.mock_generator = self.patcher.start()
         self.mock_generator.return_value = BytesIO(DATA)
         self.conn = boto3.resource('s3', region_name=settings.AWS_DEFAULT_REGION)
@@ -56,6 +56,7 @@ class PIRAPITestCase(APITestCase):
         self.mock_generator.stop()
         self.mock_s3.stop()
         self.mock_ses.stop()
+        self.patcher.stop()
 
     def test_create_pir_api(self):
         res = self.client.post(reverse('pir_api'), data={
