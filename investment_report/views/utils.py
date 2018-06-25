@@ -81,7 +81,7 @@ def pir_csv(request):
 
     writer.writeheader()
 
-    for p in PIRRequest.objects.order_by('id').values(*fields):
-        writer.writerow(p)
+    for pir_request in PIRRequest.objects.order_by('id').values(*fields):
+        writer.writerow(pir_request)
 
     return response
