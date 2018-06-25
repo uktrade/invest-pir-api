@@ -1,5 +1,5 @@
 {
-  "name": "pir-rollokb",
+  "name": "invest-pir-api",
   "version": "1.0.0",
   "description": "[Invest](https://invest.great.gov.uk/)",
   "main": "index.js",
@@ -17,9 +17,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://bitbucket.org/mcsaatchi/pir-rollokb.git"
+    "url": "git+https://github.com/uktrade/invest-pir-api.git"
   },
   "author": "",
   "license": "MC Saatchi",
-  "homepage": "https://bitbucket.org/mcsaatchi/pir-rollokb#readme"
+  "homepage": "https://github.com/uktrade/invest-pir-api"
 }
