@@ -1,5 +1,6 @@
 -r requirements.in
 
+beautifulsoup4==4.6.0
 flake8
 pytest
 pytest-cov
