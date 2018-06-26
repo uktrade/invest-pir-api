@@ -105,6 +105,7 @@ def get_investment_report_data(
 
     context['uk_market_overview'] = filter_(UKMarketOverview)
     context['uk_business_info'] = filter_(UKBusinessInfo)
+
     context['uk_geo_overview'] = filter_(UKGeographicOverview)
 
     context['talent_and_education_by_sector'] = filter_(

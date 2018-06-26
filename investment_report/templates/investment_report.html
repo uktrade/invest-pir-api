@@ -1,9 +1,9 @@
-{% load i18n static custom_markdown %}
+{% load i18n static custom_markdown custom_media %}
 <!DOCTYPE html>
 <html nomarginboxes disallowselectionprint>
   <head>
     <meta charset="utf8">
-    <title>{% trans "Investment Report" %}</title>
+    <title>{% trans "Invest in Great" %}</title>
     <link rel="stylesheet" href="{% static "build/investment-report.css" %}" />
   </head>
 
@@ -12,7 +12,7 @@
 
     <section class="front-page"
              style="
-               background-image: url({{ front_page.background_image.url }});
+               background-image: url({% custom_media front_page.background_image %});
                background-size: cover;
             ">
 
@@ -64,7 +64,7 @@
       </div>
 
       <div class="singlepage-withfooter__footer"
-           style="background-image: url({{ sector_overview.footer_image.url }})">
+           style="background-image: url({% custom_media sector_overview.footer_image %})">
           <div class="singlepage-withfooter__footer__copy">
             {{sector_overview.footer_image_copy}}
           </div>
@@ -95,8 +95,8 @@
     <section class="full-page side-footnote">
       <h1>{% trans "4. UK Market Overview" %}</h1>
       <div class="full-page__spread"
-           style="background-image: url({{ uk_market_overview.background_image.url }})">
-              <img id="marketoverview-image" src="{{ uk_market_overview.body_image }}"/>
+           style="background-image: url({% custom_media uk_market_overview.background_image %})">
+        <img id="marketoverview-image" src="{% custom_media uk_market_overview.body_image %}"/>
       </div>
     </section>
 
@@ -105,8 +105,8 @@
     <section class="full-page side-footnote">
       <h1>{% trans "5. A Great Place to Do Business" %}</h1>
       <div class="full-page__spread flex centered_body"
-           style="background-image: url({{ uk_business_info.background_image.url }})">
-          <img src="{{ uk_business_info.body_image.url }}"/>
+           style="background-image: url({% custom_media uk_business_info.background_image %})">
+        <img src="{% custom_media uk_business_info.body_image %}"/>
       </div>
     </section>
 
@@ -139,7 +139,7 @@
     <section class="full-page side-footnote">
       <h1>{% trans "11. We’re doing great things for $SECTOR" %}</h1>
       <div class="full-page__spread centered_body flex"
-           style="background-image: url({{ network_and_support.background_image.url }})">
+           style="background-image: url({% custom_media network_and_support.background_image %})">
         <div class="centered_body__body secondary-page">
           {% markdown network_and_support.content %}
         <div>
@@ -151,12 +151,12 @@
     <section class="full-page side-footnote whos-here">
       <h1>{% trans "12. Who's here" %}</h1>
       <div class="full-page__spread section"
-           style="background-image: url({{ who_is_here.background_image.url }})">
+           style="background-image: url({% custom_media who_is_here.background_image %})">
           <ul>
             {% for ml in market_logos %}
             <li>
                 <div class="table-cell">
-                  <img src="{{ ml.image.url }}"/>
+                  <img src="{% custom_media ml.image %}"/>
                 </div>
             </li>
             {% endfor %}
@@ -164,7 +164,7 @@
             {% for sl in sector_logos %}
             <li>
               <div class="table-cell">
-                <img src="{{ sl.image.url }}"/>
+                <img src="{% custom_media sl.image %}"/>
               </div>
             </li>
             {% endfor %}
@@ -181,7 +181,7 @@
       </div>
 
       <div class="singlepage-withfooter__footer"
-           style="background-image: url({{ services_offered_by_dit.footer_image.url }})">
+           style="background-image: url({% custom_media services_offered_by_dit.footer_image %})">
           <div class="singlepage-withfooter__footer__copy">
             {{services_offered_by_dit.footer_image_copy}}
           </div>
@@ -195,7 +195,7 @@
 
     <section class=full-page contact>
       <div class="full-page__spread centered_body contact flex"
-           style="background-image: url({{ contact.background_image.url }})">
+           style="background-image: url({% custom_media contact.background_image %})">
         <div class="centered_body__body secondary-page">
           <h3>{{ contact.title }}</h3>
           <ul>
