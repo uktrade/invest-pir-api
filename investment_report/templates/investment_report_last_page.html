@@ -1,10 +1,10 @@
-{% load i18n static custom_static %}
+{% load i18n static custom_markdown %}
 <!DOCTYPE html>
 <html nomarginboxes disallowselectionprint>
   <head>
     <meta charset="utf8">
     <title>{% trans "Investment Report" %}</title>
-    <link rel="stylesheet" href="{% custom_static "build/investment-report-last-page.css" %}" />
+    <link rel="stylesheet" href="{% static "build/investment-report-last-page.css" %}" />
   </head>
 
   <body class="A4">
@@ -14,13 +14,13 @@
              style="
             ">
 
-  <img class="front-page__logo" src="{% custom_static "images/frontpagebottomrightlogo.png" %}"/>
+  <img class="front-page__logo" src="{% static "images/frontpagebottomrightlogo.png" %}"/>
   <div class="wrapper">
     <div class="content">
     </div>
     <div class="footer">
     <div class="footer__header">
-      <img width="38.267mm" src="{% custom_static "images/dit.png" %}" />
+      <img width="38.267mm" src="{% static "images/dit.png" %}" />
       <p>invest.great.gov.uk</p>
     </div>
     <div class="footer__body">
