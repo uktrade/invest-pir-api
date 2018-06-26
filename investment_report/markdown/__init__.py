@@ -2,7 +2,7 @@ import os
 
 from django.conf import settings
 
-from markdown.extensions.footnotes import *
+from markdown.extensions.footnotes import FootnoteExtension
 from markdown import util
 from markdown import inlinepatterns
 
