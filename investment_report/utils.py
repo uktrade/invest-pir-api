@@ -65,14 +65,9 @@ def filter_translations_and_moderation(klass, **kwargs):
             except ObjectDoesNotExist:
                 # Happens if object isn't registered with moderation
                 return obj
-            else:
-                # This will happen if the object isn't registered with the moderation
-                # system
-                return obj
         else:
             return klass.objects.exclude(
-                *
-                query_params).filter(
+                *query_params).filter(
                 **kwargs).first()
 
 
