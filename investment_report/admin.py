@@ -108,7 +108,7 @@ class PDFAdmin(
 
     def change_view(self, request, object_id, extra_context={}):
         try:
-            model = self.model.objects.get(id=object_id)
+            model = self.model.unmoderated_objects.get(id=object_id)
 
             preview_links = [
                 (
@@ -232,6 +232,7 @@ class CustomModeratedObjectAdmin(ModeratedObjectAdmin, PDFPreviewMixin):
         except urlresolvers.NoReverseMatch:
             object_admin_url = None
 
+        # This is the only bit of code overridden.
         try:
             preview_links = self.get_pdf_links(moderated_object)
         except BaseException:
@@ -241,6 +242,7 @@ class CustomModeratedObjectAdmin(ModeratedObjectAdmin, PDFPreviewMixin):
             'changes': changes,
             'django_version': django.get_version()[:3],
             'object_admin_url': object_admin_url,
+            # This is the only bit of code overridden
             'preview': preview_links
         }
 
