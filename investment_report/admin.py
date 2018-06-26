@@ -104,7 +104,7 @@ class PDFAdmin(
         ModerationAdmin,
         admin.ModelAdmin,
         PDFPreviewMixin):
-    change_form_template = "pdf_changeform.html"
+    change_form_template = "admin/pdf_changeform.html"
 
     def change_view(self, request, object_id, extra_context={}):
         try:
