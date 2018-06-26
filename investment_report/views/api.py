@@ -38,17 +38,22 @@ class PIRAPI(APIView):
         # Invalid serializer
         return Response(serializer.errors, status=400)
 
-    def get(self, request, identifier=None):
-        if identifier:
-            try:
-                request = PIRRequest.objects.get(id=identifier)
-            except PIRRequest.ObjectDoesNotExist:
-                return Response({'error': 'object not found'}, status=404)
 
-            serializer = PIRSerializer(request)
-            return Response(serializer.data)
+#   XXX Currently index and retrieve endpoint's are not being used anywhere
+#   and probably pose a security risk more than anything. Commenting out as
+#   this could be useful, and not entirely sure if I should remove entirely
+#
+#   def get(self, request, identifier=None):
+#       if identifier:
+#           try:
+#               request = PIRRequest.objects.get(id=identifier)
+#           except PIRRequest.ObjectDoesNotExist:
+#               return Response({'error': 'object not found'}, status=404)
 
-        else:
-            requests = PIRRequest.objects.all()
-            serializer = PIRSerializer(requests, many=True)
-            return Response(serializer.data)
+#           serializer = PIRSerializer(request)
+#           return Response(serializer.data)
+
+#       else:
+#           requests = PIRRequest.objects.all()
+#           serializer = PIRSerializer(requests, many=True)
+#           return Response(serializer.data)

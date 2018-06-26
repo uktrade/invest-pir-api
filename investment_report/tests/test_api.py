@@ -79,14 +79,8 @@ class PIRAPITestCase(APITestCase):
 
         id_ = res.json()['id']
 
-        res = self.client.get(
-            reverse('pir_api_detail', args=[id_])
-        )
-
-        self.assertEquals(res.status_code, 200)
-        self.assertTrue(res.json()['pdf'])
-
         report = PIRRequest.objects.get(id=id_)
+        self.assertIsNotNone(report)
 
         body = self.conn.Object(
             settings.AWS_STORAGE_BUCKET_NAME,
@@ -95,3 +89,34 @@ class PIRAPITestCase(APITestCase):
 
         # Assert creation of s3 object
         self.assertEquals(body, DATA)
+
+        res = self.client.post(reverse('pir_api'), data={
+            'name': 1,
+            'company': 2,
+            'email': 'notanemail',
+            'country': 'US',
+            'sector': 'tech',
+            'lang': 'en'
+        }, format='json')
+
+        self.assertEquals(res.status_code, 400)
+
+        res = self.client.options(reverse('pir_api'))
+        self.assertEquals(res.status_code, 200)
+
+        expected_options_data = {
+            'country': {'choices': [{'display_name': 'USA', 'value': 'US'}]},
+            'market': {'choices': [{'display_name': 'USA', 'value': 'USA'}]},
+            'sector': {'choices': [{'display_name': 'tech', 'value': 'tech'}]}
+        }
+
+        post_options = res.json()['actions']['POST']
+
+        self.assertEquals(post_options['country']['choices'],
+                          expected_options_data['country']['choices'])
+
+        self.assertEquals(post_options['market']['choices'],
+                          expected_options_data['market']['choices'])
+
+        self.assertEquals(post_options['sector']['choices'],
+                          expected_options_data['sector']['choices'])
