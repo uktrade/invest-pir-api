@@ -109,13 +109,19 @@ class FiltersModerationTranslationTestCase(TestCase):
             market, sector, company_name='TestCo', moderated=True
         )
 
-        self.assertEquals(data['uk_geo_overview'].content_en, 'English Moderated')
+        self.assertEquals(
+            data['uk_geo_overview'].content_en,
+            'English Moderated'
+        )
 
         data = get_investment_report_data(
             market, sector, company_name='TestCo', moderated=False
         )
 
-        self.assertEquals(data['uk_geo_overview'].content_en, 'English Unmoderated')
+        self.assertEquals(
+            data['uk_geo_overview'].content_en,
+            'English Unmoderated'
+        )
 
     def test_investment_report_html(self):
         market = Market.objects.create(name='test')
@@ -156,5 +162,6 @@ class FiltersModerationTranslationTestCase(TestCase):
         pdf_io = investment_report_pdf_generator(market, sector,
                                                  'Test', moderated=False)
         reader = PdfFileReader(pdf_io)
-        # Nothing else one can really do other than visual inspection of the PDF
+        # Nothing else one can really do other than visual
+        # inspection of the PDF
         self.assertEquals(reader.getOutlines()[0]['/Title'], 'Contents')

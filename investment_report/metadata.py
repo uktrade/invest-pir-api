@@ -1,6 +1,5 @@
 from rest_framework.metadata import SimpleMetadata
 from rest_framework import serializers
-from django.utils.encoding import force_text
 
 
 class RelatedFieldMetadata(SimpleMetadata):
@@ -45,9 +44,9 @@ class RelatedFieldMetadata(SimpleMetadata):
 
     def determine_actions(self, request, view):
         """
-        Sig auth interferes with this. Had to remove the permission check that's
-        in the superclass. Not a security issue as the view is behind sigauth
-        anyway. Not sure why this happens.
+        Sig auth interferes with this. Had to remove the permission check
+        that's in the superclass. Not a security issue as the view
+        is behind sigauth anyway. Not sure why this happens.
         """
         serializer = view.get_serializer()
         return {'POST': self.get_serializer_info(serializer)}

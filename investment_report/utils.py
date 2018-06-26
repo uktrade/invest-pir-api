@@ -1,9 +1,6 @@
-import glob
-import copy
 import functools
 import weasyprint
 
-from django_countries import data
 from io import BytesIO
 from PyPDF2 import PdfFileMerger
 
@@ -11,8 +8,9 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
+from django.utils import translation
 
-from investment_report.models import *
+from investment_report import models
 
 from notifications_python_client.notifications import NotificationsAPIClient
 
@@ -83,68 +81,72 @@ def get_investment_report_data(
         moderated=moderated)
 
     context['front_page'] = filter_(
-        FrontPage, sector=sector
+        models.FrontPage, sector=sector
     )
 
     context['sector_overview'] = filter_(
-        SectorOverview, sector=sector
+        models.SectorOverview, sector=sector
     )
 
     context['killer_facts'] = filter_(
-        KillerFacts, sector=sector
+        models.KillerFacts, sector=sector
     )
 
     context['macro_context'] = filter_(
-        MacroContextBetweenCountries, market=market
+        models.MacroContextBetweenCountries, market=market
     )
 
-    context['uk_market_overview'] = filter_(UKMarketOverview)
-    context['uk_business_info'] = filter_(UKBusinessInfo)
+    context['uk_market_overview'] = filter_(models.UKMarketOverview)
+    context['uk_business_info'] = filter_(models.UKBusinessInfo)
 
-    context['uk_geo_overview'] = filter_(UKGeographicOverview)
+    context['uk_geo_overview'] = filter_(models.UKGeographicOverview)
 
     context['talent_and_education_by_sector'] = filter_(
-        TalentAndEducationBySector, sector=sector
+        models.TalentAndEducationBySector, sector=sector
     )
 
     context['network_and_support'] = filter_(
-        NetworkAndSupport,
+        models.NetworkAndSupport,
         sector=sector
     )
 
     context['sector_initiatives'] = filter_(
-        SectorInitiatives, sector=sector
+        models.SectorInitiatives, sector=sector
     )
 
     context['r_and_d_and_innovation'] = filter_(
-        RDandInnovation, sector=sector
+        models.RDandInnovation, sector=sector
     )
 
     context['r_and_d_and_innovation_case_study'] = filter_(
-        RDandInnovationCaseStudy, sector=sector
+        models.RDandInnovationCaseStudy, sector=sector
     )
 
     context['video_case_study'] = filter_(
-        VideoCaseStudy, sector=sector
+        models.VideoCaseStudy, sector=sector
     )
 
-    context['services_offered_by_dit'] = filter_(ServicesOfferedByDIT)
-    context['contact'] = filter_(Contact)
+    context['services_offered_by_dit'] = filter_(models.ServicesOfferedByDIT)
+    context['contact'] = filter_(models.Contact)
 
     context['sector'] = sector.name.title()
 
     context['who_is_here'] = filter_(
-        WhoIsHere
+        models.WhoIsHere
     )
 
     if company_name:
         context['company'] = company_name
 
-    context['last_page'] = LastPage.objects.first()
+    context['last_page'] = models.LastPage.objects.first()
     context['settings'] = settings
 
-    context['market_logos'] = MarketLogo.objects.filter(market=market)[:4]
-    context['sector_logos'] = SectorLogo.objects.filter(sector=sector)[:4]
+    context['market_logos'] = models.MarketLogo.objects.filter(
+        market=market
+    )[:4]
+    context['sector_logos'] = models.SectorLogo.objects.filter(
+        sector=sector
+    )[:4]
 
     return context
 

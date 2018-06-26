@@ -3,8 +3,7 @@ import os
 from django.conf import settings
 
 from markdown.extensions.footnotes import FootnoteExtension
-from markdown import util
-from markdown import inlinepatterns
+from markdown import Markdown, inlinepatterns
 
 
 class CustomFootnoteExtension(FootnoteExtension):
@@ -38,7 +37,6 @@ class CustomImagePattern(inlinepatterns.ImagePattern):
 
 
 # Monkey Patch image url
-from markdown import Markdown
 inlinepatterns.ImagePattern = CustomImagePattern
 
 

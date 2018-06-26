@@ -30,4 +30,4 @@ django-countries-plus==1.2.1
 notifications-python-client==4.8.2
 WeasyPrint==0.42.3
 PyPDF2==1.26.0
-
+bs4

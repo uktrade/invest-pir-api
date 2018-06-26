@@ -1,4 +1,4 @@
-from config.settings import *
+from config.settings import *  # noqa
 
 CELERY_ALWAYS_EAGER = True
 BROKER_BACKEND = 'memory'

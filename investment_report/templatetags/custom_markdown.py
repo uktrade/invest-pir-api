@@ -1,9 +1,4 @@
-import os
-
 from django import template
-from django.templatetags.static import static
-from django.conf import settings
-from django.urls import reverse
 from investment_report.markdown import custom_markdown
 
 

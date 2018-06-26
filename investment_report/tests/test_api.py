@@ -3,7 +3,7 @@ import boto3
 from io import BytesIO
 from unittest.mock import patch
 
-from django.urls import reverse, resolve
+from django.urls import reverse
 from django.conf import settings
 from rest_framework.test import APITestCase
 

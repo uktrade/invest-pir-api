@@ -99,11 +99,12 @@ class PDFPreviewMixin:
 
 
 class PDFAdmin(
-        MarkdownxModelAdmin,
-        TranslationAdmin,
-        ModerationAdmin,
-        admin.ModelAdmin,
-        PDFPreviewMixin):
+    MarkdownxModelAdmin,
+    TranslationAdmin,
+    ModerationAdmin,
+    admin.ModelAdmin,
+    PDFPreviewMixin
+):
     change_form_template = "admin/pdf_changeform.html"
 
     def change_view(self, request, object_id, extra_context={}):
@@ -155,7 +156,7 @@ for klass in PDFSection.__subclasses__():
     """
     Admin = type(
         '{}Admin'.format(klass),
-        (PDFAdmin, ),
+        (PDFAdmin,),
         {
             'model': klass,
             'menu_order': klass.SECTION,
@@ -190,7 +191,8 @@ class CustomModeratedObjectAdmin(ModeratedObjectAdmin, PDFPreviewMixin):
 
     def change_view(self, request, object_id, extra_context=None):
         """
-        Copied and pasted from the base class as I needed to override extra_context
+        Copied and pasted from the base class as I needed to override
+        extra_context
 
         And the class hasn't been sublclassed properly to allow that.
         """

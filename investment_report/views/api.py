@@ -4,7 +4,6 @@ from rest_framework.reverse import reverse
 
 from investment_report.metadata import RelatedFieldMetadata
 from investment_report.serializers import PIRSerializer
-from investment_report.models import PIRRequest
 from investment_report.tasks import create_pdf
 
 

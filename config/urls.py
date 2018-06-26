@@ -1,8 +1,6 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.i18n import i18n_patterns
-from django.utils.translation import ugettext_lazy as _
-from django.contrib import admin
 
 from investment_report.admin import admin_site as investment_report_admin
 from investment_report.views import api

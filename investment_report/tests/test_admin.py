@@ -44,7 +44,6 @@ class AdminTestCase(TestCase):
 
         self.assertEquals(model['order'], -1)
 
-
     def test_pdf_links(self):
         market = Market.objects.create(name='market')
         Sector.objects.create(name='other')
@@ -104,7 +103,7 @@ class AdminTestCase(TestCase):
         )
 
     def test_pdf_admin_change_view_for_preview_links(self):
-        market = Market.objects.create(name='market')
+        Market.objects.create(name='market')
         sector = Sector.objects.create(name='actual')
         talent = TalentAndEducationBySector.objects.create(
             content_en='test', sector=sector

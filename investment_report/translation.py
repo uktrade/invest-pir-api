@@ -1,4 +1,4 @@
-from investment_report.models import PDFSection, Market, Sector, SectorOverview
+from investment_report.models import PDFSection, Sector
 from modeltranslation.translator import TranslationOptions
 from modeltranslation.decorators import register
 

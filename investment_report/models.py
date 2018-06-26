@@ -188,9 +188,9 @@ class UKMarketOverview(PDFSection):
     content = None
     body_image = models.FileField(
         help_text=(
-            'Fact sheet SVG overlayed on background of background. Don\'t edit '
-            'unless you know what you are doing. Viewbox needs to be carefully '
-            'calibrated here'))
+            'Fact sheet SVG overlayed on background of background. '
+            'Don\'t edit unless you know what you are doing. '
+            'Viewbox needs to be carefully calibrated here'))
 
     background_image = models.ImageField()
 
@@ -207,9 +207,9 @@ class UKBusinessInfo(PDFSection):
     content = None
     body_image = models.FileField(
         help_text=(
-            'Fact sheet SVG overlayed on background of background. Don\'t edit '
-            'unless you know what you are doing. Viewbox needs to be carefully '
-            'calibrated here'))
+            'Fact sheet SVG overlayed on background of background. '
+            'Don\'t edit unless you know what you are doing. '
+            'Viewbox needs to be carefully calibrated here'))
 
     background_image = models.ImageField()
 
@@ -230,7 +230,8 @@ class TalentAndEducationBySector(PDFSection):
     sector = models.ForeignKey(Sector)
 
     class Meta:
-        verbose_name = verbose_name_plural = '7.2 - Talent & Education (Sector)'
+        verbose_name = verbose_name_plural = '7.2 - Talent & ' \
+                                             'Education (Sector)'
 
 
 class SectorInitiatives(PDFSection):
@@ -286,7 +287,8 @@ class WhoIsHere(PDFSection):
     content = None
 
     class Meta:
-        verbose_name = verbose_name_plural = '12 - Who\'s here (background image)'
+        verbose_name = verbose_name_plural = '12 - Who\'s here ' \
+                                             '(background image)'
 
 
 class ServicesOfferedByDIT(PDFSection):
