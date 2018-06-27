@@ -48,7 +48,7 @@ DOCKER_SET_DEBUG_ENV_VARS := \
 	export PIR_API_SECURE_SSL_REDIRECT=false; \
 	export PIR_API_SITE_ID=1; \
 	export PIR_API_TEST=true; \
-	export PIR_API_DATABASE_URL=postgres://postgres@db/postgres; \
+	export PIR_API_DATABASE_URL=postgres://debug:debug@postgres:5432/invest_pir_api_debug; \
 	export PIR_API_RECAPTCHA_PUBLIC_KEY=debug; \
 	export PIR_API_RECAPTCHA_PRIVATE_KEY=debug; \
 	export PIR_API_NOCAPTCHA=false; \
@@ -85,12 +85,13 @@ docker_test: docker_remove_all
 	$(DOCKER_COMPOSE_CREATE_ENVS) && \
 	$(DOCKER_COMPOSE_REMOVE_AND_PULL) && \
 	docker-compose -f docker-compose-test.yml build && \
-	docker-compose -f docker-compose-test.yml run --service-ports sut
+	docker-compose -f docker-compose-test.yml run sut
 
 docker_build:
 	docker build -t ukti/invest:latest .
 
 DEBUG_SET_ENV_VARS := \
+    export DATABASE_URL=postgres://debug:debug@postgres:5432/invest_pir_api_debug; \
 	export PORT=8010; \
 	export DEBUG=true ;\
 	export SECRET_KEY=secret; \
