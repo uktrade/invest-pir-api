@@ -36,19 +36,11 @@ if ENABLE_DEBUG_TOOLBAR:
 # PaaS, we can open ALLOWED_HOSTS
 # For Cloudflare, disallow access to the CF url, by seting ALLOWED_HOSTS
 # to the external url, e.g: ALLOWED_HOSTS=invest.great.uat.uktrade.io
-ALLOWED_HOSTS = [
-    'localhost',
-    *[
-        h for h in os.getenv('ALLOWED_HOSTS', '').split(',') if h
-    ]
-]
+ALLOWED_HOSTS = ['*']
 
-RESTRICT_ADMIN = True  # block the django admin at /django-admin
-RESTRICT_URLS = ['^admin/*']  # block the wagtail admin
-ALLOWED_ADMIN_IPS = [item.strip()
-                     for item in
-                     os.getenv('ALLOWED_ADMIN_IPS', '127.0.0.1').split(',')
-                     ]
+RESTRICT_ADMIN = os.environ.get('RESTRICT_ADMIN', False)
+ALLOWED_ADMIN_IPS = os.environ.get('ALLOWED_ADMIN_IPS', [])
+ALLOWED_ADMIN_IP_RANGES = os.environ.get('ALLOWED_ADMIN_IP_RANGES', [])
 
 REDIS_URL = os.getenv("REDIS_URL")
 ENABLE_REDIS = REDIS_URL is not None
@@ -80,6 +72,7 @@ INSTALLED_APPS = [
     'django_countries',
     'countries_plus',
     'rest_framework',
+    'raven.contrib.django.raven_compat',
 ]
 
 try:
@@ -103,6 +96,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware'
 ]
 
 if ENABLE_DEBUG_TOOLBAR:
@@ -236,10 +230,6 @@ USE_X_FORWARDED_HOST = True
 # Sentry
 RAVEN_CONFIG = {
     "dsn": os.getenv("SENTRY_DSN"),
-    "processors": (
-        'raven.processors.SanitizePasswordsProcessor',
-        'config.sentry_processors.SanitizeEmailMessagesProcessor',
-    )
 }
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
