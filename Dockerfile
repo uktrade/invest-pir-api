@@ -58,5 +58,3 @@ RUN pip install --no-cache-dir -r requirements.txt --src /usr/local/src
 ADD . /usr/src/app
 
 CMD ["/usr/src/app/docker/cmd-webserver.sh"]
-
-EXPOSE 8000
