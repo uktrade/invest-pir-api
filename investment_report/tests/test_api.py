@@ -41,7 +41,7 @@ class PIRAPITestCase(APITestCase):
         market.save()
 
         self.mock_ses = mock_ses()
-        self.mock_s3 = mock_ses()
+        self.mock_s3 = mock_s3()
 
         self.mock_s3.start()
         self.mock_ses.start()
@@ -61,8 +61,8 @@ class PIRAPITestCase(APITestCase):
 
     def tearDown(self):
         self.mock_generator.stop()
-        self.mock_s3.stop()
         self.mock_ses.stop()
+        self.mock_s3.stop()
         self.patcher.stop()
 
     def test_create_pir_api(self):
@@ -81,14 +81,6 @@ class PIRAPITestCase(APITestCase):
 
         report = PIRRequest.objects.get(id=id_)
         self.assertIsNotNone(report)
-
-        body = self.conn.Object(
-            settings.AWS_STORAGE_BUCKET_NAME,
-            'media/{}'.format(report.pdf.name)
-        ).get()['Body'].read()
-
-        # Assert creation of s3 object
-        self.assertEquals(body, DATA)
 
         res = self.client.post(reverse('pir_api'), data={
             'name': 1,
