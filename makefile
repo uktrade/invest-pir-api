@@ -9,7 +9,7 @@ test_requirements:
 	pip install -r requirements_test.txt
 
 FLAKE8 := flake8 . --exclude=migrations,.venv
-PYTEST := coverage run --source . manage.py test
+PYTEST := pytest . --cov=. --cov-config=.coveragerc --capture=no $(pytest_args)
 COLLECT_STATIC := python manage.py collectstatic --noinput
 CODECOV := \
 	if [ "$$CODECOV_REPO_TOKEN" != "" ]; then \
@@ -55,9 +55,7 @@ DOCKER_SET_DEBUG_ENV_VARS := \
 	export PIR_AWS_ACCESS_KEY_ID=secret; \
 	export PIR_AWS_SECRET_ACCESS_KEY=test; \
 	export PIR_AWS_DEFAULT_REGION=eu-west-1; \
-	export PIR_AWS_STORAGE_BUCKET_NAME=pir-invest; \
-	export PIR_DJANGO_SETTINGS_MODULE=config.settings.testing
-
+	export PIR_AWS_STORAGE_BUCKET_NAME=pir-invest
 
 docker_test_env_files:
 	$(DOCKER_SET_DEBUG_ENV_VARS) && \

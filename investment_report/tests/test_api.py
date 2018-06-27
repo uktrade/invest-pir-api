@@ -57,8 +57,6 @@ class PIRAPITestCase(APITestCase):
             region_name=settings.AWS_DEFAULT_REGION
         )
 
-        self.conn.create_bucket(Bucket=settings.AWS_STORAGE_BUCKET_NAME)
-
     def tearDown(self):
         self.mock_generator.stop()
         self.mock_ses.stop()
