@@ -1,0 +1,12 @@
+applications:
+- name: pir_api
+  memory: 512MB
+  env:
+    DEBUG: false
+    SECRET_KEY: secret
+    SESSION_COOKIE_SECURE: false
+    SECURE_HSTS_SECONDS: 0
+    SECURE_SSL_REDIRECT: false
+    SITE_ID: 1
+    TEST: false 
+  buildpack: https://github.com/cloudfoundry/multi-buildpack.git#v1.0.2

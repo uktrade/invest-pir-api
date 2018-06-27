@@ -1,0 +1,534 @@
+$red: #b00d23;
+$black: #1e1348;
+
+$column: 25.42mm;
+$columnGap: 4.586mm;
+$pageMargin: 17.639mm;
+$pageMarginTop: 11.642mm;
+
+
+body {
+  font-family: "Invesco Interstate Light";
+  color: $black;
+  font-size: 14pt;
+  line-height: 130%;
+  margin: 0;
+}
+
+ul {
+  list-style-type: none !important;
+  page-break-inside: avoid;
+}
+
+p {
+  page-break-inside: avoid;
+}
+
+
+@page {
+  size: A4;
+  margin-top: $pageMarginTop + 5mm;
+  margin-left: $pageMargin;
+  margin-right: $pageMargin;
+  margin-bottom: $pageMargin;
+
+  @top-left {
+    content: counter(page); 
+    font-family: "Invesco Interstate Light";
+    color: $black;
+    font-size: 9pt;
+    padding-top: 0pt;
+  }
+}
+
+.conter-reset {
+  counter-reset: page;
+}
+
+@page :first {
+  margin-top: $pageMarginTop;
+  margin-left: $pageMarginTop;
+  margin-right: $pageMarginTop;
+  margin-bottom: $pageMarginTop;
+  padding: 0;
+  border-top: none;
+
+  @top-left {
+    content: " ";
+  }
+}
+
+@page :last {
+
+  @top-left {
+    content: " ";
+  }
+}
+
+@media print {
+    header.onlyprint {
+        position: fixed; /* Display only on print page (each) */
+        /* because this is taken from the first page margins, I need to adjust */
+        top: -11.642mm - 5mm; /* Because it's header */
+        font-family: "Invesco Interstate Light";
+        color: $black;
+        font-size: 9pt;
+        padding-top: 14pt;
+        width: 1000mm;
+    }
+
+    #unionjackheader {
+        width: $column + $columnGap - 2mm;
+        float: left;
+        margin-left: 2mm;
+    }
+
+    #headerslogan {
+        float: left;
+        letter-spacing: -0.7pt;
+    }
+
+    #borderbottomheader {
+      width: 210mm - (2 * $pageMargin);
+      height: 0.25pt;
+      position: absolute;
+      background: $black;
+      top: 11.5mm;
+    }
+
+    header.onlyprint img {
+      width: 9.876mm;
+      margin-left: 3.1mm;
+    }
+}
+
+.page-break {
+  page-break-after: always;
+}
+
+.page-break-avoid {
+  page-break-inside: avoid;
+}
+
+h1 {
+  margin-top: $pageMargin - 5mm;
+  font-family: "Invesco Interstate Bold";
+  font-weight: bold;
+  font-size: 30pt;
+  padding-bottom: 5.564mm;
+  border-bottom: solid $red 6pt;
+  letter-spacing: -1.75pt;
+  line-height: 100%;
+}
+
+sup {
+  position: relative;
+  display: inline;
+  vertical-align: baseline;
+  top: -0.5em;
+  font-size: 0.7rem;
+  left: -0rem;
+
+  a {
+    text-decoration: none;
+    color: $black;
+  } 
+}
+
+blockquote {
+  font-style: italic;
+  font-family: "Georgia";
+}
+
+.front-page {
+  width: 210mm;
+  height: 297mm;
+  background: lightgrey;
+  left: -$pageMarginTop;
+  top: -$pageMarginTop;
+  z-index: 2;
+  position: relative;
+}
+
+.front-page__logo {
+  top: 240mm;
+  left: 137mm;
+  position: absolute;
+  display: block;
+  width: 55.183mm;
+}
+
+.front-page__title {
+  left: 17.339mm;
+  top: 11.097mm;
+  position: absolute;
+  display: block;
+  font-size: 30pt;
+  line-height: 30pt;
+  font-weight: bold;
+  color: white;
+}
+
+.last-page {
+  width: 210mm;
+  height: 297mm;
+  background: lightgrey;
+  left: -$pageMargin;
+  top: -$pageMarginTop;
+  z-index: 20000;
+  position: relative;
+}
+
+.toc {
+  margin-top: 55mm;
+}
+
+.toc ol {
+  list-style: decimal inside none;
+  padding-left: 0;
+  margin-left: 0;
+  margin-top: 13.5mm;
+}
+
+.toc li {
+  margin-top: 2.5mm;
+}
+
+.section {
+  overflow: hidden;
+}
+
+.section-body > p, .section-body > ul, .section-body > ol {
+  margin-top: 13.406mm;
+}
+
+.section-body > p, .section-body > ul > li, .section-body > ol > li {
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+
+.section-body ul {
+  margin-left: 0;
+  padding-left: 0.45cm;
+}
+
+
+ul li {
+  position: relative;
+}
+
+
+ul li:before {
+  content: '\00a0';
+  width: 4px;
+  height: 4px;
+  background: #1e1348;
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  top: 0.55em;
+  left: -0.7em;
+}
+
+
+.contact li:before {
+  display: none;
+}
+
+
+.section-body ol {
+  padding-left: 1cm;
+  margin-top: $pageMarginTop / 2;
+}
+
+.relative {
+  position: relative;
+}
+
+.content-margin { 
+  margin-left: $column + $columnGap;
+}
+
+.flex {
+  display: flex;
+}
+
+.side-footnote .footnote {
+  hr {display: none;}
+  ol {margin: 0; padding: 0; width: $column; list-style-type: none;}
+
+  li {
+    margin-top: 0.3rem;
+    overflow-wrap: break-word;
+  }
+
+  font-size: 8pt;
+  position: absolute;
+  bottom: 4pt;
+  margin-left: 0  - $column - $columnGap;
+
+  p {
+    margin: 0;
+    margin-top: 0;
+    line-height: 1.1;
+  }
+
+  p a {
+    display: none;
+  }
+}
+
+/* special case flexbox layout */
+
+.singlepage-withfooter {
+  width: 174.674mm;
+  height: 267.343mm - 6mm;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* up */
+.singlepage-withfooter__body {
+  overflow: hidden;
+}
+
+.singlepage-withfooter__body__text {
+  margin-left: $column + $columnGap;
+  margin-bottom: $column;
+  position: relative;
+}
+
+.singlepage-withfooter__footer {
+  background: blue;
+  flex-grow: 1;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  overflow: hidden;
+}
+
+.singlepage-withfooter__footer__copy {
+  font-style: italic;
+  font-family: "Georgia";
+  font-size: 25.74pt;
+  margin-top: 11.35mm;
+  margin-left: 9.244mm;
+  width: 50%;
+  line-height: 33.1pt;
+}
+
+.singlepage-withfooter__footer__attribution {
+  font-size: 10.1pt;
+  width: 50%;
+  margin-top: 2mm;
+  margin-left: 9.244mm;
+}
+
+.full-page h1 {
+  margin-top: 22.639mm - 5mm;
+  margin-bottom: 0;
+}
+
+.full-page__spread {
+  height: 225.97mm;
+  background: lightgrey;
+  background-size: cover;
+  background-position: center;
+}
+
+.secondary-page {
+  font-size: 12pt;
+  line-height: 125%;
+}
+
+.secondary-page img {
+  width: 100%;
+}
+
+.dark-list > ul {
+  page-break-inside: avoid;
+  background: #f1ede8;
+  margin-top: 8mm;
+  margin-bottom: 8mm;
+  margin-left: 8mm;
+  margin-right: 8mm;
+
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 8mm;
+  padding-right: 8mm;
+  overflow: hidden;
+  list-style-type: none;
+
+  & > li {
+    margin-top: 8mm;
+    margin-bottom: 8mm;
+  }
+}
+
+.talent_and_education_by_sector {
+  margin-top: 17.639mm;
+}
+
+.sector-initiatives {
+  & > p, & > ul, & > h2, & > h3, & > h4, & > h5, & > h6 {
+    margin-left: $column + $columnGap;
+  }
+
+  h1 {
+    width: 174.674mm;
+    margin-bottom: 0;
+  } 
+  
+  & > h2, & > h3, & > h4, & > h5, & > h6 {
+    margin-top: $pageMarginTop;
+  }
+
+  img {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0 - ( $column + $columnGap);
+    width: 174.674mm;
+    border-top: solid $red 6pt;
+  }
+
+  p:first-of-type > img {
+    margin-top: -1rem;
+    border-top: none;
+    border-bottom: none;
+  }
+
+
+}
+
+.bottom-footnote .footnote {
+  border-top: solid $red 1pt;
+  font-size: 8pt;
+  hr {display: none;}
+  margin-left: $column + $columnGap;
+  margin-top: $pageMarginTop;
+  padding-top: 2mm;
+
+  ol {margin: 0; padding: 0; list-style-type: none;}
+
+  li {
+    margin-top: 0.3rem;
+  }
+
+  p {
+    margin: 0;
+    margin-top: 0;
+    line-height: 1.1;
+  }
+
+  p a {
+    display: none;
+  }
+}
+
+.centered_body {
+  align-items: center;
+  justify-content: center;
+}
+
+.centered_body__body {
+  background: white;
+  width: 128.435mm - (2 * 6.49mm);
+  overflow: hidden;
+  padding-top: 9.42mm;
+  padding-bottom: 9.42mm;
+  padding-left: 6.49mm;
+  padding-right: 6.49mm;
+}
+
+.centered_body__body > *:first-of-type {
+  margin-top: 0
+}
+
+.centered_body__body > *:last-of-type {
+  margin-bottom: 0
+}
+
+.centered_body.contact {
+  margin-top: 20mm;
+  border-top: solid $red 6pt;
+}
+
+.contact .centered_body__body {
+  width: 115mm - (9.7mm * 2);
+  padding-left: 9.7mm;
+  padding-right: 9.7mm;
+}
+
+.contact h3 {
+  font-size: 12pt;
+}
+
+.contact ul {
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  padding-left: 6.5mm;
+}
+
+.contact ul li {
+  margin-top: 0.5rem;
+}
+
+.contact.full-page__spread {
+  height: 245.97mm;
+  background-size: cover;
+  background-position: center;
+}
+
+.r_and_d_and_innovation_case_study h1 + p > img {
+  margin-top: -13mm
+}
+
+#marketoverview-image {
+  margin-left: 5.5mm;
+  margin-top: $pageMarginTop;
+}
+
+.whos-here {
+  ul {
+    width: 145mm;
+    height: 110mm;
+    list-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    overflow: hidden;
+    display: block;
+    margin-top: 58mm;
+  }
+
+  li {
+    margin: 3.2mm;
+    width: 41.7mm;
+    height: 30.839mm;
+    background: white;
+    float: left;
+    display: block;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 5mm;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 22mm;
+  }
+
+  .table-cell {
+    height: 22mm;
+    width: 32mm;
+    vertical-align: middle;
+    text-align: center;
+  }
+}
+
+.table-cell {
+  display: table-cell;
+}
