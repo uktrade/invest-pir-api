@@ -1,5 +1,3 @@
-import os
-
 from django.conf import settings
 
 from markdown.extensions.footnotes import FootnoteExtension
@@ -22,12 +20,6 @@ class CustomFootnoteExtension(FootnoteExtension):
 class CustomImagePattern(inlinepatterns.ImagePattern):
     def sanitize_url(self, url):
         url = super().sanitize_url(url)
-
-        if getattr(self.markdown, 'local', False):
-            if url.startswith(settings.MEDIA_URL):
-                url = url[len(settings.MEDIA_URL):]
-
-            return 'file://' + os.path.join(settings.MEDIA_ROOT, url)
 
         if settings.AWS_S3_CUSTOM_DOMAIN:
             url = 'https://{}{}'.format(settings.AWS_S3_CUSTOM_DOMAIN, url)
