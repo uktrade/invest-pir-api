@@ -1,7 +1,7 @@
 from moderation import moderation
 from moderation.moderator import GenericModerator
 
-from investment_report.models import PDFSection
+from investment_report import models
 
 
 class Moderator(GenericModerator):
@@ -12,5 +12,24 @@ class Moderator(GenericModerator):
     notify_moderator = True
 
 
-for klass in PDFSection.__subclasses__():
-    moderation.register(klass, Moderator)
+for model_class in [
+    models.FrontPage,
+    models.SectorOverview,
+    models.KillerFacts,
+    models.MacroContextBetweenCountries,
+    models.UKMarketOverview,
+    models.UKBusinessInfo,
+    models.UKGeographicOverview,
+    models.TalentAndEducationBySector,
+    models.SectorInitiatives,
+    models.RDandInnovation,
+    models.NetworkAndSupport,
+    models.RDandInnovationCaseStudy,
+    models.VideoCaseStudy,
+    models.WhoIsHere,
+    models.ServicesOfferedByDIT,
+    models.CallToAction,
+    models.Contact,
+    models.LastPage
+]:
+    moderation.register(model_class, Moderator)

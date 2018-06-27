@@ -108,24 +108,22 @@ class PDFAdmin(
     change_form_template = "admin/pdf_changeform.html"
 
     def change_view(self, request, object_id, extra_context={}):
-        try:
-            model = self.model.unmoderated_objects.get(id=object_id)
 
-            preview_links = [
-                (
-                    'Preview PDF {}'.format(lang[0]),
-                    urlresolvers.reverse(
-                        'preview_investment_report_pdf', args=(
-                            lang[0], *_get_pdf_args(model)
-                        ))
-                )
-                for lang in settings.LANGUAGES
-            ]
+        model = self.model.unmoderated_objects.get(id=object_id)
 
-        except self.model.DoesNotExist:
-            preview_links = None
+        preview_links = []
 
-        return super(PDFAdmin, self).change_view(
+        for lang in settings.LANGUAGES:
+            link = (
+                'Preview PDF {}'.format(lang[0]),
+                urlresolvers.reverse(
+                    'preview_investment_report_pdf', args=(
+                        lang[0], *_get_pdf_args(model)
+                    ))
+            )
+            preview_links.append(link)
+
+        return super().change_view(
             request,
             object_id,
             extra_context={

@@ -91,7 +91,7 @@ docker_build:
 	docker build -t ukti/invest:latest .
 
 DEBUG_SET_ENV_VARS := \
-    export DATABASE_URL=postgres://debug:debug@postgres:5432/invest_pir_api_debug; \
+    export DATABASE_URL=postgres://debug:debug@localhost:5432/invest_pir_api_debug; \
 	export PORT=8010; \
 	export DEBUG=true ;\
 	export SECRET_KEY=secret; \
