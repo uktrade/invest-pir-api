@@ -9,7 +9,7 @@ test_requirements:
 	pip install -r requirements_test.txt
 
 FLAKE8 := flake8 . --exclude=migrations,.venv
-PYTEST := pytest . --cov=. --cov-config=.coveragerc --capture=no $(pytest_args)
+PYTEST := coverage run --source . manage.py test
 COLLECT_STATIC := python manage.py collectstatic --noinput
 CODECOV := \
 	if [ "$$CODECOV_REPO_TOKEN" != "" ]; then \
@@ -48,10 +48,16 @@ DOCKER_SET_DEBUG_ENV_VARS := \
 	export PIR_API_SECURE_SSL_REDIRECT=false; \
 	export PIR_API_SITE_ID=1; \
 	export PIR_API_TEST=true; \
-	export PIR_API_DATABASE_URL=sqlite:///hardcopy.sqlite3; \
+	export PIR_API_DATABASE_URL=postgres://postgres@db/postgres; \
 	export PIR_API_RECAPTCHA_PUBLIC_KEY=debug; \
 	export PIR_API_RECAPTCHA_PRIVATE_KEY=debug; \
-	export PIR_API_NOCAPTCHA=false
+	export PIR_API_NOCAPTCHA=false; \
+	export PIR_AWS_ACCESS_KEY_ID=secret; \
+	export PIR_AWS_SECRET_ACCESS_KEY=test; \
+	export PIR_AWS_DEFAULT_REGION=eu-west-1; \
+	export PIR_AWS_STORAGE_BUCKET_NAME=pir-invest; \
+	export PIR_DJANGO_SETTINGS_MODULE=config.settings.testing
+
 
 docker_test_env_files:
 	$(DOCKER_SET_DEBUG_ENV_VARS) && \
@@ -81,7 +87,7 @@ docker_test: docker_remove_all
 	$(DOCKER_COMPOSE_CREATE_ENVS) && \
 	$(DOCKER_COMPOSE_REMOVE_AND_PULL) && \
 	docker-compose -f docker-compose-test.yml build && \
-	docker-compose -f docker-compose-test.yml run sut
+	docker-compose -f docker-compose-test.yml run --service-ports sut
 
 docker_build:
 	docker build -t ukti/invest:latest .

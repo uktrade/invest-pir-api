@@ -2,6 +2,8 @@ version: '2'
 services:
 
   sut:
+    depends_on:
+        - db
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,3 +11,5 @@ services:
     command: ./docker/cmd-test.sh
     env_file: ./docker/.env.test
     restart: "no"
+  db:
+    image: postgres

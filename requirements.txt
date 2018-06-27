@@ -46,6 +46,7 @@ idna==2.6                 # via requests
 jmespath==0.9.3           # via boto3, botocore
 kombu==4.2.1              # via celery
 markdown==2.6.11          # via django-markdownx
+mohawk==0.3.4             # via sigauth
 monotonic==1.5            # via notifications-python-client
 notifications-python-client==4.8.2
 olefile==0.44             # via directory-validators, pillow
@@ -63,7 +64,8 @@ raven==6.5.0
 redis==2.10.6             # via celery, django-redis
 requests==2.18.4          # via django-countries-plus, notifications-python-client, zenpy
 s3transfer==0.1.13        # via boto3
-six==1.11.0               # via django-countries-plus, html5lib, python-dateutil
+sigauth==2.1.3
+six==1.11.0               # via django-countries-plus, html5lib, mohawk, python-dateutil
 sorl-thumbnail==12.4.1
 tinycss2==0.6.1           # via cairosvg, cssselect2, weasyprint
 urllib3==1.22             # via requests
