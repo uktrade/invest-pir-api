@@ -5,6 +5,7 @@ from countries_plus.models import Country
 
 from investment_report.models import Market, Sector, PIRRequest
 
+
 class UtilsViewTestCase(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(
@@ -17,7 +18,6 @@ class UtilsViewTestCase(TestCase):
 
         self.market = Market.objects.create(name='china')
         self.sector = Sector.objects.create(name='tech')
-
 
     def test_html_view(self):
         response = self.client.get(
@@ -37,7 +37,6 @@ class UtilsViewTestCase(TestCase):
 
         # Actual language code won't be changed
         self.assertEquals(response.context['lang'], 'es')
-
 
     def test_pdf_view(self):
         response = self.client.get(

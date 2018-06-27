@@ -3,7 +3,6 @@ import csv
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from django.utils import translation
-from django.conf import settings
 from django.contrib.auth.decorators import login_required
 
 
