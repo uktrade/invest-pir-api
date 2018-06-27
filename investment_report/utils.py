@@ -80,6 +80,8 @@ def get_investment_report_data(
         filter_translations_and_moderation,
         moderated=moderated)
 
+    context['lang'] = translation.get_language()
+
     context['front_page'] = filter_(
         models.FrontPage, sector=sector
     )

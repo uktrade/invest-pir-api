@@ -22,7 +22,6 @@ def investment_report_html(request, lang, market, sector, moderated=True):
     market = get_object_or_404(Market, name=market)
     sector = get_object_or_404(Sector, name=sector)
     company = request.GET.get('company', 'You')
-    lang = request.GET.get('lang', settings.LANGUAGE_CODE)
 
     with translation.override(lang):
         return HttpResponse(
@@ -40,7 +39,6 @@ def investment_report_pdf(request, lang, market, sector, moderated=True):
     market = get_object_or_404(Market, name=market)
     sector = get_object_or_404(Sector, name=sector)
     company = request.GET.get('company', 'You')
-    translation.activate(lang)
 
     with translation.override(lang):
         pdf_file = investment_report_pdf_generator(
@@ -53,16 +51,6 @@ def investment_report_pdf(request, lang, market, sector, moderated=True):
         response = HttpResponse(content_type='application/pdf')
         response.write(pdf)
         return response
-
-
-class Echo:
-    """An object that implements just the write method of the file-like
-    interface.
-    """
-
-    def write(self, value):
-        """Write the value by returning it, instead of storing in a buffer."""
-        return value
 
 
 @login_required
