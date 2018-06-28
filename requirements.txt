@@ -45,7 +45,7 @@ gunicorn==19.7.1
 html5lib==1.0.1
 idna==2.6                 # via requests
 jmespath==0.9.3           # via boto3, botocore
-kombu==4.2.1              # via celery
+kombu==4.1.0
 markdown==2.6.11          # via django-markdownx
 mohawk==0.3.4             # via sigauth
 monotonic==1.5            # via notifications-python-client
