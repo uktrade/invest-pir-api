@@ -1,7 +1,5 @@
-from django.conf import settings
-
 from markdown.extensions.footnotes import FootnoteExtension
-from markdown import Markdown, inlinepatterns
+from markdown import Markdown
 
 
 class CustomFootnoteExtension(FootnoteExtension):
