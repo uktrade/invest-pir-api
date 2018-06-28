@@ -14,8 +14,8 @@
 
 ## Local installation
 
-    $ git clone https://github.com/uktrade/pir-api
-    $ cd pir-api
+    $ git clone https://github.com/uktrade/invest-pir-api
+    $ cd invest-pir-api
     $ make
 
 ## Running with Docker
@@ -66,9 +66,9 @@ Requires all host environment variables to be set.
 	$ npm run sass-watch
 
 
-[circle-ci-image]: https://circleci.com/gh/uktrade/pir-api/tree/master.svg?style=svg
-[circle-ci]: https://circleci.com/gh/uktrade/pir-api/tree/master
+[circle-ci-image]: https://circleci.com/gh/uktrade/invest-pir-api/tree/master.svg?style=svg
+[circle-ci]: https://circleci.com/gh/uktrade/invest-pir-api/tree/master
 
-[codecov-image]: https://codecov.io/gh/uktrade/pir-api/branch/master/graph/badge.svg
-[codecov]: https://codecov.io/gh/uktrade/pir-api
+[codecov-image]: https://codecov.io/gh/uktrade/invest-pir-api/branch/master/graph/badge.svg
+[codecov]: https://codecov.io/gh/uktrade/invest-pir-api
 
