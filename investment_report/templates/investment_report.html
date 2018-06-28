@@ -16,7 +16,7 @@
                background-size: cover;
             ">
 
-      <div class="front-page__title">{% blocktrans %}The UK: A Great Home for:<br>{{ company }}{% endblocktrans %}</div>
+      <div class="front-page__title">{% blocktrans %}The UK: A Great Home for<br>{{ company }}{% endblocktrans %}</div>
       <img class="front-page__logo" src="{% static "images/frontpagebottomrightlogo.png" %}"/>
     </section>
 
@@ -130,8 +130,13 @@
 
     <section class="secondary-page content-margin side-footnote relative">
       {% markdown r_and_d_and_innovation.content %}
-      <span class="r_and_d_and_innovation_case_study">{% markdown r_and_d_and_innovation_case_study.content %}</span>
-      <span class="r_and_d_and_innovation_case_study">{% markdown video_case_study.content %}</span>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section class="secondary-page dark-list content-margin side-footnote r_and_d_and_innovation_case_study">
+        {% markdown r_and_d_and_innovation_case_study.content %}
+        {% markdown video_case_study.content %}
     </section>
 
     <div class="page-break"></div>
