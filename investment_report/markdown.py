@@ -17,21 +17,6 @@ class CustomFootnoteExtension(FootnoteExtension):
         return div
 
 
-class CustomImagePattern(inlinepatterns.ImagePattern):
-    def sanitize_url(self, url):
-        url = super().sanitize_url(url)
-
-        if settings.AWS_S3_CUSTOM_DOMAIN:
-            url = 'https://{}{}'.format(settings.AWS_S3_CUSTOM_DOMAIN, url)
-            return url
-        else:
-            return url
-
-
-# Monkey Patch image url
-inlinepatterns.ImagePattern = CustomImagePattern
-
-
 def custom_markdown(a_str, local=True):
     md = Markdown(extensions=[CustomFootnoteExtension()])
     md.local = local
