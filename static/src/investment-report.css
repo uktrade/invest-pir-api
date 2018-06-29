@@ -163,10 +163,12 @@ blockquote {
   top: 11.097mm;
   position: absolute;
   display: block;
-  font-size: 30pt;
-  line-height: 30pt;
-  font-weight: bold;
+  font-size: 36pt;
+  line-height: 36pt;
   color: white;
+  font-family: "Invesco Interstate Bold";
+  font-weight: bold;
+  letter-spacing: -1.75pt;
 }
 
 .last-page {
