@@ -16,7 +16,7 @@
                background-size: cover;
             ">
 
-      <div class="front-page__title">{% blocktrans %}The UK: A Great Home for:<br>{{ company }}{% endblocktrans %}</div>
+      <div class="front-page__title">{% blocktrans %}The UK: A Great Home for<br>{{ company }}{% endblocktrans %}</div>
       <img class="front-page__logo" src="{% static "images/frontpagebottomrightlogo.png" %}"/>
     </section>
 
@@ -45,7 +45,7 @@
           <li> {% trans "$SECTOR in the UK: Going from Strength to Strength" %}</li>
           <li> {% trans "A Nation of $SECTOR Innovators" %}</li>
           <li> {% trans "Case Study" %}</li>
-          <li> {% trans "We’re doing great things for $SECTOR" %}</li>
+          <li> {% trans "Network of Support" %}</li>
           <li> {% trans "Who's Here?" %}</li>
           <li> {% trans "Great Things Await - Take the Next Step" %}</li>
           <li> {% trans "A Flying Start - How We Can Get You Going" %}</li>
@@ -130,14 +130,19 @@
 
     <section class="secondary-page content-margin side-footnote relative">
       {% markdown r_and_d_and_innovation.content %}
-      <span class="r_and_d_and_innovation_case_study">{% markdown r_and_d_and_innovation_case_study.content %}</span>
-      <span class="r_and_d_and_innovation_case_study">{% markdown video_case_study.content %}</span>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section class="secondary-page dark-list content-margin side-footnote r_and_d_and_innovation_case_study">
+        {% markdown r_and_d_and_innovation_case_study.content %}
+        {% markdown video_case_study.content %}
     </section>
 
     <div class="page-break"></div>
 
     <section class="full-page side-footnote">
-      <h1>{% trans "11. We’re doing great things for $SECTOR" %}</h1>
+      <h1>{% trans "10. Network of Support" %}</h1>
       <div class="full-page__spread centered_body flex"
            style="background-image: url({% custom_media network_and_support.background_image %})">
         <div class="centered_body__body secondary-page">
@@ -199,7 +204,9 @@
         <div class="centered_body__body secondary-page">
           <h3>{{ contact.title }}</h3>
           <ul>
-            <li style="list-style-image: url('{% static "images/mouse.svg" %}');">{{ contact.website }}</li>
+           <li style="list-style-image: url('{% static "images/mouse.svg" %}');">
+             <a href="{{contact.website}}">{{ contact.website }}</a>
+           </li>
             <li style="list-style-image: url('{% static "images/mail.svg" %}');">{{ contact.email }}</li>
             <li style="list-style-image: url('{% static "images/phone.svg" %}')";>{{ contact.phone }}</li>
           </ul>
