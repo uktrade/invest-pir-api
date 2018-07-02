@@ -74,6 +74,7 @@
       </div>
     </section>
 
+    {% increment_section %}
 
     <div class="page-break"></div>
 
@@ -83,6 +84,8 @@
       </div>
     </section>
 
+    {% increment_section %}
+
     <section class="text-large side-footnote page-break-avoid relative">
       <div class="section-body content-margin">
         {% markdown macro_context.content %}
@@ -90,59 +93,69 @@
     </section>
 
 
+    {% increment_section %}
     <div class="page-break"></div>
 
     <section class="full-page side-footnote">
-      <h1>{% trans "4. UK Market Overview" %}</h1>
+      <h1>{% blocktrans %}{{ section_counter }}. UK Market Overview{% endblocktrans %}</h1>
       <div class="full-page__spread"
            style="background-image: url({% custom_media uk_market_overview.background_image %})">
         <img id="marketoverview-image" src="{% custom_media uk_market_overview.body_image %}"/>
       </div>
     </section>
 
+    {% increment_section %}
     <div class="page-break"></div>
 
     <section class="full-page side-footnote">
-      <h1>{% trans "5. A Great Place to Do Business" %}</h1>
+      <h1>{% blocktrans %}{{ section_counter }}. A Great Place to Do Business{% endblocktrans %}</h1>
       <div class="full-page__spread flex centered_body"
            style="background-image: url({% custom_media uk_business_info.background_image %})">
         <img src="{% custom_media uk_business_info.body_image %}"/>
       </div>
     </section>
 
+    {% increment_section %}
     <div class="page-break"></div>
     
     <section class="secondary-page dark-list content-margin side-footnote">
       {% markdown uk_geo_overview.content %}
     </section>
 
+    {% increment_section %}
+
     <section class="section-body secondary-page content-margin side-footnote talent_and_education_by_sector dark-list inside-list relative page-break-avoid">
       {% markdown talent_and_education_by_sector.content %}
     </section>
 
+    {% increment_section %}
     <div class="page-break"></div>
 
     <section class="secondary-page sector-initiatives bottom-footnote">
       {% markdown sector_initiatives.content %}
     </section>
 
+    {% increment_section %}
     <div class="page-break"></div>
 
     <section class="secondary-page content-margin side-footnote relative">
       {% markdown r_and_d_and_innovation.content %}
     </section>
 
+    {% increment_section %}
     <div class="page-break"></div>
 
     <section class="secondary-page dark-list content-margin side-footnote r_and_d_and_innovation_case_study">
         {% markdown r_and_d_and_innovation_case_study.content %}
+        {% increment_section %}
         {% markdown video_case_study.content %}
+    {% increment_section %}
     </section>
 
     <div class="page-break"></div>
 
     <section class="full-page side-footnote">
-      <h1>{% trans "10. Network of Support" %}</h1>
+      <h1>{% blocktrans %}{{ section_counter }}. Network of Support{% endblocktrans %}</h1>
       <div class="full-page__spread centered_body flex"
            style="background-image: url({% custom_media network_and_support.background_image %})">
         <div class="centered_body__body secondary-page">
@@ -151,10 +164,11 @@
       </div>
     </section>
 
+    {% increment_section %}
     <div class="page-break"></div>
 
     <section class="full-page side-footnote whos-here">
-      <h1>{% trans "12. Who's here" %}</h1>
+      <h1>{% blocktrans %}{{ section_counter }}. Who's Here{% endblocktrans %}</h1>
       <div class="full-page__spread section"
            style="background-image: url({% custom_media who_is_here.background_image %})">
           <ul>
@@ -177,6 +191,8 @@
       </div>
     </section>
 
+
+    {% increment_section %}
     <section class="singlepage-withfooter side-footnote secondary-page">
 
       <div class="singlepage-withfooter__body">
@@ -198,6 +214,7 @@
 
     <div class="page-break"></div>
 
+    {% increment_section %}
     <section class=full-page contact>
       <div class="full-page__spread centered_body contact flex"
            style="background-image: url({% custom_media contact.background_image %})">
