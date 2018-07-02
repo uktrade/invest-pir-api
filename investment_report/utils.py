@@ -150,6 +150,8 @@ def get_investment_report_data(
         sector=sector
     )[:4]
 
+    context['section_counter'] = 1
+
     return context
 
 
