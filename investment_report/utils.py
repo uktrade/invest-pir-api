@@ -131,7 +131,7 @@ def get_investment_report_data(
     context['services_offered_by_dit'] = filter_(models.ServicesOfferedByDIT)
     context['contact'] = filter_(models.Contact)
 
-    context['sector'] = sector.name.title()
+    context['sector'] = sector.display_name
 
     context['who_is_here'] = filter_(
         models.WhoIsHere
