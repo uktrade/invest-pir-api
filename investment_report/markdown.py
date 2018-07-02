@@ -15,8 +15,13 @@ class CustomFootnoteExtension(FootnoteExtension):
         return div
 
 
-def custom_markdown(a_str, local=True):
-    md = Markdown(extensions=[CustomFootnoteExtension()])
+def custom_markdown(a_str, section_counter=0, local=True):
+    md = Markdown(extensions=[
+        CustomFootnoteExtension(),
+    ])
+
     md.local = local
     str_ = md.convert(a_str)
+    str_ = str_.replace('$SECTION', str(section_counter))
+
     return str_
