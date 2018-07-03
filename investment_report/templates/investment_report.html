@@ -146,8 +146,10 @@
     <div class="page-break"></div>
 
     <section class="secondary-page dark-list content-margin side-footnote r_and_d_and_innovation_case_study">
-        {% markdown r_and_d_and_innovation_case_study.content %}
-        {% increment_section %}
+        {% if r_and_d_and_innovation_case_study.content %}
+          {% markdown r_and_d_and_innovation_case_study.content %}
+          {% increment_section %}
+        {% endif %}
 
         {% if video_case_study.content %}
            {% markdown video_case_study.content %}
@@ -156,7 +158,9 @@
 
     </section>
 
-    <div class="page-break"></div>
+    {% if r_and_d_and_innovation_case_study.content or video_case_study.content %}
+      <div class="page-break"></div>
+    {% endif %}
 
     <section class="full-page side-footnote">
       <h1>{% blocktrans %}{{ section_counter }}. Network of Support{% endblocktrans %}</h1>
