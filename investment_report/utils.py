@@ -172,7 +172,7 @@ def investment_report_html_generator(
 
     result_html = (
         result_html
-        .replace('$SECTOR', sector.name.title())
+        .replace('$SECTOR', sector.display_name)
         .replace('$MARKET', market.name.title())
     )
 
