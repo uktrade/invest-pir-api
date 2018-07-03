@@ -484,7 +484,11 @@ ul li:before {
   background-position: center;
 }
 
-.r_and_d_and_innovation_case_study h1 + p > img {
+.r_and_d_and_innovation_case_study h1 + p > img,
+.r_and_d_and_innovation_case_study h1 + p > a > img {
+  margin-top: -2.1rem;
+}
+{
   margin-top: -2.1rem;
 }
 
