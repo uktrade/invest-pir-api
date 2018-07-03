@@ -148,8 +148,12 @@
     <section class="secondary-page dark-list content-margin side-footnote r_and_d_and_innovation_case_study">
         {% markdown r_and_d_and_innovation_case_study.content %}
         {% increment_section %}
-        {% markdown video_case_study.content %}
-    {% increment_section %}
+
+        {% if video_case_study.content %}
+           {% markdown video_case_study.content %}
+           {% increment_section %}
+        {% endif %}
+
     </section>
 
     <div class="page-break"></div>
