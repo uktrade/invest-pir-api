@@ -44,7 +44,12 @@
           <li> {% trans "The Smart Workforce $COMPANY Needs" %}</li>
           <li> {% trans "$SECTOR in the UK: Going from Strength to Strength" %}</li>
           <li> {% trans "A Nation of $SECTOR Innovators" %}</li>
-          <li> {% trans "Case Study" %}</li>
+          {% if r_and_d_and_innovation_case_study.content %}
+                <li> {% trans "Case Study" %}</li>
+          {% endif %}
+          {% if video_case_study.content %}
+                <li> {% trans "Video Case Study" %}</li>
+          {% endif %}
           <li> {% trans "Network of Support" %}</li>
           <li> {% trans "Who's Here?" %}</li>
           <li> {% trans "Great Things Await - Take the Next Step" %}</li>
