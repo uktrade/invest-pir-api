@@ -40,3 +40,4 @@ sigauth==2.1.3
 bs4
 django-admin-ip-restrictor==0.2.1
 raven
+django-axes==4.4.0

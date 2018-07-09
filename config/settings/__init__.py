@@ -80,6 +80,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+
+    'axes',
     'markdownx',
     'sorl.thumbnail',
     'django_countries',
@@ -87,6 +89,16 @@ INSTALLED_APPS = [
     'rest_framework',
     'raven.contrib.django.raven_compat',
 ]
+
+
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesModelBackend',
+    'django.contrib.auth.backends.ModelBackend'
+]
+
+
+AXES_FAILURE_LIMIT = int(os.getenv('LOGIN_FAILURE_LIMIT', 10))
+AXES_COOLOFF_TIME = int(os.getenv('LOGIN_FAILURE_COOLOFF', 24))
 
 try:
     import django_extensions  # noqa: F401
