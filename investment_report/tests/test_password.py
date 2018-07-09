@@ -1,14 +1,13 @@
 from investment_report.password_validation import (
-    PIRPasswordValidator, 
-    UPPER_CASE, LOWER_CASE, ONE_DIGIT, MIN_LENGTH, SPECIAL_CHAR
+    PIRPasswordValidator, UPPER_CASE, LOWER_CASE,
+    ONE_DIGIT, MIN_LENGTH, SPECIAL_CHAR
 )
 
 from django.core.exceptions import ValidationError
 from django.test import TestCase
 
+
 class PasswordValidatorTestCase(TestCase):
-
-
     def test_password_validation(self):
         validator = PIRPasswordValidator()
 

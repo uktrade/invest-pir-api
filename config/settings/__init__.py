@@ -48,13 +48,13 @@ ENABLE_REDIS = REDIS_URL is not None
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'investment_report.password_validation.PIRPasswordValidator',
+        'NAME': 'investment_report.password_validation.PIRPasswordValidator',  # NOQA
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # NOQA
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',  # NOQA
     },
 ]
 

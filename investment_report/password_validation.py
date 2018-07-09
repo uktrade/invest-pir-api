@@ -45,6 +45,5 @@ class PIRPasswordValidator:
                 code=','.join(error_codes)
             )
 
-
     def get_help_text(self):
         return "Your password must {}".format('; '.join(self.rules.keys()))
