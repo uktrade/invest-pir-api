@@ -20,6 +20,10 @@ from moderation.diff import get_changes_between_models
 from moderation.constants import MODERATION_READY_STATE, \
     MODERATION_STATUS_APPROVED
 
+# Annoying that I have to import this as I've overloaded the admin
+from axes.admin import AccessLogAdmin
+from axes.models import AccessLog
+
 from django.contrib.contenttypes.models import ContentType
 from markdownx.admin import MarkdownxModelAdmin
 from sorl.thumbnail.admin import AdminImageMixin
@@ -261,5 +265,7 @@ admin_site.register(SectorLogo, SectorLogoAdmin)
 admin_site.register(User, UserAdmin)
 admin_site.register(Group, GroupAdmin)
 admin_site.register(Site, admin.ModelAdmin)
+admin_site.register(AccessLog, AccessLogAdmin)
 
 admin.site.unregister(ModeratedObject)
+admin.site.unregister(AccessLog)
