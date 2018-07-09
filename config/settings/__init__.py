@@ -45,6 +45,19 @@ ALLOWED_ADMIN_IP_RANGES = os.environ.get('ALLOWED_ADMIN_IP_RANGES', [])
 REDIS_URL = os.getenv("REDIS_URL")
 ENABLE_REDIS = REDIS_URL is not None
 
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'investment_report.password_validation.PIRPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+]
+
 # Application definition
 
 INSTALLED_APPS = [
