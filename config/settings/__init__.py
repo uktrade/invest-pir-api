@@ -134,6 +134,12 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_DEFAULT_REGION = os.environ.get('AWS_DEFAULT_REGION', 'eu-west-1')
 
+# AWS for Django storages PDF
+AWS_S3_PDF_STORE_ACCESS_KEY_ID = os.environ.get('AWS_S3_PDF_STORE_ACCESS_KEY_ID')  # NOQA
+AWS_S3_PDF_STORE_SECRET_ACCESS_KEY = os.environ.get('AWS_S3_PDF_STORE_SECRET_ACCESS_KEY')  # NOQA
+AWS_S3_PDF_STORE_BUCKET_NAME = os.environ.get('AWS_S3_PDF_STORE_BUCKET_NAME')
+AWS_S3_PDF_STORE_BUCKET_REGION = os.environ.get('AWS_S3_PDF_STORE_BUCKET_REGION', 'eu-west-2')  # NOQA
+
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -275,3 +281,7 @@ if REDIS_URL:
 
 GOV_NOTIFY_API_KEY = os.getenv('GOV_NOTIFY_API_KEY')
 EMAIL_UUID = os.getenv('EMAIL_UUID')
+
+
+FRONTEND_URL = os.getenv('FRONTEND_URL', 'https://invest-pir-ui-dev.cloudapps.digital/')  # NOQA
+FRONTEND_PROXY_URL = os.path.join(FRONTEND_URL, 'reports/{filename}/')

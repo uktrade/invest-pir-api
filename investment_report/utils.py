@@ -226,6 +226,8 @@ def send_investment_email(pir_report):
         template_id=settings.EMAIL_UUID,
         personalisation={
             'name': pir_report.name,
-            'pir_url': pir_report.pdf.url
+            'pir_url': settings.FRONTEND_PROXY_URL.format(
+                filename=pir_report.pdf.name
+            )
         }
     )
