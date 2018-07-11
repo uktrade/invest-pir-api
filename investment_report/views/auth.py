@@ -20,7 +20,7 @@ class ResetRequestView(SuccessMessageMixin, FormView):
     form_class = ResetRequestForm
     success_url = reverse_lazy('reset_request')
     success_message = (
-        "An administrator has emailed requesting to unlock %(email)s"
+        "An administrator has emailed requesting to unlock %(username)s"
     )
 
     def send_email(self, user):
