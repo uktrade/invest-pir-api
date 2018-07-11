@@ -45,6 +45,19 @@ ALLOWED_ADMIN_IP_RANGES = os.environ.get('ALLOWED_ADMIN_IP_RANGES', [])
 REDIS_URL = os.getenv("REDIS_URL")
 ENABLE_REDIS = REDIS_URL is not None
 
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'investment_report.password_validation.PIRPasswordValidator',  # NOQA
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # NOQA
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',  # NOQA
+    },
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -67,6 +80,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+
+    'axes',
     'markdownx',
     'sorl.thumbnail',
     'django_countries',
@@ -74,6 +89,16 @@ INSTALLED_APPS = [
     'rest_framework',
     'raven.contrib.django.raven_compat',
 ]
+
+
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesModelBackend',
+    'django.contrib.auth.backends.ModelBackend'
+]
+
+
+AXES_FAILURE_LIMIT = int(os.getenv('LOGIN_FAILURE_LIMIT', 10))
+AXES_COOLOFF_TIME = int(os.getenv('LOGIN_FAILURE_COOLOFF', 24))
 
 try:
     import django_extensions  # noqa: F401
