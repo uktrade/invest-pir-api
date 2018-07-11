@@ -284,4 +284,4 @@ EMAIL_UUID = os.getenv('EMAIL_UUID')
 
 
 FRONTEND_URL = os.getenv('FRONTEND_URL', 'https://invest-pir-ui-dev.cloudapps.digital/')  # NOQA
-FRONTEND_PROXY_URL = os.path.join(FRONTEND_URL, 'reports/{filename}/')
+FRONTEND_PROXY_URL = os.path.join(FRONTEND_URL, 'reports/{filename}')
