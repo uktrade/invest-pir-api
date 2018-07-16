@@ -99,6 +99,7 @@ AUTHENTICATION_BACKENDS = [
 
 AXES_FAILURE_LIMIT = int(os.getenv('LOGIN_FAILURE_LIMIT', 10))
 AXES_COOLOFF_TIME = int(os.getenv('LOGIN_FAILURE_COOLOFF', 24))
+AXES_LOCKOUT_URL = '/unlock-account'
 
 try:
     import django_extensions  # noqa: F401
@@ -272,6 +273,8 @@ SITE_ID = 1
 
 EMAIL_BACKEND = 'django_amazon_ses.EmailBackend'
 DEFAULT_FROM_EMAIL = os.getenv('EMAIL_FROM')
+
+RESET_EMAIL = os.getenv('RESET_EMAIL')
 
 
 MODERATION_MODERATORS = [item.strip()
