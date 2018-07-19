@@ -311,5 +311,5 @@ GOV_NOTIFY_API_KEY = os.getenv('GOV_NOTIFY_API_KEY')
 EMAIL_UUID = os.getenv('EMAIL_UUID')
 
 
-FRONTEND_URL = os.getenv('FRONTEND_URL', 'https://invest-pir-ui-dev.cloudapps.digital/')  # NOQA
+FRONTEND_URL = os.environ['FRONTEND_URL']
 FRONTEND_PROXY_URL = os.path.join(FRONTEND_URL, 'reports/{filename}')
