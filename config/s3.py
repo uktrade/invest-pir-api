@@ -3,7 +3,6 @@ from django.conf import settings
 from django.utils.encoding import filepath_to_uri
 
 
-
 def StaticRootS3BotoStorage(): return S3Boto3Storage(location='static')
 
 
