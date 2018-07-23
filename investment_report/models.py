@@ -29,6 +29,7 @@ class PIRRequest(models.Model):
     lang = models.CharField(max_length=255, default='en')
     company = models.CharField(max_length=255)
     email = models.EmailField()
+    phone_number = models.CharField(max_length=255, null=True)
     date_created = models.DateField(default=timezone.now)
 
     # Specify other bucket
