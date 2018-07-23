@@ -309,7 +309,8 @@ if REDIS_URL:
 
 GOV_NOTIFY_API_KEY = os.getenv('GOV_NOTIFY_API_KEY')
 EMAIL_UUID = os.getenv('EMAIL_UUID')
+DEFAULT_EMAIL_UUID = os.getenv('DEFAULT_EMAIL_UUID')
 
 
-FRONTEND_URL = os.environ.get('FRONTEND_URL')
+FRONTEND_URL = os.environ.get('FRONTEND_URL', '')
 FRONTEND_PROXY_URL = os.path.join(FRONTEND_URL, 'reports/{filename}')

@@ -4,7 +4,7 @@ from rest_framework.reverse import reverse
 
 from investment_report.metadata import RelatedFieldMetadata
 from investment_report.serializers import PIRSerializer
-from investment_report.tasks import create_pdf
+from investment_report.tasks import create_pdf, send_default_investment_email
 
 
 class PIRAPI(APIView):
@@ -23,7 +23,11 @@ class PIRAPI(APIView):
         if serializer.is_valid():
             serializer.save()
 
-            create_pdf.delay(serializer.instance.id)
+            if serializer.instance.sector.name == 'other':
+                # If 'other' sector send default email
+                send_default_investment_email.delay(serializer.instance.id)
+            else:
+                create_pdf.delay(serializer.instance.id)
 
             resp = Response(serializer.data, status=201)
 
