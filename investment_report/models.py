@@ -15,6 +15,7 @@ from markdownx.models import MarkdownxField
 from django.core.files import File
 
 from notifications_python_client.errors import HTTPError
+from config.s3 import PDFS3Boto3Storage
 
 
 logger = logging.getLogger(__name__)
@@ -30,7 +31,9 @@ class PIRRequest(models.Model):
     email = models.EmailField()
     phone_number = models.CharField(max_length=255, null=True)
     date_created = models.DateField(default=timezone.now)
-    pdf = models.FileField()
+
+    # Specify other bucket
+    pdf = models.FileField(storage=PDFS3Boto3Storage())
 
     def create_pdf(self, notify=True):
         from investment_report.utils import (
