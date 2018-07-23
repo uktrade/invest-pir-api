@@ -229,3 +229,14 @@ def send_investment_email(pir_report):
             'pir_url': pir_report.pdf.url
         }
     )
+
+
+def send_default_investment_email(pir_report):
+    notifications_client = NotificationsAPIClient(settings.GOV_NOTIFY_API_KEY)
+    notifications_client.send_email_notification(
+        email_address=pir_report.email,
+        template_id=settings.DEFAULT_EMAIL_UUID,
+        personalisation={
+            'name': pir_report.name,
+        }
+    )
