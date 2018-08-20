@@ -31,6 +31,7 @@ class PIRRequest(models.Model):
     email = models.EmailField()
     phone_number = models.CharField(max_length=255, null=True)
     date_created = models.DateField(default=timezone.now)
+    gdpr_optin = models.BooleanField(default=False)
 
     # Specify other bucket
     pdf = models.FileField(storage=PDFS3Boto3Storage())
