@@ -47,6 +47,11 @@ class PIRSerializer(serializers.ModelSerializer):
     pdf = serializers.FileField(read_only=True)
     date_created = serializers.DateTimeField(read_only=True)
 
+    # Not making this required (but defaulting to false)
+    # as to allow deployments of front end and backend to be made
+    # independently
+    gdpr_optin = serializers.BooleanField(required=False, default=False)
+
     def validate(self, data):
         """
         Check that the start is before the stop.
