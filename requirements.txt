@@ -4,6 +4,7 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
+-e git+git://github.com/dominno/django-moderation.git@8d98d35d7b39993046997f053d1f72e7a585fb3f#egg=django_moderation
 -e git+git://github.com/Kozea/WeasyPrint.git@5727e57859b7603d4e06589b22c524456a114b1c#egg=WeasyPrint
 amqp==2.3.2               # via kombu
 beautifulsoup4==4.6.0     # via bs4
@@ -23,15 +24,16 @@ defusedxml==0.5.0         # via cairosvg
 directory-validators==4.5.1
 dj-database-url==0.4.2
 django-amazon-ses==2.0.0
+django-appconf==1.0.2     # via django-axes
+django-axes==4.4.0
 django-clear-cache==0.3
 django-countries-plus==1.2.1
 django-countries==5.2
 django-crispy-forms==1.7.1
 django-markdownx==2.0.22
-django-model-utils==3.1.2  # via django-moderation
+django-model-utils==3.1.2
 django-modelcluster==4.1
 django-modeltranslation==0.12.2
-django-moderation==0.5.0
 django-redis==4.8.0
 django-storages==1.6.5
 django-taggit==0.22.2

@@ -17,7 +17,10 @@ class UtilsViewTestCase(TestCase):
         self.client.login(username='admin', password='test')
 
         self.market = Market.objects.create(name='china')
-        self.sector = Sector.objects.create(name='tech')
+        self.sector = Sector.objects.create(
+            name='tech',
+            display_name='Technology'
+        )
 
     def test_html_view(self):
         response = self.client.get(
@@ -26,7 +29,7 @@ class UtilsViewTestCase(TestCase):
             ])
         )
 
-        self.assertEquals(response.context['sector'], 'Tech')
+        self.assertEquals(response.context['sector'], 'Technology')
         self.assertEquals(response['content-language'], 'en')
 
         response = self.client.get(
@@ -45,7 +48,7 @@ class UtilsViewTestCase(TestCase):
             ])
         )
 
-        self.assertEquals(response.context['sector'], 'Tech')
+        self.assertEquals(response.context['sector'], 'Technology')
         self.assertEquals(response['content-type'], 'application/pdf')
 
     def test_pir_csv_view(self):
@@ -85,7 +88,7 @@ class UtilsViewTestCase(TestCase):
 
         expected_headers = set([
             'id', 'country', 'market__name', 'sector__name', 'name',
-            'lang', 'company', 'email', 'date_created'
+            'lang', 'company', 'email', 'date_created', 'gdpr_optin'
         ])
 
         self.assertEquals(header_set, expected_headers)

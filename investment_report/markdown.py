@@ -1,7 +1,5 @@
-from django.conf import settings
-
 from markdown.extensions.footnotes import FootnoteExtension
-from markdown import Markdown, inlinepatterns
+from markdown import Markdown
 
 
 class CustomFootnoteExtension(FootnoteExtension):
@@ -17,23 +15,13 @@ class CustomFootnoteExtension(FootnoteExtension):
         return div
 
 
-class CustomImagePattern(inlinepatterns.ImagePattern):
-    def sanitize_url(self, url):
-        url = super().sanitize_url(url)
+def custom_markdown(a_str, section_counter=0, local=True):
+    md = Markdown(extensions=[
+        CustomFootnoteExtension(),
+    ])
 
-        if settings.AWS_S3_CUSTOM_DOMAIN:
-            url = 'https://{}{}'.format(settings.AWS_S3_CUSTOM_DOMAIN, url)
-            return url
-        else:
-            return url
-
-
-# Monkey Patch image url
-inlinepatterns.ImagePattern = CustomImagePattern
-
-
-def custom_markdown(a_str, local=True):
-    md = Markdown(extensions=[CustomFootnoteExtension()])
     md.local = local
     str_ = md.convert(a_str)
+    str_ = str_.replace('$SECTION', str(section_counter))
+
     return str_

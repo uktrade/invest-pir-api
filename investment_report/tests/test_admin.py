@@ -1,4 +1,4 @@
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
 
 import pytest
 from django.test import TestCase, RequestFactory
@@ -121,3 +121,18 @@ class AdminTestCase(TestCase):
 
         self.assertEquals(len(response.context_data['preview']),
                           len(settings.LANGUAGES))
+
+    @patch('investment_report.views.auth.send_mail')
+    def test_account_reset_form(self, send_mail_patch):
+        response = self.client.post(reverse('reset_request'), data={
+            'username': 'admin'
+        }, follow=True)
+
+        self.assertTrue(response.context['messages'].used)
+
+        response = self.client.post(reverse('reset_request'), data={
+            'username': 'notauser'
+        }, follow=True)
+
+        self.assertTrue(response.context['messages'].used)
+        self.assertEquals(send_mail_patch.call_count, 1)
