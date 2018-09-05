@@ -38,9 +38,9 @@ if ENABLE_DEBUG_TOOLBAR:
 # to the external url, e.g: ALLOWED_HOSTS=invest.great.uat.uktrade.io
 ALLOWED_HOSTS = ['*']
 
-RESTRICT_ADMIN = os.environ.get('RESTRICT_ADMIN', False)
-ALLOWED_ADMIN_IPS = os.environ.get('ALLOWED_ADMIN_IPS', [])
-ALLOWED_ADMIN_IP_RANGES = os.environ.get('ALLOWED_ADMIN_IP_RANGES', [])
+RESTRICT_ADMIN = os.environ.get('RESTRICT_ADMIN', 'False') == 'True'
+
+ALLOWED_ADMIN_IPS = [ip.strip() for ip in os.environ.get('ALLOWED_ADMIN_IPS', '').split(',') if ip]  # noqa: E501
 
 REDIS_URL = os.getenv("REDIS_URL")
 ENABLE_REDIS = REDIS_URL is not None
@@ -122,7 +122,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'admin_ip_restrictor.middleware.AdminIPRestrictorMiddleware'
+    'core.middleware.AdminIpRestrictionMiddleware'
 ]
 
 if ENABLE_DEBUG_TOOLBAR:
