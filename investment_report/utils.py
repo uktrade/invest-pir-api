@@ -131,7 +131,7 @@ def get_investment_report_data(
     context['services_offered_by_dit'] = filter_(models.ServicesOfferedByDIT)
     context['contact'] = filter_(models.Contact)
 
-    context['sector'] = sector.name.title()
+    context['sector'] = sector.display_name
 
     context['who_is_here'] = filter_(
         models.WhoIsHere
@@ -149,6 +149,8 @@ def get_investment_report_data(
     context['sector_logos'] = models.SectorLogo.objects.filter(
         sector=sector
     )[:4]
+
+    context['section_counter'] = 1
 
     return context
 
@@ -170,7 +172,7 @@ def investment_report_html_generator(
 
     result_html = (
         result_html
-        .replace('$SECTOR', sector.name.title())
+        .replace('$SECTOR', sector.display_name)
         .replace('$MARKET', market.name.title())
     )
 
@@ -225,5 +227,16 @@ def send_investment_email(pir_report):
         personalisation={
             'name': pir_report.name,
             'pir_url': pir_report.pdf.url
+        }
+    )
+
+
+def send_default_investment_email(pir_report):
+    notifications_client = NotificationsAPIClient(settings.GOV_NOTIFY_API_KEY)
+    notifications_client.send_email_notification(
+        email_address=pir_report.email,
+        template_id=settings.DEFAULT_EMAIL_UUID,
+        personalisation={
+            'name': pir_report.name,
         }
     )

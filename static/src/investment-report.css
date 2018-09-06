@@ -163,10 +163,12 @@ blockquote {
   top: 11.097mm;
   position: absolute;
   display: block;
-  font-size: 30pt;
-  line-height: 30pt;
-  font-weight: bold;
+  font-size: 36pt;
+  line-height: 36pt;
   color: white;
+  font-family: "Invesco Interstate Bold";
+  font-weight: bold;
+  letter-spacing: -1.75pt;
 }
 
 .last-page {
@@ -274,7 +276,7 @@ ul li:before {
     line-height: 1.1;
   }
 
-  p a {
+  p a.footnote-backref {
     display: none;
   }
 }
@@ -301,7 +303,7 @@ ul li:before {
 }
 
 .singlepage-withfooter__footer {
-  background: blue;
+  background: white;
   flex-grow: 1;
   background-size: cover;
   background-position: center;
@@ -482,8 +484,9 @@ ul li:before {
   background-position: center;
 }
 
-.r_and_d_and_innovation_case_study h1 + p > img {
-  margin-top: -13mm
+section h1 + p > img,
+section h1 + p > a > img {
+  margin-top: -2.1rem;
 }
 
 #marketoverview-image {

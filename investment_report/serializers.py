@@ -41,10 +41,16 @@ class PIRSerializer(serializers.ModelSerializer):
 
     name = serializers.CharField(required=True)
     company = serializers.CharField(required=True)
+    phone_number = serializers.CharField(required=False)
     email = serializers.EmailField(required=True)
 
     pdf = serializers.FileField(read_only=True)
     date_created = serializers.DateTimeField(read_only=True)
+
+    # Not making this required (but defaulting to false)
+    # as to allow deployments of front end and backend to be made
+    # independently
+    gdpr_optin = serializers.BooleanField(required=False, default=False)
 
     def validate(self, data):
         """

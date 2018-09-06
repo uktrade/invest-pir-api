@@ -45,6 +45,19 @@ ALLOWED_ADMIN_IPS = [ip.strip() for ip in os.environ.get('ALLOWED_ADMIN_IPS', ''
 REDIS_URL = os.getenv("REDIS_URL")
 ENABLE_REDIS = REDIS_URL is not None
 
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'investment_report.password_validation.PIRPasswordValidator',  # NOQA
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # NOQA
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',  # NOQA
+    },
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -67,6 +80,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+
+    'axes',
     'markdownx',
     'sorl.thumbnail',
     'django_countries',
@@ -74,6 +89,17 @@ INSTALLED_APPS = [
     'rest_framework',
     'raven.contrib.django.raven_compat',
 ]
+
+
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesModelBackend',
+    'django.contrib.auth.backends.ModelBackend'
+]
+
+
+AXES_FAILURE_LIMIT = int(os.getenv('LOGIN_FAILURE_LIMIT', 10))
+AXES_COOLOFF_TIME = int(os.getenv('LOGIN_FAILURE_COOLOFF', 24))
+AXES_LOCKOUT_URL = '/unlock-account'
 
 try:
     import django_extensions  # noqa: F401
@@ -133,6 +159,12 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_DEFAULT_REGION = os.environ.get('AWS_DEFAULT_REGION', 'eu-west-1')
+
+# AWS for Django storages PDF
+AWS_S3_PDF_STORE_ACCESS_KEY_ID = os.environ.get('AWS_S3_PDF_STORE_ACCESS_KEY_ID')  # NOQA
+AWS_S3_PDF_STORE_SECRET_ACCESS_KEY = os.environ.get('AWS_S3_PDF_STORE_SECRET_ACCESS_KEY')  # NOQA
+AWS_S3_PDF_STORE_BUCKET_NAME = os.environ.get('AWS_S3_PDF_STORE_BUCKET_NAME')
+AWS_S3_PDF_STORE_BUCKET_REGION = os.environ.get('AWS_S3_PDF_STORE_BUCKET_REGION', 'eu-west-2')  # NOQA
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
@@ -242,6 +274,8 @@ SITE_ID = 1
 EMAIL_BACKEND = 'django_amazon_ses.EmailBackend'
 DEFAULT_FROM_EMAIL = os.getenv('EMAIL_FROM')
 
+RESET_EMAIL = os.getenv('RESET_EMAIL')
+
 
 MODERATION_MODERATORS = [item.strip()
                          for item in
@@ -275,3 +309,8 @@ if REDIS_URL:
 
 GOV_NOTIFY_API_KEY = os.getenv('GOV_NOTIFY_API_KEY')
 EMAIL_UUID = os.getenv('EMAIL_UUID')
+DEFAULT_EMAIL_UUID = os.getenv('DEFAULT_EMAIL_UUID')
+
+
+FRONTEND_URL = os.environ.get('FRONTEND_URL', '')
+FRONTEND_PROXY_URL = os.path.join(FRONTEND_URL, 'reports/{filename}')

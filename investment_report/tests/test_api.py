@@ -63,6 +63,34 @@ class PIRAPITestCase(APITestCase):
         self.mock_s3.stop()
         self.patcher.stop()
 
+    def test_pir_gdpr(self):
+        res = self.client.post(reverse('pir_api'), data={
+            'name': 'Rollo',
+            'company': 'XXX',
+            'email': 'test@example.com',
+            'country': 'US',
+            'sector': 'tech',
+            'lang': 'en',
+        }, format='json')
+
+        id_ = res.json()['id']
+        report = PIRRequest.objects.get(id=id_)
+        self.assertFalse(report.gdpr_optin)
+
+        res = self.client.post(reverse('pir_api'), data={
+            'name': 'Rollo',
+            'company': 'XXX',
+            'email': 'test@example.com',
+            'country': 'US',
+            'sector': 'tech',
+            'lang': 'en',
+            'gdpr_optin': True
+        }, format='json')
+
+        id_ = res.json()['id']
+        report = PIRRequest.objects.get(id=id_)
+        self.assertTrue(report.gdpr_optin)
+
     def test_create_pir_api(self):
         res = self.client.post(reverse('pir_api'), data={
             'name': 'Rollo',
@@ -70,7 +98,7 @@ class PIRAPITestCase(APITestCase):
             'email': 'test@example.com',
             'country': 'US',
             'sector': 'tech',
-            'lang': 'en'
+            'lang': 'en',
         }, format='json')
 
         self.assertEquals(res.status_code, 201)
@@ -86,7 +114,7 @@ class PIRAPITestCase(APITestCase):
             'email': 'notanemail',
             'country': 'US',
             'sector': 'tech',
-            'lang': 'en'
+            'lang': 'en',
         }, format='json')
 
         self.assertEquals(res.status_code, 400)
