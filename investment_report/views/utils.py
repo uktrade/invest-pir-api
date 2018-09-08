@@ -61,7 +61,8 @@ def pir_csv(request):
 
     fields = [
         'id', 'country', 'market__name', 'sector__name', 'name',
-        'lang', 'company', 'email', 'phone_number', 'date_created', 'gdpr_optin',
+        'lang', 'company', 'email', 'phone_number', 'date_created',
+        'gdpr_optin',
     ]
 
     writer = csv.DictWriter(
