@@ -88,7 +88,8 @@ class UtilsViewTestCase(TestCase):
 
         expected_headers = set([
             'id', 'country', 'market__name', 'sector__name', 'name',
-            'lang', 'company', 'email', 'date_created', 'gdpr_optin'
+            'lang', 'company', 'email', 'phone_number', 'date_created',
+            'gdpr_optin'
         ])
 
         self.assertEquals(header_set, expected_headers)
