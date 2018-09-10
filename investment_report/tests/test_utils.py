@@ -1,8 +1,11 @@
 from PyPDF2 import PdfFileReader
 
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
 from django.utils import translation
+from django.urls import reverse
+from django.contrib.auth import get_user_model
 
+from investment_report.views.utils import pir_csv
 
 # Importing this one as this is a simple model without sector
 # or market
@@ -165,3 +168,24 @@ class FiltersModerationTranslationTestCase(TestCase):
         # Nothing else one can really do other than visual
         # inspection of the PDF
         self.assertEquals(reader.getOutlines()[0]['/Title'], 'Contents')
+
+
+class PIRCSVTestCase(TestCase):
+    def test_pir_csv_logs_user_downloaded(self):
+
+        request = RequestFactory().get(reverse('pir_csv'))
+
+        user = get_user_model().objects.create(
+            email='testemail@testing123.com',
+            first_name='test',
+            last_name='test',
+        )
+
+        request.user = user
+
+        with self.assertLogs('pir-csv-download', level='INFO') as cm:
+            pir_csv(request)
+
+        self.assertEqual(
+            cm.output,
+            ['INFO:pir-csv-download:PIR CSV downloaded by testemail@testing123.com'])  # noqa: E501
