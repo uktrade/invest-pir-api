@@ -431,7 +431,7 @@ ul li:before {
     line-height: 1.1;
   }
 
-  p a {
+  p a.footnote-backref {
     display: none;
   }
 }
