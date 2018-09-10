@@ -18,7 +18,7 @@ COPY ./fonts/* /usr/share/fonts/
 RUN fc-cache -f -v
 
 # Setup Node.js
-# From https://github.com/nodejs/docker-node/blob/master/6.1/Dockerfile
+# From https://github.com/nodejs/docker-node/blob/master/6/jessie/Dockerfile
 # gpg keys listed at https://github.com/nodejs/node
 RUN set -ex \
   && for key in \
@@ -31,7 +31,9 @@ RUN set -ex \
     B9AE9905FFD7803F25714661B63B535A4C206CA9 \
     C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8 \
   ; do \
-    gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
+    gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys "$key" || \
+    gpg --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys "$key" || \
+    gpg --keyserver hkp://pgp.mit.edu:80 --recv-keys "$key" ; \
   done
 
 ENV NPM_CONFIG_LOGLEVEL info
