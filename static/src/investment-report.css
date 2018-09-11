@@ -159,16 +159,23 @@ blockquote {
 }
 
 .front-page__title {
-  left: 17.339mm;
-  top: 11.097mm;
+  left: 15.339mm;
+  top: 15.339mm;
   position: absolute;
   display: block;
-  font-size: 36pt;
-  line-height: 36pt;
+  font-size: 42pt;
+  line-height: 42pt;
   color: white;
   font-family: "Invesco Interstate Bold";
   font-weight: bold;
   letter-spacing: -1.75pt;
+}
+
+.front-page__title__sub {
+  margin-top: 24px;
+  font-size: 24pt;
+  letter-spacing: 1pt;
+  font-family: "Invesco Interstate Light";
 }
 
 .last-page {
@@ -425,7 +432,7 @@ ul li:before {
     line-height: 1.1;
   }
 
-  p a {
+  p a.footnote-backref {
     display: none;
   }
 }
