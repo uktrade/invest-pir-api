@@ -163,18 +163,19 @@ blockquote {
   top: 15.339mm;
   position: absolute;
   display: block;
-  font-size: 33pt;
-  line-height: 33pt;
+  font-size: 42pt;
+  line-height: 42pt;
   color: white;
   font-family: "Invesco Interstate Bold";
   font-weight: bold;
-  letter-spacing: -1.6pt;
+  letter-spacing: -1.75pt;
 }
 
 .front-page__title__sub {
-  margin-top: 17px;
-  font-size: 20pt;
-  letter-spacing: -0.972pt;
+  margin-top: 24px;
+  font-size: 24pt;
+  letter-spacing: 1pt;
+  font-family: "Invesco Interstate Light";
 }
 
 .last-page {
