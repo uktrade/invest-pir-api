@@ -326,7 +326,7 @@ class Contact(PDFSection):
 
     title = models.CharField(max_length=255)
     website = models.CharField(max_length=255)
-    website_href = models.CharField(
+    website_href = models.URLField(
         max_length=255,
         help_text='Custom link for website (used for tracking)'
     )

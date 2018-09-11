@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='contact',
             name='website_href',
-            field=models.CharField(default='https://invest.great.gov.uk/contact/', help_text='Custom link for website (used for tracking)', max_length=255),
+            field=models.URLField(default='https://invest.great.gov.uk/contact/', help_text='Custom link for website (used for tracking)', max_length=255),
             preserve_default=False,
         )
     ]
