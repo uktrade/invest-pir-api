@@ -326,6 +326,10 @@ class Contact(PDFSection):
 
     title = models.CharField(max_length=255)
     website = models.CharField(max_length=255)
+    website_href = models.URLField(
+        max_length=255,
+        help_text='Custom link for website (used for tracking)'
+    )
     email = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
     background_image = models.ImageField()

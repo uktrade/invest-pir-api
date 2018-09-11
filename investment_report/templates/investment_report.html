@@ -17,8 +17,8 @@
             ">
 
       <div class="front-page__title">
-        <div>{% blocktrans %}The UK: A Great Home for<br>{{ company }}{% endblocktrans %}</div>
-        <div class="front-page__title__sub">{% trans "Your guide to investing in UK $SECTOR" %}</div>
+        <div>{% blocktrans %}The UK: A Great Home<br>for {{ company }}{% endblocktrans %}</div>
+        <div class="front-page__title__sub">{% trans "Perfect Fit Prospectus" %}</div>
       </div>
       <img class="front-page__logo" src="{% static "images/frontpagebottomrightlogo.png" %}"/>
     </section>
@@ -238,7 +238,7 @@
           <h3>{{ contact.title }}</h3>
           <ul>
            <li style="list-style-image: url('{% static "images/mouse.svg" %}');">
-             <a href="{{contact.website}}">{{ contact.website }}</a>
+             <a href="{{contact.website_href}}">{{ contact.website }}</a>
            </li>
             <li style="list-style-image: url('{% static "images/mail.svg" %}');">{{ contact.email }}</li>
             <li style="list-style-image: url('{% static "images/phone.svg" %}')";>{{ contact.phone }}</li>

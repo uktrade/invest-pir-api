@@ -41,7 +41,7 @@ class PIRSerializer(serializers.ModelSerializer):
 
     name = serializers.CharField(required=True)
     company = serializers.CharField(required=True)
-    phone_number = serializers.CharField(required=False)
+    phone_number = serializers.CharField(required=False, allow_blank=True)
     email = serializers.EmailField(required=True)
 
     pdf = serializers.FileField(read_only=True)
