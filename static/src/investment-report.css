@@ -499,6 +499,11 @@ section h1 + p > a > img {
 #marketoverview-image {
   margin-left: 5.5mm;
   margin-top: $pageMarginTop;
+  width: 115.581mm;
+}
+
+#businessoverview-image {
+  width: 147mm;
 }
 
 .whos-here {
