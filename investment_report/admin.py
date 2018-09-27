@@ -181,11 +181,11 @@ class SectorAdmin(admin.ModelAdmin):
 
 
 class MarketLogoAdmin(AdminImageMixin, admin.ModelAdmin):
-    pass
+    list_display = ['name', 'market', ]
 
 
 class SectorLogoAdmin(AdminImageMixin, admin.ModelAdmin):
-    pass
+    list_display = ['name', 'sector', ]
 
 
 class CustomModeratedObjectAdmin(ModeratedObjectAdmin, PDFPreviewMixin):
