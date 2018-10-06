@@ -170,6 +170,8 @@ for klass in PDFSection.__subclasses__():
 
 class PIRRequestAdmin(admin.ModelAdmin):
     change_list_template = "admin/pir_request_list.html"
+    list_display = [f.name for f in PIRRequest._meta.fields]
+    list_filter = ('market', 'sector', 'gdpr_optin')
 
 
 class MarketAdmin(admin.ModelAdmin):
