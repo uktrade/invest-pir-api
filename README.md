@@ -1,76 +1,38 @@
-# PIR-API
+# invest-pir-api
 
 [![circle-ci-image]][circle-ci]
 [![codecov-image]][codecov]
+[![gitflow-image]][gitflow]
+[![calver-image]][calver]
 
-## Requirements
-
-[Python >= 3.5.5](https://www.python.org/downloads/release/python-360/)
-
-[Docker >= 1.10](https://docs.docker.com/engine/installation/)
-
-[Docker Compose >= 1.8](https://docs.docker.com/compose/install/)
+**Personalised investment report API - the Department for International Trade (DIT)**
 
 
-## Local installation
+## Development
+
+### Installing installation
 
     $ git clone https://github.com/uktrade/invest-pir-api
     $ cd invest-pir-api
-    $ make
+    $ virtualenv .venv -p python3.6
+    $ source .venv/bin/activate
+    $ pip install -r requirements_test.txt
+    # Start postgres now before proceeding.
+    $ make debug_db
+    $ make debug_migrate
+    $ make debug_createsuperuser
 
-## Running with Docker
-Requires all host environment variables to be set.
+### Requirements
 
-    $ make docker_run
+[Python 3.6](https://www.python.org/downloads/release/python-360/)
+[Postgres 9.5](https://www.postgresql.org/)
 
-### Run debug webserver in Docker
 
-    $ make docker_debug
-
-### Run tests in Docker
-
-    $ make docker_test
-
-### Host environment variables for docker-compose
-``.env`` files will be automatically created (with ``env_writer.py`` based on ``env.json``) by ``make docker_test``, based on host environment variables with ``PIR_API`` prefix.
-
-## Debugging
-
-### Setup debug environment
-
-    $ make debug
-
-### Run debug webserver
-
-    $ make debug_webserver
+### Configuration
 
 ### Run debug tests
 
     $ make debug_test
-
-## CSS development
-
-### Requirements
-[node](https://nodejs.org/en/download/)
-[SASS](http://sass-lang.com/)
-
-	$ npm install
-	$ npm run sass-dev
-
-### Update CSS under version control
-
-	$ npm run sass-prod
-
-### Rebuild the CSS files when the scss file changes
-
-	$ npm run sass-watch
-
-
-[circle-ci-image]: https://circleci.com/gh/uktrade/invest-pir-api/tree/master.svg?style=svg
-[circle-ci]: https://circleci.com/gh/uktrade/invest-pir-api/tree/master
-
-[codecov-image]: https://codecov.io/gh/uktrade/invest-pir-api/branch/master/graph/badge.svg
-[codecov]: https://codecov.io/gh/uktrade/invest-pir-api
 
 
 ### Environment Variables
@@ -149,9 +111,8 @@ ID of email with *default report*.
 
 Where the corresponding URL for the frontend is.
 
-----
 
-### AWS envars
+#### AWS envars
 
 Static and media files
 
@@ -166,3 +127,26 @@ Only for PDFs
   - AWS_S3_PDF_STORE_SECRET_ACCESS_KEY
   - AWS_S3_PDF_STORE_BUCKET_NAME
   - AWS_S3_PDF_STORE_BUCKET_REGION
+
+
+## Helpful links
+* [Developers Onboarding Checklist](https://uktrade.atlassian.net/wiki/spaces/ED/pages/32243946/Developers+onboarding+checklist)
+* [Gitflow branching](https://uktrade.atlassian.net/wiki/spaces/ED/pages/737182153/Gitflow+and+releases)
+* [GDS service standards](https://www.gov.uk/service-manual/service-standard)
+* [GDS design principles](https://www.gov.uk/design-principles)
+
+## Related projects:
+https://github.com/uktrade?q=directory
+https://github.com/uktrade?q=great
+
+[circle-ci-image]: https://circleci.com/gh/uktrade/directory-cms/tree/master.svg?style=svg
+[circle-ci]: https://circleci.com/gh/uktrade/invest-pir-api/tree/master
+
+[codecov-image]: https://codecov.io/gh/uktrade/invest-pir-api/branch/master/graph/badge.svg
+[codecov]: https://codecov.io/gh/uktrade/invest-pir-api
+
+[gitflow-image]: https://img.shields.io/badge/Branching%20strategy-gitflow-5FBB1C.svg
+[gitflow]: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+
+[calver-image]: https://img.shields.io/badge/Versioning%20strategy-CalVer-5FBB1C.svg
+[calver]: https://calver.org
