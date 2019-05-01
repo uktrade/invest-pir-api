@@ -1,0 +1,70 @@
+body {
+  font-family: "Invesco Interstate Light";
+  color: #1e1348;
+  font-size: 9pt;
+  line-height: 110%;
+  margin: 0;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+  background-color: #1e1348;
+}
+
+.front-page {
+  width: 210mm;
+  height: 297mm;
+  padding-top: 11.642mm;
+  padding-left: 17.639mm;
+  padding-right: 17.639mm;
+  padding-bottom: 17.639mm;
+  z-index: 2;
+  position: relative;
+  overflow: hidden;
+}
+
+.front-page__logo {
+  width: 38mm;
+  position: absolute;
+}
+
+
+.wrapper {
+  display: flex;
+  height: 265mm;
+  width: 174.722mm;
+  flex-direction: column;
+}
+.content {
+  flex: 1;
+}
+
+.footer {
+  color: white;
+}
+
+.footer__header {
+  border-bottom: solid 6pt #b00d23;
+  padding-top: 10mm;
+  overflow: hidden;
+}
+
+.footer__header img {
+  width: 38.267mm;
+  position: relative;
+  top: -5mm;
+}
+
+.footer__header p {
+  float: right;
+  font-size: 16pt;
+}
+
+.footer__body {
+  width: 108.175mm;
+  font-size: 9pt;
+  padding-top:10mm;
+}
+
+/*# sourceMappingURL=investment-report-last-page.css.map */

@@ -129,6 +129,27 @@ Only for PDFs
   - AWS_S3_PDF_STORE_BUCKET_REGION
 
 
+## CSS development
+
+We use SASS CSS pre-compiler. If you're doing front-end work your local machine will also need the following dependencies:
+
+[node](https://nodejs.org/en/download/)
+[SASS](https://rubygems.org/gems/sass/versions/3.4.22)
+
+Then run:
+
+    $ npm install
+
+We add compiled CSS files to version control. This will sometimes result in conflicts if multiple developers are working on the same SASS files. However, by adding the compiled CSS to version control we avoid having to install node, npm, node-sass, etc to non-development machines.
+
+You should not edit CSS files directly, instead edit their SCSS counterparts.
+
+### Update CSS under version control
+
+    $ make compile_css
+
+
+
 ## Helpful links
 * [Developers Onboarding Checklist](https://uktrade.atlassian.net/wiki/spaces/ED/pages/32243946/Developers+onboarding+checklist)
 * [Gitflow branching](https://uktrade.atlassian.net/wiki/spaces/ED/pages/737182153/Gitflow+and+releases)
