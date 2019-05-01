@@ -1,6 +1,7 @@
 # Changelog
 
-## Pre-release
+## [2019.05.01](https://github.com/uktrade/invest-pir-api/releases/tag/2019.05.01)
+[Full Changelog](https://github.com/uktrade/invest-pir-api/compare/v1.3.0_1...2019.05.01)
 
 ### Fixed bugs:
 
