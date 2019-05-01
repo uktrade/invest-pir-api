@@ -1,6 +1,15 @@
+$red: #b00d23;
+$black: #1e1348;
+
+$column: 25.42mm;
+$columnGap: 4.586mm;
+$pageMargin: 17.639mm;
+$pageMarginTop: 11.642mm;
+
+
 body {
   font-family: "Invesco Interstate Light";
-  color: #1e1348;
+  color: $black;
   font-size: 14pt;
   line-height: 130%;
   margin: 0;
@@ -18,15 +27,15 @@ p {
 
 @page {
   size: A4;
-  margin-top: calc(11.642mm + 5mm);
-  margin-left: 17.639mm;
-  margin-right: 17.639mm;
-  margin-bottom: 17.639mm;
+  margin-top: $pageMarginTop + 5mm;
+  margin-left: $pageMargin;
+  margin-right: $pageMargin;
+  margin-bottom: $pageMargin;
 
   @top-left {
     content: counter(page); 
     font-family: "Invesco Interstate Light";
-    color: #1e1348;
+    color: $black;
     font-size: 9pt;
     padding-top: 0pt;
   }
@@ -37,10 +46,10 @@ p {
 }
 
 @page :first {
-  margin-top: 11.642mm;
-  margin-left: 11.642mm;
-  margin-right: 11.642mm;
-  margin-bottom: 11.642mm;
+  margin-top: $pageMarginTop;
+  margin-left: $pageMarginTop;
+  margin-right: $pageMarginTop;
+  margin-bottom: $pageMarginTop;
   padding: 0;
   border-top: none;
 
@@ -62,14 +71,14 @@ p {
         /* because this is taken from the first page margins, I need to adjust */
         top: -11.642mm - 5mm; /* Because it's header */
         font-family: "Invesco Interstate Light";
-        color: #1e1348;
+        color: $black;
         font-size: 9pt;
         padding-top: 14pt;
         width: 1000mm;
     }
 
     #unionjackheader {
-        width: calc(25.42mm + 4.586mm - 2mm);
+        width: $column + $columnGap - 2mm;
         float: left;
         margin-left: 2mm;
     }
@@ -80,10 +89,10 @@ p {
     }
 
     #borderbottomheader {
-      width: 210mm - (2 * 17.639mm);
+      width: 210mm - (2 * $pageMargin);
       height: 0.25pt;
       position: absolute;
-      background: #1e1348;
+      background: $black;
       top: 11.5mm;
     }
 
@@ -102,12 +111,12 @@ p {
 }
 
 h1 {
-  margin-top: 17.639mm - 5mm;
+  margin-top: $pageMargin - 5mm;
   font-family: "Invesco Interstate Bold";
   font-weight: bold;
   font-size: 30pt;
   padding-bottom: 5.564mm;
-  border-bottom: solid #b00d23 6pt;
+  border-bottom: solid $red 6pt;
   letter-spacing: -1.75pt;
   line-height: 100%;
 }
@@ -122,7 +131,7 @@ sup {
 
   a {
     text-decoration: none;
-    color: #1e1348;
+    color: $black;
   } 
 }
 
@@ -135,8 +144,8 @@ blockquote {
   width: 210mm;
   height: 297mm;
   background: lightgrey;
-  left: -11.642mm;
-  top: -11.642mm;
+  left: -$pageMarginTop;
+  top: -$pageMarginTop;
   z-index: 2;
   position: relative;
 }
@@ -173,8 +182,8 @@ blockquote {
   width: 210mm;
   height: 297mm;
   background: lightgrey;
-  left: -17.639mm;
-  top: -11.642mm;
+  left: -$pageMargin;
+  top: -$pageMarginTop;
   z-index: 20000;
   position: relative;
 }
@@ -239,7 +248,7 @@ ul li:before {
 
 .section-body ol {
   padding-left: 1cm;
-  margin-top: 11.642mm / 2;
+  margin-top: $pageMarginTop / 2;
 }
 
 .relative {
@@ -247,7 +256,7 @@ ul li:before {
 }
 
 .content-margin { 
-  margin-left: calc(25.42mm + 4.586mm);
+  margin-left: $column + $columnGap;
 }
 
 .flex {
@@ -256,7 +265,7 @@ ul li:before {
 
 .side-footnote .footnote {
   hr {display: none;}
-  ol {margin: 0; padding: 0; width: 25.42mm; list-style-type: none;}
+  ol {margin: 0; padding: 0; width: $column; list-style-type: none;}
 
   li {
     margin-top: 0.3rem;
@@ -266,7 +275,7 @@ ul li:before {
   font-size: 8pt;
   position: absolute;
   bottom: 4pt;
-  margin-left: 0  - 25.42mm - 4.586mm;
+  margin-left: 0  - $column - $columnGap;
 
   p {
     margin: 0;
@@ -295,8 +304,8 @@ ul li:before {
 }
 
 .singlepage-withfooter__body__text {
-  margin-left: calc(25.42mm + 4.586mm);
-  margin-bottom: 25.42mm;
+  margin-left: $column + $columnGap;
+  margin-bottom: $column;
   position: relative;
 }
 
@@ -374,7 +383,7 @@ ul li:before {
 
 .sector-initiatives {
   & > p, & > ul, & > h2, & > h3, & > h4, & > h5, & > h6 {
-    margin-left: calc(25.42mm + 4.586mm);
+    margin-left: $column + $columnGap;
   }
 
   h1 {
@@ -383,15 +392,15 @@ ul li:before {
   } 
   
   & > h2, & > h3, & > h4, & > h5, & > h6 {
-    margin-top: 11.642mm;
+    margin-top: $pageMarginTop;
   }
 
   img {
     margin-top: 1em;
     margin-bottom: 1em;
-    margin-left: calc(0 - 25.42mm + 4.586mm);
+    margin-left: 0 - ( $column + $columnGap);
     width: 174.674mm;
-    border-top: solid #b00d23 6pt;
+    border-top: solid $red 6pt;
   }
 
   p:first-of-type > img {
@@ -404,13 +413,12 @@ ul li:before {
 }
 
 .bottom-footnote .footnote {
-  border-top: solid #b00d23 1pt;
+  border-top: solid $red 1pt;
   font-size: 8pt;
-  margin-left: calc(25.42mm + 4.586mm);
-  margin-top: 11.642mm;
-  padding-top: 2mm;
-  
   hr {display: none;}
+  margin-left: $column + $columnGap;
+  margin-top: $pageMarginTop;
+  padding-top: 2mm;
 
   ol {margin: 0; padding: 0; list-style-type: none;}
 
@@ -436,7 +444,7 @@ ul li:before {
 
 .centered_body__body {
   background: white;
-  width: 128.435mm - calc(2 * 6.49mm);
+  width: 128.435mm - (2 * 6.49mm);
   overflow: hidden;
   padding-top: 9.42mm;
   padding-bottom: 9.42mm;
@@ -454,11 +462,11 @@ ul li:before {
 
 .centered_body.contact {
   margin-top: 20mm;
-  border-top: solid #b00d23 6pt;
+  border-top: solid $red 6pt;
 }
 
 .contact .centered_body__body {
-  width: 115mm - calc(9.7mm * 2);
+  width: 115mm - (9.7mm * 2);
   padding-left: 9.7mm;
   padding-right: 9.7mm;
 }
@@ -490,7 +498,7 @@ section h1 + p > a > img {
 
 #marketoverview-image {
   margin-left: 5.5mm;
-  margin-top: 11.642mm;
+  margin-top: $pageMarginTop;
   width: 115.581mm;
 }
 

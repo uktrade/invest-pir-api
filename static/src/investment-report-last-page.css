@@ -1,6 +1,14 @@
+$red: #b00d23;
+$black: #1e1348;
+$column: 25.42mm;
+$columnGap: 4.586mm;
+$pageMargin: 17.639mm;
+$pageMarginTop: 11.642mm;
+
+
 body {
   font-family: "Invesco Interstate Light";
-  color: #1e1348;
+  color: $black;
   font-size: 9pt;
   line-height: 110%;
   margin: 0;
@@ -9,16 +17,16 @@ body {
 @page {
   size: A4;
   margin: 0;
-  background-color: #1e1348;
+  background-color: $black;
 }
 
 .front-page {
   width: 210mm;
   height: 297mm;
-  padding-top: 11.642mm;
-  padding-left: 17.639mm;
-  padding-right: 17.639mm;
-  padding-bottom: 17.639mm;
+  padding-top: $pageMarginTop;
+  padding-left: $pageMargin;
+  padding-right: $pageMargin;
+  padding-bottom: $pageMargin;
   z-index: 2;
   position: relative;
   overflow: hidden;
@@ -33,7 +41,7 @@ body {
 .wrapper {
   display: flex;
   height: 265mm;
-  width: 210mm - calc(17.639mm * 2);
+  width: 210mm - ($pageMargin * 2);
   flex-direction: column;
 }
 .content {
@@ -45,7 +53,7 @@ body {
 }
 
 .footer__header {
-  border-bottom: solid 6pt #b00d23;
+  border-bottom: solid 6pt $red;
   padding-top: 10mm;
   overflow: hidden;
 }

@@ -21,8 +21,10 @@ test:
 
 DJANGO_WEBSERVER := \
 	python manage.py migrate --noinput && \
+	python manage.py sync_page_translation_fields --noinput && \
+	pythoh manage.py update_translation_fields && \
 	python manage.py collectstatic --noinput && \
-	python manage.py clear_cache && \
+	python manager.py clear_cache && \
 	python manage.py runserver 0.0.0.0:$$PORT
 
 django_webserver:
@@ -101,9 +103,7 @@ DEBUG_SET_ENV_VARS := \
 	export SECURE_SSL_REDIRECT=false; \
 	export RECAPTCHA_PUBLIC_KEY=debug; \
 	export RECAPTCHA_PRIVATE_KEY=debug; \
-	export NOCAPTCHA=false; \
-	export REDIS_URL=redis://127.0.0.1:6379/1; \
-	export SIGNATURE_SECRET=debug
+	export NOCAPTCHA=false
 
 DEBUG_CREATE_DB := \
 	psql -h localhost -U postgres -tc "SELECT 1 FROM pg_database WHERE datname = '$$DB_NAME'" | \
