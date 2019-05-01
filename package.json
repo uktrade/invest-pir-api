@@ -9,12 +9,10 @@
     "gulp": "^3.9.1",
     "gulp-postcss": "^7.0.1",
     "gulp-sourcemaps": "^2.6.4",
-    "precss": "^3.1.2",
-    "natives": "^1.1.6"
+    "precss": "^3.1.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "./node_modules/.bin/gulp css"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
