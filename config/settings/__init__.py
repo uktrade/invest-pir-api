@@ -12,8 +12,12 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import dj_database_url
 import os
 import ssl
+import environ
 
 from django.utils.translation import gettext_lazy as _
+
+env = environ.Env()
+env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -42,9 +46,14 @@ RESTRICT_ADMIN = os.environ.get('RESTRICT_ADMIN', 'False') == 'True'
 
 ALLOWED_ADMIN_IPS = [ip.strip() for ip in os.environ.get('ALLOWED_ADMIN_IPS', '').split(',') if ip]  # noqa: E501
 
-REDIS_URL = os.getenv("REDIS_URL")
-ENABLE_REDIS = REDIS_URL is not None
+VCAP_SERVICES = env.json('VCAP_SERVICES', {})
 
+if 'redis' in VCAP_SERVICES:
+    REDIS_URL = VCAP_SERVICES['redis'][0]['credentials']['uri']
+else:
+    REDIS_URL = env.str('REDIS_URL', '')
+
+ENABLE_REDIS = REDIS_URL is not None
 
 AUTH_PASSWORD_VALIDATORS = [
     {

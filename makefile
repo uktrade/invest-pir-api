@@ -91,6 +91,9 @@ docker_build:
 	docker build -t ukti/invest:latest .
 
 DEBUG_SET_ENV_VARS := \
+    export DB_NAME=invest_pir_api_debug; \
+	export DB_USER=debug; \
+	export DB_PASSWORD=debug; \
     export DATABASE_URL=postgres://debug:debug@localhost:5432/invest_pir_api_debug; \
 	export PORT=8010; \
 	export DEBUG=true ;\
@@ -101,6 +104,21 @@ DEBUG_SET_ENV_VARS := \
 	export RECAPTCHA_PUBLIC_KEY=debug; \
 	export RECAPTCHA_PRIVATE_KEY=debug; \
 	export NOCAPTCHA=false
+
+DEBUG_CREATE_DB := \
+	psql -h localhost -U postgres -tc "SELECT 1 FROM pg_database WHERE datname = '$$DB_NAME'" | \
+	grep -q 1 || psql -h localhost -U postgres -c "CREATE DATABASE $$DB_NAME"; \
+	psql -h localhost -U postgres -tc "SELECT 1 FROM pg_roles WHERE rolname = '$$DB_USER'" | \
+	grep -q 1 || echo "CREATE USER $$DB_USER WITH PASSWORD '$$DB_PASSWORD'; GRANT ALL PRIVILEGES ON DATABASE \"$$DB_NAME\" to $$DB_USER; ALTER USER $$DB_USER CREATEDB" | psql -h localhost -U postgres
+
+debug_db:
+	$(DEBUG_SET_ENV_VARS) && $(DEBUG_CREATE_DB)
+
+debug_migrate:
+	$(DEBUG_SET_ENV_VARS) && ./manage.py migrate
+
+debug_createsuperuser:
+	$(DEBUG_SET_ENV_VARS) && ./manage.py createsuperuser
 
 debug_webserver:
 	$(DEBUG_SET_ENV_VARS) && $(DJANGO_WEBSERVER)
@@ -119,10 +137,6 @@ debug_shell:
 
 debug: test_requirements debug_test
 
-heroku_deploy_dev:
-	docker build -t registry.heroku.com/invest-dev/web .
-	docker push registry.heroku.com/invest-dev/web
-
 compile_requirements:
 	python3 -m piptools compile requirements.in
 
@@ -130,5 +144,8 @@ compile_test_requirements:
 	python3 -m piptools compile requirements_test.in
 
 compile_all_requirements: compile_requirements compile_test_requirements
+
+compile_css:
+	./node_modules/.bin/gulp css
 
 .PHONY: build clean test_requirements docker_run docker_debug docker_webserver_bash docker_test debug_webserver debug_test debug heroku_deploy_dev
