@@ -21,10 +21,8 @@ test:
 
 DJANGO_WEBSERVER := \
 	python manage.py migrate --noinput && \
-	python manage.py sync_page_translation_fields --noinput && \
-	pythoh manage.py update_translation_fields && \
 	python manage.py collectstatic --noinput && \
-	python manager.py clear_cache && \
+	python manage.py clear_cache && \
 	python manage.py runserver 0.0.0.0:$$PORT
 
 django_webserver:
@@ -40,8 +38,8 @@ docker_run:
 
 DOCKER_SET_DEBUG_ENV_VARS := \
 	export PIR_API_DEBUG=true; \
-	export PIR_API_PORT=8005; \
-	export PIR_API_REDIS_URL=redis://127.0.0.1:6379/1; \
+	export PIR_API_PORT=8014; \
+	export PIR_API_REDIS_URL=redis://localhost:6379; \
 	export PIR_API_SECRET_KEY=secret; \
 	export PIR_API_SESSION_COOKIE_SECURE=false; \
 	export PIR_API_SECURE_HSTS_SECONDS=0; \
@@ -91,11 +89,11 @@ docker_build:
 	docker build -t ukti/invest:latest .
 
 DEBUG_SET_ENV_VARS := \
-    export DB_NAME=invest_pir_api_debug; \
+	export DB_NAME=invest_pir_api_debug; \
 	export DB_USER=debug; \
 	export DB_PASSWORD=debug; \
-    export DATABASE_URL=postgres://debug:debug@localhost:5432/invest_pir_api_debug; \
-	export PORT=8010; \
+	export DATABASE_URL=postgres://debug:debug@localhost:5432/invest_pir_api_debug; \
+	export PORT=8014; \
 	export DEBUG=true ;\
 	export SECRET_KEY=secret; \
 	export SESSION_COOKIE_SECURE=false; \
