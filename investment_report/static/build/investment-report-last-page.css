@@ -11,7 +11,6 @@ body {
   margin: 0;
   background-color: #1e1348;
 }
-
 .front-page {
   width: 210mm;
   height: 297mm;
@@ -29,13 +28,13 @@ body {
   position: absolute;
 }
 
-
 .wrapper {
   display: flex;
   height: 265mm;
   width: 174.722mm;
   flex-direction: column;
 }
+
 .content {
   flex: 1;
 }
@@ -64,7 +63,6 @@ body {
 .footer__body {
   width: 108.175mm;
   font-size: 9pt;
-  padding-top:10mm;
+  padding-top: 10mm;
 }
-
 /*# sourceMappingURL=investment-report-last-page.css.map */
