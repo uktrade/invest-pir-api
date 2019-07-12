@@ -41,7 +41,7 @@ bs4
 raven
 django-axes==4.4.0
 requests[security]==2.21.0
-urllib3>=1.23.0<2.0.0
+urllib3>=1.24.2<2.0.0
 cryptography>=2.3,<3.0.0
 pyyaml>=4.2b1,<5.0.0
 django-environ==0.4.5

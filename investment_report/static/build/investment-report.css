@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   font-family: "Invesco Interstate Light";
   color: #1e1348;
@@ -15,23 +16,20 @@ p {
   page-break-inside: avoid;
 }
 
-
 @page {
   size: A4;
   margin-top: 16.642mm;
   margin-left: 17.639mm;
   margin-right: 17.639mm;
   margin-bottom: 17.639mm;
-
   @top-left {
-    content: counter(page); 
+    content: counter(page);
     font-family: "Invesco Interstate Light";
     color: #1e1348;
     font-size: 9pt;
     padding-top: 0pt;
   }
 }
-
 .conter-reset {
   counter-reset: page;
 }
@@ -43,56 +41,53 @@ p {
   margin-bottom: 11.642mm;
   padding: 0;
   border-top: none;
-
   @top-left {
     content: " ";
   }
 }
-
 @page :last {
-
   @top-left {
     content: " ";
   }
 }
-
 @media print {
-    header.onlyprint {
-        position: fixed; /* Display only on print page (each) */
-        /* because this is taken from the first page margins, I need to adjust */
-        top: -16.642mm; /* Because it's header */
-        font-family: "Invesco Interstate Light";
-        color: #1e1348;
-        font-size: 9pt;
-        padding-top: 14pt;
-        width: 1000mm;
-    }
+  header.onlyprint {
+    position: fixed;
+    /* Display only on print page (each) */
+    /* because this is taken from the first page margins, I need to adjust */
+    top: -16.642mm;
+    /* Because it's header */
+    font-family: "Invesco Interstate Light";
+    color: #1e1348;
+    font-size: 9pt;
+    padding-top: 14pt;
+    width: 1000mm;
+  }
 
-    #unionjackheader {
-        width: 28.006mm;
-        float: left;
-        margin-left: 2mm;
-    }
+  #unionjackheader {
+    width: 28.006mm;
+    float: left;
+    margin-left: 2mm;
+  }
 
-    #headerslogan {
-        float: left;
-        letter-spacing: -0.7pt;
-    }
+  #headerslogan {
+    float: left;
+    letter-spacing: -0.7pt;
+  }
 
-    #borderbottomheader {
-      width: 174.722mm;
-      height: 0.25pt;
-      position: absolute;
-      background: #1e1348;
-      top: 11.5mm;
-    }
+  #borderbottomheader {
+    width: 174.722mm;
+    height: 0.25pt;
+    position: absolute;
+    background: #1e1348;
+    top: 11.5mm;
+  }
 
-    header.onlyprint img {
-      width: 9.876mm;
-      margin-left: 3.1mm;
-    }
+  header.onlyprint img {
+    width: 9.876mm;
+    margin-left: 3.1mm;
+  }
 }
-
 .page-break {
   page-break-after: always;
 }
@@ -118,13 +113,12 @@ sup {
   vertical-align: baseline;
   top: -0.5em;
   font-size: 0.7rem;
-  left: 0rem; 
+  left: 0rem;
 }
-
 sup a {
-    text-decoration: none;
-    color: #1e1348;
-  }
+  text-decoration: none;
+  color: #1e1348;
+}
 
 blockquote {
   font-style: italic;
@@ -207,20 +201,17 @@ blockquote {
   margin-bottom: 0.8rem;
 }
 
-
 .section-body ul {
   margin-left: 0;
   padding-left: 0.45cm;
 }
 
-
 ul li {
   position: relative;
 }
 
-
 ul li:before {
-  content: '\00a0';
+  content: " ";
   width: 4px;
   height: 4px;
   background: #1e1348;
@@ -231,11 +222,9 @@ ul li:before {
   left: -0.7em;
 }
 
-
 .contact li:before {
   display: none;
 }
-
 
 .section-body ol {
   padding-left: 1cm;
@@ -246,7 +235,7 @@ ul li:before {
   position: relative;
 }
 
-.content-margin { 
+.content-margin {
   margin-left: 30.006mm;
 }
 
@@ -255,34 +244,34 @@ ul li:before {
 }
 
 .side-footnote .footnote {
-
   font-size: 8pt;
   position: absolute;
   bottom: 4pt;
   margin-left: -30.006mm;
 }
-
-.side-footnote .footnote hr {display: none;}
-
-.side-footnote .footnote ol {margin: 0; padding: 0; width: 25.42mm; list-style-type: none;}
-
+.side-footnote .footnote hr {
+  display: none;
+}
+.side-footnote .footnote ol {
+  margin: 0;
+  padding: 0;
+  width: 25.42mm;
+  list-style-type: none;
+}
 .side-footnote .footnote li {
-    margin-top: 0.3rem;
-    word-wrap: break-word;
-  }
-
+  margin-top: 0.3rem;
+  overflow-wrap: break-word;
+}
 .side-footnote .footnote p {
-    margin: 0;
-    margin-top: 0;
-    line-height: 1.1;
-  }
-
+  margin: 0;
+  margin-top: 0;
+  line-height: 1.1;
+}
 .side-footnote .footnote p a.footnote-backref {
-    display: none;
-  }
+  display: none;
+}
 
 /* special case flexbox layout */
-
 .singlepage-withfooter {
   width: 174.674mm;
   height: 261.343mm;
@@ -356,15 +345,13 @@ ul li:before {
   margin-bottom: 8mm;
   margin-left: 8mm;
   margin-right: 8mm;
-
   padding-top: 0;
   padding-bottom: 0;
   padding-left: 8mm;
   padding-right: 8mm;
   overflow: hidden;
-  list-style-type: none
+  list-style-type: none;
 }
-
 .dark-list > ul > li {
   margin-top: 8mm;
   margin-bottom: 8mm;
@@ -377,28 +364,24 @@ ul li:before {
 .sector-initiatives > p, .sector-initiatives > ul, .sector-initiatives > h2, .sector-initiatives > h3, .sector-initiatives > h4, .sector-initiatives > h5, .sector-initiatives > h6 {
   margin-left: 30.006mm;
 }
-
 .sector-initiatives h1 {
-    width: 174.674mm;
-    margin-bottom: 0;
+  width: 174.674mm;
+  margin-bottom: 0;
 }
-
 .sector-initiatives > h2, .sector-initiatives > h3, .sector-initiatives > h4, .sector-initiatives > h5, .sector-initiatives > h6 {
   margin-top: 11.642mm;
 }
-
 .sector-initiatives img {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    margin-left: -30.006mm;
-    width: 174.674mm;
-    border-top: solid #b00d23 6pt;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: -30.006mm;
+  width: 174.674mm;
+  border-top: solid #b00d23 6pt;
 }
-
 .sector-initiatives p:first-of-type > img {
-    margin-top: -1rem;
-    border-top: none;
-    border-bottom: none;
+  margin-top: -1rem;
+  border-top: none;
+  border-bottom: none;
 }
 
 .bottom-footnote .footnote {
@@ -408,24 +391,25 @@ ul li:before {
   margin-top: 11.642mm;
   padding-top: 2mm;
 }
-
-.bottom-footnote .footnote hr {display: none;}
-
-.bottom-footnote .footnote ol {margin: 0; padding: 0; list-style-type: none;}
-
+.bottom-footnote .footnote hr {
+  display: none;
+}
+.bottom-footnote .footnote ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
 .bottom-footnote .footnote li {
-    margin-top: 0.3rem;
-  }
-
+  margin-top: 0.3rem;
+}
 .bottom-footnote .footnote p {
-    margin: 0;
-    margin-top: 0;
-    line-height: 1.1;
-  }
-
+  margin: 0;
+  margin-top: 0;
+  line-height: 1.1;
+}
 .bottom-footnote .footnote p a.footnote-backref {
-    display: none;
-  }
+  display: none;
+}
 
 .centered_body {
   align-items: center;
@@ -443,11 +427,11 @@ ul li:before {
 }
 
 .centered_body__body > *:first-of-type {
-  margin-top: 0
+  margin-top: 0;
 }
 
 .centered_body__body > *:last-of-type {
-  margin-bottom: 0
+  margin-bottom: 0;
 }
 
 .centered_body.contact {
@@ -497,43 +481,39 @@ section h1 + p > a > img {
 }
 
 .whos-here ul {
-    width: 145mm;
-    height: 110mm;
-    list-style: none;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0;
-    overflow: hidden;
-    display: block;
-    margin-top: 58mm;
-  }
-
+  width: 145mm;
+  height: 110mm;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  overflow: hidden;
+  display: block;
+  margin-top: 58mm;
+}
 .whos-here li {
-    margin: 3.2mm;
-    width: 41.7mm;
-    height: 30.839mm;
-    background: white;
-    float: left;
-    display: block;
-    overflow: hidden;
-    box-sizing: border-box;
-    padding: 5mm;
-  }
-
+  margin: 3.2mm;
+  width: 41.7mm;
+  height: 30.839mm;
+  background: white;
+  float: left;
+  display: block;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 5mm;
+}
 .whos-here img {
-    max-width: 100%;
-    max-height: 22mm;
-  }
-
+  max-width: 100%;
+  max-height: 22mm;
+}
 .whos-here .table-cell {
-    height: 22mm;
-    width: 32mm;
-    vertical-align: middle;
-    text-align: center;
-  }
+  height: 22mm;
+  width: 32mm;
+  vertical-align: middle;
+  text-align: center;
+}
 
 .table-cell {
   display: table-cell;
 }
-
 /*# sourceMappingURL=investment-report.css.map */
