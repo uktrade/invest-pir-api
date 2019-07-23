@@ -26,7 +26,12 @@
 
 [Python 3.6](https://www.python.org/downloads/release/python-360/)
 [Postgres 9.5](https://www.postgresql.org/)
+[Redis server](https://redis.io/)
+[Cairo](https://www.cairographics.org/download/)
+[Pango](https://www.pango.org/HelpOnInstalling/BasicInstallation)
+[GNU Gettext](https://www.gnu.org/software/gettext/)
 
+---
 
 ### Configuration
 
@@ -37,7 +42,7 @@
 
 ### Environment Variables
 
-#### RESTRICT_ADMIN 
+#### RESTRICT_ADMIN
 
 Default: True.
 
@@ -56,7 +61,7 @@ Default: None
 
 #### LOGIN_FAILURE_LIMIT
 
-Default: 10 
+Default: 10
 
 How many times a user can fail their password before the "please contact
 an admin" screen appears
