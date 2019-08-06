@@ -48,7 +48,7 @@ django-redis==4.8.0
 django-storages==1.6.5
 django-taggit==0.22.2
 django-treebeard==4.2.0
-django==1.11.22
+django==1.11.23
 django_recaptcha==1.2.0
 djangorestframework==3.9.1
 docker-pycreds==0.3.0     # via docker
@@ -117,5 +117,5 @@ xmltodict==0.11.0         # via moto
 zenpy==1.1.10
 
 # The following packages are considered to be unsafe in a requirements file:
-# pip==19.1.1               # via django-markdownx
+# pip==19.2.1               # via django-markdownx
 # setuptools==41.0.1        # via pytest
