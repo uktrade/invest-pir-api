@@ -2,6 +2,12 @@
 
 ## Pre-release
 
+### Fixed bugs
+- CI-422 - Upgrade vulnerable django version to django 1.11.23
+
+## [2019.05.01](https://github.com/uktrade/invest-pir-api/releases/tag/2019.07.24)
+[Full Changelog](https://github.com/uktrade/invest-pir-api/compare/2019.05.01...2019.07.24)
+
 ### Implemented enhancements
 - Updated readme and makefile to make running the project locally more straightforward
 - CI-221 - Uses SASS in place of postcss.
