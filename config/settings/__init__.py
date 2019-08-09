@@ -240,7 +240,9 @@ else:
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 if not os.path.exists(STATIC_ROOT):
     os.makedirs(STATIC_ROOT)
-STATIC_URL = "https://%s/static/" % AWS_S3_CUSTOM_DOMAIN
+
+# STATIC_URL = "https://%s/static/" % AWS_S3_CUSTOM_DOMAIN
+STATIC_URL = "/static/"
 
 LOGGING = {
     'version': 1,

@@ -1,13 +1,44 @@
 version: '2'
+
 services:
 
-  webserver:
-    build:
-      context: .
-      dockerfile: Dockerfile
-
+  invest-pir-web-api:
+    build: .
+    stdin_open: true
+    tty: true
+    hostname: invest-pir-web-api
     working_dir: /usr/src/app
-    command: ./docker/cmd-webserver.sh
     ports: ["8005:8005"]
     env_file: ./docker/.env
-    restart: "always"
+    volumes:
+     - .:/usr/src/app
+    command: ./docker/cmd-webserver.sh
+    networks:
+      - shared
+
+  postgres:
+    image: postgres:11.3
+    env_file: ./docker/.env
+    hostname: db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - shared
+
+  redis:
+    image: library/redis
+    hostname: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - shared
+
+networks:
+  shared:
+    driver: bridge
+
+volumes:
+    postgres_data:
+    redis_data:

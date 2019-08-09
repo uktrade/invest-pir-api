@@ -6,4 +6,5 @@ python manage.py migrate --noinput
 python manage.py update_translation_fields
 python manage.py update_countries_plus
 python manage.py collectstatic --noinput
-gunicorn config.wsgi --bind 0.0.0.0:$PORT --log-file -
+#gunicorn config.wsgi --bind 0.0.0.0:$PORT --log-file -
+python manage.py runserver 0.0.0.0:8005
