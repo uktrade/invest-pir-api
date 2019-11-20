@@ -56,7 +56,7 @@ kombu==4.1.0
 markdown==2.6.11          # via django-markdownx
 mohawk==0.3.4             # via sigauth
 monotonic==1.5            # via notifications-python-client
-notifications-python-client==4.8.2
+notifications-python-client==5.4.0
 olefile==0.44             # via directory-validators, pillow
 pdfrw==0.4
 phonenumberslite==7.7.4   # via directory-validators
@@ -86,4 +86,4 @@ whitenoise==3.3.1
 zenpy==1.1.10
 
 # The following packages are considered to be unsafe in a requirements file:
-# pip==19.2.1               # via django-markdownx
+# pip==19.3.1               # via django-markdownx
