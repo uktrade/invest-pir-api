@@ -107,7 +107,7 @@ termcolor==1.1.0          # via pytest-sugar
 tinycss2==0.6.1           # via cairosvg, cssselect2
 urllib3==1.24.3
 vine==1.1.4               # via amqp
-waitress==1.1.0
+waitress==1.4.1
 webencodings==0.5.1       # via html5lib, tinycss2
 websocket-client==0.48.0  # via docker
 werkzeug==0.14.1          # via moto
@@ -117,5 +117,5 @@ xmltodict==0.11.0         # via moto
 zenpy==1.1.10
 
 # The following packages are considered to be unsafe in a requirements file:
-# pip==19.3.1               # via django-markdownx
-# setuptools==41.6.0        # via pytest
+# pip
+# setuptools
