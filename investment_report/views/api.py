@@ -46,6 +46,7 @@ class PIRAPI(APIView):
         return Response(serializer.errors, status=400)
 
     def options(self, request, *args, **kwargs):
+        logger.critical(request)
         response = super().options(request)
         logger.critical(response)
         return response
