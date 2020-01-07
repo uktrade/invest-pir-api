@@ -1,3 +1,5 @@
+import logging
+
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.reverse import reverse
@@ -41,22 +43,7 @@ class PIRAPI(APIView):
         # Invalid serializer
         return Response(serializer.errors, status=400)
 
-
-#   XXX Currently index and retrieve endpoint's are not being used anywhere
-#   and probably pose a security risk more than anything. Commenting out as
-#   this could be useful, and not entirely sure if I should remove entirely
-#
-#   def get(self, request, identifier=None):
-#       if identifier:
-#           try:
-#               request = PIRRequest.objects.get(id=identifier)
-#           except PIRRequest.ObjectDoesNotExist:
-#               return Response({'error': 'object not found'}, status=404)
-
-#           serializer = PIRSerializer(request)
-#           return Response(serializer.data)
-
-#       else:
-#           requests = PIRRequest.objects.all()
-#           serializer = PIRSerializer(requests, many=True)
-#           return Response(serializer.data)
+    def options(self, request, *args, **kwargs):
+        response = super().options(request)
+        logging.debug(response)
+        return response
