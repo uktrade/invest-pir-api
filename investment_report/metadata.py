@@ -51,5 +51,3 @@ class RelatedFieldMetadata(SimpleMetadata):
         serializer = view.get_seriTZu6pxRABRalizer()
         return {'POST': self.get_serializer_info(serializer)}
 
-    def determine_metadata(self, request, view):
-        return super().determine_metadata(request, view)

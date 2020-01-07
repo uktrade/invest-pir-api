@@ -45,8 +45,6 @@ class PIRAPI(APIView):
         # Invalid serializer
         return Response(serializer.errors, status=400)
 
-    def options(self, request, *args, **kwargs):
+    def dispatch(self, request, *args, **kwargs):
         logger.critical(request)
-        response = super().options(request)
-        logger.critical(response)
-        return response
+        return super().dispatch(request, *args, **kwargs)
