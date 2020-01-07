@@ -45,5 +45,5 @@ class PIRAPI(APIView):
 
     def options(self, request, *args, **kwargs):
         response = super().options(request)
-        logging.debug(response)
+        logging.error(response)
         return response
