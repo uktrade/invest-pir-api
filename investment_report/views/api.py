@@ -8,6 +8,8 @@ from investment_report.metadata import RelatedFieldMetadata
 from investment_report.serializers import PIRSerializer
 from investment_report.tasks import create_pdf, send_default_investment_email
 
+logger = logging.getLogger('pir')
+
 
 class PIRAPI(APIView):
     serializer_class = PIRSerializer
@@ -45,5 +47,5 @@ class PIRAPI(APIView):
 
     def options(self, request, *args, **kwargs):
         response = super().options(request)
-        logging.error(response)
+        logger.critical(response)
         return response
