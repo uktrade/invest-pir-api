@@ -107,7 +107,7 @@ termcolor==1.1.0          # via pytest-sugar
 tinycss2==0.6.1           # via cairosvg, cssselect2
 urllib3==1.24.3
 vine==1.1.4               # via amqp
-waitress==1.4.1
+waitress==1.4.2
 webencodings==0.5.1       # via html5lib, tinycss2
 websocket-client==0.48.0  # via docker
 werkzeug==0.14.1          # via moto
