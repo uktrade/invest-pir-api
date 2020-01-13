@@ -11,7 +11,7 @@ django-storages==1.6.5
 django-modeltranslation==0.12.2
 dj-database-url==0.4.2
 gunicorn==19.7.1
-waitress==1.1.0
+waitress==1.4.2
 psycopg2==2.7.3.2
 pytz==2017.2
 raven==6.5.0

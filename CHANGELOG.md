@@ -2,10 +2,19 @@
 
 ## Pre-release
 
+## [2019.11.25](https://github.com/uktrade/invest-pir-api/releases/tag/2019.11.25)
+[Full Changelog](https://github.com/uktrade/invest-pir-api/compare/2019.08.07...2019.11.25)
+
+### Implemented enhancements
+- XOT-1169 - Upgrade gov notify library to 5.4.x
+
+## [2019.08.07](https://github.com/uktrade/invest-pir-api/releases/tag/2019.08.07)
+[Full Changelog](https://github.com/uktrade/invest-pir-api/compare/2019.07.24...2019.08.07)
+
 ### Fixed bugs
 - CI-422 - Upgrade vulnerable django version to django 1.11.23
 
-## [2019.05.01](https://github.com/uktrade/invest-pir-api/releases/tag/2019.07.24)
+## [2019.07.24](https://github.com/uktrade/invest-pir-api/releases/tag/2019.07.24)
 [Full Changelog](https://github.com/uktrade/invest-pir-api/compare/2019.05.01...2019.07.24)
 
 ### Implemented enhancements
