@@ -1,5 +1,8 @@
 # Changelog
 
+## Hotfix
+- No ticket - CVE-2020-5236 & CVE-2020-7471: Potential SQL injection via StringAgg(delimiter)
+
 ## Pre-release
 
 ## [2019.11.25](https://github.com/uktrade/invest-pir-api/releases/tag/2019.11.25)
