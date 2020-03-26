@@ -2,6 +2,9 @@
 
 ## Pre-release
 
+## Hotfix
+- No ticket - v3 ci pipeline manifest.yml file fix
+
 ## [2020.01.13](https://github.com/uktrade/invest-pir-api/releases/tag/2020.01.13)
 [Full Changelog](https://github.com/uktrade/invest-pir-api/compare/2019.11.25...202.01.13)
 
