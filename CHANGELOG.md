@@ -2,6 +2,19 @@
 
 ## Pre-release
 
+- No ticket - Upgrade vulnerable dependencies
+
+## Hotfix
+- No ticket - v3 ci pipeline manifest.yml file fix
+
+## [2020.01.13](https://github.com/uktrade/invest-pir-api/releases/tag/2020.01.13)
+[Full Changelog](https://github.com/uktrade/invest-pir-api/compare/2019.11.25...202.01.13)
+
+- XOT-1268 - Upgrade waitress to 1.4.2
+
+### Implemented enhancements
+- XOT-1169 - Upgrade gov notify library to 5.4.x
+
 ## [2019.11.25](https://github.com/uktrade/invest-pir-api/releases/tag/2019.11.25)
 [Full Changelog](https://github.com/uktrade/invest-pir-api/compare/2019.08.07...2019.11.25)
 
