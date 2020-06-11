@@ -2,6 +2,8 @@
 
 ## Pre-release
 
+- No ticket - Upgrade vulnerable dependencies
+
 ## Hotfix
 - No ticket - v3 ci pipeline manifest.yml file fix
 
