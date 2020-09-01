@@ -82,3 +82,16 @@ def pir_csv(request):
         writer.writerow(pir_request)
 
     return response
+
+def dev_css(request):
+    with open('/usr/src/app/investment_report/static/build/investment-report2.css', 'r') as css:
+        content = css.read()
+    response = HttpResponse(content, content_type='text/css')
+    return response
+
+
+def dev_css_last(request):
+    with open('/usr/src/app/investment_report/static/build/investment-report-last-page2.css', 'r') as css:
+        content = css.read()
+    response = HttpResponse(content, content_type='text/css')
+    return response

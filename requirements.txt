@@ -4,6 +4,7 @@
 #
 #    pip-compile requirements.in
 #
+django-staff-sso-client
 -e git+git://github.com/dominno/django-moderation.git@8d98d35d7b39993046997f053d1f72e7a585fb3f#egg=django_moderation  # via -r requirements.in
 -e git+git://github.com/Kozea/WeasyPrint.git@5727e57859b7603d4e06589b22c524456a114b1c#egg=WeasyPrint  # via -r requirements.in
 amqp==2.3.2               # via kombu
@@ -14,11 +15,11 @@ boto3==1.5.10             # via -r requirements.in, django-amazon-ses
 botocore==1.8.24          # via -r requirements.in, boto3, s3transfer
 bs4==0.0.1                # via -r requirements.in
 cachetools==2.0.1         # via zenpy
-cairocffi==0.8.1          # via cairosvg, weasyprint
+# cairocffi==0.8.1          # via cairosvg, weasyprint
 cairosvg==2.1.3           # via weasyprint
 celery[redis]==4.1.0      # via -r requirements.in
 certifi==2018.4.16        # via requests
-cffi==1.11.5              # via cairocffi, cryptography, weasyprint
+# cffi==1.11.5              # via cairocffi, cryptography, weasyprint
 chardet==3.0.4            # via requests
 cryptography==2.5         # via -r requirements.in, pyopenssl, requests
 cssselect2==0.2.1         # via cairosvg, weasyprint
@@ -61,7 +62,7 @@ olefile==0.44             # via directory-validators, pillow
 pdfrw==0.4                # via weasyprint
 phonenumberslite==7.7.4   # via directory-validators
 pillow==4.2.1             # via cairosvg, directory-validators, django-markdownx
-psycopg2==2.7.3.2         # via -r requirements.in
+psycopg2_binary # ==2.7.3.2         # via -r requirements.in
 pycparser==2.18           # via cffi
 pyjwt==1.6.4              # via notifications-python-client
 pyopenssl==19.0.0         # via requests

@@ -25,5 +25,8 @@ urlpatterns = [
         name='investment_report_html'
         ),
 
-    url('pir_csv', utils.pir_csv, name='pir_csv')
+    url('pir_csv', utils.pir_csv, name='pir_csv'),
+
+    url('devcss.css', utils.dev_css, name='dev_css'),
+    url('devcsslast.css', utils.dev_css_last, name='last_dev_css'),
 ]

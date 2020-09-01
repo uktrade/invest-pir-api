@@ -7,8 +7,8 @@ gulp.task('css', function () {
   sass.compiler = require('sass');
 
   return gulp.src([
-    'static/src/investment-report.scss',
-    'static/src/investment-report-last-page.scss'
+    'static/src/investment-report2.scss',
+    'static/src/investment-report-last-page2.scss'
   ])
     .pipe( sourcemaps.init() )
     .pipe( sass().on('error', sass.logError) )

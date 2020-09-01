@@ -30,6 +30,9 @@ for model_class in [
     models.ServicesOfferedByDIT,
     models.CallToAction,
     models.Contact,
+    models.CaseStudySector,
+    models.HowWeCanHelp,
+    models.SmartWorkforceSector,
     models.LastPage
 ]:
     moderation.register(model_class, Moderator)

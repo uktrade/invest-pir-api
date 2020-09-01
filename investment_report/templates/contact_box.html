@@ -1,0 +1,19 @@
+{% load i18n static %}
+
+<div class="contact-box">
+    <div class="contact-box-header">
+            {% if section_counter == 1 %}
+                {% trans "Contact Department for International Trade (DIT) Investment Services Team" %}
+            {% else %} 
+            {% trans "Contact DIT's Investment Services Team" %}
+            {% endif %} 
+        <hr/>
+        {% trans "For more information on how to set up a business in the UK, please visit the website:" %}
+
+        <img src="{% static "images/www-icon.svg" %}"/> invest.great.gov.uk/int/contact<br/>
+        <img src="{% static "images/mail-icon.svg" %}"/> enquiries@invest-trade.uk<br/>
+        <img src="{% static "images/phone-icon.svg" %}"/> +44 (0) 207 000 9012
+
+    </div>
+
+</div>

@@ -1,0 +1,838 @@
+$red: #b00d26;
+$black: #1e1348;
+
+$column: 30mm;
+$columnGap: 4.586mm;
+$pageMargin: 15mm;
+$pageMarginTop: 10mm;
+$pageWidth: 297mm;
+$pageHeight: 210mm;
+
+body {
+  font-family: "Invesco Interstate Light";
+  color: $black;
+  font-size: 11pt;
+  line-height: 130%;
+  margin: 0;
+}
+
+ul {
+  list-style-type: none !important;
+  page-break-inside: avoid;
+}
+
+p {
+  page-break-inside: avoid;
+}
+
+
+@page {
+  size: A4 landscape;
+  margin-top: $pageMarginTop + 5mm;
+  margin-left: $pageMargin;
+  margin-right: $pageMargin;
+  margin-bottom: $pageMargin;
+
+  @top-right {
+    content: counter(page); 
+    font-family: "Invesco Interstate Light";
+    color: $black;
+    font-size: 9pt;
+    padding-top: 0pt;
+  }
+}
+
+.conter-reset {
+  counter-reset: page;
+}
+
+@page :first {
+  margin-top: $pageMarginTop;
+  margin-left: $pageMarginTop;
+  margin-right: $pageMarginTop;
+  margin-bottom: $pageMarginTop;
+  padding: 0;
+  border-top: none;
+
+  @top-left {
+    content: " ";
+  }
+  
+  @top-right {
+      content: " ";
+  }
+}
+
+@page :last {
+
+  @top-left {
+    content: " ";
+  }
+  @top-right {
+      content: " ";
+  }
+}
+
+@media print {
+    header.onlyprint {
+        position: fixed; /* Display only on print page (each) */
+        /* because this is taken from the first page margins, I need to adjust */
+        top: -11.642mm - 5mm; /* Because it's header */
+        font-family: "Invesco Interstate Light";
+        color: $black;
+        font-size: 9pt;
+        padding-top: 14pt;
+        width: 1000mm;
+    }
+
+    #unionjackheader {
+        width: 20mm;// $column + $columnGap - 2mm;
+        float: left;
+        padding-left: 1mm;
+        margin-left: 0;
+        // margin-left: 2mm;
+    }
+
+    #headerslogan {
+        float: left;
+        letter-spacing: -0.7pt;
+    }
+
+    #borderbottomheader {
+      width: 290mm - (2 * $pageMargin);
+      height: 0.25pt;
+      position: absolute;
+      background: $black;
+      top: 11.5mm;
+    }
+
+    header.onlyprint img {
+      width: 9.876mm;
+      margin-left: 0mm;
+    }
+}
+
+.page-break {
+  page-break-after: always;
+}
+
+.page-break-avoid {
+  page-break-inside: avoid;
+}
+
+h1 {
+  margin-top: 5mm;
+  font-family: "Invesco Interstate Bold";
+  font-weight: bold;
+  font-size: 30pt;
+  color: $red;
+  padding-bottom: 5.564mm;
+  border-bottom: solid $red 6pt; 
+  letter-spacing: -1.75pt;
+  line-height: 100%;
+}
+
+sup {
+  position: relative;
+  display: inline;
+  vertical-align: baseline;
+  top: -0.5em;
+  font-size: 0.7rem;
+  left: -0rem;
+
+  a {
+    text-decoration: none;
+    color: $black;
+  } 
+}
+
+blockquote {
+  font-style: italic;
+  font-family: "Georgia";
+}
+
+.front-page {
+  width: 297mm;
+  height: 210mm;
+  background: lightgrey;
+  left: -$pageMarginTop;
+  top: -$pageMarginTop;
+  z-index: 2;
+  position: relative;
+}
+
+.front-page__logo {
+  top: 160mm;
+  left: 220mm;
+  position: absolute;
+  display: block;
+  width: 55.183mm;
+}
+
+.front-page__title {
+  left: 15.339mm;
+  top: 15.339mm;
+  position: absolute;
+  display: block;
+  font-size: 42pt;
+  line-height: 42pt;
+  color: white;
+  font-family: "Invesco Interstate Bold";
+  font-weight: bold;
+  letter-spacing: -1.75pt;
+}
+
+.front-page__title__sub {
+  margin-top: 24px;
+  font-size: 24pt;
+  letter-spacing: 1pt;
+  font-family: "Invesco Interstate Light";
+}
+
+.last-page {
+  width: 210mm;
+  height: 297mm;
+  background: lightgrey;
+  left: -$pageMargin;
+  top: -$pageMarginTop;
+  z-index: 20000;
+  position: relative;
+}
+
+.toc {
+  margin-top: 0mm;
+}
+
+.toc ol {
+  list-style: decimal inside none;
+  padding-left: 0;
+  margin-left: 0;
+  margin-top: 13.5mm;
+}
+
+.toc li { 
+  margin-top: 2.5mm;
+}
+
+.toc-container {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    grid-template-rows: 1fr;
+    gap: 1px 1px;
+    grid-template-areas: "left-col content"; 
+  } 
+.left-col {
+    
+    position: absolute;
+    left: -$pageMarginTop * 2;
+    top: -$pageMarginTop * 2;
+    width: 120mm;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    // opacity:0.7;
+    // float: left;
+    height: 220mm;
+    overflow: hidden;
+    z-index: -1;
+}
+.left-col h1 {
+    opacity: 1!important;
+    z-index: 10!important;
+    margin-top: $pageMargin * 2;
+    margin-left: $pageMargin * 1.4;
+    color: #b00d26;
+    border-bottom: 3mm solid #b00d26;
+}
+.toc .content-margin {
+    position: absolute;
+    display: block;
+    left: 130mm; 
+    margin-top: 23mm;
+}
+.toc .section-body {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.section {
+  overflow: hidden;
+}
+
+.section-body > p, .section-body > ul, .section-body > ol {
+  margin-top: 13.406mm;
+}   
+
+.section-body > p, .section-body > ul > li, .section-body > ol > li {
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+
+.section-body ul {
+  margin-left: 0;
+  padding-left: 0.45cm;
+}
+
+
+ul li {
+  position: relative;
+}
+
+
+ul li:before {
+  content: '\00a0';
+  width: 4px;
+  height: 4px;
+  background: #1e1348;
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  top: 0.55em;
+  left: -0.7em;
+}
+
+
+.contact li:before {
+  display: none;
+}
+
+
+.section-body ol {
+  padding-left: 1cm;
+  margin-top: $pageMarginTop / 2;
+}
+
+.relative {
+  position: relative;
+}
+
+.content-margin { 
+  margin-left: $column + $columnGap; 
+}
+
+.flex {
+  display: flex;
+}
+
+.side-footnote .footnote {
+  hr {display: none;}
+  ol {margin: 0; padding: 0; width: $column; list-style-type: none;}
+
+  li {
+    margin-top: 0.3rem;
+    overflow-wrap: break-word;
+  }
+
+  font-size: 8pt;
+  position: absolute;
+  bottom: 4pt;
+  margin-left: 0  - $column - $columnGap;
+
+  p {
+    margin: 0;
+    margin-top: 0;
+    line-height: 1.1;
+  }
+
+  p a.footnote-backref {
+    display: none;
+  }
+}
+
+/* contact box  */
+.contact-box {
+    background-color: #1e1348;
+    color: white;
+    font-size: 11pt;
+    width: 80mm;
+    height: 50mm;
+    padding: 5mm 7mm  5mm 7mm;
+    font-weight: normal;
+}
+.contact-box-header {
+    font-weight: bolder;
+    font-size: 12pt;
+}
+.contact-box hr {
+    color: white; 
+    size: 1mm;
+    margin: 3mm;
+}
+
+/* text on overlay */
+.background-image {
+  background-size: cover;
+  position: absolute;
+  left: -$pageMargin;
+  top: -$pageMargin;
+  width: $pageWidth;
+  height: $pageHeight;
+  z-index: -1;
+}
+
+.text-overlay {
+  width: 250mm;
+  height: 260mm;
+  left: -120mm; 
+  top: 20mm;
+  color: white;
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    );
+  // background-size: cover;
+  position: absolute;
+  //float: left ;
+  border: 1mm solid black;
+  z-index: 10;
+}
+
+.singlepage-content {
+  margin-top: 20mm;
+  margin-left: $pageMargin;
+
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ); 
+}
+.overlay-text {
+  position: absolute;
+  padding-right: $pageMargin * 2;
+  margin-left: $pageMargin;
+  margin-right: $pageMargin;
+  margin-top: $pageMarginTop * 2;
+  color: white;
+  top: 30mm;
+  width: 80%
+}
+
+.singlepage__narrow_left_content_column {
+  position: relative;
+  display: inline-block;
+  left: 0mm;
+  width: 100mm;
+  height: 220mm; 
+  margin: 0;
+  padding: 0;
+}
+
+.singlepage__narrow_left_image_column {
+  position: relative;
+  display: inline-block;
+  left: 0mm;
+  width: 115mm;
+  height: 220mm; 
+  margin: 0;
+  padding: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+
+}
+
+.singlepage__right_content_column {
+  position: absolute;
+  //left: 160mm;
+  top: -$pageMarginTop * 2;
+  width: 180mm;
+  height: 240mm;
+  right: 0;
+  color: white;
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(255, 255, 255, 0.4)
+    );
+  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  margin: 0;
+  z-index: 1;
+}
+
+.singlepage__right_content_text {
+  position: absolute;
+  top: 20mm;
+  width: 170mm;
+  height: 240mm;
+  left: 125mm;
+  color: black;
+  overflow: hidden;
+  margin: 0;
+  z-index: 1;
+}
+.singlepage__right_text {
+  color: black;
+  padding-right: $pageMargin * 2;
+  margin-left: $pageMargin;
+  margin-right: $pageMargin;
+  margin-top: $pageMarginTop * 2;
+  top: 30mm;
+  width: 80%;
+  position: absolute;
+}
+
+.singlepage__right_two_column_text {
+  // column-count: 2;
+  // column-width: 50%;
+  color: black;
+  padding-right: $pageMargin * 2;
+  margin-left: $pageMargin;
+  margin-right: $pageMargin;
+  margin-top: $pageMarginTop * 2;
+  top: 30mm;
+  width: 80%;
+  position: absolute;
+}
+
+/* page divided halfway */
+.singlepage__left_half_content {
+  width: $pageWidth / 2;
+  height: $pageHeight;
+  position: relative;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: $pageMargin;
+}
+.singlepage__left_half_content_text {
+  left: 0;
+  top: 0;
+  height: $pageHeight - $pageMarginTop;
+  width: 110mm;
+
+}
+.singlepage__right_half_content {
+  width: $pageWidth / 2;
+  height: $pageHeight;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position: -35mm 0mm;
+  background-size: cover;
+  overflow:hidden;
+}
+
+
+/* special case flexbox layout */
+
+.singlepage-withfooter {
+  width: 267.343mm - 6mm;
+  height: 174.674mm;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* up */
+.singlepage-withfooter__body {
+  overflow: hidden;
+}
+
+.singlepage-withfooter__body__text {
+  margin-left: 0mm;
+  margin-bottom: $column;
+  position: relative;
+}
+
+.singlepage-withfooter__footer {
+  background: white;
+  flex-grow: 1;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  overflow: hidden;
+}
+
+.singlepage-withfooter__footer__copy {
+  font-style: italic;
+  font-family: "Georgia";
+  font-size: 25.74pt;
+  margin-top: 11.35mm;
+  margin-left: 9.244mm;
+  width: 50%;
+  line-height: 33.1pt;
+}
+
+.singlepage-withfooter__footer__attribution {
+  font-size: 10.1pt;
+  width: 50%;
+  margin-top: 2mm;
+  margin-left: 9.244mm;
+}
+
+.singlepage__wrapper {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    grid-template-rows: 1fr;
+    gap: 1px 1px;
+    grid-template-areas: "left-content right-image"; 
+}
+
+.singlepage__left_content_column {
+    position: relative;
+    display: inline-block;
+    left: 0mm;
+    width: 170mm;
+    height: 220mm; 
+    margin: 0;
+    padding: 0;
+}
+.singlepage__right_image_column {
+    position: absolute;
+    //left: 160mm;
+    top: -$pageMarginTop * 2;
+    width: 115mm;
+    height: 220mm;
+    right: -$pageMargin;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    margin: 0;
+    z-index: 1;
+}
+
+.two-column-wrapper {
+    column-count: 2;
+    column-width: 50%;   
+    // columns: 2; padding: 1em; background: red; background-clip: content-box; 
+     
+    // grid-template-columns: 100mm 1fr;
+//     -webkit-column-count: 2;
+    // column-count: 2;
+//     column-fill: balance;
+//     column-width: 50%;
+} 
+
+.full-page h1 {
+  margin-top: 22.639mm - 5mm;
+  margin-bottom: 0;
+}
+
+.full-page__spread {
+  height: 225.97mm;
+  background: lightgrey;
+  background-size: cover;
+  background-position: center;
+}
+
+.secondary-page {
+  font-size: 12pt;
+  line-height: 125%;
+}
+
+.secondary-page img {
+  width: 100%;
+}
+
+.dark-list > ul {
+  page-break-inside: avoid;
+  background: #f1ede8;
+  margin-top: 8mm;
+  margin-bottom: 8mm;
+  margin-left: 8mm;
+  margin-right: 8mm;
+
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 8mm;
+  padding-right: 8mm;
+  overflow: hidden;
+  list-style-type: none;
+
+  & > li {
+    margin-top: 8mm;
+    margin-bottom: 8mm;
+  }
+}
+
+.talent_and_education_by_sector {
+  margin-top: 17.639mm;
+}
+
+.sector-initiatives {
+  & > p, & > ul, & > h2, & > h3, & > h4, & > h5, & > h6 {
+    margin-left: $column + $columnGap;
+  }
+
+  h1 {
+    width: 174.674mm;
+    margin-bottom: 0;
+  } 
+  
+  & > h2, & > h3, & > h4, & > h5, & > h6 {
+    margin-top: $pageMarginTop;
+  }
+
+  img {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0 - ( $column + $columnGap);
+    width: 174.674mm;
+    border-top: solid $red 6pt;
+  }
+
+  p:first-of-type > img {
+    margin-top: -1rem;
+    border-top: none;
+    border-bottom: none;
+  }
+
+
+}
+
+.bottom-footnote .footnote {
+  border-top: solid $red 1pt;
+  font-size: 8pt;
+  hr {display: none;}
+  margin-left: $column + $columnGap;
+  margin-top: $pageMarginTop;
+  padding-top: 2mm;
+
+  ol {margin: 0; padding: 0; list-style-type: none;}
+
+  li {
+    margin-top: 0.3rem;
+  }
+
+  p {
+    margin: 0;
+    margin-top: 0;
+    line-height: 1.1;
+  }
+
+  p a.footnote-backref {
+    display: none;
+  }
+}
+
+.centered_body {
+  align-items: center;
+  justify-content: center;
+}
+
+.centered_body__body {
+  background: white;
+  width: 128.435mm - (2 * 6.49mm);
+  overflow: hidden;
+  padding-top: 9.42mm;
+  padding-bottom: 9.42mm;
+  padding-left: 6.49mm;
+  padding-right: 6.49mm;
+}
+
+.centered_body__body > *:first-of-type {
+  margin-top: 0
+}
+
+.centered_body__body > *:last-of-type {
+  margin-bottom: 0
+}
+
+.centered_body.contact {
+  margin-top: 20mm;
+  border-top: solid $red 6pt;
+}
+
+.contact .centered_body__body {
+  width: 115mm - (9.7mm * 2);
+  padding-left: 9.7mm;
+  padding-right: 9.7mm;
+}
+
+.contact h3 {
+  font-size: 12pt;
+}
+
+.contact ul {
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  padding-left: 6.5mm;
+}
+
+.contact ul li {
+  margin-top: 0.5rem;
+}
+
+.contact.full-page__spread {
+  height: 245.97mm;
+  background-size: cover;
+  background-position: center;
+}
+
+section h1 + p > img,
+section h1 + p > a > img {
+  margin-top: -2.1rem;
+}
+
+#marketoverview-image {
+  margin-left: 5.5mm;
+  margin-top: $pageMarginTop;
+  width: 115.581mm;
+}
+
+#businessoverview-image {
+  width: 147mm;
+}
+
+.whos-here {
+  ul {
+    width: 145mm;
+    height: 110mm;
+    list-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    overflow: hidden;
+    display: block;
+    margin-top: 58mm;
+  }
+
+  li {
+    margin: 3.2mm;
+    width: 41.7mm;
+    height: 30.839mm;
+    background: white;
+    float: left;
+    display: block;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 5mm;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 22mm;
+  }
+
+  .table-cell {
+    height: 22mm;
+    width: 32mm;
+    vertical-align: middle;
+    text-align: center;
+  }
+}
+
+.table-cell {
+  display: table-cell;
+}

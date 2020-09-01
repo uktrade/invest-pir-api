@@ -171,7 +171,10 @@ class SectorOverview(PDFSection):
 class KillerFacts(PDFSection):
     SECTION = 2
     sector = models.ForeignKey(Sector)
-
+    background_image = models.ImageField(
+        help_text='Background image for this page',
+        null=True, blank=True
+    )
     class Meta:
         verbose_name = verbose_name_plural = '2 - Killer Facts'
 
@@ -179,6 +182,10 @@ class KillerFacts(PDFSection):
 class MacroContextBetweenCountries(PDFSection):
     SECTION = 3
     market = models.ForeignKey(Market)
+    background_image = models.ImageField(
+        help_text='Background image for this page',
+        null=True, blank=True
+    )
 
     class Meta:
         verbose_name = verbose_name_plural = '3 - Macro Context'
@@ -201,6 +208,25 @@ class UKMarketOverview(PDFSection):
 
     class Meta:
         verbose_name = verbose_name_plural = '4 - UK Market Overview'
+
+
+class SmartWorkforceSector(PDFSection):
+    SECTION = 5
+    MULTI_PAGE = True
+    sector = models.ForeignKey(Sector)
+    sub_page = models.SmallIntegerField(
+        default=0, 
+        help_text="For multiple sub-pages of this page, number them here. ")
+    background_image = models.ImageField(
+        help_text='Background image for the left panel',
+        null=True, blank=True
+    )
+
+    class Meta:
+        verbose_name = verbose_name_plural = '5. Smart Workforce'
+
+    def __str__(self):
+        return 'Smart Workforce: {} [{}]'.format(self.sector, self.sub_page)
 
 
 class UKBusinessInfo(PDFSection):
@@ -230,10 +256,34 @@ class UKGeographicOverview(PDFSection):
         verbose_name = verbose_name_plural = '6 - Geographic Overview'
 
 
+class CaseStudySector(PDFSection):
+    SECTION = 7
+    MULTI_PAGE = True
+    sector = models.ForeignKey(Sector)
+    sub_page = models.SmallIntegerField(
+        default=0, 
+        help_text="For multiple sub-pages of this page, number them here. ")
+    company_name = models.CharField(max_length=250, null=True, blank=True)
+    background_image = models.ImageField(
+        help_text='Background image for the left panel',
+        null=True, blank=True
+    )
+    logo_image = models.ImageField(
+        help_text='Company Logo image',
+        null=True, blank=True
+    )
+
+    class Meta:
+        verbose_name = verbose_name_plural = '7. Case Study'
+
+    def __str__(self):
+        return 'Case Study: {} {} [{}]'.format(self.sector, self.company_name, self.sub_page)
+
+
 class TalentAndEducationBySector(PDFSection):
     SECTION = 7
     sector = models.ForeignKey(Sector)
-
+    
     class Meta:
         verbose_name = verbose_name_plural = '7.2 - Talent & ' \
                                              'Education (Sector)'
@@ -242,9 +292,26 @@ class TalentAndEducationBySector(PDFSection):
 class SectorInitiatives(PDFSection):
     SECTION = 8
     sector = models.ForeignKey(Sector)
+    background_image = models.ImageField(
+        help_text='Background image for this page',
+        null=True, blank=True
+    )
 
     class Meta:
         verbose_name = verbose_name_plural = '8 - Sector Initiatives'
+
+
+class HowWeCanHelp(PDFSection):
+    SECTION = 8
+    SINGLETON = True
+
+    background_image = models.ImageField(
+        help_text='Background image for the right hand side',
+        null=True, blank=True
+    )
+
+    class Meta:
+        verbose_name = verbose_name_plural = '8 - How we can help'
 
 
 class RDandInnovation(PDFSection):

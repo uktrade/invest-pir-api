@@ -1,3 +1,4 @@
+import datetime
 import functools
 import weasyprint
 
@@ -54,19 +55,30 @@ def filter_translations_and_moderation(klass, **kwargs):
     else:
         obj = klass.unmoderated_objects.exclude(
             *query_params
-        ).filter(**kwargs).first()
+        ).filter(**kwargs)
 
         # Unmoderated objects means something's in the queue
         if obj:
             try:
-                return obj.moderated_object.changed_object
+                if not hasattr(klass, 'MULTI_PAGE'):
+                    obj = obj.first()
+                    return obj.moderated_object.changed_object
+                else:
+                    obj = obj.order_by('sub_page')
+                    return [
+                        _obj.moderated_object.changed_object for _obj in obj
+                    ]
             except ObjectDoesNotExist:
                 # Happens if object isn't registered with moderation
                 return obj
         else:
-            return klass.objects.exclude(
+        
+            obj = klass.objects.exclude(
                 *query_params).filter(
-                **kwargs).first()
+                **kwargs)
+            if not hasattr(klass, 'MULTI_PAGE'):
+                obj = obj.first()
+            return obj
 
 
 def get_investment_report_data(
@@ -136,6 +148,9 @@ def get_investment_report_data(
     context['who_is_here'] = filter_(
         models.WhoIsHere
     )
+    context['smart_workforce'] = filter_(models.SmartWorkforceSector, sector=sector)
+    context['case_study'] = filter_(models.CaseStudySector, sector=sector)
+    context['how_we_can_help'] = filter_(models.HowWeCanHelp)
 
     if company_name:
         context['company'] = company_name
@@ -151,6 +166,7 @@ def get_investment_report_data(
     )[:4]
 
     context['section_counter'] = 1
+    context['current_year'] = datetime.date.today().year
 
     return context
 
@@ -165,9 +181,9 @@ def investment_report_html_generator(
         market, sector, company_name, moderated)
     context['local'] = local
 
-    result_html = render_to_string('investment_report.html', context=context)
+    result_html = render_to_string('investment_report2.html', context=context)
     last_page_html = render_to_string(
-        'investment_report_last_page.html',
+        'investment_report_last_page2.html',
         context=context)
 
     result_html = (
