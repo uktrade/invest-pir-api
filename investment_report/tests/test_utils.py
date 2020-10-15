@@ -13,9 +13,9 @@ from investment_report.models import (
     Sector, Market, FrontPage, SectorOverview, KillerFacts,
     MacroContextBetweenCountries, UKMarketOverview, UKBusinessInfo,
     UKGeographicOverview, TalentAndEducationBySector, NetworkAndSupport,
-    SectorInitiatives, RDandInnovation, RDandInnovationCaseStudy,
-    VideoCaseStudy, ServicesOfferedByDIT, Contact, LastPage,
-)
+    SectorInitiatives, RDandInnovation,
+    ServicesOfferedByDIT, Contact, LastPage,
+)  # RDandInnovationCaseStudy, VideoCaseStudy,
 
 from investment_report.utils import (
     filter_translations_and_moderation, get_investment_report_data,
@@ -155,9 +155,9 @@ class FiltersModerationTranslationTestCase(TestCase):
         NetworkAndSupport.objects.create(sector=sector, content=sample_content)
         SectorInitiatives.objects.create(sector=sector, content=sample_content)
         RDandInnovation.objects.create(sector=sector, content=sample_content)
-        RDandInnovationCaseStudy.objects.create(sector=sector,
-                                                content=sample_content)
-        VideoCaseStudy.objects.create(sector=sector, content=sample_content)
+        # RDandInnovationCaseStudy.objects.create(sector=sector,
+        #                                         content=sample_content)
+        # VideoCaseStudy.objects.create(sector=sector, content=sample_content)
         ServicesOfferedByDIT.objects.create(content=sample_content)
         Contact.objects.create(content=sample_content)
         LastPage.objects.create(content=sample_content)

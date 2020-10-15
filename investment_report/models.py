@@ -147,8 +147,7 @@ class FrontPage(PDFSection):
 class SectorOverview(PDFSection):
     SECTION = 1
     TRANSLATION_FIELDS = (
-        PDFSection.TRANSLATION_FIELDS +
-        ['footer_image_copy', 'footer_image_copy_attribution']
+        PDFSection.TRANSLATION_FIELDS + ['footer_image_copy', 'footer_image_copy_attribution']
     )
 
     sector = models.ForeignKey(Sector)
@@ -175,6 +174,7 @@ class KillerFacts(PDFSection):
         help_text='Background image for this page',
         null=True, blank=True
     )
+
     class Meta:
         verbose_name = verbose_name_plural = '2 - Killer Facts'
 
@@ -215,7 +215,7 @@ class SmartWorkforceSector(PDFSection):
     MULTI_PAGE = True
     sector = models.ForeignKey(Sector)
     sub_page = models.SmallIntegerField(
-        default=0, 
+        default=0,
         help_text="For multiple sub-pages of this page, number them here. ")
     background_image = models.ImageField(
         help_text='Background image for the left panel',
@@ -261,7 +261,7 @@ class CaseStudySector(PDFSection):
     MULTI_PAGE = True
     sector = models.ForeignKey(Sector)
     sub_page = models.SmallIntegerField(
-        default=0, 
+        default=0,
         help_text="For multiple sub-pages of this page, number them here. ")
     company_name = models.CharField(max_length=250, null=True, blank=True)
     background_image = models.ImageField(
@@ -283,7 +283,7 @@ class CaseStudySector(PDFSection):
 class TalentAndEducationBySector(PDFSection):
     SECTION = 7
     sector = models.ForeignKey(Sector)
-    
+
     class Meta:
         verbose_name = verbose_name_plural = '7.2 - Talent & ' \
                                              'Education (Sector)'
@@ -331,36 +331,36 @@ class NetworkAndSupport(PDFSection):
         verbose_name = verbose_name_plural = '11 - Network And Support'
 
 
-class RDandInnovationCaseStudy(PDFSection):
-    SECTION = 11.1
-    sector = models.ForeignKey(Sector)
+# class RDandInnovationCaseStudy(PDFSection):
+#     SECTION = 11.1
+#     sector = models.ForeignKey(Sector)
 
-    class Meta:
-        verbose_name = verbose_name_plural = '10 - Case Study'
-
-
-class VideoCaseStudy(PDFSection):
-    """
-    Todo:
-    """
-    SECTION = 11.2
-    sector = models.ForeignKey(Sector)
-
-    class Meta:
-        verbose_name = verbose_name_plural = '10.1 Video case study'
+#     class Meta:
+#         verbose_name = verbose_name_plural = '10 - Case Study'
 
 
-class WhoIsHere(PDFSection):
-    SECTION = 12
-    TRANSLATION_FIELDS = []
-    background_image = models.ImageField()
+# class VideoCaseStudy(PDFSection):
+#     """
+#     Todo:
+#     """
+#     SECTION = 11.2
+#     sector = models.ForeignKey(Sector)
 
-    # No body
-    content = None
+#     class Meta:
+#         verbose_name = verbose_name_plural = '10.1 Video case study'
 
-    class Meta:
-        verbose_name = verbose_name_plural = '12 - Who\'s here ' \
-                                             '(background image)'
+
+# class WhoIsHere(PDFSection):
+#     SECTION = 12
+#     TRANSLATION_FIELDS = []
+#     background_image = models.ImageField()
+
+#     # No body
+#     content = None
+
+#     class Meta:
+#         verbose_name = verbose_name_plural = '12 - Who\'s here ' \
+#                                              '(background image)'
 
 
 class ServicesOfferedByDIT(PDFSection):
@@ -387,8 +387,7 @@ class Contact(PDFSection):
     SINGLETON = True
 
     TRANSLATION_FIELDS = (
-        PDFSection.TRANSLATION_FIELDS +
-        ['title', ]
+        PDFSection.TRANSLATION_FIELDS + ['title', ]
     )
 
     title = models.CharField(max_length=255)

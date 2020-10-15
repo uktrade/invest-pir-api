@@ -1,16 +1,15 @@
-{% load i18n static custom_markdown custom_media %}
+{% load i18n static custom_markdown custom_media  %}
 <!DOCTYPE html>
 <html nomarginboxes disallowselectionprint>
   <head>
     <meta charset="utf8">
     <title>{% trans "Invest in Great" %}</title>
-    <link rel="stylesheet" href="http://localhost:8014/investment-report/devcss.css"/>
-    <!-- <link rel="stylesheet" href="{% static "build/investment-report2.css" %}" /> -->
+    <!-- <link rel="stylesheet" href="http://localhost:8014/investment-report/devcss.css"/> -->
+    <link rel="stylesheet" href="{% static "build/investment-report.css" %}" />
   </head>
 
   <body class="A4">
     {% autoescape off %}
-
     <section class="front-page"
              style="
                background-image: url({% custom_media front_page.background_image %});
@@ -27,76 +26,82 @@
     <div class="page-break"></div>
     <div class="counter-reset"></div>
 
-    <header class="onlyprint">
-      <div id="unionjackheader">
-        <img src="{% static "images/unionjack.png" %}"/>
-      </div>
-      <div id="headerslogan">{% trans "Expand your business to Britain" %}</div>
-      <div id="borderbottomheader"></div>
-    </header>
-
     <section class="toc">
-        <div class="toc-container">
-            <div class="left-col" style=" 
-                background-image: url('{% static "images/blue-circuit-board.jpg" %}');
-                 ">
-                <h1>{% trans "Contents" %}</h1> 
-            </div>
-            <div class="content section-body content-margin">
-                <ol>
-                    <li> {% trans "A Great Home for $COMPANY" %}</li>
-                    <li> {% trans "Achieving Great Things in $SECTOR" %}</li>
-                    <li> {% trans "Links That Are Already Strong" %}</li>
-                    <li> {% trans "UK Market Overview" %}</li>
-                    <li> {% trans "A Great Place to Do Business" %}</li>
-                    <li> {% trans "Opportunities from Coast to Coast" %}</li>
-                    <li> {% trans "The Smart Workforce $COMPANY Needs" %}</li>
-                    <li> {% trans "$SECTOR in the UK: Going from Strength to Strength" %}</li>
-                    <li> {% trans "A Nation of $SECTOR Innovators" %}</li>
-                    {% if r_and_d_and_innovation_case_study.content %}
-                          <li> {% trans "Case Study" %}</li>
-                    {% endif %}
-                    {% if video_case_study.content %}
-                          <li> {% trans "Video Case Study" %}</li>
-                    {% endif %}
-                    <li> {% trans "Network of Support" %}</li>
-                    <li> {% trans "Who's Here?" %}</li>
-                    <li> {% trans "Great Things Await - Take the Next Step" %}</li>
-                    <li> {% trans "A Flying Start - How We Can Get You Going" %}</li>
-                  </ol>
 
+      <div class="page-header">
+        <div class="union-jack">
+          <img src="{% static "images/unionjack.png" %}"/>
+        </div>
+        <div class="header-tag">{% trans "Expand your business to the UK" %}</div>
+        <div class="page-counter">{{ page_counter.page }}</div>
+        <div class="header-underline"></div>
+      </div>
+
+      <div class="page-container-contents">
+        <div class="left">
+          <div class="background-wrapper" style="background-image: url('{% static "images/circuit-board-v2.jpg" %}');">
+            <div class="overlay">
+              <div class="overlay-text">
+                <h1>{% trans "Contents" %}</h1>
+              </div>
             </div>
-          </div> 
+          </div>
+        </div>
+        <div class="right">
+          <div class="main-content">
+            <ol>
+                <li> {% trans "A Great Home for $COMPANY" %}</li>
+                <li> {% trans "Achieving Great Things in $SECTOR" %}</li>
+                <li> {% trans "Links That Are Already Strong" %}</li>
+                <li> {% trans "UK Market Overview" %}</li>
+                <li> {% trans "$SECTOR in the UK: Going from Strength to Strength" %}</li>
+                <li> {% trans "$SECTOR in the UK: Going from Strength to Strength" %}</li>
+                <li> {% trans "Case Study" %}</li>
+                <li> {% trans "A Flying Start - How We Can Get You Going" %}</li>
+              </ol>
+
+         </div>
+        </div>
+      </div>
     </section>
 
     <div class="page-break"></div>
 
-    <section class="singlepage-withfooter side-footnote">
-     <div class="singlepage__wrapper">
-      <div class="left-content singlepage__left_content_column">
-        <div class="section-body singlepage-withfooter__body__text">
-            <div style="width: 50%">
-                <h1>1.</h1>
-                <h2>{% trans "A Great Home for $COMPANY" %}</h2>
-            </div>
-            <div style="height: 125mm; margin-right: 10mm;">
-                <div class="two-column-wrapper">
-                  <P>{% markdown sector_overview.content %}
-                </P> 
-                <p><br/></p>
-                <p><br/></p>
-                </div>
-            </div>
+    <section class="singlepage-withfooter side-footnote page-break-avoid relative">
+      <div class="page-header">
+        <div class="union-jack">
+          <img src="{% static "images/unionjack.png" %}"/>
         </div>
+        <div class="header-tag">{% trans "Expand your business to the UK" %}</div>
+        <div class="page-counter">{{ page_counter.page }}</div>
+        <div class="header-underline"></div>
       </div>
 
-      <div class="right-image singlepage__right_image_column"
-           style="background-image: url({% custom_media sector_overview.footer_image %})">
-        <div style="position: absolute; left: 0mm; top: 140mm;">
-           {% include "./contact_box.html" %}
+      <div class="singlepage__wrapper">
+        <div class="left-content singlepage__left_content_column">
+          <div class="section-body singlepage-withfooter__body__text">
+              <div style="width: 80%;">
+                  <h1>1.</h1>
+                  <h2>{% trans "A Great Home for $COMPANY" %}</h2>
+              </div>
+              <div class="left-content singlepage__left_half_content">
+                <div class="manual_column" style="left: 0; top: 0; width: 65mm; height: 125mm;">
+                  {% markdown sector_overview.content 0 %}
+                  </div>
+                  <div class="manual_column" style="left: 50%; top: 0; width: 65mm; height: 125mm;">
+                    {% markdown sector_overview.content 1 %}
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="right-image singlepage__right_image_column"
+            style="background-image: url({% custom_media sector_overview.footer_image %})">
+          <div style="position: absolute; left: 0mm; top: 140mm;">
+            {% include "./contact_box.html" %}
+          </div>
         </div>
       </div>
-    </div>
     </section>
 
     {% increment_section %}
@@ -104,50 +109,70 @@
     <div class="page-break"></div>
 
     <section class="text-large side-footnote page-break-avoid relative">
-      <div class="section-body background-image"
+      <div class="page-header">
+        <div class="union-jack">
+          <img src="{% static "images/unionjack.png" %}"/>
+        </div>
+        <div class="header-tag">{% trans "Expand your business to the UK" %}</div>
+        <div class="page-counter">{{ page_counter.page }}</div>
+        <div class="header-underline"></div>
+      </div>
+
+      <div class="page-container-2"
         style="background-image: url({% custom_media killer_facts.background_image %})">
-        <div class="left-content singlepage__narrow_left_content_column">
+        <div class="left">
           <div class="singlepage-content">
-            <div style="width: 102mm;">
+            <div>
               <h1>2.</h1>
                 <h2>{% trans "Achieving great things in $SECTOR" %}</h2>
             </div>
-            <div style="position: absolute; left: 23mm; top: 140mm;">
+            <div style="position: absolute; left: 11.6mm; top: 140mm;">
               {% include "./contact_box.html" %}
             </div>
           </div>
-
         </div>
-        <div class="singlepage__right_content_column">
-          <div class="overlay-text" style="font-size: 14pt;">
-            {% markdown killer_facts.content %}
+        <div class="right">
+          <div class="overlay">
+            <div class="overlay-text">
+              {% markdown killer_facts.content %}
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    {% increment_section %}
-    <div class="page-break"></div>
 
+    {% increment_section %}
+     <div class="page-break"></div>
 
     <section class="text-large side-footnote page-break-avoid relative">
-      <div class="section-body background-image"
+      <div class="page-header light">
+        <div class="union-jack">
+          <img src="{% static "images/unionjack.png" %}"/>
+        </div>
+        <div class="header-tag" style="color: white;">{% trans "Expand your business to the UK" %}</div>
+        <div class="page-counter" style="color: white;">{{ page_counter.page }}</div>
+        <div class="header-underline" style="background: white;"></div>
+      </div>
+
+      <div class="page-container-2"
         style="background-image: url({% custom_media macro_context.background_image %})">
-        <div class="left-content singlepage__narrow_left_content_column">
+        <div class="left">
           <div class="singlepage-content">
-            <div style="width: 102mm;">
+            <div>
               <h1>3.</h1>
-                <h2>{% trans "Links that are already strong" %}</h2>
+                <h2 style="color: white;">{% trans "Links that are already strong" %}</h2>
             </div>
-            <div style="position: absolute; left: 23mm; top: 140mm;">
+            <div style="position: absolute; left: 11.6mm; top: 140mm;">
               {% include "./contact_box.html" %}
             </div>
           </div>
-
         </div>
-        <div class="singlepage__right_content_column">
-          <div class="overlay-text" style="font-size: 14pt;">
-            {% markdown macro_context.content %}
+        <div class="right">
+          <div class="overlay">
+            <div class="overlay-text">
+              {% markdown macro_context.content %}
+            </div>
           </div>
         </div>
       </div>
@@ -156,61 +181,78 @@
     {% increment_section %}
     <div class="page-break"></div>
 
-    <section class="text-large side-footnote page-break-avoid relative">
+    <section id="dark-bg" class="text-large side-footnote page-break-avoid relative">
+      <div class="page-header">
+        <div class="union-jack">
+          <img src="{% static "images/unionjack.png" %}"/>
+        </div>
+        <div class="header-tag"   style="color: white;">{% trans "Expand your business to the UK" %}</div>
+        <div class="page-counter" style="color: white;">{{page_counter.page}}</div>
+        <div class="header-underline"   style="background: white;"></div>
+      </div>
       <div class="section-body background-image"
         style="background-image: url({% custom_media uk_market_overview.background_image %})">
         <div class="left-content singlepage__narrow_left_content_column">
           <div class="singlepage-content">
-            <div style="width: 102mm;">
+            <div>
               <h1>4.</h1>
                 <h2>
                   {% trans "UK Market Overview" %}
                 </h2>
             </div>
-            <div style="position: absolute; left: 23mm; top: 140mm;">
+            <div style="position: absolute; left: 11.6mm; top: 140mm;">
               {% include "./contact_box.html" %}
             </div>
           </div>
 
         </div>
         <div class="singlepage__right_content_column">
-          <div class="overlay-text" style="font-size: 14pt; top: 10mm;">
+          <!-- <div class="overlay-text" style="font-size: 14pt; top: 10mm;"> -->
             <img id="marketoverview-image" src="{% custom_media uk_market_overview.body_image %}"/>
-          </div>
+          <!-- </div> -->
         </div>
       </div>
     </section>
-
+    {% increment_section %}
     {% for smart_workforce_item in smart_workforce %}
 
-    {% increment_section %}
+
     <div class="page-break"></div>
 
     <section class="text-large side-footnote page-break-avoid relative">
+      <div class="page-header">
+        <div class="union-jack">
+          <img src="{% static "images/unionjack.png" %}"/>
+        </div>
+        <div class="header-tag">{% trans "Expand your business to the UK" %}</div>
+        <div class="page-counter">{{ page_counter.page }}</div>
+        <div class="header-underline"></div>
+      </div>
       <div class="section-body background-image">
         <div class="left-content singlepage__narrow_left_image_column"
             style="background-image: url({% custom_media smart_workforce_item.background_image %})">
-          <div class="singlepage-content">
-            <div style="width: 102mm;">
-              <h1>5.</h1>
-                <h2>
-                  {% trans "$SECTOR in the UK: going from strength to strength" %}
-                </h2>
-            </div>
-            <div style="position: absolute; left: 23mm; top: 140mm; z-index: 99;">
-              {% include "./contact_box.html" %}
-            </div>
+          <div class="left-overlay">
+            <div class="singlepage-content">
+              <div style="width: 102mm;">
+                <h1>5.</h1>
+                  <h2>
+                    {% trans "$SECTOR in the UK: going from strength to strength" %}
+                  </h2>
+              </div>
+              <div style="position: absolute; left: 23mm; top: 140mm; z-index: 99;">
+                {% include "./contact_box.html" %}
+              </div>
           </div>
-
+        </div>
         </div>
         <div class="singlepage__right_content_text">
-            <div class="two-column-wrapper">
-              <P>
-                {% markdown smart_workforce_item.content %}
-              </P>
-              <p><br/></p>
-              <p><br/></p>
+           <div class="manual_column" style="left: 0; top: 0; width: 75mm; height: 180mm;">
+            {% markdown smart_workforce_item.content 0 %}
             </div>
+            <div class="manual_column" style="left: 50%; top: 0; width: 75mm; height: 180mm;">
+              {% markdown smart_workforce_item.content 1 %}
+            </div>
+
         </div>
       </div>
     </section>
@@ -221,62 +263,78 @@
     <div class="page-break"></div>
 
     <section class="text-large side-footnote page-break-avoid relative">
+      <div class="page-header">
+        <div class="union-jack">
+          <img src="{% static "images/unionjack.png" %}"/>
+        </div>
+        <div class="header-tag">{% trans "Expand your business to the UK" %}</div>
+        <div class="page-counter">{{ page_counter.page }}</div>
+        <div class="header-underline"></div>
+      </div>
       <div class="section-body background-image">
         <div class="left-content singlepage__narrow_left_image_column"
             style="background-image: url({% custom_media sector_initiatives.background_image %})">
-          <div class="singlepage-content">
-            <div style="width: 102mm;">
-              <h1>6.</h1>
-                <h2>
-                  {% trans "$SECTOR in the UK: going from strength to strength" %}
-                </h2>
-            </div>
-            <div style="position: absolute; left: 23mm; top: 140mm; z-index: 99;">
-              {% include "./contact_box.html" %}
+          <div class="left-overlay">
+            <div class="singlepage-content">
+              <div style="width: 102mm;">
+                <h1>6.</h1>
+                  <h2>
+                    {% trans "$SECTOR in the UK: going from strength to strength" %}
+                  </h2>
+              </div>
+              <div style="position: absolute; left: 23mm; top: 140mm; z-index: 99;">
+                {% include "./contact_box.html" %}
+              </div>
             </div>
           </div>
-
         </div>
         <div class="singlepage__right_content_text">
-            <div class="two-column-wrapper">
-              <P>
-                {% markdown sector_initiatives.content %}
-              </P>
-              <p><br/></p>
-              <p><br/></p>
-            </div>
+          <div class="manual_column" style="left: 0; top: 0; width: 75mm; height: 180mm;">
+            {% markdown sector_initiatives.content 0 %}
+          </div>
+          <div class="manual_column" style="left: 50%; top: 0; width: 75mm; height: 180mm;">
+            {% markdown sector_initiatives.content 1 %}
+          </div>
         </div>
       </div>
     </section>
-
+    {% increment_section %}
     {% for case_study_item in case_study %}
 
-    {% increment_section %}
+
     <div class="page-break"></div>
 
     <section class="singlepage-withfooter side-footnote">
+      <div class="page-header">
+        <div class="union-jack">
+          <img src="{% static "images/unionjack.png" %}"/>
+        </div>
+        <div class="header-tag">{% trans "Expand your business to the UK" %}</div>
+        <div class="page-counter">{{ page_counter.page }}</div>
+        <div class="header-underline"></div>
+      </div>
       <div class="singlepage__wrapper">
        <div class="left-content singlepage__left_content_column">
          <div class="section-body singlepage-withfooter__body__text">
-             <div style="width: 50%">
+             <div style="width: 85%">
                  <h1>7.</h1>
                  <h2>{{ case_study_item.company_name }}: {% trans "already enjoying growth in the UK" %}</h2>
              </div>
-             <div style="height: 120mm; width: 115mm;">
-                 <div class="two-column-wrapper">
-                   <P>{% markdown case_study_item.content %}
-                 </P> 
-                 <p><br/></p>
-                 <p><br/></p>
-                 </div>
+             <div class="singlepage__left_content_text">
+                <div class="manual_column" style="left: 0; top: 0; width: 65mm; height: 120mm;">
+                  {% markdown case_study_item.content 0 %}
+                </div>
+                <div class="manual_column" style="left: 50%; top: 0; width: 65mm; height: 120mm;">
+                  {% markdown case_study_item.content 1 %}
+                </div>
              </div>
          </div>
        </div>
- 
+
        <div class="right-image singlepage__right_image_column"
             style="background-image: url({% custom_media case_study_item.background_image %})">
          <div style="position: absolute; left: 0mm; top: 180mm; padding: 5mm; background-color: white;">
-            <img src="{% custom_media case_study_item.logo_image %}" 
+            <img src="{% custom_media case_study_item.logo_image %}"
               style="width: 40mm;"
               alt="{{ case_study_item.company_name }} Logo"/>
          </div>
@@ -289,6 +347,14 @@
     <div class="page-break"></div>
 
     <section class="text-large side-footnote page-break-avoid relative">
+      <div class="page-header">
+        <div class="union-jack">
+          <img src="{% static "images/unionjack.png" %}"/>
+        </div>
+        <div class="header-tag">{% trans "Expand your business to the UK" %}</div>
+        <div class="page-counter">{{ page_counter.page }}</div>
+        <div class="header-underline"></div>
+      </div>
       <div class="section-body background-image">
         <div class="left-content singlepage__left_half_content">
             <div style="width: 102mm;">
@@ -298,154 +364,18 @@
                 </h2>
                 {% markdown how_we_can_help.content %}
             </div>
-             
+
         </div>
-        <div class="singlepage__right_half_content" 
+        <div class="singlepage__right_half_content"
           style="background-image: url({% custom_media how_we_can_help.background_image %})">
-         
+
           <div style="position: absolute; left: 0mm; top: 140mm; z-index: 99;">
             {% include "./contact_box.html" %}
           </div>
         </div>
       </div>
     </section>
-     <!-- 
-     
-
-    <section class="full-page side-footnote">
-      <h1>{% blocktrans %}{{ section_counter }}. A Great Place to Do Business{% endblocktrans %}</h1>
-      <div class="full-page__spread flex centered_body"
-           style="background-image: url({% custom_media uk_business_info.background_image %})">
-        <img id="businessoverview-image" src="{% custom_media uk_business_info.body_image %}"/>
-      </div>
-    </section>
-
-    {% increment_section %}
-    <div class="page-break"></div>
-    
-    <section class="secondary-page dark-list content-margin side-footnote">
-      {% markdown uk_geo_overview.content %}
-    </section>
-
-    {% increment_section %}
-
-    <section class="section-body secondary-page content-margin side-footnote talent_and_education_by_sector dark-list inside-list relative page-break-avoid">
-      {% markdown talent_and_education_by_sector.content %}
-    </section>
-
-    {% increment_section %}
-    <div class="page-break"></div>
-
-    <section class="secondary-page sector-initiatives bottom-footnote">
-      {% markdown sector_initiatives.content %}
-    </section>
-
-    {% increment_section %}
-    <div class="page-break"></div>
-
-    <section class="secondary-page content-margin side-footnote relative">
-      {% markdown r_and_d_and_innovation.content %}
-    </section>
-
-    {% increment_section %}
-    <div class="page-break"></div>
-
-    <section class="secondary-page dark-list content-margin side-footnote r_and_d_and_innovation_case_study">
-        {% if r_and_d_and_innovation_case_study.content %}
-          {% markdown r_and_d_and_innovation_case_study.content %}
-          {% increment_section %}
-        {% endif %}
-
-        {% if video_case_study.content %}
-           {% markdown video_case_study.content %}
-           {% increment_section %}
-        {% endif %}
-
-    </section>
-
-    {% if r_and_d_and_innovation_case_study.content or video_case_study.content %}
-      <div class="page-break"></div>
-    {% endif %}
-
-    <section class="full-page side-footnote">
-      <h1>{% blocktrans %}{{ section_counter }}. Network of Support{% endblocktrans %}</h1>
-      <div class="full-page__spread centered_body flex"
-           style="background-image: url({% custom_media network_and_support.background_image %})">
-        <div class="centered_body__body secondary-page">
-          {% markdown network_and_support.content %}
-        <div>
-      </div>
-    </section>
-
-    {% increment_section %}
-    <div class="page-break"></div>
-
-    <section class="full-page side-footnote whos-here">
-      <h1>{% blocktrans %}{{ section_counter }}. Who's Here{% endblocktrans %}</h1>
-      <div class="full-page__spread section"
-           style="background-image: url({% custom_media who_is_here.background_image %})">
-          <ul>
-            {% for sl in sector_logos %}
-            <li>
-              <div class="table-cell">
-                <img src="{% custom_media sl.image %}"/>
-              </div>
-            </li>
-            {% endfor %}
-
-            {% for ml in market_logos %}
-            <li>
-                <div class="table-cell">
-                  <img src="{% custom_media ml.image %}"/>
-                </div>
-            </li>
-            {% endfor %}
-          </ul>
-      </div>
-    </section>
-
-
-    {% increment_section %}
-    <section class="singlepage-withfooter side-footnote secondary-page">
-
-      <div class="singlepage-withfooter__body">
-        <div class="section-body singlepage-withfooter__body__text">
-        {% markdown services_offered_by_dit.content %}
-        </div>
-      </div>
-
-      <div class="singlepage-withfooter__footer"
-           style="background-image: url({% custom_media services_offered_by_dit.footer_image %})">
-          <div class="singlepage-withfooter__footer__copy">
-            {{services_offered_by_dit.footer_image_copy}}
-          </div>
-          <div class="singlepage-withfooter__footer__attribution">
-            {{services_offered_by_dit.footer_image_copy_attribution}}
-          </div>
-      </div>
-    </section>
-
-    <div class="page-break"></div>
-
-    {% increment_section %}
-    <section class=full-page contact>
-      <div class="full-page__spread centered_body contact flex"
-           style="background-image: url({% custom_media contact.background_image %})">
-        <div class="centered_body__body secondary-page">
-          <h3>{{ contact.title }}</h3>
-          <ul>
-           <li style="list-style-image: url('{% static "images/mouse.svg" %}');">
-             <a href="{{contact.website_href}}">{{ contact.website }}</a>
-           </li>
-            <li style="list-style-image: url('{% static "images/mail.svg" %}');">{{ contact.email }}</li>
-            <li style="list-style-image: url('{% static "images/phone.svg" %}')";>{{ contact.phone }}</li>
-          </ul>
-          {% markdown contact.content %}
-        <div>
-      </div>
-    </section> -->
 
     {% endautoescape %}
   </body>
 </html>
-

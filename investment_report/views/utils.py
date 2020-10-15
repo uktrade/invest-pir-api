@@ -39,10 +39,14 @@ def investment_report_pdf(request, lang, market, sector, moderated=True):
     market = get_object_or_404(Market, name=market)
     sector = get_object_or_404(Sector, name=sector)
     company = request.GET.get('company', 'You')
+    plain = request.GET.get('plain', 'false') == 'true'
 
     with translation.override(lang):
         pdf_file = investment_report_pdf_generator(
-            market, sector, company, local=True, moderated=moderated
+            market, sector, company,
+            local=True,
+            moderated=moderated,
+            plain=plain
         )
 
         pdf = pdf_file.getvalue()
@@ -83,15 +87,33 @@ def pir_csv(request):
 
     return response
 
+
 def dev_css(request):
-    with open('/usr/src/app/investment_report/static/build/investment-report2.css', 'r') as css:
+    with open('/usr/src/app/investment_report/static/build/investment-report.css', 'r') as css:
+        content = css.read()
+    response = HttpResponse(content, content_type='text/css')
+    return response
+
+
+def dev_css_plain(request):
+    """
+    A utility view for testing, to load the live css, instead of a static resource
+    """
+    with open(
+        '/usr/src/app/investment_report/static/build/investment-report-plain.css', 'r'
+    ) as css:
         content = css.read()
     response = HttpResponse(content, content_type='text/css')
     return response
 
 
 def dev_css_last(request):
-    with open('/usr/src/app/investment_report/static/build/investment-report-last-page2.css', 'r') as css:
+    """
+    A utility view for testing, to load the live last page css, instead of a static resource
+    """
+    with open(
+        '/usr/src/app/investment_report/static/build/investment-report-last-page.css', 'r'
+    ) as css:
         content = css.read()
     response = HttpResponse(content, content_type='text/css')
     return response

@@ -25,10 +25,6 @@ body {
 .front-page {
   width: $pageWidth;
   height: $pageHeight;
-//   padding-top: $pageMarginTop;
-//   padding-left: $pageMargin;
-//   padding-right: $pageMargin;
-//   padding-bottom: $pageMargin;
   z-index: 2;
   position: relative;
   overflow: hidden;
@@ -63,7 +59,7 @@ body {
     background-repeat: no-repeat;
     background-position: -35mm 0mm;
     background-size: cover;
-    
+
     overflow:hidden;
 }
 .dit_logos {
@@ -77,6 +73,19 @@ body {
     color: white;
     vertical-align: bottom;
     padding: 0;
+
+}
+.logo {
+  width: 30mm;
+
+}
+.dit_url {
+  float: left;
+  text-align: right;
+  font-weight: 900;
+  font-size: 16pt;
+  padding-top: 5mm;
+  font-family: "Invesco Interstate Bold";
 }
 
 .front-page__logo {

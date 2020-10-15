@@ -1,0 +1,208 @@
+{% load i18n static custom_markdown custom_media %}
+<!DOCTYPE html>
+<html nomarginboxes disallowselectionprint>
+  <head>
+    <meta charset="utf8">
+    <title>{% trans "Invest in Great" %}</title>
+    <link rel="stylesheet" href="http://localhost:8014/investment-report/devcssplain.css"/>
+    <!-- <link rel="stylesheet" href="{% static "build/investment-report2.css" %}" /> -->
+  </head>
+
+  <body class="A4">
+    {% autoescape off %}
+
+    <section class="front-page">
+
+      <div class="front-page__title">
+        <div>{% blocktrans %}The UK: A Great Home<br>for {{ company }}{% endblocktrans %}</div>
+        <div class="front-page__title__sub">{% trans "Perfect Fit Prospectus" %}</div>
+      </div>
+    </section>
+
+    <div class="page-break"></div>
+    <div class="counter-reset"></div>
+
+    <!-- <header class="onlyprint">
+      <div id="unionjackheader">
+
+      </div>
+      <div id="headerslogan">{% trans "Expand your business to Britain" %}</div>
+      <div id="borderbottomheader"></div>
+    </header> -->
+
+    <section class="toc">
+        <div class="toc-container">
+          <h1>{% trans "Contents" %}</h1>
+          <ol>
+              <li> {% trans "A Great Home for $COMPANY" %}</li>
+              <li> {% trans "Achieving Great Things in $SECTOR" %}</li>
+              <li> {% trans "Links That Are Already Strong" %}</li>
+              <li> {% trans "UK Market Overview" %}</li>
+              <li> {% trans "$SECTOR in the UK: going from strength to strength" %}</li>
+              <li> {% trans "Opportunities from Coast to Coast" %}</li>
+              <li> {% trans "The Smart Workforce $COMPANY Needs" %}</li>
+              <li> {% trans "$SECTOR in the UK: Going from Strength to Strength" %}</li>
+              <li> {{ case_study_item.company_name }}: {% trans "already enjoying growth in the UK" %}</li>
+              <li> {% trans "A flying start: how we can get you going" %}</li>
+            </ol>
+
+
+          </div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section class="singlepage-withfooter side-footnote">
+     <div class="singlepage__wrapper">
+      <div class="left-content singlepage__left_content_column">
+        <div class="section-body singlepage-withfooter__body__text">
+
+            <h1>1.</h1>
+            <h2>{% trans "A Great Home for $COMPANY" %}</h2>
+
+
+              <P>{% markdown sector_overview.content %}
+            </P>
+
+
+        </div>
+      </div>
+    </div>
+    </section>
+
+    {% increment_section %}
+
+    <div class="page-break"></div>
+    <section class="singlepage-withfooter side-footnote">
+      <div class="singlepage__wrapper">
+       <div class="left-content singlepage__left_content_column">
+         <div class="section-body singlepage-withfooter__body__text">
+
+             <h1>2.</h1>
+             <h2>{% trans "Achieving great things in $SECTOR" %}</h2>
+
+             {% markdown killer_facts.content %}
+         </div>
+       </div>
+     </div>
+     </section>
+
+    {% increment_section %}
+    <div class="page-break"></div>
+    <section class="singlepage-withfooter side-footnote">
+      <div class="singlepage__wrapper">
+       <div class="left-content singlepage__left_content_column">
+         <div class="section-body singlepage-withfooter__body__text">
+
+             <h1>3.</h1>
+             <h2>{% trans "Links that are already strong" %}</h2>
+
+             {% markdown macro_context.content %}
+         </div>
+       </div>
+     </div>
+     </section>
+
+    {% increment_section %}
+    <div class="page-break"></div>
+
+    <section class="text-large side-footnote page-break-avoid relative">
+      <div class="section-body background-image">
+        <div class="left-content">
+          <div class="singlepage-content">
+            <div>
+              <h1>4.</h1>
+                <h2>
+                  {% trans "UK Market Overview" %}
+                </h2>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    {% increment_section %}
+    {% for smart_workforce_item in smart_workforce %}
+
+    <div class="page-break"></div>
+    <section class="singlepage-withfooter side-footnote">
+      <div class="singlepage__wrapper">
+       <div class="left-content singlepage__left_content_column">
+         <div class="section-body singlepage-withfooter__body__text">
+
+             <h1>5.</h1>
+             <h2>{% trans "$SECTOR in the UK: going from strength to strength" %}</h2>
+
+             {% markdown smart_workforce_item.content %}
+         </div>
+       </div>
+     </div>
+     </section>
+
+
+
+    {% endfor %}
+
+    {% increment_section %}
+
+    <div class="page-break"></div>
+    <section class="singlepage-withfooter side-footnote">
+      <div class="singlepage__wrapper">
+       <div class="left-content singlepage__left_content_column">
+         <div class="section-body singlepage-withfooter__body__text">
+
+             <h1>6.</h1>
+             <h2>{% trans "$SECTOR in the UK: going from strength to strength" %}</h2>
+
+             {% markdown sector_initiatives.content %}
+         </div>
+       </div>
+     </div>
+     </section>
+
+
+
+     {% increment_section %}
+    {% for case_study_item in case_study %}
+
+    <div class="page-break"></div>
+    <section class="singlepage-withfooter side-footnote">
+      <div class="singlepage__wrapper">
+       <div class="left-content singlepage__left_content_column">
+         <div class="section-body singlepage-withfooter__body__text">
+
+             <h1>7.</h1>
+             <h2>{{ case_study_item.company_name }}: {% trans "already enjoying growth in the UK" %}</h2>
+
+             {% markdown case_study_item.content %}
+         </div>
+       </div>
+     </div>
+     </section>
+
+     {% endfor %}
+
+    {% increment_section %}
+    <div class="page-break"></div>
+
+    <section class="text-large side-footnote page-break-avoid relative">
+      <div class="section-body">
+        <div class="singlepage-content">
+            <div>
+              <h1>8.</h1>
+                <h2>
+                  {% trans "A flying start: how we can get you going" %}
+                </h2>
+                {% markdown how_we_can_help.content %}
+            </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    {% endautoescape %}
+  </body>
+</html>

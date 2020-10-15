@@ -8,23 +8,26 @@
     <link rel="stylesheet" href="http://localhost:8014/investment-report/devcsslast.css"/>
   </head>
 
-  <body class="A4">
+  <body class="A4" style="top: 0; left: 0; background-repeat: no-repeat;     background-position: center;
+  background-size: cover;
+background-image: url('{% static "images/ship-v1.jpg" %}');">
     {% autoescape off %}
 
-    <section class="front-page">
+    <section class="front-page" >
         <div class="left_panel">
             <img class="front-page__logo" src="{% static "images/frontpagebottomrightlogo.png" %}"/>
-            
+
             <div>
                 <div class="dit_logos">
-                    <div style="width: 40mm;">
-                        logo
+                    <div style="float: left;">
+                      <img src="{% static "images/DIT-logo-detailed-white.png" %}" class="logo"/>
+
                     </div>
-                    <div style="text-align: right; font-weight:900; font-size:16pt; padding-top:5mm">
+                    <div class="dit_url"  style="width: 70mm; vertical-align: bottom;">
                         invest.great.gov.uk
                     </div>
                 </div>
-            
+
                 <div class="left_panel_content">
                     <P>
                         The UK’s Department for International Trade (DIT) has overall responsibility for
@@ -41,7 +44,7 @@
                         omissions or misleading statements, and no warranty is given or responsibility accepted
                         as to the standing of any individual, firm, company or other organisation mentioned.
                     </P>
-                    
+
                     <P>
                         <span style="font-weight: 800;">Copyright</span><br/>
                         © Crown copyright {{current_year}}<br/>
@@ -61,24 +64,11 @@
                 </div>
             </div>
         </div>
-        <div class="right_panel" style="background-image: url('{% static "images/dit-container-ship.jpg" %}');">
+        <div class="right_panel" >
 
         </div>
-  <!-- <img class="front-page__logo" src="{% static "images/frontpagebottomrightlogo.png" %}"/>
-  <div class="wrapper">
-    <div class="content">
-    </div>
-    <div class="footer">
-    <div class="footer__header">
-      <img width="38.267mm" src="{% static "images/dit.png" %}" />
-      <p>invest.great.gov.uk</p>
-    </div>
-    <div class="footer__body">
-      {% markdown last_page.content %}
-    </div>
-  </div> -->
+
     </section>
     {% endautoescape %}
   </body>
 </html>
-

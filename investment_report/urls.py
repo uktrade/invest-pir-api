@@ -29,4 +29,5 @@ urlpatterns = [
 
     url('devcss.css', utils.dev_css, name='dev_css'),
     url('devcsslast.css', utils.dev_css_last, name='last_dev_css'),
+    url('devcssplain.css', utils.dev_css_plain, name='plain_dev_css'),
 ]

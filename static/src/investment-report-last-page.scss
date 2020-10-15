@@ -4,6 +4,8 @@ $column: 25.42mm;
 $columnGap: 4.586mm;
 $pageMargin: 17.639mm;
 $pageMarginTop: 11.642mm;
+$pageWidth: 297mm;
+$pageHeight: 210mm;
 
 
 body {
@@ -15,21 +17,75 @@ body {
 }
 
 @page {
-  size: A4;
+  size: A4 landscape;
   margin: 0;
   background-color: $black;
 }
 
 .front-page {
-  width: 210mm;
-  height: 297mm;
-  padding-top: $pageMarginTop;
-  padding-left: $pageMargin;
-  padding-right: $pageMargin;
-  padding-bottom: $pageMargin;
+  width: $pageWidth;
+  height: $pageHeight;
   z-index: 2;
   position: relative;
   overflow: hidden;
+}
+
+.left_panel {
+    width: $pageWidth / 2;
+    height: $pageHeight;
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: $pageMargin;
+}
+.left_panel_content {
+    color: white;
+    width:110mm;
+    position: absolute;
+    top: ($pageHeight / 2) - $pageMarginTop;
+    left: $pageMargin;
+    line-height: 1.3em;
+    height: 110mm;
+}
+.right_panel {
+    width: $pageWidth / 2;
+    height: $pageHeight;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: -35mm 0mm;
+    background-size: cover;
+
+    overflow:hidden;
+}
+.dit_logos {
+    border-bottom: 2mm solid $red;
+    position: absolute;
+    top: 70mm;
+    left: $pageMargin;
+    height: 18mm;
+    display: block;
+    width: 110mm;
+    color: white;
+    vertical-align: bottom;
+    padding: 0;
+
+}
+.logo {
+  width: 30mm;
+
+}
+.dit_url {
+  float: left;
+  text-align: right;
+  font-weight: 900;
+  font-size: 16pt;
+  padding-top: 5mm;
+  font-family: "Invesco Interstate Bold";
 }
 
 .front-page__logo {
@@ -37,11 +93,16 @@ body {
   position: absolute;
 }
 
+a {
+    text-decoration: none;
+    font-weight: 800;
+    color: white;
+}
 
 .wrapper {
   display: flex;
-  height: 265mm;
-  width: 210mm - ($pageMargin * 2);
+  height: $pageHeight;
+  width: $pageWidth - ($pageMargin * 2);
   flex-direction: column;
 }
 .content {

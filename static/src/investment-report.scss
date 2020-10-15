@@ -1,16 +1,17 @@
 $red: #b00d23;
 $black: #1e1348;
 
-$column: 25.42mm;
+$column: 30mm;
 $columnGap: 4.586mm;
-$pageMargin: 17.639mm;
-$pageMarginTop: 11.642mm;
-
+$pageMargin: 15mm;
+$pageMarginTop: 10mm;
+$pageWidth: 297mm;
+$pageHeight: 210mm;
 
 body {
   font-family: "Invesco Interstate Light";
   color: $black;
-  font-size: 14pt;
+  font-size: 11pt;
   line-height: 130%;
   margin: 0;
 }
@@ -26,19 +27,11 @@ p {
 
 
 @page {
-  size: A4;
+  size: A4 landscape;
   margin-top: $pageMarginTop + 5mm;
   margin-left: $pageMargin;
   margin-right: $pageMargin;
   margin-bottom: $pageMargin;
-
-  @top-left {
-    content: counter(page); 
-    font-family: "Invesco Interstate Light";
-    color: $black;
-    font-size: 9pt;
-    padding-top: 0pt;
-  }
 }
 
 .conter-reset {
@@ -56,6 +49,10 @@ p {
   @top-left {
     content: " ";
   }
+
+  @top-right {
+      content: " ";
+  }
 }
 
 @page :last {
@@ -63,44 +60,114 @@ p {
   @top-left {
     content: " ";
   }
+  @top-right {
+      content: " ";
+  }
 }
 
-@media print {
+.page-header {
+  position: absolute;
+  top: -10mm;
+  font-family: "Invesco Interstate Light";
+  color: $black;
+  font-size: 9pt;
+  padding-top: 14pt;
+  width: 1000mm;
+  z-index: 110;
+
+  .page-counter {
+    position: absolute;
+    top: 4mm;
+    left: 260mm;
+    width: 5mm;
+    height: 5mm;
+    font-family: "Invesco Interstate Light";
+    color: $black;
+    font-size: 9pt;
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    z-index: 100;
+  }
+  .union-jack {
+    position: absolute;;
+    width: 20mm;
+    padding-left: 1mm;
+    margin-left: 0;
+    padding-right: 0;
+    margin-right: 0;
+    left: 0mm;
+    z-index: 100;
+  }
+  .header-tag {
+    position: absolute;
+    top: 5mm;
+    left: 14mm;
+    font-size: 10pt;
+    letter-spacing: -0.1pt;
+    z-index: 100;
+  }
+  .header-underline {
+    width: 280mm - ($pageMargin);
+    height: 0.25pt;
+    position: absolute;
+    background: $black;
+    top: 10mm;
+    z-index: 100;
+
+  }
+  img {
+    width: 9.876mm;
+    margin-left: 0mm;
+  }
+}
+//@media print {
     header.onlyprint {
         position: fixed; /* Display only on print page (each) */
         /* because this is taken from the first page margins, I need to adjust */
-        top: -11.642mm - 5mm; /* Because it's header */
+        top: -10mm; /* Because it's header */
         font-family: "Invesco Interstate Light";
         color: $black;
         font-size: 9pt;
         padding-top: 14pt;
         width: 1000mm;
+        z-index: 100;
     }
 
     #unionjackheader {
-        width: $column + $columnGap - 2mm;
-        float: left;
-        margin-left: 2mm;
+        width: 20mm;// $column + $columnGap - 2mm;
+        //float: left;
+        padding-left: 1mm;
+        margin-left: 0;
+        padding-right: 0;
+        margin-right: 0;
+        left: 15mm;
+        z-index: 100;
     }
 
     #headerslogan {
-        float: left;
-        letter-spacing: -0.7pt;
+        //float: left;
+        position: absolute;
+        top: 5mm;
+        left: 14mm;
+        font-size: 10pt;
+        letter-spacing: -0.1pt;
+        z-index: 100;
     }
 
     #borderbottomheader {
-      width: 210mm - (2 * $pageMargin);
+      width: 290mm - ($pageMargin);
       height: 0.25pt;
       position: absolute;
       background: $black;
-      top: 11.5mm;
+      top: 10mm;
+      z-index: 100;
     }
 
     header.onlyprint img {
       width: 9.876mm;
-      margin-left: 3.1mm;
+      margin-left: 0mm;
     }
-}
+// }
 
 .page-break {
   page-break-after: always;
@@ -111,14 +178,24 @@ p {
 }
 
 h1 {
-  margin-top: $pageMargin - 5mm;
+  //margin-top: 5mm;
+  top: 38mm;
   font-family: "Invesco Interstate Bold";
   font-weight: bold;
-  font-size: 30pt;
-  padding-bottom: 5.564mm;
-  border-bottom: solid $red 6pt;
-  letter-spacing: -1.75pt;
+  font-size: 36pt;
+  color: $red;
+  padding-bottom: 4mm;
+  border-bottom: solid $red 7pt;
+  letter-spacing: -0.2pt;
   line-height: 100%;
+}
+
+h2 {
+  font-family: "Invesco Interstate bold";
+  font-size: 23pt;
+  letter-spacing: -0.2pt;
+  color: $black;
+  line-height: 25pt;
 }
 
 sup {
@@ -132,27 +209,30 @@ sup {
   a {
     text-decoration: none;
     color: $black;
-  } 
+  }
 }
 
 blockquote {
   font-style: italic;
   font-family: "Georgia";
+
+  margin-right: 0;
 }
 
 .front-page {
-  width: 210mm;
-  height: 297mm;
+  width: 297mm;
+  height: 210mm;
   background: lightgrey;
   left: -$pageMarginTop;
   top: -$pageMarginTop;
-  z-index: 2;
+  z-index: 200;
   position: relative;
-}
 
+
+}
 .front-page__logo {
-  top: 240mm;
-  left: 137mm;
+  top: 160mm;
+  left: 220mm;
   position: absolute;
   display: block;
   width: 55.183mm;
@@ -163,17 +243,17 @@ blockquote {
   top: 15.339mm;
   position: absolute;
   display: block;
-  font-size: 42pt;
-  line-height: 42pt;
+  font-size: 36pt;
+  line-height: 1.2em;
   color: white;
   font-family: "Invesco Interstate Bold";
   font-weight: bold;
-  letter-spacing: -1.75pt;
+  letter-spacing: -0.2pt;
 }
 
 .front-page__title__sub {
   margin-top: 24px;
-  font-size: 24pt;
+  font-size: 22pt;
   letter-spacing: 1pt;
   font-family: "Invesco Interstate Light";
 }
@@ -189,7 +269,7 @@ blockquote {
 }
 
 .toc {
-  margin-top: 55mm;
+  margin-top: 0mm;
 }
 
 .toc ol {
@@ -203,25 +283,50 @@ blockquote {
   margin-top: 2.5mm;
 }
 
+.toc-container {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    grid-template-rows: 1fr;
+    gap: 1px 1px;
+    grid-template-areas: "left-col content";
+  }
+.left-col {
+
+    position: absolute;
+    left: -$pageMarginTop * 2;
+    top: -$pageMarginTop * 2;
+    width: 120mm;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    // opacity:0.7;
+    // float: left;
+    height: 220mm;
+    overflow: hidden;
+    z-index: -1;
+}
+.left-col h1 {
+    opacity: 1!important;
+    z-index: 10!important;
+    margin-top: $pageMargin * 2;
+    margin-left: $pageMargin * 1.4;
+    color: $red;
+    border-bottom: 7pt solid $red;
+}
+.toc .content-margin {
+    position: absolute;
+    display: block;
+    left: 130mm;
+    margin-top: 23mm;
+}
+.toc .section-body {
+    margin-left: 0;
+    padding-left: 0;
+}
+
 .section {
   overflow: hidden;
 }
-
-.section-body > p, .section-body > ul, .section-body > ol {
-  margin-top: 13.406mm;
-}
-
-.section-body > p, .section-body > ul > li, .section-body > ol > li {
-  margin-top: 0.8rem;
-  margin-bottom: 0.8rem;
-}
-
-
-.section-body ul {
-  margin-left: 0;
-  padding-left: 0.45cm;
-}
-
 
 ul li {
   position: relative;
@@ -250,13 +355,18 @@ ul li:before {
   padding-left: 1cm;
   margin-top: $pageMarginTop / 2;
 }
-
+.content {
+  font-family: "Invesco Interstate Light";
+  font-size: 11pt;
+  letter-spacing: -0.2pt;
+  line-height: 25pt;
+}
 .relative {
   position: relative;
 }
 
-.content-margin { 
-  margin-left: $column + $columnGap;
+.content-margin {
+  margin-left: 120mm;
 }
 
 .flex {
@@ -288,11 +398,220 @@ ul li:before {
   }
 }
 
+/* contact box  */
+.contact-box {
+    background-color: #1e1348;
+    color: white;
+    font-size: 10pt;
+    width: 80mm;
+    height: 50mm;
+    padding: 5mm 7mm  5mm 7mm;
+    font-weight: normal;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      li {
+        line-height: 25pt;
+      }
+    }
+    hr {
+      color: white;
+      size: 1mm;
+      margin: 3mm;
+    }
+    .contact-box-header {
+      font-weight: bolder;
+      font-size: 12pt;
+  }
+}
+
+
+/* text on overlay */
+.background-image {
+  background-size: cover;
+  position: absolute;
+  left: -$pageMargin;
+  top: -$pageMargin;
+  width: $pageWidth;
+  height: $pageHeight;
+  z-index: -1;
+}
+
+.text-overlay {
+  width: 100%;
+  height: $pageHeight + $pageMarginTop;
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.6),
+      rgba(121, 121, 121, 0.3)
+    );
+  position: relative;
+  padding: 0;
+  margin: 0;
+  border: 1px solid red;
+}
+
+
+.singlepage-content {
+  margin-top: 20mm;
+  margin-left: $pageMargin;
+
+}
+
+
+.singlepage__narrow_left_content_column {
+  position: relative;
+  display: inline-block;
+  left: 0mm;
+  width: 100mm;
+  height: 220mm;
+  margin: 0;
+  padding: 0;
+}
+
+.singlepage__narrow_left_image_column {
+  position: relative;
+  display: inline-block;
+  left: 0mm;
+  width: 115mm;
+  height: 220mm;
+  margin: 0;
+  padding: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+
+}
+
+.singlepage__right_content_column {
+  position: absolute;
+  //left: 160mm;
+  // top: -$pageMarginTop * 2;
+  width: 180mm;
+  height: 240mm;
+  //right: 0;
+  color: white;
+  font-family: "Invesco Interstate Light";
+  font-size: 14pt;
+  letter-spacing: -0.2pt;
+  line-height: 25pt;
+  top: 30mm;
+  // background:
+  //   linear-gradient(
+  //     rgba(0, 0, 0, 0.4),
+  //     rgba(255, 255, 255, 0.4)
+  //   );
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  // margin: 0;
+  margin-right: 10mm;
+  left: 116mm;
+  z-index: 1;
+}
+
+.text-overlay-right-wide {
+  width: 180mm;
+  height: 240mm;
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.6),
+      rgba(121, 121, 121, 0.3)
+    );
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: -30mm;
+  left: -20mm;
+  z-index: 0;
+}
+
+
+.singlepage__right_text {
+  color: black;
+  padding-right: $pageMargin * 2;
+  margin-left: $pageMargin;
+  margin-right: $pageMargin;
+  margin-top: $pageMarginTop * 2;
+  top: 30mm;
+  width: 80%;
+  position: absolute;
+}
+
+.singlepage__right_two_column_text {
+  // column-count: 2;
+  // column-width: 50%;
+  color: black;
+  padding-right: $pageMargin * 2;
+  margin-left: $pageMargin;
+  margin-right: $pageMargin;
+  margin-top: $pageMarginTop * 2;
+  top: 30mm;
+  width: 80%;
+  position: absolute;
+}
+
+/* page divided halfway */
+.singlepage__left_half_content {
+  width: $pageWidth / 2;
+  height: $pageHeight;
+  position: relative;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: $pageMargin;
+}
+.singlepage__left_half_content_text {
+  left: 0;
+  top: 0;
+  height: $pageHeight - $pageMarginTop;
+  width: 110mm;
+
+}
+.singlepage__right_half_content {
+  width: $pageWidth / 2;
+  height: $pageHeight;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position: 0mm 0mm;
+  background-size: cover;
+  overflow:hidden;
+}
+
+.dit-back-logo {
+  width: 30mm!important;
+  padding: 3mm;
+
+}
+.invest-url {
+  text-align: right;
+  font-weight:900;
+  font-size:16pt;
+  padding-top:5mm
+}
+
 /* special case flexbox layout */
 
 .singlepage-withfooter {
-  width: 174.674mm;
-  height: 267.343mm - 6mm;
+  width: $pageWidth;
+  height: $pageHeight;
+  // position: relative;
+  // display: flex;
+  // flex-direction: column;
+}
+
+.xsinglepage-withfooter {
+  width: 267.343mm - 6mm;
+  height: 174.674mm;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -304,36 +623,46 @@ ul li:before {
 }
 
 .singlepage-withfooter__body__text {
-  margin-left: $column + $columnGap;
+  margin-left: 0mm;
   margin-bottom: $column;
   position: relative;
 }
 
-.singlepage-withfooter__footer {
-  background: white;
-  flex-grow: 1;
-  background-size: cover;
-  background-position: center;
-  color: white;
-  overflow: hidden;
+.singlepage__wrapper {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  grid-template-rows: 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "left-content right-image";
+  z-index: 1;
 }
 
-.singlepage-withfooter__footer__copy {
-  font-style: italic;
-  font-family: "Georgia";
-  font-size: 25.74pt;
-  margin-top: 11.35mm;
-  margin-left: 9.244mm;
-  width: 50%;
-  line-height: 33.1pt;
+.singlepage__left_content_column {
+  position: absolute;
+  // display: inline-block;
+  left: 0mm;
+  width: 170mm;
+  height: 220mm;
+  margin: 0;
+  padding: 0;
 }
 
-.singlepage-withfooter__footer__attribution {
-  font-size: 10.1pt;
-  width: 50%;
-  margin-top: 2mm;
-  margin-left: 9.244mm;
+.singlepage__right_image_column {
+    position: absolute;
+    left: 170mm;
+    top: -$pageMarginTop * 2;
+    width: 115mm;
+    height: 220mm;
+    //right: -$pageMargin;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    margin: 0;
+    z-index: 1;
 }
+
+
 
 .full-page h1 {
   margin-top: 22.639mm - 5mm;
@@ -381,36 +710,6 @@ ul li:before {
   margin-top: 17.639mm;
 }
 
-.sector-initiatives {
-  & > p, & > ul, & > h2, & > h3, & > h4, & > h5, & > h6 {
-    margin-left: $column + $columnGap;
-  }
-
-  h1 {
-    width: 174.674mm;
-    margin-bottom: 0;
-  } 
-  
-  & > h2, & > h3, & > h4, & > h5, & > h6 {
-    margin-top: $pageMarginTop;
-  }
-
-  img {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    margin-left: 0 - ( $column + $columnGap);
-    width: 174.674mm;
-    border-top: solid $red 6pt;
-  }
-
-  p:first-of-type > img {
-    margin-top: -1rem;
-    border-top: none;
-    border-bottom: none;
-  }
-
-
-}
 
 .bottom-footnote .footnote {
   border-top: solid $red 1pt;
@@ -430,6 +729,7 @@ ul li:before {
     margin: 0;
     margin-top: 0;
     line-height: 1.1;
+    margin-bottom: 4mm;
   }
 
   p a.footnote-backref {
@@ -497,9 +797,11 @@ section h1 + p > a > img {
 }
 
 #marketoverview-image {
-  margin-left: 5.5mm;
-  margin-top: $pageMarginTop;
+  position: absolute;
+  left: 30mm;
+  top: -6.5mm;
   width: 115.581mm;
+  z-index: 999;
 }
 
 #businessoverview-image {
@@ -546,4 +848,283 @@ section h1 + p > a > img {
 
 .table-cell {
   display: table-cell;
+}
+
+
+
+
+
+.singlepage__right_content_text {
+  position: absolute;
+  top: 20mm;
+  width: 160mm;
+  height: 180mm;
+  left: 125mm;
+  //padding-right: 3mm;
+  color: black;
+  overflow: hidden;
+  margin: 0mm 10mm 10mm 0mm;
+  z-index: 10;
+}
+
+
+.left-overlay {
+  position: absolute;
+  width: 100%;
+  height: 260mm;
+  margin: 0;
+  //padding-top: 30mm;
+  left: 0;
+  top: 0mm;
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.6),
+      rgba(0, 0, 0, 0.6)
+    );
+}
+
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.6),
+      rgba(0, 0, 0, 0.6)
+    );
+}
+.overlay-text {
+  position: absolute;
+  padding-right: $pageMargin * 2;
+  margin-left: $pageMargin;
+  margin-right: $pageMargin;
+  margin-top: $pageMarginTop * 2;
+  color: white;
+  top: 30mm;
+  width: 80%
+}
+
+
+.page-container-contents {
+  display: grid;
+  grid-template-columns: 110mm 180mm;
+  grid-template-rows: 100%;
+  grid-column-gap: 0mm;
+  grid-row-gap: 0mm;
+  position: absolute;
+  left: -$pageMargin;
+  top: -$pageMargin;
+  width: $pageWidth;
+  height: $pageHeight;
+
+
+  .left {
+    grid-area: 1 / 1 / 2 / 2;
+    height: $pageHeight;
+  }
+  .right {
+    grid-area: 1 / 2 / 2 / 3;
+    height: $pageHeight;
+    z-index: 3;
+
+  }
+  .main-content {
+    z-index: 3;
+    top: 28mm;
+    left: 110mm;
+    position: absolute;
+
+    margin-left: 15mm;
+    color: black;
+    font-family: "Invesco Interstate Light";
+    font-size: 14pt;
+    letter-spacing: -0.2pt;
+    line-height: 25pt;
+    width: 180mm;
+    height: $pageHeight;
+  }
+  .background-wrapper {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    height: $pageHeight;
+    padding: 0;
+    margin: 0;
+    width: 105.5mm;
+    background-size: cover;
+  }
+  .overlay {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    height: $pageHeight;
+    padding: 0;
+    margin: 0;
+    width: 105.5mm;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.6),
+      rgba(36, 91, 194, 0.3)
+    );
+  }
+  .overlay-text {
+    z-index: 3;
+    position: absolute;
+    left: -2mm;
+    top: -5mm;
+    font-family: "Invesco Interstate Light";
+    font-size: 14pt;
+    letter-spacing: -0.2pt;
+    line-height: 25pt;
+    margin-left: 20mm;
+    margin-top: 20mm;
+  }
+
+  ol {
+    list-style: none;
+    counter-reset: toc-counter;
+
+    li {
+      counter-increment: toc-counter;
+      color: black;
+      line-height: 40pt;
+    }
+    li:before {
+      content: counter(toc-counter) ". ";
+      font-family: "Invesco Interstate Light";
+      color: black;
+      font-weight: 900;
+      font-size: 20pt;
+    }
+  }
+
+}
+
+
+.page-container-2 {
+  display: grid;
+  grid-template-columns: 100mm 180mm;
+  grid-template-rows: 100%;
+  grid-column-gap: 0mm;
+  grid-row-gap: 0mm;
+
+  background-size: cover;
+  position: absolute;
+  left: -$pageMargin;
+  top: -$pageMargin;
+  width: $pageWidth;
+  height: $pageHeight;
+  z-index: -1;
+
+  .left {
+    grid-area: 1 / 1 / 2 / 2;
+    width: 100mm;
+  }
+  .right {
+    grid-area: 1 / 2 / 2 / 3;
+    width: 180mm;
+  }
+  .overlay {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 106.1mm;
+    height: $pageHeight;
+    padding: 0;
+    margin: 0;
+    width: 200mm;
+    background-color: rgba(60, 56, 94, 0.2);
+    // background: linear-gradient(
+    //   rgba(255, 255, 255, 0.6),
+    //   rgba(80, 79, 79, 0.3)
+    // );
+  }
+  .overlay-text {
+    z-index: 10;
+    position: absolute;
+    color: white;
+    font-family: "Invesco Interstate Light";
+    font-size: 14pt;
+    letter-spacing: -0.2pt;
+    line-height: 25pt;
+    top: 10mm;
+    left: 0mm;
+  }
+}
+
+
+
+
+
+.section-body > p, .section-body > ul, .section-body > ol {
+  margin-top: 13.406mm;
+}
+
+.section-body > p, .section-body > ul > li, .section-body > ol > li {
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+
+.section-body ul {
+  margin-left: 0;
+  padding-left: 0.45cm;
+}
+
+.two-column-wrapper {
+  column-count: 2;
+  column-width: 48mm;
+  column-gap: 5mm;
+  font-family: "Invesco Interstate Light";
+  font-size: 11pt;
+  line-height: 14pt;
+  letter-spacing: 0.2pt;
+  width: 96%;
+  margin: 0;
+  height: 90%;
+
+
+  h2 h3 h4 {
+    font-family: "Invesco Interstate Bold";
+    font-size: 12pt;
+    line-height: 16pt;
+    letter-spacing: 0.2pt;
+    column-span: all;
+  }
+}
+
+.singlepage__left_content_text {
+  position: absolute;
+  top: 50mm;
+  width: 160mm;
+  height: 128mm;
+  left: 0;
+  //overflow: hidden;
+  margin: 0mm 10mm 10mm 0mm;
+  z-index: 10;
+  // border: 1px solid red;
+}
+
+.manual_column {
+  position: absolute;
+  padding: 1mm;
+  overflow: hidden;
+  font-family: "Invesco Interstate Light";
+  font-size: 11pt;
+  line-height: 14pt;
+  letter-spacing: 0.2pt;
+  z-index: 15;
+  blockquote {
+    border-left: 2px solid $red;
+    padding-left: 3mm;
+    p:last-child {
+      font-size: 10pt;
+      font-weight: normal;
+    }
+  }
 }

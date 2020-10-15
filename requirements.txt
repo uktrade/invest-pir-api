@@ -62,7 +62,7 @@ olefile==0.44             # via directory-validators, pillow
 pdfrw==0.4                # via weasyprint
 phonenumberslite==7.7.4   # via directory-validators
 pillow==4.2.1             # via cairosvg, directory-validators, django-markdownx
-psycopg2_binary # ==2.7.3.2         # via -r requirements.in
+psycopg2_binary==2.8.6    # via -r requirements.in
 pycparser==2.18           # via cffi
 pyjwt==1.6.4              # via notifications-python-client
 pyopenssl==19.0.0         # via requests
