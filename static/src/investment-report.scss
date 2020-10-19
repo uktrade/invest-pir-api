@@ -120,54 +120,6 @@ p {
     margin-left: 0mm;
   }
 }
-//@media print {
-    header.onlyprint {
-        position: fixed; /* Display only on print page (each) */
-        /* because this is taken from the first page margins, I need to adjust */
-        top: -10mm; /* Because it's header */
-        font-family: "Invesco Interstate Light";
-        color: $black;
-        font-size: 9pt;
-        padding-top: 14pt;
-        width: 1000mm;
-        z-index: 100;
-    }
-
-    #unionjackheader {
-        width: 20mm;// $column + $columnGap - 2mm;
-        //float: left;
-        padding-left: 1mm;
-        margin-left: 0;
-        padding-right: 0;
-        margin-right: 0;
-        left: 15mm;
-        z-index: 100;
-    }
-
-    #headerslogan {
-        //float: left;
-        position: absolute;
-        top: 5mm;
-        left: 14mm;
-        font-size: 10pt;
-        letter-spacing: -0.1pt;
-        z-index: 100;
-    }
-
-    #borderbottomheader {
-      width: 290mm - ($pageMargin);
-      height: 0.25pt;
-      position: absolute;
-      background: $black;
-      top: 10mm;
-      z-index: 100;
-    }
-
-    header.onlyprint img {
-      width: 9.876mm;
-      margin-left: 0mm;
-    }
-// }
 
 .page-break {
   page-break-after: always;
@@ -283,36 +235,6 @@ blockquote {
   margin-top: 2.5mm;
 }
 
-.toc-container {
-    display: grid;
-    grid-template-columns: 0.7fr 1.3fr;
-    grid-template-rows: 1fr;
-    gap: 1px 1px;
-    grid-template-areas: "left-col content";
-  }
-.left-col {
-
-    position: absolute;
-    left: -$pageMarginTop * 2;
-    top: -$pageMarginTop * 2;
-    width: 120mm;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    // opacity:0.7;
-    // float: left;
-    height: 220mm;
-    overflow: hidden;
-    z-index: -1;
-}
-.left-col h1 {
-    opacity: 1!important;
-    z-index: 10!important;
-    margin-top: $pageMargin * 2;
-    margin-left: $pageMargin * 1.4;
-    color: $red;
-    border-bottom: 7pt solid $red;
-}
 .toc .content-margin {
     position: absolute;
     display: block;
@@ -488,22 +410,14 @@ ul li:before {
 
 .singlepage__right_content_column {
   position: absolute;
-  //left: 160mm;
-  // top: -$pageMarginTop * 2;
   width: 180mm;
   height: 240mm;
-  //right: 0;
   color: white;
   font-family: "Invesco Interstate Light";
   font-size: 14pt;
   letter-spacing: -0.2pt;
   line-height: 25pt;
   top: 30mm;
-  // background:
-  //   linear-gradient(
-  //     rgba(0, 0, 0, 0.4),
-  //     rgba(255, 255, 255, 0.4)
-  //   );
 
   background-position: center;
   background-repeat: no-repeat;
@@ -515,46 +429,7 @@ ul li:before {
   z-index: 1;
 }
 
-.text-overlay-right-wide {
-  width: 180mm;
-  height: 240mm;
-  background:
-    linear-gradient(
-      rgba(255, 255, 255, 0.6),
-      rgba(121, 121, 121, 0.3)
-    );
-  position: absolute;
-  padding: 0;
-  margin: 0;
-  top: -30mm;
-  left: -20mm;
-  z-index: 0;
-}
 
-
-.singlepage__right_text {
-  color: black;
-  padding-right: $pageMargin * 2;
-  margin-left: $pageMargin;
-  margin-right: $pageMargin;
-  margin-top: $pageMarginTop * 2;
-  top: 30mm;
-  width: 80%;
-  position: absolute;
-}
-
-.singlepage__right_two_column_text {
-  // column-count: 2;
-  // column-width: 50%;
-  color: black;
-  padding-right: $pageMargin * 2;
-  margin-left: $pageMargin;
-  margin-right: $pageMargin;
-  margin-top: $pageMarginTop * 2;
-  top: 30mm;
-  width: 80%;
-  position: absolute;
-}
 
 /* page divided halfway */
 .singlepage__left_half_content {
@@ -565,13 +440,6 @@ ul li:before {
   top: 0;
   margin: 0;
   padding: $pageMargin;
-}
-.singlepage__left_half_content_text {
-  left: 0;
-  top: 0;
-  height: $pageHeight - $pageMarginTop;
-  width: 110mm;
-
 }
 .singlepage__right_half_content {
   width: $pageWidth / 2;
@@ -737,59 +605,7 @@ ul li:before {
   }
 }
 
-.centered_body {
-  align-items: center;
-  justify-content: center;
-}
 
-.centered_body__body {
-  background: white;
-  width: 128.435mm - (2 * 6.49mm);
-  overflow: hidden;
-  padding-top: 9.42mm;
-  padding-bottom: 9.42mm;
-  padding-left: 6.49mm;
-  padding-right: 6.49mm;
-}
-
-.centered_body__body > *:first-of-type {
-  margin-top: 0
-}
-
-.centered_body__body > *:last-of-type {
-  margin-bottom: 0
-}
-
-.centered_body.contact {
-  margin-top: 20mm;
-  border-top: solid $red 6pt;
-}
-
-.contact .centered_body__body {
-  width: 115mm - (9.7mm * 2);
-  padding-left: 9.7mm;
-  padding-right: 9.7mm;
-}
-
-.contact h3 {
-  font-size: 12pt;
-}
-
-.contact ul {
-  padding-top: 0.5rem;
-  padding-bottom: 1rem;
-  padding-left: 6.5mm;
-}
-
-.contact ul li {
-  margin-top: 0.5rem;
-}
-
-.contact.full-page__spread {
-  height: 245.97mm;
-  background-size: cover;
-  background-position: center;
-}
 
 section h1 + p > img,
 section h1 + p > a > img {
@@ -807,52 +623,6 @@ section h1 + p > a > img {
 #businessoverview-image {
   width: 147mm;
 }
-
-.whos-here {
-  ul {
-    width: 145mm;
-    height: 110mm;
-    list-style: none;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0;
-    overflow: hidden;
-    display: block;
-    margin-top: 58mm;
-  }
-
-  li {
-    margin: 3.2mm;
-    width: 41.7mm;
-    height: 30.839mm;
-    background: white;
-    float: left;
-    display: block;
-    overflow: hidden;
-    box-sizing: border-box;
-    padding: 5mm;
-  }
-
-  img {
-    max-width: 100%;
-    max-height: 22mm;
-  }
-
-  .table-cell {
-    height: 22mm;
-    width: 32mm;
-    vertical-align: middle;
-    text-align: center;
-  }
-}
-
-.table-cell {
-  display: table-cell;
-}
-
-
-
-
 
 .singlepage__right_content_text {
   position: absolute;
@@ -1038,11 +808,7 @@ section h1 + p > a > img {
     padding: 0;
     margin: 0;
     width: 200mm;
-    background-color: rgba(60, 56, 94, 0.2);
-    // background: linear-gradient(
-    //   rgba(255, 255, 255, 0.6),
-    //   rgba(80, 79, 79, 0.3)
-    // );
+    background-color: rgba(30,19,72, 0.2);
   }
   .overlay-text {
     z-index: 10;
@@ -1058,6 +824,52 @@ section h1 + p > a > img {
 }
 
 
+.page-container-3 {
+  display: grid;
+  grid-template-columns: 100mm 180mm;
+  grid-template-rows: 100%;
+  grid-column-gap: 0mm;
+  grid-row-gap: 0mm;
+
+  background-size: cover;
+  position: absolute;
+  left: -$pageMargin;
+  top: -$pageMargin;
+  width: $pageWidth;
+  height: $pageHeight;
+  z-index: -1;
+
+  .left {
+    grid-area: 1 / 1 / 2 / 2;
+    width: 100mm;
+  }
+  .right {
+    grid-area: 1 / 2 / 2 / 3;
+    width: 180mm;
+  }
+  .overlay {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 106.1mm;
+    height: $pageHeight;
+    padding: 0;
+    margin: 0;
+    width: 200mm;
+    background-color: rgba(49,44,98, 0.65);
+  }
+  .overlay-text {
+    z-index: 10;
+    position: absolute;
+    color: white;
+    font-family: "Invesco Interstate Light";
+    font-size: 14pt;
+    letter-spacing: -0.2pt;
+    line-height: 25pt;
+    top: 10mm;
+    left: 0mm;
+  }
+}
 
 
 
@@ -1120,11 +932,15 @@ section h1 + p > a > img {
   letter-spacing: 0.2pt;
   z-index: 15;
   blockquote {
+    font-style: italic;
+    font-family: "Georgia";
     border-left: 2px solid $red;
     padding-left: 3mm;
     p:last-child {
-      font-size: 10pt;
+      font-size: 11pt;
+      font-family: "Invesco Interstate Light"!important;
       font-weight: normal;
+      font-style: normal;
     }
   }
 }

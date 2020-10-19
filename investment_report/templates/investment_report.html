@@ -4,8 +4,8 @@
   <head>
     <meta charset="utf8">
     <title>{% trans "Invest in Great" %}</title>
-    <!-- <link rel="stylesheet" href="http://localhost:8014/investment-report/devcss.css"/> -->
-    <link rel="stylesheet" href="{% static "build/investment-report.css" %}" />
+    <link rel="stylesheet" href="http://localhost:8014/investment-report/devcss.css"/>
+    <!-- <link rel="stylesheet" href="{% static "build/investment-report.css" %}" /> -->
   </head>
 
   <body class="A4">
@@ -54,7 +54,7 @@
                 <li> {% trans "Achieving Great Things in $SECTOR" %}</li>
                 <li> {% trans "Links That Are Already Strong" %}</li>
                 <li> {% trans "UK Market Overview" %}</li>
-                <li> {% trans "$SECTOR in the UK: Going from Strength to Strength" %}</li>
+                <li> {% trans "The smart workforce $COMPANY needs" %}</li>
                 <li> {% trans "$SECTOR in the UK: Going from Strength to Strength" %}</li>
                 <li> {% trans "Case Study" %}</li>
                 <li> {% trans "A Flying Start - How We Can Get You Going" %}</li>
@@ -155,7 +155,7 @@
         <div class="header-underline" style="background: white;"></div>
       </div>
 
-      <div class="page-container-2"
+      <div class="page-container-3"
         style="background-image: url({% custom_media macro_context.background_image %})">
         <div class="left">
           <div class="singlepage-content">
@@ -207,9 +207,7 @@
 
         </div>
         <div class="singlepage__right_content_column">
-          <!-- <div class="overlay-text" style="font-size: 14pt; top: 10mm;"> -->
             <img id="marketoverview-image" src="{% custom_media uk_market_overview.body_image %}"/>
-          <!-- </div> -->
         </div>
       </div>
     </section>
@@ -236,7 +234,7 @@
               <div style="width: 102mm;">
                 <h1>5.</h1>
                   <h2>
-                    {% trans "$SECTOR in the UK: going from strength to strength" %}
+                    {% trans "The Smart Workforce $COMPANY needs" %}
                   </h2>
               </div>
               <div style="position: absolute; left: 23mm; top: 140mm; z-index: 99;">
