@@ -600,7 +600,7 @@ section h1 + p > a > img {
   margin: 0;
   left: 0;
   top: 0mm;
-  background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.6));
+  background-color: rgba(30, 19, 72, 0.2);
 }
 
 .overlay {

@@ -148,18 +148,18 @@ class FiltersModerationTranslationTestCase(TestCase):
         MacroContextBetweenCountries.objects.create(market=market,
                                                     content=sample_content)
         UKMarketOverview.objects.create()
-        UKBusinessInfo.objects.create()
-        UKGeographicOverview.objects.create(content=sample_content)
-        TalentAndEducationBySector.objects.create(sector=sector,
-                                                  content=sample_content)
-        NetworkAndSupport.objects.create(sector=sector, content=sample_content)
+        # UKBusinessInfo.objects.create()
+        # UKGeographicOverview.objects.create(content=sample_content)
+        # TalentAndEducationBySector.objects.create(sector=sector,
+        #                                           content=sample_content)
+        # NetworkAndSupport.objects.create(sector=sector, content=sample_content)
         SectorInitiatives.objects.create(sector=sector, content=sample_content)
-        RDandInnovation.objects.create(sector=sector, content=sample_content)
+        # RDandInnovation.objects.create(sector=sector, content=sample_content)
         # RDandInnovationCaseStudy.objects.create(sector=sector,
         #                                         content=sample_content)
         # VideoCaseStudy.objects.create(sector=sector, content=sample_content)
-        ServicesOfferedByDIT.objects.create(content=sample_content)
-        Contact.objects.create(content=sample_content)
+        # ServicesOfferedByDIT.objects.create(content=sample_content)
+        # Contact.objects.create(content=sample_content)
         LastPage.objects.create(content=sample_content)
 
         pdf_io = investment_report_pdf_generator(market, sector,

@@ -123,26 +123,26 @@ def get_investment_report_data(
     )
 
     context['uk_market_overview'] = filter_(models.UKMarketOverview)
-    context['uk_business_info'] = filter_(models.UKBusinessInfo)
+    # context['uk_business_info'] = filter_(models.UKBusinessInfo)
 
-    context['uk_geo_overview'] = filter_(models.UKGeographicOverview)
+    # context['uk_geo_overview'] = filter_(models.UKGeographicOverview)
 
-    context['talent_and_education_by_sector'] = filter_(
-        models.TalentAndEducationBySector, sector=sector
-    )
+    # context['talent_and_education_by_sector'] = filter_(
+    #     models.TalentAndEducationBySector, sector=sector
+    # )
 
-    context['network_and_support'] = filter_(
-        models.NetworkAndSupport,
-        sector=sector
-    )
+    # context['network_and_support'] = filter_(
+    #     models.NetworkAndSupport,
+    #     sector=sector
+    # )
 
     context['sector_initiatives'] = filter_(
         models.SectorInitiatives, sector=sector
     )
 
-    context['r_and_d_and_innovation'] = filter_(
-        models.RDandInnovation, sector=sector
-    )
+    # context['r_and_d_and_innovation'] = filter_(
+    #     models.RDandInnovation, sector=sector
+    # )
 
     # context['r_and_d_and_innovation_case_study'] = filter_(
     #     models.RDandInnovationCaseStudy, sector=sector
@@ -152,8 +152,8 @@ def get_investment_report_data(
     #     models.VideoCaseStudy, sector=sector
     # )
 
-    context['services_offered_by_dit'] = filter_(models.ServicesOfferedByDIT)
-    context['contact'] = filter_(models.Contact)
+    # context['services_offered_by_dit'] = filter_(models.ServicesOfferedByDIT)
+    # context['contact'] = filter_(models.Contact)
 
     context['sector'] = sector.display_name
 
