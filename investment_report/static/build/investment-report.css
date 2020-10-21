@@ -319,6 +319,23 @@ ul li:before {
 .contact-box ul li {
   line-height: 25pt;
 }
+.contact-box ul li img {
+  vertical-align: middle;
+}
+.contact-box ul li a {
+  text-decoration: none;
+  font-size: 12pt;
+  line-height: 25pt;
+  font-weight: bolder;
+  color: white;
+}
+.contact-box ul li a:visited {
+  text-decoration: none;
+  font-size: 12pt;
+  line-height: 25pt;
+  font-weight: bolder;
+  color: white;
+}
 .contact-box hr {
   color: white;
   size: 1mm;
@@ -553,9 +570,9 @@ section h1 + p > a > img {
 
 #marketoverview-image {
   position: absolute;
-  left: 30mm;
-  top: -6.5mm;
-  width: 115.581mm;
+  left: 10mm;
+  top: -10mm;
+  width: 145mm;
   z-index: 999;
 }
 
@@ -582,7 +599,7 @@ section h1 + p > a > img {
   margin: 0;
   left: 0;
   top: 0mm;
-  background: rgba(30, 19, 72, 0.3);
+  background: rgba(30, 19, 72, 0.2);
 }
 
 .overlay {
@@ -688,8 +705,6 @@ section h1 + p > a > img {
   content: counter(toc-counter) ". ";
   font-family: "Invesco Interstate Light";
   color: black;
-  font-weight: 900;
-  font-size: 20pt;
 }
 
 .page-container-2 {
@@ -732,9 +747,26 @@ section h1 + p > a > img {
   font-family: "Invesco Interstate Light";
   font-size: 14pt;
   letter-spacing: -0.2pt;
-  line-height: 25pt;
+  line-height: 20pt;
   top: 10mm;
-  left: 0mm;
+  left: 10mm;
+  width: 60%;
+}
+.page-container-2 a {
+  color: white;
+  font-family: "Invesco Interstate Light";
+  font-size: 10pt;
+  letter-spacing: -0.2pt;
+}
+.page-container-2 a:visited {
+  color: white;
+  font-family: "Invesco Interstate Light";
+  font-size: 10pt;
+  letter-spacing: -0.2pt;
+}
+.page-container-2 hr {
+  color: white;
+  size: 1px;
 }
 
 .page-container-3 {
@@ -775,11 +807,28 @@ section h1 + p > a > img {
   position: absolute;
   color: white;
   font-family: "Invesco Interstate Light";
-  font-size: 14pt;
+  font-size: 15pt;
   letter-spacing: -0.2pt;
-  line-height: 25pt;
+  line-height: 20pt;
   top: 10mm;
   left: 0mm;
+  width: 70%;
+}
+.page-container-3 a {
+  color: white;
+  font-family: "Invesco Interstate Light";
+  font-size: 10pt;
+  letter-spacing: -0.2pt;
+}
+.page-container-3 a:visited {
+  color: white;
+  font-family: "Invesco Interstate Light";
+  font-size: 10pt;
+  letter-spacing: -0.2pt;
+}
+.page-container-3 hr {
+  color: white;
+  size: 1px;
 }
 
 .section-body > p, .section-body > ul, .section-body > ol {
@@ -794,26 +843,6 @@ section h1 + p > a > img {
 .section-body ul {
   margin-left: 0;
   padding-left: 0.45cm;
-}
-
-.two-column-wrapper {
-  column-count: 2;
-  column-width: 48mm;
-  column-gap: 5mm;
-  font-family: "Invesco Interstate Light";
-  font-size: 11pt;
-  line-height: 14pt;
-  letter-spacing: 0.2pt;
-  width: 96%;
-  margin: 0;
-  height: 90%;
-}
-.two-column-wrapper h2 h3 h4 {
-  font-family: "Invesco Interstate Bold";
-  font-size: 12pt;
-  line-height: 16pt;
-  letter-spacing: 0.2pt;
-  column-span: all;
 }
 
 .singlepage__left_content_text {

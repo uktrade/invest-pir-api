@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from django.utils import translation
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 
 
 from investment_report.utils import (
@@ -89,7 +90,10 @@ def pir_csv(request):
 
 
 def dev_css(request):
-    with open('/usr/src/app/investment_report/static/build/investment-report.css', 'r') as css:
+    # '/usr/src/app
+    with open(
+        '{}/investment_report/static/build/investment-report.css'.format(settings.ROOT), 'r'
+    ) as css:
         content = css.read()
     response = HttpResponse(content, content_type='text/css')
     return response
@@ -100,7 +104,7 @@ def dev_css_plain(request):
     A utility view for testing, to load the live css, instead of a static resource
     """
     with open(
-        '/usr/src/app/investment_report/static/build/investment-report-plain.css', 'r'
+        '{}/investment_report/static/build/investment-report-plain.css'.format(settings.ROOT), 'r'
     ) as css:
         content = css.read()
     response = HttpResponse(content, content_type='text/css')

@@ -4,8 +4,8 @@
   <head>
     <meta charset="utf8">
     <title>{% trans "Invest in Great" %}</title>
-    <link rel="stylesheet" href="http://localhost:8014/investment-report/devcss.css"/>
-    <!-- <link rel="stylesheet" href="{% static "build/investment-report.css" %}" /> -->
+    <!-- <link rel="stylesheet" href="http://localhost:8014/investment-report/devcss.css"/> -->
+    <link rel="stylesheet" href="{% static "build/investment-report.css" %}" />
   </head>
 
   <body class="A4">
@@ -54,7 +54,7 @@
                 <li> {% trans "Achieving Great Things in $SECTOR" %}</li>
                 <li> {% trans "Links That Are Already Strong" %}</li>
                 <li> {% trans "UK Market Overview" %}</li>
-                <li> {% trans "The smart workforce $COMPANY needs" %}</li>
+                <li> {% trans "The Smart Workforce $COMPANY Needs" %}</li>
                 <li> {% trans "$SECTOR in the UK: Going from Strength to Strength" %}</li>
                 <li> {% trans "Case Study" %}</li>
                 <li> {% trans "A Flying Start - How We Can Get You Going" %}</li>
@@ -88,7 +88,7 @@
                 <div class="manual_column" style="left: 0; top: 0; width: 65mm; height: 125mm;">
                   {% markdown sector_overview.content 0 %}
                   </div>
-                  <div class="manual_column" style="left: 50%; top: 0; width: 65mm; height: 125mm;">
+                  <div class="manual_column" style="left: 43%; top: 0; width: 65mm; height: 125mm;">
                     {% markdown sector_overview.content 1 %}
                   </div>
               </div>
@@ -322,7 +322,7 @@
                 <div class="manual_column" style="left: 0; top: 0; width: 65mm; height: 120mm;">
                   {% markdown case_study_item.content 0 %}
                 </div>
-                <div class="manual_column" style="left: 50%; top: 0; width: 65mm; height: 120mm;">
+                <div class="manual_column" style="left: 46%; top: 0; width: 65mm; height: 120mm;">
                   {% markdown case_study_item.content 1 %}
                 </div>
              </div>
