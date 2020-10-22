@@ -164,7 +164,7 @@ class SectorOverview(PDFSection):
     )
 
     class Meta:
-        verbose_name = verbose_name_plural = '1 - Sector Overview'
+        verbose_name = verbose_name_plural = '1 - A Great Home for Company'
 
 
 class KillerFacts(PDFSection):
@@ -176,7 +176,7 @@ class KillerFacts(PDFSection):
     )
 
     class Meta:
-        verbose_name = verbose_name_plural = '2 - Killer Facts'
+        verbose_name = verbose_name_plural = '2 - Achieving Great Things in Sector'
 
 
 class MacroContextBetweenCountries(PDFSection):
@@ -188,7 +188,7 @@ class MacroContextBetweenCountries(PDFSection):
     )
 
     class Meta:
-        verbose_name = verbose_name_plural = '3 - Macro Context'
+        verbose_name = verbose_name_plural = '3 - Links that are already strong'
 
 
 class UKMarketOverview(PDFSection):
@@ -254,7 +254,7 @@ class CaseStudySector(PDFSection):
 
 
 class SectorInitiatives(PDFSection):
-    SECTION = 8
+    SECTION = 6
     sector = models.ForeignKey(Sector)
     background_image = models.ImageField(
         help_text='Background image for this page',
@@ -262,7 +262,7 @@ class SectorInitiatives(PDFSection):
     )
 
     class Meta:
-        verbose_name = verbose_name_plural = '8 - Sector Initiatives'
+        verbose_name = verbose_name_plural = '6 - Sector in the UK'
 
 
 class HowWeCanHelp(PDFSection):
@@ -278,34 +278,12 @@ class HowWeCanHelp(PDFSection):
         verbose_name = verbose_name_plural = '8 - How we can help'
 
 
-class Contact(PDFSection):
-    SECTION = 15
-    SINGLETON = True
-
-    TRANSLATION_FIELDS = (
-        PDFSection.TRANSLATION_FIELDS + ['title', ]
-    )
-
-    title = models.CharField(max_length=255)
-    website = models.CharField(max_length=255)
-    website_href = models.URLField(
-        max_length=255,
-        help_text='Custom link for website (used for tracking)'
-    )
-    email = models.CharField(max_length=255)
-    phone = models.CharField(max_length=255)
-    background_image = models.ImageField()
-
-    class Meta:
-        verbose_name = verbose_name_plural = '15 - Contact'
-
-
 class LastPage(PDFSection):
-    SECTION = 16
+    SECTION = 9
     SINGLETON = True
 
     class Meta:
-        verbose_name = verbose_name_plural = '16 - Last Page'
+        verbose_name = verbose_name_plural = '9 - Last Page'
 
 
 sections = sorted(PDFSection.__subclasses__(), key=lambda x: x.SECTION)

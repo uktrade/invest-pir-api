@@ -11,11 +11,9 @@ from investment_report.views.utils import pir_csv
 # or market
 from investment_report.models import (
     Sector, Market, FrontPage, SectorOverview, KillerFacts,
-    MacroContextBetweenCountries, UKMarketOverview, UKBusinessInfo,
-    UKGeographicOverview, TalentAndEducationBySector, NetworkAndSupport,
-    SectorInitiatives, RDandInnovation,
-    ServicesOfferedByDIT, Contact, LastPage,
-)  # RDandInnovationCaseStudy, VideoCaseStudy,
+    MacroContextBetweenCountries, UKMarketOverview,
+    UKGeographicOverview, SectorInitiatives, LastPage,
+)
 
 from investment_report.utils import (
     filter_translations_and_moderation, get_investment_report_data,
@@ -148,18 +146,7 @@ class FiltersModerationTranslationTestCase(TestCase):
         MacroContextBetweenCountries.objects.create(market=market,
                                                     content=sample_content)
         UKMarketOverview.objects.create()
-        # UKBusinessInfo.objects.create()
-        # UKGeographicOverview.objects.create(content=sample_content)
-        # TalentAndEducationBySector.objects.create(sector=sector,
-        #                                           content=sample_content)
-        # NetworkAndSupport.objects.create(sector=sector, content=sample_content)
         SectorInitiatives.objects.create(sector=sector, content=sample_content)
-        # RDandInnovation.objects.create(sector=sector, content=sample_content)
-        # RDandInnovationCaseStudy.objects.create(sector=sector,
-        #                                         content=sample_content)
-        # VideoCaseStudy.objects.create(sector=sector, content=sample_content)
-        # ServicesOfferedByDIT.objects.create(content=sample_content)
-        # Contact.objects.create(content=sample_content)
         LastPage.objects.create(content=sample_content)
 
         pdf_io = investment_report_pdf_generator(market, sector,

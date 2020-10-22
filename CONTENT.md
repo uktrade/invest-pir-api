@@ -5,6 +5,7 @@ The following notes relate to content entry via the admin:
 
 - Two spaces at the end of a line will render a line break at that point.
 - A blank line will render a new paragraph.
+- Some sections contain multiple pages. Those shuld be numbered sequentially in the `Sub Page` field (1, 2, 3, etc.).
 - In column content, three consecutive dashes in a separate line will trigger the next column:
   ```
   This is text in the left column
