@@ -12,7 +12,7 @@ from investment_report.views.utils import pir_csv
 from investment_report.models import (
     Sector, Market, FrontPage, SectorOverview, KillerFacts,
     MacroContextBetweenCountries, UKMarketOverview,
-    UKGeographicOverview, SectorInitiatives, LastPage,
+    SectorInitiatives, HowWeCanHelp, LastPage,
 )
 
 from investment_report.utils import (
@@ -28,41 +28,41 @@ from moderation.constants import (
 class FiltersModerationTranslationTestCase(TestCase):
 
     def test_moderation_filtering(self):
-        geographic_overview = UKGeographicOverview.objects.create(
+        geographic_overview = HowWeCanHelp.objects.create(
             content_en='English',
             content_es='Spanish'
         )
 
         self.assertEquals(
-            UKGeographicOverview.objects.count(), 0
+            HowWeCanHelp.objects.count(), 0
         )
 
         self.assertEquals(
-            UKGeographicOverview.unmoderated_objects.count(), 1
+            HowWeCanHelp.unmoderated_objects.count(), 1
         )
 
         self.assertIsNotNone(
-            filter_translations_and_moderation(UKGeographicOverview,
+            filter_translations_and_moderation(HowWeCanHelp,
                                                moderated=False)
         )
 
         # Test object not registered with moderation
         geographic_overview.moderated_object.delete()
         self.assertIsNotNone(
-            filter_translations_and_moderation(UKGeographicOverview,
+            filter_translations_and_moderation(HowWeCanHelp,
                                                moderated=False)
         )
 
     def test_basic_language_filtering(self):
-        UKGeographicOverview.objects.create(
+        HowWeCanHelp.objects.create(
             content_en='English',
             content_es='Spanish'
         )
 
         # Test with english
-        moderated = filter_translations_and_moderation(UKGeographicOverview)
+        moderated = filter_translations_and_moderation(HowWeCanHelp)
         unmoderated = filter_translations_and_moderation(
-            UKGeographicOverview, moderated=False
+            HowWeCanHelp, moderated=False
         )
         self.assertIsNone(moderated)
         self.assertIsNotNone(unmoderated)
@@ -70,10 +70,10 @@ class FiltersModerationTranslationTestCase(TestCase):
         # Test with spanish
         with translation.override('es'):
             moderated = filter_translations_and_moderation(
-                UKGeographicOverview)
+                HowWeCanHelp)
 
             unmoderated = filter_translations_and_moderation(
-                UKGeographicOverview, moderated=False
+                HowWeCanHelp, moderated=False
             )
             self.assertIsNone(moderated)
             self.assertIsNotNone(unmoderated)
@@ -81,10 +81,10 @@ class FiltersModerationTranslationTestCase(TestCase):
         # Test with non-existant language
         with translation.override('pt'):
             moderated = filter_translations_and_moderation(
-                UKGeographicOverview)
+                HowWeCanHelp)
 
             unmoderated = filter_translations_and_moderation(
-                UKGeographicOverview, moderated=False
+                HowWeCanHelp, moderated=False
             )
 
             self.assertIsNone(moderated)
@@ -94,7 +94,7 @@ class FiltersModerationTranslationTestCase(TestCase):
         market = Market.objects.create(name='test')
         sector = Sector.objects.create(name='test')
 
-        geo_overview = UKGeographicOverview.objects.create(
+        geo_overview = HowWeCanHelp.objects.create(
             content_en='English Moderated',
         )
 
