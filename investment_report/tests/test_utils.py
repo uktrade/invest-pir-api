@@ -111,7 +111,7 @@ class FiltersModerationTranslationTestCase(TestCase):
         )
 
         self.assertEquals(
-            data['uk_geo_overview'].content_en,
+            data['how_we_can_help'].content_en,
             'English Moderated'
         )
 
@@ -120,7 +120,7 @@ class FiltersModerationTranslationTestCase(TestCase):
         )
 
         self.assertEquals(
-            data['uk_geo_overview'].content_en,
+            data['how_we_can_help'].content_en,
             'English Unmoderated'
         )
 
