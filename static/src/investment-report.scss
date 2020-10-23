@@ -380,7 +380,7 @@ ul li:before {
 
 
 .singlepage-content {
-  margin-top: 20mm;
+  margin-top: 26mm;
   margin-left: $pageMargin;
 
 }
@@ -400,7 +400,7 @@ ul li:before {
   position: relative;
   display: inline-block;
   left: 0mm;
-  width: 115mm;
+  width: 106mm;
   height: 220mm;
   margin: 0;
   padding: 0;
@@ -528,27 +528,6 @@ ul li:before {
 
 
 
-.full-page h1 {
-  margin-top: 22.639mm - 5mm;
-  margin-bottom: 0;
-}
-
-.full-page__spread {
-  height: 225.97mm;
-  background: lightgrey;
-  background-size: cover;
-  background-position: center;
-}
-
-.secondary-page {
-  font-size: 12pt;
-  line-height: 125%;
-}
-
-.secondary-page img {
-  width: 100%;
-}
-
 .dark-list > ul {
   page-break-inside: avoid;
   background: #f1ede8;
@@ -642,7 +621,12 @@ section h1 + p > a > img {
   //padding-top: 30mm;
   left: 0;
   top: 0mm;
-  background:  rgba(30,19,72, 0.2);
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,1) 0%,
+    rgba(255,255,255, 0) 50%,
+    rgba(0,0,0,1) 96%
+  );
 }
 
 
@@ -673,7 +657,7 @@ section h1 + p > a > img {
 
 .page-container-contents {
   display: grid;
-  grid-template-columns: 110mm 180mm;
+  grid-template-columns: 112mm 178mm;
   grid-template-rows: 100%;
   grid-column-gap: 0mm;
   grid-row-gap: 0mm;
@@ -737,7 +721,7 @@ section h1 + p > a > img {
   .overlay-text {
     z-index: 3;
     position: absolute;
-    left: -2mm;
+    left: -5mm;
     top: -5mm;
     font-family: "Invesco Interstate Light";
     font-size: 14pt;
