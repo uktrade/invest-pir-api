@@ -744,7 +744,7 @@ section h1 + p > a > img {
       content: counter(toc-counter) ". ";
       font-family: "Invesco Interstate Light";
       color: black;
-      // font-weight: 900;
+      font-weight: bolder;
       // font-size: 20pt;
     }
   }
@@ -932,4 +932,10 @@ section h1 + p > a > img {
       font-style: normal;
     }
   }
+}
+
+.link-overlay {
+  position: absolute;
+  z-index: 99999999;
+
 }

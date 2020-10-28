@@ -684,6 +684,7 @@ section h1 + p > a > img {
   content: counter(toc-counter) ". ";
   font-family: "Invesco Interstate Light";
   color: black;
+  font-weight: bolder;
 }
 
 .page-container-2 {
@@ -855,5 +856,10 @@ section h1 + p > a > img {
   font-family: "Invesco Interstate Light" !important;
   font-weight: normal;
   font-style: normal;
+}
+
+.link-overlay {
+  position: absolute;
+  z-index: 99999999;
 }
 /*# sourceMappingURL=investment-report.css.map */
