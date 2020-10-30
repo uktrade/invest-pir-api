@@ -2,4 +2,4 @@
 [flake8]
 exclude = */migrations/*,__pycache__,manage.py,*/settings/*,env/*,venv/,node_modules/*,src/*
 ignore=W605
-max-line-length = 100
+max-line-length = 120
