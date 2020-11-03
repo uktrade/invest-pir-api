@@ -11,10 +11,8 @@ from investment_report.views.utils import pir_csv
 # or market
 from investment_report.models import (
     Sector, Market, FrontPage, SectorOverview, KillerFacts,
-    MacroContextBetweenCountries, UKMarketOverview, UKBusinessInfo,
-    UKGeographicOverview, TalentAndEducationBySector, NetworkAndSupport,
-    SectorInitiatives, RDandInnovation, RDandInnovationCaseStudy,
-    VideoCaseStudy, ServicesOfferedByDIT, Contact, LastPage,
+    MacroContextBetweenCountries, UKMarketOverview,
+    SectorInitiatives, HowWeCanHelp, LastPage,
 )
 
 from investment_report.utils import (
@@ -30,41 +28,41 @@ from moderation.constants import (
 class FiltersModerationTranslationTestCase(TestCase):
 
     def test_moderation_filtering(self):
-        geographic_overview = UKGeographicOverview.objects.create(
+        geographic_overview = HowWeCanHelp.objects.create(
             content_en='English',
             content_es='Spanish'
         )
 
         self.assertEquals(
-            UKGeographicOverview.objects.count(), 0
+            HowWeCanHelp.objects.count(), 0
         )
 
         self.assertEquals(
-            UKGeographicOverview.unmoderated_objects.count(), 1
+            HowWeCanHelp.unmoderated_objects.count(), 1
         )
 
         self.assertIsNotNone(
-            filter_translations_and_moderation(UKGeographicOverview,
+            filter_translations_and_moderation(HowWeCanHelp,
                                                moderated=False)
         )
 
         # Test object not registered with moderation
         geographic_overview.moderated_object.delete()
         self.assertIsNotNone(
-            filter_translations_and_moderation(UKGeographicOverview,
+            filter_translations_and_moderation(HowWeCanHelp,
                                                moderated=False)
         )
 
     def test_basic_language_filtering(self):
-        UKGeographicOverview.objects.create(
+        HowWeCanHelp.objects.create(
             content_en='English',
             content_es='Spanish'
         )
 
         # Test with english
-        moderated = filter_translations_and_moderation(UKGeographicOverview)
+        moderated = filter_translations_and_moderation(HowWeCanHelp)
         unmoderated = filter_translations_and_moderation(
-            UKGeographicOverview, moderated=False
+            HowWeCanHelp, moderated=False
         )
         self.assertIsNone(moderated)
         self.assertIsNotNone(unmoderated)
@@ -72,10 +70,10 @@ class FiltersModerationTranslationTestCase(TestCase):
         # Test with spanish
         with translation.override('es'):
             moderated = filter_translations_and_moderation(
-                UKGeographicOverview)
+                HowWeCanHelp)
 
             unmoderated = filter_translations_and_moderation(
-                UKGeographicOverview, moderated=False
+                HowWeCanHelp, moderated=False
             )
             self.assertIsNone(moderated)
             self.assertIsNotNone(unmoderated)
@@ -83,10 +81,10 @@ class FiltersModerationTranslationTestCase(TestCase):
         # Test with non-existant language
         with translation.override('pt'):
             moderated = filter_translations_and_moderation(
-                UKGeographicOverview)
+                HowWeCanHelp)
 
             unmoderated = filter_translations_and_moderation(
-                UKGeographicOverview, moderated=False
+                HowWeCanHelp, moderated=False
             )
 
             self.assertIsNone(moderated)
@@ -96,7 +94,7 @@ class FiltersModerationTranslationTestCase(TestCase):
         market = Market.objects.create(name='test')
         sector = Sector.objects.create(name='test')
 
-        geo_overview = UKGeographicOverview.objects.create(
+        geo_overview = HowWeCanHelp.objects.create(
             content_en='English Moderated',
         )
 
@@ -113,7 +111,7 @@ class FiltersModerationTranslationTestCase(TestCase):
         )
 
         self.assertEquals(
-            data['uk_geo_overview'].content_en,
+            data['how_we_can_help'].content_en,
             'English Moderated'
         )
 
@@ -122,7 +120,7 @@ class FiltersModerationTranslationTestCase(TestCase):
         )
 
         self.assertEquals(
-            data['uk_geo_overview'].content_en,
+            data['how_we_can_help'].content_en,
             'English Unmoderated'
         )
 
@@ -148,18 +146,7 @@ class FiltersModerationTranslationTestCase(TestCase):
         MacroContextBetweenCountries.objects.create(market=market,
                                                     content=sample_content)
         UKMarketOverview.objects.create()
-        UKBusinessInfo.objects.create()
-        UKGeographicOverview.objects.create(content=sample_content)
-        TalentAndEducationBySector.objects.create(sector=sector,
-                                                  content=sample_content)
-        NetworkAndSupport.objects.create(sector=sector, content=sample_content)
         SectorInitiatives.objects.create(sector=sector, content=sample_content)
-        RDandInnovation.objects.create(sector=sector, content=sample_content)
-        RDandInnovationCaseStudy.objects.create(sector=sector,
-                                                content=sample_content)
-        VideoCaseStudy.objects.create(sector=sector, content=sample_content)
-        ServicesOfferedByDIT.objects.create(content=sample_content)
-        Contact.objects.create(content=sample_content)
         LastPage.objects.create(content=sample_content)
 
         pdf_io = investment_report_pdf_generator(market, sector,

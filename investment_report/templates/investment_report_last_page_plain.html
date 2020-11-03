@@ -4,23 +4,19 @@
   <head>
     <meta charset="utf8">
     <title>{% trans "Investment Report" %}</title>
-    <!-- <link rel="stylesheet" href="http://localhost:8014/investment-report/devcsslast.css"/> -->
-    <link rel="stylesheet" href="{% static "build/investment-report-last-page.css" %}" />
+    <!-- <link rel="stylesheet" href="http://localhost:8014/investment-report/devcssplain.css"/> -->
+    <link rel="stylesheet" href="{% static "build/investment-report-plain.css" %}" />
   </head>
 
-  <body class="A4" style="top: 0; left: 0; background-repeat: no-repeat;     background-position: center;
-  background-size: cover;
-background-image: url('{% static "images/ship-v1.jpg" %}');">
+  <body class="A4">
     {% autoescape off %}
 
-    <section class="front-page" >
-        <div class="left_panel">
-            <img class="front-page__logo" src="{% static "images/frontpagebottomrightlogo.png" %}"/>
+    <section class="last-page" >
 
             <div>
                 <div class="dit_logos">
                     <div style="float: left;">
-                      <img src="{% static "images/DIT-logo-detailed-white.png" %}" class="logo"/>
+                      <img src="{% static "images/DIT-logo-detailed-black.png" %}" class="logo"/>
 
                     </div>
                     <div class="dit_url"  style="width: 70mm; vertical-align: bottom;">
@@ -28,7 +24,7 @@ background-image: url('{% static "images/ship-v1.jpg" %}');">
                     </div>
                 </div>
 
-                <div class="left_panel_content">
+                <div>
                     <P>
                         The UK’s Department for International Trade (DIT) has overall responsibility for
                         promoting UK trade across the world and attracting foreign investment to our economy.
@@ -63,10 +59,6 @@ background-image: url('{% static "images/ship-v1.jpg" %}');">
                     </P>
                 </div>
             </div>
-        </div>
-        <div class="right_panel" >
-
-        </div>
 
     </section>
     {% endautoescape %}

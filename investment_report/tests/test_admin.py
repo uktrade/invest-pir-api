@@ -12,8 +12,8 @@ from moderation.constants import MODERATION_READY_STATE, \
 
 from investment_report.admin import admin_site, PDFPreviewMixin, PDFAdmin
 from investment_report.models import (
-    UKGeographicOverview, Market, Sector,
-    TalentAndEducationBySector, MacroContextBetweenCountries
+    HowWeCanHelp, Market, Sector, KillerFacts,
+    MacroContextBetweenCountries,
 )
 
 
@@ -35,10 +35,10 @@ class AdminTestCase(TestCase):
                 break
 
         for model in app['models']:
-            if model['object_name'] == 'UKGeographicOverview':
+            if model['object_name'] == 'HowWeCanHelp':
                 break
 
-        self.assertEquals(model['order'], UKGeographicOverview.SECTION)
+        self.assertEquals(model['order'], HowWeCanHelp.SECTION)
 
         for model in app['models']:
             if model['object_name'] == 'Market':
@@ -50,7 +50,7 @@ class AdminTestCase(TestCase):
         market = Market.objects.create(name='market')
         Sector.objects.create(name='other')
         sector = Sector.objects.create(name='actual')
-        talent = TalentAndEducationBySector.objects.create(
+        talent = KillerFacts.objects.create(
             content_en='test', sector=sector
         )
 
@@ -108,7 +108,7 @@ class AdminTestCase(TestCase):
     def test_pdf_admin_change_view_for_preview_links(self):
         Market.objects.create(name='market')
         sector = Sector.objects.create(name='actual')
-        talent = TalentAndEducationBySector.objects.create(
+        talent = KillerFacts.objects.create(
             content_en='test', sector=sector
         )
 
@@ -116,7 +116,7 @@ class AdminTestCase(TestCase):
         request.user = self.user
         request._messages = Mock()
 
-        response = PDFAdmin(TalentAndEducationBySector,
+        response = PDFAdmin(KillerFacts,
                             admin_site).change_view(request, str(talent.id))
 
         self.assertEquals(len(response.context_data['preview']),
