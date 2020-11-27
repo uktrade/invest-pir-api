@@ -14,6 +14,7 @@ class Moderator(GenericModerator):
 
 for model_class in [
     models.FrontPage,
+    models.ContentsPage,
     models.SectorOverview,
     models.KillerFacts,
     models.MacroContextBetweenCountries,

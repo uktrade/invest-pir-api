@@ -110,6 +110,10 @@ def get_investment_report_data(
         models.FrontPage, sector=sector
     )
 
+    context['contents'] = filter_(
+        models.ContentsPage, sector=sector
+    )
+
     context['sector_overview'] = filter_(
         models.SectorOverview, sector=sector
     )
