@@ -39,7 +39,8 @@
 
       <div class="page-container-contents">
         <div class="left">
-          <div class="background-wrapper" style="background-image: url('{% static "images/circuit-board-v2.jpg" %}');">
+          <div class="background-wrapper"
+              style="background-image: url({% custom_media contents.background_image %});">
             <div class="overlay">
               <div class="overlay-text" style="width:90.5mm;">
                 <h1>{% trans "Contents" %}</h1>
@@ -72,9 +73,9 @@
         <div class="union-jack">
           <img src="{% static "images/unionjack.png" %}"/>
         </div>
-        <div class="header-tag">{% trans "Expand your business to the UK" %}</div>
-        <div class="page-counter">{{ page_counter.page }}</div>
-        <div class="header-underline"></div>
+        <div class="header-tag" {% header_color sector_overview %}>{% trans "Expand your business to the UK" %}</div>
+        <div class="page-counter" {% header_color sector_overview %}>{{ page_counter.page }}</div>
+        <div class="header-underline" {% header_color sector_overview 'background' %}></div>
       </div>
 
       <div class="singlepage__wrapper">
@@ -113,9 +114,9 @@
         <div class="union-jack">
           <img src="{% static "images/unionjack.png" %}"/>
         </div>
-        <div class="header-tag">{% trans "Expand your business to the UK" %}</div>
-        <div class="page-counter">{{ page_counter.page }}</div>
-        <div class="header-underline"></div>
+        <div class="header-tag" {% header_color killer_facts %}>{% trans "Expand your business to the UK" %}</div>
+        <div class="page-counter" {% header_color killer_facts %}>{{ page_counter.page }}</div>
+        <div class="header-underline" {% header_color killer_facts 'background' %}></div>
       </div>
 
       <div class="page-container-2"
@@ -150,9 +151,9 @@
         <div class="union-jack">
           <img src="{% static "images/unionjack.png" %}"/>
         </div>
-        <div class="header-tag" style="color: white;">{% trans "Expand your business to the UK" %}</div>
-        <div class="page-counter" style="color: white;">{{ page_counter.page }}</div>
-        <div class="header-underline" style="background: white;"></div>
+        <div class="header-tag" {% header_color macro_context %}>{% trans "Expand your business to the UK" %}</div>
+        <div class="page-counter"  {% header_color macro_context %}>{{ page_counter.page }}</div>
+        <div class="header-underline" {% header_color macro_context 'background' %}></div>
       </div>
 
       <div class="page-container-3"
@@ -238,9 +239,9 @@
         <div class="union-jack">
           <img src="{% static "images/unionjack.png" %}"/>
         </div>
-        <div class="header-tag">{% trans "Expand your business to the UK" %}</div>
-        <div class="page-counter">{{ page_counter.page }}</div>
-        <div class="header-underline"></div>
+        <div class="header-tag" {% header_color smart_workforce %}>{% trans "Expand your business to the UK" %}</div>
+        <div class="page-counter" {% header_color smart_workforce %}>{{ page_counter.page }}</div>
+        <div class="header-underline" {% header_color smart_workforce 'background' %}></div>
       </div>
       <div class="section-body background-image">
         <div class="left-content singlepage__narrow_left_image_column"
@@ -281,9 +282,9 @@
         <div class="union-jack">
           <img src="{% static "images/unionjack.png" %}"/>
         </div>
-        <div class="header-tag">{% trans "Expand your business to the UK" %}</div>
-        <div class="page-counter">{{ page_counter.page }}</div>
-        <div class="header-underline"></div>
+        <div class="header-tag" {% header_color sector_initiatives %}>{% trans "Expand your business to the UK" %}</div>
+        <div class="page-counter" {% header_color sector_initiatives %}>{{ page_counter.page }}</div>
+        <div class="header-underline" {% header_color sector_initiatives 'background' %}></div>
       </div>
       <div class="section-body background-image">
         <div class="left-content singlepage__narrow_left_image_column"
@@ -323,9 +324,9 @@
         <div class="union-jack">
           <img src="{% static "images/unionjack.png" %}"/>
         </div>
-        <div class="header-tag">{% trans "Expand your business to the UK" %}</div>
-        <div class="page-counter">{{ page_counter.page }}</div>
-        <div class="header-underline"></div>
+        <div class="header-tag" {% header_color case_study_item %}>{% trans "Expand your business to the UK" %}</div>
+        <div class="page-counter" {% header_color case_study_item %}>{{ page_counter.page }}</div>
+        <div class="header-underline" {% header_color case_study_item 'background' %}></div>
       </div>
       <div class="singlepage__wrapper">
        <div class="left-content singlepage__left_content_column">
@@ -365,9 +366,9 @@
         <div class="union-jack">
           <img src="{% static "images/unionjack.png" %}"/>
         </div>
-        <div class="header-tag">{% trans "Expand your business to the UK" %}</div>
-        <div class="page-counter">{{ page_counter.page }}</div>
-        <div class="header-underline"></div>
+        <div class="header-tag" {% header_color how_we_can_help %}>{% trans "Expand your business to the UK" %}</div>
+        <div class="page-counter" {% header_color how_we_can_help %}>{{ page_counter.page }}</div>
+        <div class="header-underline" {% header_color how_we_can_help 'background' %}></div>
       </div>
       <div class="section-body background-image">
         <div class="left-content singlepage__left_half_content">

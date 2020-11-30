@@ -112,6 +112,12 @@ class PDFSection(models.Model):
             'for intructions. Images may be dragged and droped into the editor'
         )
     )
+    header_color = models.CharField(
+        max_length=16,
+        null=True,
+        blank=True,
+        help_text="Overide default header text colour (for dark backgrounds)"
+    )
 
     class Meta:
         abstract = True
@@ -142,6 +148,23 @@ class FrontPage(PDFSection):
 
     class Meta:
         verbose_name = verbose_name_plural = '0 - Front Page'
+
+
+class ContentsPage(PDFSection):
+    SECTION = 0
+    SINGLETON = False
+    TRANSLATION_FIELDS = []
+
+    def __str__(self):
+        return 'Table of Contents - {}'.format(self.sector)
+
+    # No body
+    content = None
+    background_image = models.FileField()
+    sector = models.ForeignKey(Sector)
+
+    class Meta:
+        verbose_name = verbose_name_plural = '0 - Table of Contents'
 
 
 class SectorOverview(PDFSection):

@@ -499,6 +499,19 @@ ul li:before {
   gap: 1px 1px;
   grid-template-areas: "left-content right-image";
   z-index: 1;
+
+  a {
+    color: #313131;
+    font-family: "Invesco Interstate Light";
+    font-size: 10pt;
+    letter-spacing: -0.2pt;
+  }
+  a:visited {
+    color: #313131;
+    font-family: "Invesco Interstate Light";
+    font-size: 10pt;
+    letter-spacing: -0.2pt;
+  }
 }
 
 .singlepage__left_content_column {
@@ -610,6 +623,19 @@ section h1 + p > a > img {
   overflow: hidden;
   margin: 0mm 10mm 10mm 0mm;
   z-index: 10;
+
+  a {
+    color: #313131;
+    font-family: "Invesco Interstate Light";
+    font-size: 10pt;
+    letter-spacing: -0.2pt;
+  }
+  a:visited {
+    color: #313131;
+    font-family: "Invesco Interstate Light";
+    font-size: 10pt;
+    letter-spacing: -0.2pt;
+  }
 }
 
 
@@ -908,7 +934,18 @@ section h1 + p > a > img {
   //overflow: hidden;
   margin: 0mm 10mm 10mm 0mm;
   z-index: 10;
-  // border: 1px solid red;
+  a {
+    color: #313131;
+    font-family: "Invesco Interstate Light";
+    font-size: 10pt;
+    letter-spacing: -0.2pt;
+  }
+  a:visited {
+    color: #313131;
+    font-family: "Invesco Interstate Light";
+    font-size: 10pt;
+    letter-spacing: -0.2pt;
+  }
 }
 
 .manual_column {
