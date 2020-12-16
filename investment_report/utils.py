@@ -133,6 +133,7 @@ def get_investment_report_data(
     )
 
     context['sector'] = sector.display_name
+    context['sector_name'] = sector.name.lower()
     context['smart_workforce'] = filter_(models.SmartWorkforceSector, sector=sector)
     context['case_study'] = filter_(models.CaseStudySector, sector=sector)
     context['how_we_can_help'] = filter_(models.HowWeCanHelp)
