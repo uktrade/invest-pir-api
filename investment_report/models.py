@@ -94,10 +94,16 @@ class MarketContact(models.Model):
     first_title = models.CharField(max_length=250, null=True, blank=True, help_text=(
         'Title appearing only on the first contact box'
     ))
-    title = models.CharField(max_length=250, null=True, blank=True)
+    title = models.CharField(max_length=250, null=True, blank=True, help_text=(
+        'Title appearing in any other contact box besides the first'
+    ))
     text = models.CharField(max_length=500, null=True, blank=True)
-    contact_display_link = models.CharField(max_length=250, null=True, blank=True)
-    contact_url = models.CharField(max_length=500, null=True, blank=True)
+    contact_display_link = models.CharField(max_length=250, null=True, blank=True, help_text=(
+        'The contact url display'
+    ))
+    contact_url = models.CharField(max_length=500, null=True, blank=True, help_text=(
+        'The actual contact page url'
+    ))
     email_address = models.CharField(max_length=250, null=True, blank=True)
     phone = models.CharField(max_length=50, null=True, blank=True)
 
