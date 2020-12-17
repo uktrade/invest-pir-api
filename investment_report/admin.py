@@ -1,7 +1,7 @@
 # virtually admin.yp
 
 from investment_report.models import (
-    PDFSection, Market, Sector, MarketLogo, SectorLogo, PIRRequest
+    PDFSection, Market, Sector, PIRRequest, MarketContact
 )
 
 import django
@@ -182,12 +182,8 @@ class SectorAdmin(admin.ModelAdmin):
     pass
 
 
-class MarketLogoAdmin(AdminImageMixin, admin.ModelAdmin):
-    list_display = ['name', 'market', ]
-
-
-class SectorLogoAdmin(AdminImageMixin, admin.ModelAdmin):
-    list_display = ['name', 'sector', ]
+class MarketContactAdmin(admin.ModelAdmin):
+    pass
 
 
 class CustomModeratedObjectAdmin(ModeratedObjectAdmin, PDFPreviewMixin):
@@ -262,8 +258,7 @@ admin_site.register(ModeratedObject, CustomModeratedObjectAdmin)
 admin_site.register(Market, MarketAdmin)
 admin_site.register(Sector, SectorAdmin)
 admin_site.register(PIRRequest, PIRRequestAdmin)
-admin_site.register(MarketLogo, MarketLogoAdmin)
-admin_site.register(SectorLogo, SectorLogoAdmin)
+admin_site.register(MarketContact, MarketContactAdmin)
 admin_site.register(User, UserAdmin)
 admin_site.register(Group, GroupAdmin)
 admin_site.register(Site, admin.ModelAdmin)

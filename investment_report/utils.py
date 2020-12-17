@@ -144,15 +144,21 @@ def get_investment_report_data(
     context['last_page'] = models.LastPage.objects.first()
     context['settings'] = settings
 
-    context['market_logos'] = models.MarketLogo.objects.filter(
-        market=market
-    )[:4]
-    context['sector_logos'] = models.SectorLogo.objects.filter(
-        sector=sector
-    )[:4]
-
     context['section_counter'] = 1
     context['current_year'] = datetime.date.today().year
+
+    contact = filter_(models.MarketContact, market__isnull=True)
+    market_contact = filter_(models.MarketContact, market=market)
+    contact_fields = (
+        'title', 'first_title', 'text', 'contact_display_link',
+        'contact_url', 'email_address', 'phone'
+    )
+    for contact_data in (contact, market_contact):
+        if contact_data:
+            for field in contact_fields:
+                contact_value = getattr(contact_data, field)
+                if contact_value:
+                    context['contact_{}'.format(field)] = contact_value
 
     return context
 

@@ -82,22 +82,27 @@ class Market(models.Model):
         return self.name
 
 
-class MarketLogo(models.Model):
-    name = models.CharField(max_length=255)
-    image = ImageField()
-    market = models.ForeignKey(Market)
+class MarketContact(models.Model):
+    """
+    Contact details for the contact box. Can be configured by market.
+    A version without any market designation is used as the default template for all
+    contact details. Any market can onverride one or all of the fields to display their
+    own variants
+    """
+    TRANSLATION_FIELDS = []
+    market = models.ForeignKey(Market, null=True, blank=True)
+    first_title = models.CharField(max_length=250, null=True, blank=True, help_text=(
+        'Title appearing only on the first contact box'
+    ))
+    title = models.CharField(max_length=250, null=True, blank=True)
+    text = models.CharField(max_length=500, null=True, blank=True)
+    contact_display_link = models.CharField(max_length=250, null=True, blank=True)
+    contact_url = models.CharField(max_length=500, null=True, blank=True)
+    email_address = models.CharField(max_length=250, null=True, blank=True)
+    phone = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
-        return self.name
-
-
-class SectorLogo(models.Model):
-    name = models.CharField(max_length=255)
-    image = ImageField()
-    sector = models.ForeignKey(Sector)
-
-    def __str__(self):
-        return self.name
+        return 'Contact {}'.format(self.market)
 
 
 class PDFSection(models.Model):
