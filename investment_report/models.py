@@ -4,7 +4,6 @@ import uuid
 
 from collections import OrderedDict
 
-from sorl.thumbnail import ImageField
 from django.utils import timezone
 
 from django.db import models

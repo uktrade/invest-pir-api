@@ -26,7 +26,6 @@ from axes.models import AccessLog
 
 from django.contrib.contenttypes.models import ContentType
 from markdownx.admin import MarkdownxModelAdmin
-from sorl.thumbnail.admin import AdminImageMixin
 from modeltranslation.admin import TranslationAdmin
 from django.contrib.auth.admin import (
     User, Group, UserAdmin, GroupAdmin
