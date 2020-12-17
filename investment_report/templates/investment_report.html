@@ -50,7 +50,8 @@
         </div>
         <div class="right">
           <div class="main-content">
-            <ol>
+            <div style="width:90%">
+              <ol>
                 <li> {% trans "A Great Home for $COMPANY" %}</li>
                 <li> {% trans "Achieving Great Things in $SECTOR" %}</li>
                 <li> {% trans "Links That Are Already Strong" %}</li>
@@ -60,7 +61,7 @@
                 <li> {% trans "Case Study" %}</li>
                 <li> {% trans "A Flying Start - How We Can Get You Going" %}</li>
               </ol>
-
+            </div>
          </div>
         </div>
       </div>
@@ -121,11 +122,11 @@
 
       <div class="page-container-2"
         style="background-image: url({% custom_media killer_facts.background_image %})">
-        <div class="left">
+        <div class="left-overlay">
           <div class="singlepage-content">
             <div>
               <h1 style="width:91mm;">2.</h1>
-                <h2>{% trans "Achieving great things in $SECTOR" %}</h2>
+                <h2  style="width:85mm;">{% trans "Achieving great things in $SECTOR" %}</h2>
             </div>
             <div style="position: absolute; left: 12mm; top: 140mm;">
               {% include "./contact_box.html" %}
@@ -251,7 +252,7 @@
               <div style="width: 100mm;">
                 <h1>5.</h1>
                   <h2>
-                    {% trans "The Smart Workforce $COMPANY needs" %}
+                    {% trans "The Smart Workforce<br/> $COMPANY needs" %}
                   </h2>
               </div>
               <div style="position: absolute; left: 12mm; top: 140mm; z-index: 99;">
@@ -293,7 +294,7 @@
             <div class="singlepage-content">
               <div style="width: 102mm;">
                 <h1>6.</h1>
-                  <h2>
+                  <h2 style="width:90mm;">
                     {% trans "$SECTOR in the UK: going from strength to strength" %}
                   </h2>
               </div>
@@ -348,11 +349,13 @@
 
        <div class="right-image singlepage__right_image_column"
             style="background-image: url({% custom_media case_study_item.background_image %})">
+         {% if case_study_item.company_name %}
          <div style="position: absolute; left: 0mm; top: 180mm; padding: 5mm; background-color: white;">
             <img src="{% custom_media case_study_item.logo_image %}"
-              style="width: 40mm;"
+              style="max-height: 25mm; max-width: 30mm;"
               alt="{{ case_study_item.company_name }} Logo"/>
          </div>
+         {% endif %}
        </div>
      </div>
      </section>
