@@ -24,6 +24,7 @@
     </section>
 
     <div class="page-break"></div>
+    {% set 'current_page' page_counter.page %}
     <div class="counter-reset"></div>
 
     <section class="toc">
@@ -33,7 +34,7 @@
           <img src="{% static "images/unionjack.png" %}"/>
         </div>
         <div class="header-tag">{% trans "Expand your business to the UK" %}</div>
-        <div class="page-counter">{{ page_counter.page }}</div>
+        <div class="page-counter">{{ current_page }}</div>
         <div class="header-underline"></div>
       </div>
 
@@ -68,14 +69,14 @@
     </section>
 
     <div class="page-break"></div>
-
+    {% set 'current_page' page_counter.page %}
     <section class="singlepage-withfooter side-footnote page-break-avoid relative">
       <div class="page-header">
         <div class="union-jack">
           <img src="{% static "images/unionjack.png" %}"/>
         </div>
         <div class="header-tag" {% header_color sector_overview %}>{% trans "Expand your business to the UK" %}</div>
-        <div class="page-counter" {% header_color sector_overview %}>{{ page_counter.page }}</div>
+        <div class="page-counter" {% header_color sector_overview %}>{{ current_page }}</div>
         <div class="header-underline" {% header_color sector_overview 'background' %}></div>
       </div>
 
@@ -109,14 +110,14 @@
     {% increment_section %}
 
     <div class="page-break"></div>
-
+    {% set 'current_page' page_counter.page %}
     <section class="text-large side-footnote page-break-avoid relative">
       <div class="page-header">
         <div class="union-jack">
           <img src="{% static "images/unionjack.png" %}"/>
         </div>
         <div class="header-tag" {% header_color killer_facts %}>{% trans "Expand your business to the UK" %}</div>
-        <div class="page-counter" {% header_color killer_facts %}>{{ page_counter.page }}</div>
+        <div class="page-counter" {% header_color killer_facts %}>{{ current_page }}</div>
         <div class="header-underline" {% header_color killer_facts 'background' %}></div>
       </div>
 
@@ -146,14 +147,14 @@
 
     {% increment_section %}
      <div class="page-break"></div>
-
+     {% set 'current_page' page_counter.page %}
     <section class="text-large side-footnote page-break-avoid relative">
       <div class="page-header light">
         <div class="union-jack">
           <img src="{% static "images/unionjack.png" %}"/>
         </div>
         <div class="header-tag" {% header_color macro_context %}>{% trans "Expand your business to the UK" %}</div>
-        <div class="page-counter"  {% header_color macro_context %}>{{ page_counter.page }}</div>
+        <div class="page-counter"  {% header_color macro_context %}>{{ current_page }}</div>
         <div class="header-underline" {% header_color macro_context 'background' %}></div>
       </div>
 
@@ -182,14 +183,14 @@
 
     {% increment_section %}
     <div class="page-break"></div>
-
+    {% set 'current_page' page_counter.page %}
     <section id="dark-bg" class="text-large side-footnote page-break-avoid relative">
       <div class="page-header">
         <div class="union-jack">
           <img src="{% static "images/unionjack.png" %}"/>
         </div>
         <div class="header-tag"   style="color: white;">{% trans "Expand your business to the UK" %}</div>
-        <div class="page-counter" style="color: white;">{{page_counter.page}}</div>
+        <div class="page-counter" style="color: white;">{{ current_page }}</div>
         <div class="header-underline"   style="background: white;"></div>
       </div>
       <div class="section-body background-image"
@@ -234,14 +235,14 @@
 
 
     <div class="page-break"></div>
-
+    {% set 'current_page' page_counter.page %}
     <section class="text-large side-footnote page-break-avoid relative">
       <div class="page-header">
         <div class="union-jack">
           <img src="{% static "images/unionjack.png" %}"/>
         </div>
         <div class="header-tag" {% header_color smart_workforce %}>{% trans "Expand your business to the UK" %}</div>
-        <div class="page-counter" {% header_color smart_workforce %}>{{ page_counter.page }}</div>
+        <div class="page-counter" {% header_color smart_workforce %}>{{ current_page }}</div>
         <div class="header-underline" {% header_color smart_workforce 'background' %}></div>
       </div>
       <div class="section-body background-image">
@@ -277,14 +278,14 @@
 
     {% increment_section %}
     <div class="page-break"></div>
-
+    {% set 'current_page' page_counter.page %}
     <section class="text-large side-footnote page-break-avoid relative">
       <div class="page-header">
         <div class="union-jack">
           <img src="{% static "images/unionjack.png" %}"/>
         </div>
         <div class="header-tag" {% header_color sector_initiatives %}>{% trans "Expand your business to the UK" %}</div>
-        <div class="page-counter" {% header_color sector_initiatives %}>{{ page_counter.page }}</div>
+        <div class="page-counter" {% header_color sector_initiatives %}>{{ current_page }}</div>
         <div class="header-underline" {% header_color sector_initiatives 'background' %}></div>
       </div>
       <div class="section-body background-image">
@@ -319,14 +320,14 @@
 
 
     <div class="page-break"></div>
-
+    {% set 'current_page' page_counter.page %}
     <section class="singlepage-withfooter side-footnote">
       <div class="page-header">
         <div class="union-jack">
           <img src="{% static "images/unionjack.png" %}"/>
         </div>
         <div class="header-tag" {% header_color case_study_item %}>{% trans "Expand your business to the UK" %}</div>
-        <div class="page-counter" {% header_color case_study_item %}>{{ page_counter.page }}</div>
+        <div class="page-counter" {% header_color case_study_item %}>{{ current_page }}</div>
         <div class="header-underline" {% header_color case_study_item 'background' %}></div>
       </div>
       <div class="singlepage__wrapper">
@@ -363,14 +364,14 @@
 
     {% increment_section %}
     <div class="page-break"></div>
-
+    {% set 'current_page' page_counter.page %}
     <section class="text-large side-footnote page-break-avoid relative">
       <div class="page-header">
         <div class="union-jack">
           <img src="{% static "images/unionjack.png" %}"/>
         </div>
         <div class="header-tag" {% header_color how_we_can_help %}>{% trans "Expand your business to the UK" %}</div>
-        <div class="page-counter" {% header_color how_we_can_help %}>{{ page_counter.page }}</div>
+        <div class="page-counter" {% header_color how_we_can_help %}>{{ current_page }}</div>
         <div class="header-underline" {% header_color how_we_can_help 'background' %}></div>
       </div>
       <div class="section-body background-image">

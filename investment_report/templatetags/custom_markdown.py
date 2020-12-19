@@ -29,3 +29,9 @@ def markdown(context, markdown_field, section=None):
         section_counter=context.get('section_counter', 1),
         local=context['local']
     )
+
+
+@register.simple_tag(takes_context=True)
+def set(context, var_name, value):
+    context[var_name] = value
+    return ''
