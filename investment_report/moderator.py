@@ -23,6 +23,7 @@ for model_class in [
     models.CaseStudySector,
     models.HowWeCanHelp,
     models.SmartWorkforceSector,
-    models.LastPage
+    models.LastPage,
+    models.MarketContact,
 ]:
     moderation.register(model_class, Moderator)

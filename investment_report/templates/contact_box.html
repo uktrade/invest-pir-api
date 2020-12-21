@@ -1,23 +1,23 @@
 {% load i18n static %}
 
-<div class="contact-box" {% if section_counter == 1 %} style="height: 55mm;" {% endif %}>
+<div class="contact-box"   style="height: 55mm;"  >
     <div class="contact-box-header">
             {% if section_counter == 1 %}
-                {% trans "Contact Department for International Trade (DIT) Investment Services Team" %}
+                {% trans contact_first_title %}
             {% else %}
-            {% trans "Contact DIT's Investment Services Team" %}
+                {% trans contact_title %}
             {% endif %}
         <hr size="1"/>
-        {% trans "For more information on how to set up a business in the UK, please visit the website:" %}
+        {% trans contact_text %}
         <br/>
         <ul>
             <li><img src="{% static "images/www-icon.svg" %}"/>
-                <a href="https://www.great.gov.uk/international/invest/contact/?utm_source=pfp&utm_medium=direct&utm_campaign=iigb&utm_content=pfp-{{sector_name}}-page{{page_counter.page}}">
-                    invest.great.gov.uk/int/contact
+                <a href="{{contact_contact_url}}?utm_source=pfp&utm_medium=direct&utm_campaign=iigb&utm_content=pfp-{{sector_name}}-page{{current_page}}">
+                    {{contact_contact_display_link}}
                 </a>
             </li>
-            <li><img src="{% static "images/mail-icon.svg" %}"/> enquiries@invest-trade.uk</li>
-            <li><img src="{% static "images/phone-icon.svg" %}"/> +44 (0) 207 000 9012</li>
+            <li><img src="{% static "images/mail-icon.svg" %}"/> {{contact_email_address}}</li>
+            <li><img src="{% static "images/phone-icon.svg" %}"/> {{contact_phone}}</li>
         </ul>
     </div>
 

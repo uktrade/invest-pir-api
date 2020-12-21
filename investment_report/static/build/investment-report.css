@@ -703,12 +703,16 @@ section h1 + p > a > img {
   counter-increment: toc-counter;
   color: black;
   line-height: 40pt;
+  position: relative;
+  padding-left: 2em;
 }
 .page-container-contents ol li:before {
   content: counter(toc-counter) ". ";
   font-family: "Invesco Interstate Light";
   color: black;
   font-weight: bolder;
+  position: absolute;
+  left: 0;
 }
 
 .page-container-2 {
@@ -742,7 +746,7 @@ section h1 + p > a > img {
   padding: 0;
   margin: 0;
   width: 200mm;
-  background: rgba(30, 19, 72, 0.2);
+  background: rgba(30, 19, 72, 0.3);
 }
 .page-container-2 .overlay-text {
   z-index: 10;
