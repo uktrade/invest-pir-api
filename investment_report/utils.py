@@ -51,7 +51,10 @@ def filter_translations_and_moderation(klass, **kwargs):
     moderated = kwargs.pop('moderated', True)
 
     if moderated:
-        return klass.objects.exclude(*query_params).filter(**kwargs).first()
+        obj = klass.objects.exclude(*query_params).filter(**kwargs)
+        if not hasattr(klass, 'MULTI_PAGE'):
+            return obj.first()
+        return obj
     else:
         obj = klass.unmoderated_objects.exclude(
             *query_params
