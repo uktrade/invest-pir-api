@@ -22,7 +22,7 @@ env.read_env()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(PROJECT_ROOT)
-
+ROOT = environ.Path(__file__) - 3
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -168,7 +168,6 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_DEFAULT_REGION = os.environ.get('AWS_DEFAULT_REGION', 'eu-west-1')
-
 # AWS for Django storages PDF
 AWS_S3_PDF_STORE_ACCESS_KEY_ID = os.environ.get('AWS_S3_PDF_STORE_ACCESS_KEY_ID')  # NOQA
 AWS_S3_PDF_STORE_SECRET_ACCESS_KEY = os.environ.get('AWS_S3_PDF_STORE_SECRET_ACCESS_KEY')  # NOQA

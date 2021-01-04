@@ -7,6 +7,11 @@
 ## Hotfix
 - No ticket - v3 ci pipeline manifest.yml file fix
 
+## [2021.01.04](https://github.com/uktrade/invest-pir-api/releases/tag/2021.01.04)
+- New layouts, content and assets for all the PDFs generated
+- Some models became redundant and were removed.
+[Full Changelog](https://github.com/uktrade/invest-pir-api/compare/2020.01.13...2021.01.04)
+
 ## [2020.01.13](https://github.com/uktrade/invest-pir-api/releases/tag/2020.01.13)
 [Full Changelog](https://github.com/uktrade/invest-pir-api/compare/2019.11.25...202.01.13)
 

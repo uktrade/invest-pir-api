@@ -35,7 +35,7 @@ class PIRSerializer(serializers.ModelSerializer):
     )
 
     lang = serializers.ChoiceField(
-        choices=[l[0] for l in settings.LANGUAGES],
+        choices=[lang[0] for lang in settings.LANGUAGES],
         default=settings.LANGUAGE_CODE
     )
 

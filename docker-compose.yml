@@ -1,13 +1,30 @@
 version: '2'
 services:
-
+  postgres:
+    image: postgres:9.5.2
+    env_file: ./docker/.env-postgres.test
+    network_mode: host
+  
+  redis:
+    image: redis:alpine
+    restart: on-failure
+    ports:
+        - "6379:6379"
+    logging:
+        driver: "none"
+    network_mode: host
+    
   webserver:
     build:
       context: .
       dockerfile: Dockerfile
-
+    volumes:
+      - ./:/usr/src/app
     working_dir: /usr/src/app
-    command: ./docker/cmd-webserver.sh
+    command: ./docker/cmd-webserver.sh dev
     ports: ["8005:8005"]
     env_file: ./docker/.env
-    restart: "always"
+    restart: "on-failure"
+    network_mode: host
+
+  

@@ -14,22 +14,16 @@ class Moderator(GenericModerator):
 
 for model_class in [
     models.FrontPage,
+    models.ContentsPage,
     models.SectorOverview,
     models.KillerFacts,
     models.MacroContextBetweenCountries,
     models.UKMarketOverview,
-    models.UKBusinessInfo,
-    models.UKGeographicOverview,
-    models.TalentAndEducationBySector,
     models.SectorInitiatives,
-    models.RDandInnovation,
-    models.NetworkAndSupport,
-    models.RDandInnovationCaseStudy,
-    models.VideoCaseStudy,
-    models.WhoIsHere,
-    models.ServicesOfferedByDIT,
-    models.CallToAction,
-    models.Contact,
-    models.LastPage
+    models.CaseStudySector,
+    models.HowWeCanHelp,
+    models.SmartWorkforceSector,
+    models.LastPage,
+    models.MarketContact,
 ]:
     moderation.register(model_class, Moderator)

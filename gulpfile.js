@@ -8,7 +8,8 @@ gulp.task('css', function () {
 
   return gulp.src([
     'static/src/investment-report.scss',
-    'static/src/investment-report-last-page.scss'
+    'static/src/investment-report-last-page.scss',
+    'static/src/investment-report-plain.scss'
   ])
     .pipe( sourcemaps.init() )
     .pipe( sass().on('error', sass.logError) )
