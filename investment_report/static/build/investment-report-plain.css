@@ -1,0 +1,661 @@
+@charset "UTF-8";
+body {
+  font-family: "Invesco Interstate Light";
+  color: #1e1348;
+  font-size: 13pt;
+  line-height: 130%;
+  margin: 0;
+}
+
+ul {
+  list-style-type: none !important;
+  page-break-inside: avoid;
+}
+
+p {
+  page-break-inside: avoid;
+}
+
+@page {
+  size: A4;
+  margin-top: 15mm;
+  margin-left: 10mm;
+  margin-right: 10mm;
+  margin-bottom: 10mm;
+  @top-right {
+    content: counter(page);
+    font-family: "Invesco Interstate Light";
+    color: #1e1348;
+    font-size: 9pt;
+    padding-top: 0pt;
+  }
+}
+.conter-reset {
+  counter-reset: page;
+}
+
+@page :first {
+  margin-top: 10mm;
+  margin-left: 10mm;
+  margin-right: 10mm;
+  margin-bottom: 10mm;
+  padding: 0;
+  border-top: none;
+  @top-left {
+    content: " ";
+  }
+  @top-right {
+    content: " ";
+  }
+}
+@page :last {
+  @top-left {
+    content: " ";
+  }
+  @top-right {
+    content: " ";
+  }
+}
+header.onlyprint {
+  position: fixed;
+  /* Display only on print page (each) */
+  /* because this is taken from the first page margins, I need to adjust */
+  top: -10mm;
+  /* Because it's header */
+  font-family: "Invesco Interstate Light";
+  color: #1e1348;
+  font-size: 9pt;
+  padding-top: 14pt;
+  width: 1000mm;
+}
+
+#unionjackheader {
+  width: 20mm;
+  padding-left: 1mm;
+  margin-left: 0;
+  padding-right: 0;
+  margin-right: 0;
+  left: 15mm;
+}
+
+#headerslogan {
+  position: absolute;
+  top: 5mm;
+  left: 14mm;
+  font-size: 10pt;
+  letter-spacing: -0.1pt;
+}
+
+#borderbottomheader {
+  width: 190mm;
+  height: 0.25pt;
+  position: absolute;
+  background: #1e1348;
+  top: 10mm;
+  z-index: 99;
+}
+
+header.onlyprint img {
+  width: 9.876mm;
+  margin-left: 0mm;
+}
+
+.page-break {
+  page-break-after: always;
+}
+
+.page-break-avoid {
+  page-break-inside: avoid;
+}
+
+h1 {
+  top: 38mm;
+  font-family: "Invesco Interstate Bold";
+  font-weight: bold;
+  font-size: 36pt;
+  color: black;
+  padding-bottom: 4mm;
+  border-bottom: solid black 7pt;
+  letter-spacing: -0.2pt;
+  line-height: 100%;
+}
+
+h2 {
+  font-family: "Invesco Interstate bold";
+  font-size: 23pt;
+  letter-spacing: -0.2pt;
+  color: #1e1348;
+  line-height: 25pt;
+}
+
+sup {
+  position: relative;
+  display: inline;
+  vertical-align: baseline;
+  top: -0.5em;
+  font-size: 0.7rem;
+  left: 0rem;
+}
+sup a {
+  text-decoration: none;
+  color: #1e1348;
+}
+
+blockquote {
+  font-style: italic;
+  font-family: "Georgia";
+}
+
+.last-page {
+  height: 280mm;
+  width: 180mm;
+  background: white;
+  color: black;
+  left: 10mm;
+  top: 10mm;
+  margin-right: 10mm;
+  padding-right: 10mm;
+  position: absolute;
+}
+
+.front-page {
+  height: 297mm;
+  width: 210mm;
+  background: white;
+  color: black;
+  left: -10mm;
+  top: -10mm;
+  z-index: 100;
+  position: relative;
+}
+
+.front-page__logo {
+  top: 160mm;
+  left: 220mm;
+  position: absolute;
+  display: block;
+  width: 55.183mm;
+}
+
+.front-page__title {
+  left: 15.339mm;
+  top: 15.339mm;
+  position: absolute;
+  display: block;
+  font-size: 36pt;
+  line-height: 40pt;
+  color: black;
+  font-family: "Invesco Interstate Bold";
+  font-weight: bold;
+  letter-spacing: -0.2pt;
+}
+
+.front-page__title__sub {
+  margin-top: 24px;
+  font-size: 24pt;
+  letter-spacing: 1pt;
+  font-family: "Invesco Interstate Light";
+}
+
+.toc {
+  margin-top: 0mm;
+}
+
+.toc ol {
+  list-style: decimal inside none;
+  padding-left: 0;
+  margin-left: 0;
+  margin-top: 13.5mm;
+}
+
+.toc li {
+  margin-top: 2.5mm;
+}
+
+.toc-container {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  grid-template-rows: 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "left-col content";
+}
+
+.left-col {
+  position: absolute;
+  left: -20mm;
+  top: -20mm;
+  width: 120mm;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 220mm;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.left-col h1 {
+  opacity: 1 !important;
+  z-index: 10 !important;
+  margin-top: 20mm;
+  margin-left: 14mm;
+  color: #b00d23;
+  border-bottom: 7pt solid black;
+}
+
+.toc .content-margin {
+  position: absolute;
+  display: block;
+  left: 130mm;
+  margin-top: 23mm;
+}
+
+.toc .section-body {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.section {
+  overflow: hidden;
+}
+
+.section-body > p, .section-body > ul, .section-body > ol {
+  margin-top: 13.406mm;
+}
+
+.section-body > p, .section-body > ul > li, .section-body > ol > li {
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.section-body ul {
+  margin-left: 0;
+  padding-left: 0.45cm;
+}
+
+ul li {
+  position: relative;
+}
+
+ul li:before {
+  content: " ";
+  width: 4px;
+  height: 4px;
+  background: #1e1348;
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  top: 0.55em;
+  left: -0.7em;
+}
+
+.contact li:before {
+  display: none;
+}
+
+.section-body ol {
+  padding-left: 1cm;
+  margin-top: 5mm;
+}
+
+.content {
+  font-family: "Invesco Interstate Light";
+  font-size: 11pt;
+  letter-spacing: -0.2pt;
+  line-height: 25pt;
+}
+
+.relative {
+  position: relative;
+}
+
+.content-margin {
+  margin-left: 120mm;
+}
+
+.flex {
+  display: flex;
+}
+
+.side-footnote .footnote {
+  font-size: 8pt;
+  position: absolute;
+  bottom: 4pt;
+  margin-left: -34.586mm;
+}
+.side-footnote .footnote hr {
+  display: none;
+}
+.side-footnote .footnote ol {
+  margin: 0;
+  padding: 0;
+  width: 30mm;
+  list-style-type: none;
+}
+.side-footnote .footnote li {
+  margin-top: 0.3rem;
+  overflow-wrap: break-word;
+}
+.side-footnote .footnote p {
+  margin: 0;
+  margin-top: 0;
+  line-height: 1.1;
+}
+.side-footnote .footnote p a.footnote-backref {
+  display: none;
+}
+
+/* contact box  */
+.contact-box {
+  background-color: #1e1348;
+  color: white;
+  font-size: 11pt;
+  width: 80mm;
+  height: 50mm;
+  padding: 5mm 7mm 5mm 7mm;
+  font-weight: normal;
+}
+
+.contact-box-header {
+  font-weight: bolder;
+  font-size: 12pt;
+}
+
+.contact-box hr {
+  color: white;
+  size: 1mm;
+  margin: 3mm;
+}
+
+/* text on overlay */
+.background-image {
+  background-size: cover;
+  position: absolute;
+  left: -10mm;
+  top: -10mm;
+  width: 210mm;
+  height: 297mm;
+  z-index: -1;
+}
+
+.singlepage-content {
+  margin-top: 20mm;
+  margin-left: 10mm;
+}
+
+.singlepage__right_two_column_text {
+  color: black;
+  padding-right: 20mm;
+  margin-left: 10mm;
+  margin-right: 10mm;
+  margin-top: 20mm;
+  top: 30mm;
+  width: 80%;
+  position: absolute;
+}
+
+/* page divided halfway */
+.singlepage__left_half_content {
+  width: 105mm;
+  height: 297mm;
+  position: relative;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 10mm;
+}
+
+.singlepage__left_half_content_text {
+  left: 0;
+  top: 0;
+  height: 287mm;
+  width: 110mm;
+}
+
+.singlepage__right_half_content {
+  width: 105mm;
+  height: 297mm;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position: 0mm 0mm;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.dit-back-logo {
+  width: 30mm !important;
+  padding: 3mm;
+}
+
+.invest-url {
+  text-align: right;
+  font-weight: 900;
+  font-size: 16pt;
+  padding-top: 5mm;
+}
+
+/* special case flexbox layout */
+.singlepage-withfooter {
+  width: 261.343mm;
+  height: 174.674mm;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* up */
+.singlepage-withfooter__body {
+  overflow: hidden;
+}
+
+.singlepage-withfooter__body__text {
+  margin-left: 0mm;
+  margin-bottom: 30mm;
+  position: relative;
+}
+
+.singlepage-withfooter__footer {
+  background: white;
+  flex-grow: 1;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  overflow: hidden;
+}
+
+.singlepage-withfooter__footer__copy {
+  font-style: italic;
+  font-family: "Georgia";
+  font-size: 25.74pt;
+  margin-top: 11.35mm;
+  margin-left: 9.244mm;
+  width: 50%;
+  line-height: 33.1pt;
+}
+
+.singlepage-withfooter__footer__attribution {
+  font-size: 10.1pt;
+  width: 50%;
+  margin-top: 2mm;
+  margin-left: 9.244mm;
+}
+
+.singlepage__wrapper {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  grid-template-rows: 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "left-content right-image";
+}
+
+.singlepage__left_content_column {
+  position: relative;
+  display: inline-block;
+  left: 0mm;
+  width: 170mm;
+  margin: 0;
+  padding: 0;
+}
+
+.dark-list > ul {
+  page-break-inside: avoid;
+  background: #f1ede8;
+  margin-top: 8mm;
+  margin-bottom: 8mm;
+  margin-left: 8mm;
+  margin-right: 8mm;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 8mm;
+  padding-right: 8mm;
+  overflow: hidden;
+  list-style-type: none;
+}
+.dark-list > ul > li {
+  margin-top: 8mm;
+  margin-bottom: 8mm;
+}
+
+.talent_and_education_by_sector {
+  margin-top: 17.639mm;
+}
+
+.bottom-footnote .footnote {
+  border-top: solid #b00d23 1pt;
+  font-size: 8pt;
+  margin-left: 34.586mm;
+  margin-top: 10mm;
+  padding-top: 2mm;
+}
+.bottom-footnote .footnote hr {
+  display: none;
+}
+.bottom-footnote .footnote ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.bottom-footnote .footnote li {
+  margin-top: 0.3rem;
+}
+.bottom-footnote .footnote p {
+  margin: 0;
+  margin-top: 0;
+  line-height: 1.1;
+  margin-bottom: 4mm;
+}
+.bottom-footnote .footnote p a.footnote-backref {
+  display: none;
+}
+
+.centered_body {
+  align-items: center;
+  justify-content: center;
+}
+
+.centered_body__body {
+  background: white;
+  width: 115.455mm;
+  overflow: hidden;
+  padding-top: 9.42mm;
+  padding-bottom: 9.42mm;
+  padding-left: 6.49mm;
+  padding-right: 6.49mm;
+}
+
+.centered_body__body > *:first-of-type {
+  margin-top: 0;
+}
+
+.centered_body__body > *:last-of-type {
+  margin-bottom: 0;
+}
+
+.centered_body.contact {
+  margin-top: 20mm;
+  border-top: solid #b00d23 6pt;
+}
+
+.contact .centered_body__body {
+  width: 95.6mm;
+  padding-left: 9.7mm;
+  padding-right: 9.7mm;
+}
+
+.contact h3 {
+  font-size: 12pt;
+}
+
+.contact ul {
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  padding-left: 6.5mm;
+}
+
+.contact ul li {
+  margin-top: 0.5rem;
+}
+
+.contact.full-page__spread {
+  height: 245.97mm;
+  background-size: cover;
+  background-position: center;
+}
+
+section h1 + p > img,
+section h1 + p > a > img {
+  margin-top: -2.1rem;
+}
+
+#marketoverview-image {
+  position: absolute;
+  left: 30mm;
+  top: -3.5mm;
+  width: 115.581mm;
+  z-index: 999;
+}
+
+#businessoverview-image {
+  width: 147mm;
+}
+
+.whos-here ul {
+  width: 145mm;
+  height: 110mm;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  overflow: hidden;
+  display: block;
+  margin-top: 58mm;
+}
+.whos-here li {
+  margin: 3.2mm;
+  width: 41.7mm;
+  height: 30.839mm;
+  background: white;
+  float: left;
+  display: block;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 5mm;
+}
+.whos-here img {
+  max-width: 100%;
+  max-height: 22mm;
+}
+.whos-here .table-cell {
+  height: 22mm;
+  width: 32mm;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table-cell {
+  display: table-cell;
+}
+/*# sourceMappingURL=investment-report-plain.css.map */

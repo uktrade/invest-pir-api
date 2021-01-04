@@ -1,3 +1,4 @@
+import datetime
 import functools
 import weasyprint
 
@@ -54,19 +55,40 @@ def filter_translations_and_moderation(klass, **kwargs):
     else:
         obj = klass.unmoderated_objects.exclude(
             *query_params
-        ).filter(**kwargs).first()
+        ).filter(**kwargs)
 
         # Unmoderated objects means something's in the queue
         if obj:
             try:
-                return obj.moderated_object.changed_object
+                if not hasattr(klass, 'MULTI_PAGE'):
+                    obj = obj.first()
+                    return obj.moderated_object.changed_object
+                else:
+                    obj = obj.order_by('sub_page')
+                    return [
+                        _obj.moderated_object.changed_object for _obj in obj
+                    ]
             except ObjectDoesNotExist:
                 # Happens if object isn't registered with moderation
                 return obj
         else:
-            return klass.objects.exclude(
+
+            obj = klass.objects.exclude(
                 *query_params).filter(
-                **kwargs).first()
+                **kwargs)
+            if not hasattr(klass, 'MULTI_PAGE'):
+                obj = obj.first()
+            return obj
+
+
+class PageCounter:
+    def __init__(self, init_value):
+        self._index = init_value
+
+    def page(self):
+        out = self._index
+        self._index += 1
+        return out
 
 
 def get_investment_report_data(
@@ -74,7 +96,9 @@ def get_investment_report_data(
         sector,
         company_name=None,
         moderated=True):
-    context = {}
+    context = {
+        'page_counter': PageCounter(1)
+    }
 
     filter_ = functools.partial(
         filter_translations_and_moderation,
@@ -84,6 +108,10 @@ def get_investment_report_data(
 
     context['front_page'] = filter_(
         models.FrontPage, sector=sector
+    )
+
+    context['contents'] = filter_(
+        models.ContentsPage, sector=sector
     )
 
     context['sector_overview'] = filter_(
@@ -99,43 +127,16 @@ def get_investment_report_data(
     )
 
     context['uk_market_overview'] = filter_(models.UKMarketOverview)
-    context['uk_business_info'] = filter_(models.UKBusinessInfo)
-
-    context['uk_geo_overview'] = filter_(models.UKGeographicOverview)
-
-    context['talent_and_education_by_sector'] = filter_(
-        models.TalentAndEducationBySector, sector=sector
-    )
-
-    context['network_and_support'] = filter_(
-        models.NetworkAndSupport,
-        sector=sector
-    )
 
     context['sector_initiatives'] = filter_(
         models.SectorInitiatives, sector=sector
     )
 
-    context['r_and_d_and_innovation'] = filter_(
-        models.RDandInnovation, sector=sector
-    )
-
-    context['r_and_d_and_innovation_case_study'] = filter_(
-        models.RDandInnovationCaseStudy, sector=sector
-    )
-
-    context['video_case_study'] = filter_(
-        models.VideoCaseStudy, sector=sector
-    )
-
-    context['services_offered_by_dit'] = filter_(models.ServicesOfferedByDIT)
-    context['contact'] = filter_(models.Contact)
-
     context['sector'] = sector.display_name
-
-    context['who_is_here'] = filter_(
-        models.WhoIsHere
-    )
+    context['sector_name'] = sector.name.lower()
+    context['smart_workforce'] = filter_(models.SmartWorkforceSector, sector=sector)
+    context['case_study'] = filter_(models.CaseStudySector, sector=sector)
+    context['how_we_can_help'] = filter_(models.HowWeCanHelp)
 
     if company_name:
         context['company'] = company_name
@@ -143,14 +144,21 @@ def get_investment_report_data(
     context['last_page'] = models.LastPage.objects.first()
     context['settings'] = settings
 
-    context['market_logos'] = models.MarketLogo.objects.filter(
-        market=market
-    )[:4]
-    context['sector_logos'] = models.SectorLogo.objects.filter(
-        sector=sector
-    )[:4]
-
     context['section_counter'] = 1
+    context['current_year'] = datetime.date.today().year
+
+    contact = filter_(models.MarketContact, market__isnull=True)
+    market_contact = filter_(models.MarketContact, market=market)
+    contact_fields = (
+        'title', 'first_title', 'text', 'contact_display_link',
+        'contact_url', 'email_address', 'phone'
+    )
+    for contact_data in (contact, market_contact):
+        if contact_data:
+            for field in contact_fields:
+                contact_value = getattr(contact_data, field)
+                if contact_value:
+                    context['contact_{}'.format(field)] = contact_value
 
     return context
 
@@ -160,14 +168,20 @@ def investment_report_html_generator(
         sector,
         company_name=None,
         local=True,
-        moderated=True):
+        moderated=True,
+        plain=False):
     context = get_investment_report_data(
         market, sector, company_name, moderated)
     context['local'] = local
-
-    result_html = render_to_string('investment_report.html', context=context)
+    if plain:
+        template_file = 'investment_report_plain.html'
+        last_page_file = 'investment_report_last_page_plain.html'
+    else:
+        template_file = 'investment_report.html'
+        last_page_file = 'investment_report_last_page.html'
+    result_html = render_to_string(template_file, context=context)
     last_page_html = render_to_string(
-        'investment_report_last_page.html',
+        last_page_file,
         context=context)
 
     result_html = (

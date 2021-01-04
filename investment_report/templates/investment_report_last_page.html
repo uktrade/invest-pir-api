@@ -4,31 +4,71 @@
   <head>
     <meta charset="utf8">
     <title>{% trans "Investment Report" %}</title>
+    <!-- <link rel="stylesheet" href="http://localhost:8014/investment-report/devcsslast.css"/> -->
     <link rel="stylesheet" href="{% static "build/investment-report-last-page.css" %}" />
   </head>
 
-  <body class="A4">
+  <body class="A4" style="top: 0; left: 0; background-repeat: no-repeat;     background-position: center;
+  background-size: cover;
+background-image: url('{% static "images/ship-v1.jpg" %}');">
     {% autoescape off %}
 
-    <section class="front-page"
-             style="
-            ">
+    <section class="front-page" >
+        <div class="left_panel">
+            <img class="front-page__logo" src="{% static "images/frontpagebottomrightlogo.png" %}"/>
 
-  <img class="front-page__logo" src="{% static "images/frontpagebottomrightlogo.png" %}"/>
-  <div class="wrapper">
-    <div class="content">
-    </div>
-    <div class="footer">
-    <div class="footer__header">
-      <img width="38.267mm" src="{% static "images/dit.png" %}" />
-      <p>invest.great.gov.uk</p>
-    </div>
-    <div class="footer__body">
-      {% markdown last_page.content %}
-    </div>
-  </div>
+            <div>
+                <div class="dit_logos">
+                    <div style="float: left;">
+                      <img src="{% static "images/DIT-logo-detailed-white.png" %}" class="logo"/>
+
+                    </div>
+                    <div class="dit_url"  style="width: 70mm; vertical-align: bottom;">
+                        invest.great.gov.uk
+                    </div>
+                </div>
+
+                <div class="left_panel_content">
+                    <P>
+                        The UK’s Department for International Trade (DIT) has overall responsibility for
+                        promoting UK trade across the world and attracting foreign investment to our economy.
+                        We are a specialised government body with responsibility for negotiating international
+                        trade policy, supporting business, as well as delivering an outward-looking trade
+                        diplomacy strategy.
+                    </P>
+
+                    <P>
+                        <span style="font-weight: 800;">Legal disclaimer</span><br/>
+                        Whereas every effort has been made to ensure that the information in this document is
+                        accurate, the Department for International Trade does not accept liability for any errors,
+                        omissions or misleading statements, and no warranty is given or responsibility accepted
+                        as to the standing of any individual, firm, company or other organisation mentioned.
+                    </P>
+
+                    <P>
+                        <span style="font-weight: 800;">Copyright</span><br/>
+                        © Crown copyright {{current_year}}<br/>
+                        You may re-use this publication (not including logos) free of charge in any format or
+                        medium, under the terms of the Open Government Licence.
+                    </P>
+                    <P>
+                        To view this licence visit:<BR/>
+                        <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence">www.nationalarchives.gov.uk/doc/open-government-licence</a><br/>
+                        or e-mail: <a href="mailto:psi@nationalarchives.gov.uk">psi@nationalarchives.gov.uk</a>
+                    </P>
+                    <P>
+                        Where we have identified any third party copyright information in the material that you
+                        wish to use, you will need to obtain permission from the copyright holder(s) concerned.
+                        This document is also available on our website at gov.uk/dit
+                    </P>
+                </div>
+            </div>
+        </div>
+        <div class="right_panel" >
+
+        </div>
+
     </section>
     {% endautoescape %}
   </body>
 </html>
-

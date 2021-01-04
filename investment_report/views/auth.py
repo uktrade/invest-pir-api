@@ -32,7 +32,8 @@ class ResetRequestView(SuccessMessageMixin, FormView):
                 'admin and delete all access logs under their username to'
                 'allow them access once more'
             ).format(user.username),
-            [settings.RESET_EMAIL]
+            settings.RESET_EMAIL,
+            [user.email]
         )
 
     def form_valid(self, form):
