@@ -46,7 +46,7 @@ class PIRSerializer(serializers.ModelSerializer):
 
     pdf = serializers.FileField(read_only=True)
     date_created = serializers.DateTimeField(read_only=True)
- 
+
     accessible = serializers.BooleanField(required=False, default=False)
 
     # Not making this required (but defaulting to false)
