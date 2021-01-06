@@ -37,7 +37,7 @@ class RelatedFieldMetadata(SimpleMetadata):
                         'display_name': display_name
                     }
                     for name, display_name in
-                    field.queryset.values_list('name', 'display_name')
+                    field.queryset.order_by('display_name').values_list('name', 'display_name')
                 ]
 
         return field_info
