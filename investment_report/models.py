@@ -31,6 +31,7 @@ class PIRRequest(models.Model):
     phone_number = models.CharField(max_length=255, null=True)
     date_created = models.DateField(default=timezone.now)
     gdpr_optin = models.BooleanField(default=False)
+    accessible = models.BooleanField(default=False)
 
     # Specify other bucket
     pdf = models.FileField(storage=PDFS3Boto3Storage())
@@ -49,7 +50,8 @@ class PIRRequest(models.Model):
             )
 
             pdf_file = investment_report_pdf_generator(
-                self.market, self.sector, self.company
+                self.market, self.sector, self.company,
+                plain=self.accessible
             )
 
             self.pdf.save(pdf_hash, File(pdf_file))
