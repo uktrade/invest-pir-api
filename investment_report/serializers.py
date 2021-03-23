@@ -35,7 +35,7 @@ class PIRSerializer(serializers.ModelSerializer):
     )
 
     lang = serializers.ChoiceField(
-        choices=[l[0] for l in settings.LANGUAGES],
+        choices=[lang[0] for lang in settings.LANGUAGES],
         default=settings.LANGUAGE_CODE
     )
 
@@ -46,6 +46,8 @@ class PIRSerializer(serializers.ModelSerializer):
 
     pdf = serializers.FileField(read_only=True)
     date_created = serializers.DateTimeField(read_only=True)
+
+    accessible = serializers.BooleanField(required=False, default=False)
 
     # Not making this required (but defaulting to false)
     # as to allow deployments of front end and backend to be made

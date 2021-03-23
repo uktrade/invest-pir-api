@@ -609,21 +609,7 @@
         "content_zh_cn": ""
     }
 },
-{
-    "model": "investment_report.talentandeducationgeneric",
-    "pk": 3,
-    "fields": {
-        "content": "7. The Smart Workforce $COMPANY Needs\r\n====\r\n\r\nThe UK is the No.1 rated major European economy for growing, retaining and attracting global talent[^1]. Home to four of the world\u2019s top ten Universities: Oxford, Cambridge, University College London and Imperial College London.[^2]\r\n\r\nIn 2017 the government launched its Digital Strategy to support the UK\u2019s world-leading digital economy.\r\n\r\nIt will work with the industry to create millions more training schemes and aims to ensure that the UK is the best place in the world to set up and grow a digital business. \r\n\r\nExperiencing six years of continuous growth across the tech sector with new jobs being created 2.8x faster than in the rest of the economy, there are now 1.64 million people employed in the digital tech sector in the UK. \r\n\r\n[^1]: Instead, Human Capital Leadership Institute: The Global Talent Competitive Index 2017\r\n[^2]: QS World University Rankings 2016-17",
-        "content_en": "7. The Smart Workforce $COMPANY Needs\r\n====\r\n\r\nThe UK is the No.1 rated major European economy for growing, retaining and attracting global talent[^1]. Home to four of the world\u2019s top ten Universities: Oxford, Cambridge, University College London and Imperial College London.[^2]\r\n\r\nIn 2017 the government launched its Digital Strategy to support the UK\u2019s world-leading digital economy.\r\n\r\nIt will work with the industry to create millions more training schemes and aims to ensure that the UK is the best place in the world to set up and grow a digital business. \r\n\r\nExperiencing six years of continuous growth across the tech sector with new jobs being created 2.8x faster than in the rest of the economy, there are now 1.64 million people employed in the digital tech sector in the UK. \r\n\r\n[^1]: Instead, Human Capital Leadership Institute: The Global Talent Competitive Index 2017\r\n[^2]: QS World University Rankings 2016-17",
-        "content_de": "",
-        "content_es": "",
-        "content_fr": "",
-        "content_pt": "",
-        "content_ar": "",
-        "content_ja": "",
-        "content_zh_cn": ""
-    }
-},
+
 {
     "model": "investment_report.talentandeducationbysector",
     "pk": 1,
@@ -669,7 +655,8 @@
         "content_ar": "",
         "content_ja": "",
         "content_zh_cn": "",
-        "background_image": "networkandsupport_xbzYLro.png"
+        "background_image": "networkandsupport_xbzYLro.png",
+        "sector": 1
     }
 },
 {

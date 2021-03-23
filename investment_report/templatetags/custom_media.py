@@ -14,3 +14,11 @@ def custom_media(context, file_field):
     """
     if file_field:
         return file_field.url
+
+
+@register.simple_tag
+def header_color(model, attr=None):
+    attr = attr or 'color'
+    if hasattr(model, 'header_color') and model.header_color:
+        return ' style="{}: {};" '.format(attr, model.header_color)
+    return ''

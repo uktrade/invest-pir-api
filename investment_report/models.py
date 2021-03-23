@@ -4,7 +4,6 @@ import uuid
 
 from collections import OrderedDict
 
-from sorl.thumbnail import ImageField
 from django.utils import timezone
 
 from django.db import models
@@ -32,6 +31,7 @@ class PIRRequest(models.Model):
     phone_number = models.CharField(max_length=255, null=True)
     date_created = models.DateField(default=timezone.now)
     gdpr_optin = models.BooleanField(default=False)
+    accessible = models.BooleanField(default=False)
 
     # Specify other bucket
     pdf = models.FileField(storage=PDFS3Boto3Storage())
@@ -50,7 +50,8 @@ class PIRRequest(models.Model):
             )
 
             pdf_file = investment_report_pdf_generator(
-                self.market, self.sector, self.company
+                self.market, self.sector, self.company,
+                plain=self.accessible
             )
 
             self.pdf.save(pdf_hash, File(pdf_file))
@@ -82,22 +83,33 @@ class Market(models.Model):
         return self.name
 
 
-class MarketLogo(models.Model):
-    name = models.CharField(max_length=255)
-    image = ImageField()
-    market = models.ForeignKey(Market)
+class MarketContact(models.Model):
+    """
+    Contact details for the contact box. Can be configured by market.
+    A version without any market designation is used as the default template for all
+    contact details. Any market can onverride one or all of the fields to display their
+    own variants
+    """
+    TRANSLATION_FIELDS = []
+    market = models.ForeignKey(Market, null=True, blank=True)
+    first_title = models.CharField(max_length=250, null=True, blank=True, help_text=(
+        'Title appearing only on the first contact box'
+    ))
+    title = models.CharField(max_length=250, null=True, blank=True, help_text=(
+        'Title appearing in any other contact box besides the first'
+    ))
+    text = models.CharField(max_length=500, null=True, blank=True)
+    contact_display_link = models.CharField(max_length=250, null=True, blank=True, help_text=(
+        'The contact url display'
+    ))
+    contact_url = models.CharField(max_length=500, null=True, blank=True, help_text=(
+        'The actual contact page url'
+    ))
+    email_address = models.CharField(max_length=250, null=True, blank=True)
+    phone = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
-        return self.name
-
-
-class SectorLogo(models.Model):
-    name = models.CharField(max_length=255)
-    image = ImageField()
-    sector = models.ForeignKey(Sector)
-
-    def __str__(self):
-        return self.name
+        return 'Contact {}'.format(self.market)
 
 
 class PDFSection(models.Model):
@@ -111,6 +123,12 @@ class PDFSection(models.Model):
             'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet '
             'for intructions. Images may be dragged and droped into the editor'
         )
+    )
+    header_color = models.CharField(
+        max_length=16,
+        null=True,
+        blank=True,
+        help_text="Overide default header text colour (for dark backgrounds)"
     )
 
     class Meta:
@@ -144,11 +162,27 @@ class FrontPage(PDFSection):
         verbose_name = verbose_name_plural = '0 - Front Page'
 
 
+class ContentsPage(PDFSection):
+    SECTION = 0
+    SINGLETON = False
+    TRANSLATION_FIELDS = []
+
+    def __str__(self):
+        return 'Table of Contents - {}'.format(self.sector)
+
+    # No body
+    content = None
+    background_image = models.FileField()
+    sector = models.ForeignKey(Sector)
+
+    class Meta:
+        verbose_name = verbose_name_plural = '0 - Table of Contents'
+
+
 class SectorOverview(PDFSection):
     SECTION = 1
     TRANSLATION_FIELDS = (
-        PDFSection.TRANSLATION_FIELDS +
-        ['footer_image_copy', 'footer_image_copy_attribution']
+        PDFSection.TRANSLATION_FIELDS + ['footer_image_copy', 'footer_image_copy_attribution']
     )
 
     sector = models.ForeignKey(Sector)
@@ -165,23 +199,31 @@ class SectorOverview(PDFSection):
     )
 
     class Meta:
-        verbose_name = verbose_name_plural = '1 - Sector Overview'
+        verbose_name = verbose_name_plural = '1 - A Great Home for Company'
 
 
 class KillerFacts(PDFSection):
     SECTION = 2
     sector = models.ForeignKey(Sector)
+    background_image = models.ImageField(
+        help_text='Background image for this page',
+        null=True, blank=True
+    )
 
     class Meta:
-        verbose_name = verbose_name_plural = '2 - Killer Facts'
+        verbose_name = verbose_name_plural = '2 - Achieving Great Things in Sector'
 
 
 class MacroContextBetweenCountries(PDFSection):
     SECTION = 3
     market = models.ForeignKey(Market)
+    background_image = models.ImageField(
+        help_text='Background image for this page',
+        null=True, blank=True
+    )
 
     class Meta:
-        verbose_name = verbose_name_plural = '3 - Macro Context'
+        verbose_name = verbose_name_plural = '3 - Links that are already strong'
 
 
 class UKMarketOverview(PDFSection):
@@ -203,147 +245,80 @@ class UKMarketOverview(PDFSection):
         verbose_name = verbose_name_plural = '4 - UK Market Overview'
 
 
-class UKBusinessInfo(PDFSection):
+class SmartWorkforceSector(PDFSection):
     SECTION = 5
-    SINGLETON = True
-    TRANSLATION_FIELDS = ['body_image']
-
-    # No body
-    content = None
-    body_image = models.FileField(
-        help_text=(
-            'Fact sheet SVG overlayed on background of background. '
-            'Don\'t edit unless you know what you are doing. '
-            'Viewbox needs to be carefully calibrated here'))
-
-    background_image = models.ImageField()
-
-    class Meta:
-        verbose_name = verbose_name_plural = '5 - Business Info'
-
-
-class UKGeographicOverview(PDFSection):
-    SECTION = 6
-    SINGLETON = True
-
-    class Meta:
-        verbose_name = verbose_name_plural = '6 - Geographic Overview'
-
-
-class TalentAndEducationBySector(PDFSection):
-    SECTION = 7
+    MULTI_PAGE = True
     sector = models.ForeignKey(Sector)
+    sub_page = models.SmallIntegerField(
+        default=0,
+        help_text="For multiple sub-pages of this page, number them here. ")
+    background_image = models.ImageField(
+        help_text='Background image for the left panel',
+        null=True, blank=True
+    )
 
     class Meta:
-        verbose_name = verbose_name_plural = '7.2 - Talent & ' \
-                                             'Education (Sector)'
+        verbose_name = verbose_name_plural = '5. Smart Workforce'
+
+    def __str__(self):
+        return 'Smart Workforce: {} [{}]'.format(self.sector, self.sub_page)
+
+
+class CaseStudySector(PDFSection):
+    SECTION = 7
+    MULTI_PAGE = True
+    sector = models.ForeignKey(Sector)
+    sub_page = models.SmallIntegerField(
+        default=0,
+        help_text="For multiple sub-pages of this page, number them here. ")
+    company_name = models.CharField(max_length=250, null=True, blank=True)
+    background_image = models.ImageField(
+        help_text='Background image for the left panel',
+        null=True, blank=True
+    )
+    logo_image = models.ImageField(
+        help_text='Company Logo image',
+        null=True, blank=True
+    )
+
+    class Meta:
+        verbose_name = verbose_name_plural = '7. Case Study'
+
+    def __str__(self):
+        return 'Case Study: {} {} [{}]'.format(self.sector, self.company_name, self.sub_page)
 
 
 class SectorInitiatives(PDFSection):
+    SECTION = 6
+    sector = models.ForeignKey(Sector)
+    background_image = models.ImageField(
+        help_text='Background image for this page',
+        null=True, blank=True
+    )
+
+    class Meta:
+        verbose_name = verbose_name_plural = '6 - Sector in the UK'
+
+
+class HowWeCanHelp(PDFSection):
     SECTION = 8
-    sector = models.ForeignKey(Sector)
-
-    class Meta:
-        verbose_name = verbose_name_plural = '8 - Sector Initiatives'
-
-
-class RDandInnovation(PDFSection):
-    SECTION = 9
-    sector = models.ForeignKey(Sector)
-
-    class Meta:
-        verbose_name = verbose_name_plural = '9 - R&D and Innovation'
-
-
-class NetworkAndSupport(PDFSection):
-    SECTION = 10
-    background_image = models.ImageField()
-    sector = models.ForeignKey(Sector)
-
-    class Meta:
-        verbose_name = verbose_name_plural = '11 - Network And Support'
-
-
-class RDandInnovationCaseStudy(PDFSection):
-    SECTION = 11.1
-    sector = models.ForeignKey(Sector)
-
-    class Meta:
-        verbose_name = verbose_name_plural = '10 - Case Study'
-
-
-class VideoCaseStudy(PDFSection):
-    """
-    Todo:
-    """
-    SECTION = 11.2
-    sector = models.ForeignKey(Sector)
-
-    class Meta:
-        verbose_name = verbose_name_plural = '10.1 Video case study'
-
-
-class WhoIsHere(PDFSection):
-    SECTION = 12
-    TRANSLATION_FIELDS = []
-    background_image = models.ImageField()
-
-    # No body
-    content = None
-
-    class Meta:
-        verbose_name = verbose_name_plural = '12 - Who\'s here ' \
-                                             '(background image)'
-
-
-class ServicesOfferedByDIT(PDFSection):
-    SECTION = 13
     SINGLETON = True
-    footer_image = models.ImageField(
-        help_text='Image at bottom of this page'
+
+    background_image = models.ImageField(
+        help_text='Background image for the right hand side',
+        null=True, blank=True
     )
 
     class Meta:
-        verbose_name = verbose_name_plural = '13 - Services Offered'
-
-
-class CallToAction(PDFSection):
-    SECTION = 15
-    SINGLETON = True
-
-    class Meta:
-        verbose_name = verbose_name_plural = '14 - Call to action'
-
-
-class Contact(PDFSection):
-    SECTION = 15
-    SINGLETON = True
-
-    TRANSLATION_FIELDS = (
-        PDFSection.TRANSLATION_FIELDS +
-        ['title', ]
-    )
-
-    title = models.CharField(max_length=255)
-    website = models.CharField(max_length=255)
-    website_href = models.URLField(
-        max_length=255,
-        help_text='Custom link for website (used for tracking)'
-    )
-    email = models.CharField(max_length=255)
-    phone = models.CharField(max_length=255)
-    background_image = models.ImageField()
-
-    class Meta:
-        verbose_name = verbose_name_plural = '15 - Contact'
+        verbose_name = verbose_name_plural = '8 - How we can help'
 
 
 class LastPage(PDFSection):
-    SECTION = 16
+    SECTION = 9
     SINGLETON = True
 
     class Meta:
-        verbose_name = verbose_name_plural = '16 - Last Page'
+        verbose_name = verbose_name_plural = '9 - Last Page'
 
 
 sections = sorted(PDFSection.__subclasses__(), key=lambda x: x.SECTION)

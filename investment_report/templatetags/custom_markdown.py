@@ -16,9 +16,22 @@ def increment_section(context):
 
 
 @register.simple_tag(takes_context=True)
-def markdown(context, markdown_field):
+def markdown(context, markdown_field, section=None):
+    if section is not None:
+        parts = markdown_field.split('---')
+        if section >= len(parts):
+            return ""
+        content = parts[section].strip().lstrip('\r\n')
+    else:
+        content = markdown_field
     return custom_markdown(
-        markdown_field,
+        content,
         section_counter=context.get('section_counter', 1),
         local=context['local']
     )
+
+
+@register.simple_tag(takes_context=True)
+def set(context, var_name, value):
+    context[var_name] = value
+    return ''

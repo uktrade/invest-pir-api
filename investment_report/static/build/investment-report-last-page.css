@@ -7,20 +7,76 @@ body {
 }
 
 @page {
-  size: A4;
+  size: A4 landscape;
   margin: 0;
   background-color: #1e1348;
 }
 .front-page {
-  width: 210mm;
-  height: 297mm;
-  padding-top: 11.642mm;
-  padding-left: 17.639mm;
-  padding-right: 17.639mm;
-  padding-bottom: 17.639mm;
+  width: 297mm;
+  height: 210mm;
   z-index: 2;
   position: relative;
   overflow: hidden;
+}
+
+.left_panel {
+  width: 148.5mm;
+  height: 210mm;
+  position: relative;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 17.639mm;
+}
+
+.left_panel_content {
+  color: white;
+  width: 110mm;
+  position: absolute;
+  top: 93.358mm;
+  left: 17.639mm;
+  line-height: 1.3em;
+  height: 110mm;
+}
+
+.right_panel {
+  width: 148.5mm;
+  height: 210mm;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position: -35mm 0mm;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.dit_logos {
+  border-bottom: 2mm solid #b00d23;
+  position: absolute;
+  top: 70mm;
+  left: 17.639mm;
+  height: 18mm;
+  display: block;
+  width: 110mm;
+  color: white;
+  vertical-align: bottom;
+  padding: 0;
+}
+
+.logo {
+  width: 30mm;
+}
+
+.dit_url {
+  float: left;
+  text-align: right;
+  font-weight: 900;
+  font-size: 16pt;
+  padding-top: 5mm;
+  font-family: "Invesco Interstate Bold";
 }
 
 .front-page__logo {
@@ -28,10 +84,16 @@ body {
   position: absolute;
 }
 
+a {
+  text-decoration: none;
+  font-weight: 800;
+  color: white;
+}
+
 .wrapper {
   display: flex;
-  height: 265mm;
-  width: 174.722mm;
+  height: 210mm;
+  width: 261.722mm;
   flex-direction: column;
 }
 
