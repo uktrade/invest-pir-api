@@ -1,7 +1,8 @@
 # Changelog
 
-## Pre-release
-
+## [1.0.0](https://github.com/uktrade/invest-pir-api/releases/tag/1.0.0)
+- New layouts, content and assets for all the PDFs generated
+- Some models became redundant and were removed.
 - No ticket - Upgrade vulnerable dependencies
 
 ## Hotfix
