@@ -6,8 +6,6 @@
 #
 amqp==2.3.2
     # via kombu
-asn1crypto==0.24.0
-    # via cryptography
 beautifulsoup4==4.6.0
     # via bs4
 billiard==3.5.0.3
@@ -42,7 +40,7 @@ cffi==1.14.5
     #   weasyprint
 chardet==3.0.4
     # via requests
-cryptography==2.5
+cryptography==3.4.7
     # via
     #   -r requirements.in
     #   pyopenssl
@@ -108,10 +106,11 @@ django==1.11.29
     #   django-recaptcha
     #   django-staff-sso-client
     #   django-treebeard
+    #   djangorestframework
     #   sigauth
 django_recaptcha==1.2.0
     # via -r requirements.in
-djangorestframework==3.9.1
+djangorestframework==3.11.2
     # via
     #   -r requirements.in
     #   sigauth
@@ -201,7 +200,6 @@ sigauth==2.1.3
     # via -r requirements.in
 six==1.11.0
     # via
-    #   cryptography
     #   django-countries-plus
     #   html5lib
     #   mohawk
