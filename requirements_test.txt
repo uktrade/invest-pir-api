@@ -151,7 +151,7 @@ html5lib==1.0.1
     # via weasyprint
 idna==2.6
     # via requests
-jinja2==2.11.2
+jinja2==3.0.1
     # via
     #   -r requirements_test.in
     #   moto
@@ -169,7 +169,7 @@ kombu==4.1.0
     #   celery
 markdown==2.6.11
     # via django-markdownx
-markupsafe==1.1.1
+markupsafe==2.0.1
     # via
     #   -r requirements_test.in
     #   jinja2
@@ -295,7 +295,7 @@ tinycss2==1.1.0
     #   cairosvg
     #   cssselect2
     #   weasyprint
-urllib3==1.24.3
+urllib3==1.26.5
     # via
     #   -r requirements.in
     #   directory-validators

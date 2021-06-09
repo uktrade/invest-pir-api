@@ -212,7 +212,7 @@ tinycss2==1.1.0
     #   cairosvg
     #   cssselect2
     #   weasyprint
-urllib3==1.24.3
+urllib3==1.26.5
     # via
     #   -r requirements.in
     #   directory-validators
