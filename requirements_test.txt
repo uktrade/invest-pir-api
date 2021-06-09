@@ -201,7 +201,7 @@ pluggy==0.6.0
     # via pytest
 psycopg2_binary==2.8.6
     # via -r requirements.in
-py==1.5.2
+py==1.10.0
     # via pytest
 pyaml==17.12.1
     # via moto
