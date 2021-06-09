@@ -108,10 +108,11 @@ django==1.11.29
     #   django-recaptcha
     #   django-staff-sso-client
     #   django-treebeard
+    #   djangorestframework
     #   sigauth
 django_recaptcha==1.2.0
     # via -r requirements.in
-djangorestframework==3.9.1
+djangorestframework==3.11.2
     # via
     #   -r requirements.in
     #   sigauth
