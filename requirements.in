@@ -28,7 +28,7 @@ django-moderation==0.6.0
 django-modelcluster==4.1
 django-taggit==0.22.2
 django-treebeard==4.2.0
-djangorestframework==3.9.1
+djangorestframework==3.11.2
 django-markdownx==3.0.1
 sorl-thumbnail==12.4.1
 django-countries==5.2
@@ -46,3 +46,5 @@ urllib3>=1.24.2<2.0.0
 cryptography>=2.3,<3.0.0
 pyyaml>=4.2b1,<5.0.0
 django-environ==0.4.5
+cryptography>=3.2
+urllib3>=1.26.5
