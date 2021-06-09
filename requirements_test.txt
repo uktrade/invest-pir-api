@@ -152,7 +152,7 @@ html5lib==1.0.1
     # via weasyprint
 idna==2.6
     # via requests
-jinja2==2.11.2
+jinja2==2.11.3
     # via
     #   -r requirements_test.in
     #   moto
