@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.i18n import i18n_patterns
-from django.contrib import auth
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, \
+    PasswordResetCompleteView
 
 from investment_report.admin import admin_site as investment_report_admin
 from investment_report.views import api
@@ -10,25 +11,25 @@ from investment_report.views.auth import ResetRequestView
 
 from markdownx import urls as markdownx
 
-urlpatterns = i18n_patterns(
+urlpatterns = [i18n_patterns(
     url(r'^markdownx/', include(markdownx)),
     # PIR Stuff
-    url(r'^admin/', include(investment_report_admin.urls)),
+    url(r'^admin/', include((investment_report_admin.urls, 'invest_report_admin'))),
 
     url(r'^admin/password_reset/$',
-        auth.views.password_reset,
+        PasswordResetView.as_view(),
         name='admin_password_reset'),
 
     url(r'^admin/password_reset/done/$',
-        auth.views.password_reset_done,
+        PasswordResetDoneView.as_view(),
         name='password_reset_done'),
 
     url(r'^reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
-        auth.views.password_reset_confirm,
+        PasswordResetConfirmView.as_view(),
         name='password_reset_confirm'),
 
     url(r'^reset/done/$',
-        auth.views.password_reset_complete,
+        PasswordResetCompleteView.as_view(),
         name='password_reset_complete'),
 
 
@@ -41,6 +42,7 @@ urlpatterns = i18n_patterns(
         api.PIRAPI.as_view(), name='pir_api_detail'),
 
     prefix_default_language=False)
+]
 
 
 if settings.DEBUG:
