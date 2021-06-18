@@ -21,9 +21,9 @@ logger = logging.getLogger(__name__)
 
 
 class PIRRequest(models.Model):
-    country = models.ForeignKey(Country, null=True)
-    market = models.ForeignKey('Market')
-    sector = models.ForeignKey('Sector')
+    country = models.ForeignKey(Country, null=True, on_delete=models.CASCADE)
+    market = models.ForeignKey('Market', on_delete=models.CASCADE)
+    sector = models.ForeignKey('Sector', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     lang = models.CharField(max_length=255, default='en')
     company = models.CharField(max_length=255)
@@ -91,7 +91,7 @@ class MarketContact(models.Model):
     own variants
     """
     TRANSLATION_FIELDS = []
-    market = models.ForeignKey(Market, null=True, blank=True)
+    market = models.ForeignKey(Market, null=True, blank=True, on_delete=models.CASCADE)
     first_title = models.CharField(max_length=250, null=True, blank=True, help_text=(
         'Title appearing only on the first contact box'
     ))
@@ -156,7 +156,7 @@ class FrontPage(PDFSection):
     # No body
     content = None
     background_image = models.FileField()
-    sector = models.ForeignKey(Sector)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = verbose_name_plural = '0 - Front Page'
@@ -173,7 +173,7 @@ class ContentsPage(PDFSection):
     # No body
     content = None
     background_image = models.FileField()
-    sector = models.ForeignKey(Sector)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = verbose_name_plural = '0 - Table of Contents'
@@ -185,7 +185,7 @@ class SectorOverview(PDFSection):
         PDFSection.TRANSLATION_FIELDS + ['footer_image_copy', 'footer_image_copy_attribution']
     )
 
-    sector = models.ForeignKey(Sector)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
     footer_image = models.ImageField(
         help_text='Image at bottom of this page'
     )
@@ -204,7 +204,7 @@ class SectorOverview(PDFSection):
 
 class KillerFacts(PDFSection):
     SECTION = 2
-    sector = models.ForeignKey(Sector)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
     background_image = models.ImageField(
         help_text='Background image for this page',
         null=True, blank=True
@@ -216,7 +216,7 @@ class KillerFacts(PDFSection):
 
 class MacroContextBetweenCountries(PDFSection):
     SECTION = 3
-    market = models.ForeignKey(Market)
+    market = models.ForeignKey(Market, on_delete=models.CASCADE)
     background_image = models.ImageField(
         help_text='Background image for this page',
         null=True, blank=True
@@ -248,7 +248,7 @@ class UKMarketOverview(PDFSection):
 class SmartWorkforceSector(PDFSection):
     SECTION = 5
     MULTI_PAGE = True
-    sector = models.ForeignKey(Sector)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
     sub_page = models.SmallIntegerField(
         default=0,
         help_text="For multiple sub-pages of this page, number them here. ")
@@ -267,7 +267,7 @@ class SmartWorkforceSector(PDFSection):
 class CaseStudySector(PDFSection):
     SECTION = 7
     MULTI_PAGE = True
-    sector = models.ForeignKey(Sector)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
     sub_page = models.SmallIntegerField(
         default=0,
         help_text="For multiple sub-pages of this page, number them here. ")
@@ -290,7 +290,7 @@ class CaseStudySector(PDFSection):
 
 class SectorInitiatives(PDFSection):
     SECTION = 6
-    sector = models.ForeignKey(Sector)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
     background_image = models.ImageField(
         help_text='Background image for this page',
         null=True, blank=True
