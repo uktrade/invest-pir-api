@@ -10,12 +10,13 @@ beautifulsoup4==4.6.0
     # via bs4
 billiard==3.5.0.3
     # via celery
-boto3==1.17.97
+boto3==1.5.10
     # via
     #   -r requirements.in
     #   django-amazon-ses
-botocore==1.20.97
+botocore==1.8.50
     # via
+    #   -r requirements.in
     #   boto3
     #   s3transfer
 bs4==0.0.1
@@ -78,7 +79,7 @@ django-model-utils==4.1.1
     # via django-moderation
 django-modelcluster==4.1
     # via -r requirements.in
-django-modeltranslation==0.12.2
+django-modeltranslation==0.13.1
     # via -r requirements.in
 django-moderation==0.7.0
     # via -r requirements.in
@@ -112,6 +113,8 @@ djangorestframework==3.12.4
     #   sigauth
 docopt==0.6.2
     # via notifications-python-client
+docutils==0.17.1
+    # via botocore
 future==0.16.0
     # via notifications-python-client
 gunicorn==19.7.1
@@ -190,7 +193,7 @@ requests[security]==2.25.1
     #   notifications-python-client
     #   requests-oauthlib
     #   zenpy
-s3transfer==0.4.2
+s3transfer==0.1.13
     # via boto3
 sigauth==4.3.0
     # via -r requirements.in
@@ -215,7 +218,6 @@ typing-extensions==3.10.0.0
 urllib3==1.26.5
     # via
     #   -r requirements.in
-    #   botocore
     #   directory-validators
     #   requests
 vine==1.1.4
