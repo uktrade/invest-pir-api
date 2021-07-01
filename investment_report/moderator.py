@@ -1,14 +1,14 @@
 from moderation import moderation
-
+from moderation.moderator import GenericModerator
 from investment_report import models
 
 
-# class Moderator(GenericModerator):
-#     notify_user = True
-#     auto_approve_for_superusers = False
-#     auto_approve_for_staff = False
-#     keep_history = False
-#     notify_moderator = True
+class Moderator(GenericModerator):
+    notify_user = True
+    auto_approve_for_superusers = False
+    auto_approve_for_staff = False
+    keep_history = False
+    notify_moderator = True
 
 
 for model_class in [
@@ -25,4 +25,4 @@ for model_class in [
     # models.LastPage,
     models.MarketContact,
 ]:
-        moderation.register(model_class)
+        moderation.register(model_class, Moderator)

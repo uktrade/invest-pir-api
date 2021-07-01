@@ -35,4 +35,10 @@ services:
     restart: "on-failure"
     networks:
       - djangonetwork
+    depends_on:
+      - postgres
+      - redis
+    links:
+      - postgres
+      - redis
 
