@@ -97,6 +97,7 @@ INSTALLED_APPS = [
     'countries_plus',
     'rest_framework',
     'raven.contrib.django.raven_compat',
+    'django.contrib.messages'
 ]
 
 

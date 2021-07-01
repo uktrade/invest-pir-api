@@ -1,10 +1,17 @@
 version: '2'
+
+networks:
+    djangonetwork:
+      driver: bridge
+
 services:
   postgres:
-    image: postgres:9.5.2
+    image: postgres:12.3-alpine
     env_file: ./docker/.env-postgres.test
-    network_mode: host
-  
+    networks:
+      - djangonetwork
+
+
   redis:
     image: redis:alpine
     restart: on-failure
@@ -12,7 +19,8 @@ services:
         - "6379:6379"
     logging:
         driver: "none"
-    network_mode: host
+    networks:
+      - djangonetwork
     
   webserver:
     build:
@@ -25,6 +33,6 @@ services:
     ports: ["8005:8005"]
     env_file: ./docker/.env
     restart: "on-failure"
-    network_mode: host
+    networks:
+      - djangonetwork
 
-  

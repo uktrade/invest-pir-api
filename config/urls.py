@@ -4,17 +4,14 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, \
     PasswordResetCompleteView
 
-from investment_report.admin import admin_site as investment_report_admin
 from investment_report.views import api
 from investment_report.views.auth import ResetRequestView
 
 
 from markdownx import urls as markdownx
 
-urlpatterns = [i18n_patterns(
+urlpatterns = i18n_patterns(
     url(r'^markdownx/', include(markdownx)),
-    # PIR Stuff
-    url(r'^admin/', include((investment_report_admin.urls, 'invest_report_admin'))),
 
     url(r'^admin/password_reset/$',
         PasswordResetView.as_view(),
@@ -42,7 +39,6 @@ urlpatterns = [i18n_patterns(
         api.PIRAPI.as_view(), name='pir_api_detail'),
 
     prefix_default_language=False)
-]
 
 
 if settings.DEBUG:
@@ -56,6 +52,6 @@ if settings.DEBUG:
 
     if settings.ENABLE_DEBUG_TOOLBAR:
         import debug_toolbar
-        urlpatterns = [
-            url(r'^__debug__/', include(debug_toolbar.urls)),
-        ] + urlpatterns
+        urlpatterns += [
+            url(r'^__debug__/', include(debug_toolbar.urls))
+        ]

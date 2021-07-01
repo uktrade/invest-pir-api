@@ -37,7 +37,7 @@ class PIRAPITestCase(APITestCase):
             display_name='tech',
         )
 
-        market.countries = [country]
+        market.countries_set = [country]
         market.save()
 
         self.mock_ses = mock_ses()
