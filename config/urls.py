@@ -3,6 +3,7 @@ from django.conf.urls import include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, \
     PasswordResetCompleteView
+from django.urls import path
 
 from investment_report.admin import admin_site as investment_report_admin
 from investment_report.views import api
@@ -39,7 +40,7 @@ urlpatterns = i18n_patterns(
     url(r'^api/pir/(?P<identifier>\d+)/$',
         api.PIRAPI.as_view(), name='pir_api_detail'),
     # PIR Stuff
-    url(r'^admin/', include(investment_report_admin.urls)),
+    path('admin/', investment_report_admin.urls),
 
     prefix_default_language=False)
 
