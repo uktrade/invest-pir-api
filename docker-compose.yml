@@ -30,7 +30,7 @@ services:
       - ./:/usr/src/app
     working_dir: /usr/src/app
     command: ./docker/cmd-webserver.sh dev
-    ports: ["8005:8005"]
+    ports: ["8014:8014"]
     env_file: ./docker/.env
     restart: "on-failure"
     networks:

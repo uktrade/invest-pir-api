@@ -42,7 +42,7 @@ docker_run:
 DOCKER_SET_DEBUG_ENV_VARS := \
 	export PIR_API_DEBUG=true; \
 	export PIR_API_PORT=8014; \
-	export PIR_API_REDIS_URL=redis://localhost:6379; \
+	export PIR_API_REDIS_URL=redis://redis:6379; \
 	export PIR_API_SECRET_KEY=secret; \
 	export PIR_API_SESSION_COOKIE_SECURE=false; \
 	export PIR_API_SECURE_HSTS_SECONDS=0; \
@@ -107,8 +107,8 @@ DEBUG_SET_ENV_VARS := \
 	export RECAPTCHA_PUBLIC_KEY=debug; \
 	export RECAPTCHA_PRIVATE_KEY=debug; \
 	export NOCAPTCHA=false; \
-    export CRYPTOGRAPHY_DONT_BUILD_RUST=1
-
+	export CRYPTOGRAPHY_DONT_BUILD_RUST=1; \
+	export REDIS_URL=redis://redis:6379; \
 
 DEBUG_CREATE_DB := \
 	psql -h localhost -U postgres -tc "SELECT 1 FROM pg_database WHERE datname = '$$DB_NAME'" | \
