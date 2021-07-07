@@ -1,29 +1,25 @@
-import logging
 import datetime
+import logging
 import uuid
-
 from collections import OrderedDict
 
-from django.utils import timezone
-
-from django.db import models
-from django.utils import translation
-
 from countries_plus.models import Country
-from markdownx.models import MarkdownxField
 from django.core.files import File
-
+from django.db import models
+from django.utils import timezone, translation
+from markdownx.models import MarkdownxField
+from moderation.db import ModeratedModel
 from notifications_python_client.errors import HTTPError
-from config.s3 import PDFS3Boto3Storage
 
+from config.s3 import PDFS3Boto3Storage
 
 logger = logging.getLogger(__name__)
 
 
 class PIRRequest(models.Model):
-    country = models.ForeignKey(Country, null=True)
-    market = models.ForeignKey('Market')
-    sector = models.ForeignKey('Sector')
+    country = models.ForeignKey(Country, null=True, on_delete=models.CASCADE)
+    market = models.ForeignKey('Market', on_delete=models.CASCADE)
+    sector = models.ForeignKey('Sector', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     lang = models.CharField(max_length=255, default='en')
     company = models.CharField(max_length=255)
@@ -37,9 +33,8 @@ class PIRRequest(models.Model):
     pdf = models.FileField(storage=PDFS3Boto3Storage())
 
     def create_pdf(self, notify=True):
-        from investment_report.utils import (
-            investment_report_pdf_generator, send_investment_email
-        )
+        from investment_report.utils import (investment_report_pdf_generator,
+                                             send_investment_email)
 
         with translation.override(self.lang):
             pdf_hash = (
@@ -83,7 +78,7 @@ class Market(models.Model):
         return self.name
 
 
-class MarketContact(models.Model):
+class MarketContact(ModeratedModel):
     """
     Contact details for the contact box. Can be configured by market.
     A version without any market designation is used as the default template for all
@@ -91,7 +86,7 @@ class MarketContact(models.Model):
     own variants
     """
     TRANSLATION_FIELDS = []
-    market = models.ForeignKey(Market, null=True, blank=True)
+    market = models.ForeignKey(Market, null=True, blank=True, on_delete=models.CASCADE)
     first_title = models.CharField(max_length=250, null=True, blank=True, help_text=(
         'Title appearing only on the first contact box'
     ))
@@ -110,6 +105,13 @@ class MarketContact(models.Model):
 
     def __str__(self):
         return 'Contact {}'.format(self.market)
+
+    class Moderator:
+        notify_user = True
+        auto_approve_for_superusers = False
+        auto_approve_for_staff = False
+        keep_history = False
+        notify_moderator = True
 
 
 class PDFSection(models.Model):
@@ -145,7 +147,7 @@ class PDFSection(models.Model):
 
 
 # Begin spam of table models.
-class FrontPage(PDFSection):
+class FrontPage(PDFSection, ModeratedModel):
     SECTION = 0
     SINGLETON = False
     TRANSLATION_FIELDS = []
@@ -156,13 +158,20 @@ class FrontPage(PDFSection):
     # No body
     content = None
     background_image = models.FileField()
-    sector = models.ForeignKey(Sector)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = verbose_name_plural = '0 - Front Page'
 
+    class Moderator:
+        notify_user = True
+        auto_approve_for_superusers = False
+        auto_approve_for_staff = False
+        keep_history = False
+        notify_moderator = True
 
-class ContentsPage(PDFSection):
+
+class ContentsPage(PDFSection, ModeratedModel):
     SECTION = 0
     SINGLETON = False
     TRANSLATION_FIELDS = []
@@ -173,19 +182,26 @@ class ContentsPage(PDFSection):
     # No body
     content = None
     background_image = models.FileField()
-    sector = models.ForeignKey(Sector)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = verbose_name_plural = '0 - Table of Contents'
 
+    class Moderator:
+        notify_user = True
+        auto_approve_for_superusers = False
+        auto_approve_for_staff = False
+        keep_history = False
+        notify_moderator = True
 
-class SectorOverview(PDFSection):
+
+class SectorOverview(PDFSection, ModeratedModel):
     SECTION = 1
     TRANSLATION_FIELDS = (
         PDFSection.TRANSLATION_FIELDS + ['footer_image_copy', 'footer_image_copy_attribution']
     )
 
-    sector = models.ForeignKey(Sector)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
     footer_image = models.ImageField(
         help_text='Image at bottom of this page'
     )
@@ -201,10 +217,17 @@ class SectorOverview(PDFSection):
     class Meta:
         verbose_name = verbose_name_plural = '1 - A Great Home for Company'
 
+    class Moderator:
+        notify_user = True
+        auto_approve_for_superusers = False
+        auto_approve_for_staff = False
+        keep_history = False
+        notify_moderator = True
 
-class KillerFacts(PDFSection):
+
+class KillerFacts(PDFSection, ModeratedModel):
     SECTION = 2
-    sector = models.ForeignKey(Sector)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
     background_image = models.ImageField(
         help_text='Background image for this page',
         null=True, blank=True
@@ -213,10 +236,17 @@ class KillerFacts(PDFSection):
     class Meta:
         verbose_name = verbose_name_plural = '2 - Achieving Great Things in Sector'
 
+    class Moderator:
+        notify_user = True
+        auto_approve_for_superusers = False
+        auto_approve_for_staff = False
+        keep_history = False
+        notify_moderator = True
 
-class MacroContextBetweenCountries(PDFSection):
+
+class MacroContextBetweenCountries(PDFSection, ModeratedModel):
     SECTION = 3
-    market = models.ForeignKey(Market)
+    market = models.ForeignKey(Market, on_delete=models.CASCADE)
     background_image = models.ImageField(
         help_text='Background image for this page',
         null=True, blank=True
@@ -225,8 +255,15 @@ class MacroContextBetweenCountries(PDFSection):
     class Meta:
         verbose_name = verbose_name_plural = '3 - Links that are already strong'
 
+    class Moderator:
+        notify_user = True
+        auto_approve_for_superusers = False
+        auto_approve_for_staff = False
+        keep_history = False
+        notify_moderator = True
 
-class UKMarketOverview(PDFSection):
+
+class UKMarketOverview(PDFSection, ModeratedModel):
     SECTION = 4
     SINGLETON = True
     TRANSLATION_FIELDS = ['body_image']
@@ -244,11 +281,18 @@ class UKMarketOverview(PDFSection):
     class Meta:
         verbose_name = verbose_name_plural = '4 - UK Market Overview'
 
+    class Moderator:
+        notify_user = True
+        auto_approve_for_superusers = False
+        auto_approve_for_staff = False
+        keep_history = False
+        notify_moderator = True
 
-class SmartWorkforceSector(PDFSection):
+
+class SmartWorkforceSector(PDFSection, ModeratedModel):
     SECTION = 5
     MULTI_PAGE = True
-    sector = models.ForeignKey(Sector)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
     sub_page = models.SmallIntegerField(
         default=0,
         help_text="For multiple sub-pages of this page, number them here. ")
@@ -263,11 +307,18 @@ class SmartWorkforceSector(PDFSection):
     def __str__(self):
         return 'Smart Workforce: {} [{}]'.format(self.sector, self.sub_page)
 
+    class Moderator:
+        notify_user = True
+        auto_approve_for_superusers = False
+        auto_approve_for_staff = False
+        keep_history = False
+        notify_moderator = True
 
-class CaseStudySector(PDFSection):
+
+class CaseStudySector(PDFSection, ModeratedModel):
     SECTION = 7
     MULTI_PAGE = True
-    sector = models.ForeignKey(Sector)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
     sub_page = models.SmallIntegerField(
         default=0,
         help_text="For multiple sub-pages of this page, number them here. ")
@@ -287,10 +338,17 @@ class CaseStudySector(PDFSection):
     def __str__(self):
         return 'Case Study: {} {} [{}]'.format(self.sector, self.company_name, self.sub_page)
 
+    class Moderator:
+        notify_user = True
+        auto_approve_for_superusers = False
+        auto_approve_for_staff = False
+        keep_history = False
+        notify_moderator = True
 
-class SectorInitiatives(PDFSection):
+
+class SectorInitiatives(PDFSection, ModeratedModel):
     SECTION = 6
-    sector = models.ForeignKey(Sector)
+    sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
     background_image = models.ImageField(
         help_text='Background image for this page',
         null=True, blank=True
@@ -299,8 +357,15 @@ class SectorInitiatives(PDFSection):
     class Meta:
         verbose_name = verbose_name_plural = '6 - Sector in the UK'
 
+    class Moderator:
+        notify_user = True
+        auto_approve_for_superusers = False
+        auto_approve_for_staff = False
+        keep_history = False
+        notify_moderator = True
 
-class HowWeCanHelp(PDFSection):
+
+class HowWeCanHelp(PDFSection, ModeratedModel):
     SECTION = 8
     SINGLETON = True
 
@@ -312,13 +377,27 @@ class HowWeCanHelp(PDFSection):
     class Meta:
         verbose_name = verbose_name_plural = '8 - How we can help'
 
+    class Moderator:
+        notify_user = True
+        auto_approve_for_superusers = False
+        auto_approve_for_staff = False
+        keep_history = False
+        notify_moderator = True
 
-class LastPage(PDFSection):
+
+class LastPage(PDFSection, ModeratedModel):
     SECTION = 9
     SINGLETON = True
 
     class Meta:
         verbose_name = verbose_name_plural = '9 - Last Page'
+
+    class Moderator:
+        notify_user = True
+        auto_approve_for_superusers = False
+        auto_approve_for_staff = False
+        keep_history = False
+        notify_moderator = True
 
 
 sections = sorted(PDFSection.__subclasses__(), key=lambda x: x.SECTION)
