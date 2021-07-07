@@ -1,6 +1,6 @@
 import logging
 
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django import forms
 from django.views.generic.edit import FormView
 from django.contrib.messages.views import SuccessMessageMixin

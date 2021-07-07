@@ -71,7 +71,6 @@ class PIRSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'Must provide country or market'
             )
-
         if country:
             market = Market.objects.get(countries=country)
 
