@@ -18,8 +18,8 @@ pytz==2017.2
 raven==6.5.0
 whitenoise==3.3.1
 zenpy==1.1.10
-kombu==4.6.11  # https://github.com/celery/kombu/issues/870#issuecomment-390600893
-celery[redis]==4.1.0
+kombu==5.1.0  # https://github.com/celery/kombu/issues/870#issuecomment-390600893
+celery[redis]==5.1.0
 directory-validators==6.0.6
 # Pinned at this commit as includes vital model import logic fix.
 # Should be merged in 0.5.1
