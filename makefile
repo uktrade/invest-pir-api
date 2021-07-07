@@ -108,7 +108,7 @@ DEBUG_SET_ENV_VARS := \
 	export RECAPTCHA_PRIVATE_KEY=debug; \
 	export NOCAPTCHA=false; \
 	export CRYPTOGRAPHY_DONT_BUILD_RUST=1; \
-	export REDIS_URL=redis://redis:6379; \
+	export REDIS_URL=redis://redis:6379
 
 DEBUG_CREATE_DB := \
 	psql -h localhost -U postgres -tc "SELECT 1 FROM pg_database WHERE datname = '$$DB_NAME'" | \
@@ -121,6 +121,9 @@ debug_db:
 
 debug_migrate:
 	$(DEBUG_SET_ENV_VARS) && ./manage.py migrate
+
+debug_makemigrations:
+	$(DEBUG_SET_ENV_VARS) && ./manage.py makemigrations
 
 debug_createsuperuser:
 	$(DEBUG_SET_ENV_VARS) && ./manage.py createsuperuser
@@ -153,4 +156,4 @@ compile_all_requirements: compile_requirements compile_test_requirements
 compile_css:
 	./node_modules/.bin/gulp css
 
-.PHONY: build clean test_requirements docker_run docker_debug docker_webserver_bash docker_test debug_webserver debug_test debug heroku_deploy_dev
+.PHONY: build clean test_requirements docker_run docker_debug docker_webserver_bash docker_test debug_webserver debug_test debug heroku_deploy_dev debug_makemigrations
