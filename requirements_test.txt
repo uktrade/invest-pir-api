@@ -4,6 +4,8 @@
 #
 #    pip-compile requirements_test.in
 #
+-e git+https://github.com/dominno/django-moderation.git#egg=django-moderation
+    # via -r requirements.in
 amqp==2.6.1
     # via kombu
 attrs==17.4.0
@@ -74,7 +76,7 @@ directory-validators==6.0.6
     # via -r requirements.in
 dj-database-url==0.4.2
     # via -r requirements.in
-django==2.2
+django==2.2.24
     # via
     #   -r requirements.in
     #   directory-validators
@@ -113,8 +115,6 @@ django-model-utils==4.1.1
 django-modelcluster==4.1
     # via -r requirements.in
 django-modeltranslation==0.13.1
-    # via -r requirements.in
-django-moderation==0.7.0
     # via -r requirements.in
 django_recaptcha==1.2.0
     # via -r requirements.in
