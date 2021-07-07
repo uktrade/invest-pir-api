@@ -1,7 +1,7 @@
 import os
 
-from config.settings.production import *  # noqa
-from config.settings.production import PROJECT_ROOT
+from config.settings import *  # noqa
+from config.settings import PROJECT_ROOT
 
 CELERY_ALWAYS_EAGER = True
 BROKER_BACKEND = 'memory'
