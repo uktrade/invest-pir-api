@@ -5,7 +5,7 @@ from investment_report.models import (
 )
 
 import django
-from django.core import urlresolvers
+from django.urls import reverse
 from django.apps import apps
 from django.db import models
 from django.contrib import admin
@@ -89,12 +89,12 @@ class PDFPreviewMixin:
         res = {}
 
         if changed_object:
-            res['preview'] = urlresolvers.reverse(
+            res['preview'] = reverse(
                 'preview_investment_report_pdf', args=(
                     'en', *_get_pdf_args(changed_object)))
 
         if live_object:
-            res['live'] = urlresolvers.reverse(
+            res['live'] = reverse(
                 'investment_report_pdf', args=(
                     'en', *_get_pdf_args(live_object)))
 
@@ -111,7 +111,6 @@ class PDFAdmin(
     change_form_template = "admin/pdf_changeform.html"
 
     def change_view(self, request, object_id, extra_context={}):
-
         model = self.model.unmoderated_objects.get(id=object_id)
 
         preview_links = []
@@ -119,7 +118,7 @@ class PDFAdmin(
         for lang in settings.LANGUAGES:
             link = (
                 'Preview PDF {}'.format(lang[0]),
-                urlresolvers.reverse(
+                reverse(
                     'preview_investment_report_pdf', args=(
                         lang[0], *_get_pdf_args(model)
                     ))
@@ -226,11 +225,11 @@ class CustomModeratedObjectAdmin(ModeratedObjectAdmin, PDFPreviewMixin):
 
         content_type = ContentType.objects.get_for_model(changed_obj.__class__)
         try:
-            object_admin_url = urlresolvers.reverse("admin:%s_%s_change" %
-                                                    (content_type.app_label,
-                                                     content_type.model),
-                                                    args=(changed_obj.pk,))
-        except urlresolvers.NoReverseMatch:
+            object_admin_url = reverse("admin:%s_%s_change" %
+                                       (content_type.app_label,
+                                        content_type.model),
+                                       args=(changed_obj.pk,))
+        except reverse.NoReverseMatch:
             object_admin_url = None
 
         # This is the only bit of code overridden.

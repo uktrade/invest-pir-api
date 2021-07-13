@@ -1,15 +1,33 @@
 version: '2'
-services:
 
+networks:
+  djangonetwork:
+      driver: bridge
+
+services:
   postgres:
-    image: postgres:9.5.2
+    image: postgres:12.3-alpine
     env_file: ./docker/.env-postgres.test
+    networks:
+      - djangonetwork
+
+  redis:
+    image: redis:alpine
+    restart: on-failure
+    ports:
+      - "6379:6379"
+    logging:
+      driver: "none"
+    networks:
+      - djangonetwork
 
   sut:
     depends_on:
       - postgres
+      - redis
     links:
       - postgres
+      - redis
     build:
       context: .
       dockerfile: Dockerfile
@@ -19,3 +37,6 @@ services:
     command: ./docker/cmd-test.sh
     env_file: ./docker/.env.test
     restart: "no"
+    networks:
+      - djangonetwork
+

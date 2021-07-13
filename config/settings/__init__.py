@@ -74,7 +74,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'storages',
     'modeltranslation',
-    'moderation',
+    'moderation.apps.SimpleModerationConfig',
 
     'investment_report',
 
@@ -97,6 +97,7 @@ INSTALLED_APPS = [
     'countries_plus',
     'rest_framework',
     'raven.contrib.django.raven_compat',
+    'django.contrib.messages'
 ]
 
 
@@ -228,10 +229,13 @@ USE_TZ = True
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 if AWS_ACCESS_KEY_ID is None:
     MEDIA_URL = '/media/'
+    STATIC_URL = '/static/'
 else:
     MEDIA_URL = "https://%s/media/" % AWS_S3_CUSTOM_DOMAIN
     DEFAULT_FILE_STORAGE = 'config.s3.MediaRootS3BotoStorage'
     STATICFILES_STORAGE = 'config.s3.StaticRootS3BotoStorage'
+    # static url
+    STATIC_URL = "https://%s/static/" % AWS_S3_CUSTOM_DOMAIN
 
 # Static files served with Whitenoise and AWS Cloudfront
 # http://whitenoise.evans.io/en/stable/django.html#instructions-for-amazon-cloudfront
@@ -239,7 +243,6 @@ else:
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 if not os.path.exists(STATIC_ROOT):
     os.makedirs(STATIC_ROOT)
-STATIC_URL = "https://%s/static/" % AWS_S3_CUSTOM_DOMAIN
 
 LOGGING = {
     'version': 1,
