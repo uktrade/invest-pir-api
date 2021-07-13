@@ -156,8 +156,6 @@ You should not edit CSS files directly, instead edit their SCSS counterparts.
 
 
 ## Helpful links
-* [Developers Onboarding Checklist](https://uktrade.atlassian.net/wiki/spaces/ED/pages/32243946/Developers+onboarding+checklist)
-* [Gitflow branching](https://uktrade.atlassian.net/wiki/spaces/ED/pages/737182153/Gitflow+and+releases)
 * [GDS service standards](https://www.gov.uk/service-manual/service-standard)
 * [GDS design principles](https://www.gov.uk/design-principles)
 

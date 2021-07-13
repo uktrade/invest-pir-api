@@ -5,6 +5,9 @@ clean:
 	-find . -type f -name "*.pyc" -delete
 	-find . -type d -name "__pycache__" -delete
 
+INSTALL_REQUIREMENT:= pip install -r requirements_test.txt
+UPGRADE_PIP := pip install --upgrade pip
+
 test_requirements:
 	pip install -r requirements_test.txt
 
@@ -39,7 +42,7 @@ docker_run:
 DOCKER_SET_DEBUG_ENV_VARS := \
 	export PIR_API_DEBUG=true; \
 	export PIR_API_PORT=8014; \
-	export PIR_API_REDIS_URL=redis://localhost:6379; \
+	export PIR_API_REDIS_URL=redis://redis:6379; \
 	export PIR_API_SECRET_KEY=secret; \
 	export PIR_API_SESSION_COOKIE_SECURE=false; \
 	export PIR_API_SECURE_HSTS_SECONDS=0; \
@@ -53,7 +56,9 @@ DOCKER_SET_DEBUG_ENV_VARS := \
 	export PIR_AWS_ACCESS_KEY_ID=secret; \
 	export PIR_AWS_SECRET_ACCESS_KEY=test; \
 	export PIR_AWS_DEFAULT_REGION=eu-west-1; \
-	export PIR_AWS_STORAGE_BUCKET_NAME=pir-invest
+	export PIR_AWS_STORAGE_BUCKET_NAME=pir-invest; \
+	export PIR_API_CRYPTOGRAPHY_DONT_BUILD_RUST=1
+
 
 docker_test_env_files:
 	$(DOCKER_SET_DEBUG_ENV_VARS) && \
@@ -101,7 +106,9 @@ DEBUG_SET_ENV_VARS := \
 	export SECURE_SSL_REDIRECT=false; \
 	export RECAPTCHA_PUBLIC_KEY=debug; \
 	export RECAPTCHA_PRIVATE_KEY=debug; \
-	export NOCAPTCHA=false
+	export NOCAPTCHA=false; \
+	export CRYPTOGRAPHY_DONT_BUILD_RUST=1; \
+	export REDIS_URL=redis://redis:6379
 
 DEBUG_CREATE_DB := \
 	psql -h localhost -U postgres -tc "SELECT 1 FROM pg_database WHERE datname = '$$DB_NAME'" | \
@@ -114,6 +121,9 @@ debug_db:
 
 debug_migrate:
 	$(DEBUG_SET_ENV_VARS) && ./manage.py migrate
+
+debug_makemigrations:
+	$(DEBUG_SET_ENV_VARS) && ./manage.py makemigrations
 
 debug_createsuperuser:
 	$(DEBUG_SET_ENV_VARS) && ./manage.py createsuperuser
@@ -146,4 +156,4 @@ compile_all_requirements: compile_requirements compile_test_requirements
 compile_css:
 	./node_modules/.bin/gulp css
 
-.PHONY: build clean test_requirements docker_run docker_debug docker_webserver_bash docker_test debug_webserver debug_test debug heroku_deploy_dev
+.PHONY: build clean test_requirements docker_run docker_debug docker_webserver_bash docker_test debug_webserver debug_test debug heroku_deploy_dev debug_makemigrations

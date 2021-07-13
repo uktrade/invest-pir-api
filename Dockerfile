@@ -1,4 +1,4 @@
-FROM python:3.5
+FROM python:3.6
 
 
 # Current version of debian in the python image is waaayyy tooo ollllddddd.
@@ -20,14 +20,14 @@ RUN fc-cache -f -v
 ADD requirements.txt /usr/src/app/
 
 # Because directory-signature-auth uses pip internals
-RUN pip install pip==9
+RUN pip install --upgrade pip
 # Different src directory for pip to prevent 'pip install -e' packages to be installed in /usr/src/app/
 RUN pip install --no-cache-dir -r requirements.txt --src /usr/local/src
 
 ADD . /usr/src/app
 
 # Install dockerize https://github.com/jwilder/dockerize
-ENV DOCKERIZE_VERSION v0.5.0
+ENV DOCKERIZE_VERSION v0.6.1
 RUN wget -q https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
