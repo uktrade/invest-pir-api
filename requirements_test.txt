@@ -33,8 +33,6 @@ botocore==1.8.50
     #   s3transfer
 bs4==0.0.1
     # via -r requirements.in
-cached-property==1.5.2
-    # via kombu
 cachetools==2.0.1
     # via zenpy
 cairocffi==1.2.0
@@ -162,10 +160,6 @@ html5lib==1.0.1
     # via weasyprint
 idna==2.6
     # via requests
-importlib-metadata==4.6.0
-    # via
-    #   kombu
-    #   markdown
 jinja2==3.0.1
     # via
     #   -r requirements_test.in
@@ -206,7 +200,7 @@ olefile==0.44
     # via directory-validators
 pbr==4.0.4
     # via mock
-pillow==8.2.0
+pillow==8.3.2
     # via
     #   cairosvg
     #   directory-validators
@@ -315,8 +309,6 @@ tinycss2==1.1.0
     #   cairosvg
     #   cssselect2
     #   weasyprint
-typing-extensions==3.10.0.0
-    # via importlib-metadata
 urllib3==1.26.5
     # via
     #   -r requirements.in
@@ -349,8 +341,6 @@ xmltodict==0.11.0
     # via moto
 zenpy==1.1.10
     # via -r requirements.in
-zipp==3.4.1
-    # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
