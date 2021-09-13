@@ -300,7 +300,7 @@ six==1.11.0
     #   websocket-client
 sorl-thumbnail==12.4.1
     # via -r requirements.in
-sqlparse==0.4.1
+sqlparse==0.4.2
     # via django
 termcolor==1.1.0
     # via pytest-sugar
