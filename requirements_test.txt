@@ -6,7 +6,7 @@
 #
 -e git+https://github.com/dominno/django-moderation.git#egg=django-moderation
     # via -r requirements.in
-amqp==2.6.1
+amqp==5.0.6
     # via kombu
 attrs==17.4.0
     # via pytest
@@ -16,7 +16,7 @@ beautifulsoup4==4.6.0
     # via
     #   -r requirements_test.in
     #   bs4
-billiard==3.5.0.3
+billiard==3.6.4.0
     # via celery
 boto==2.48.0
     # via moto
@@ -41,7 +41,7 @@ cairocffi==1.2.0
     #   weasyprint
 cairosvg==2.5.2
     # via weasyprint
-celery[redis]==4.1.0
+celery[redis]==5.1.0
     # via -r requirements.in
 certifi==2018.1.18
     # via requests
@@ -52,6 +52,18 @@ cffi==1.14.5
     #   weasyprint
 chardet==3.0.4
     # via requests
+click==7.1.2
+    # via
+    #   celery
+    #   click-didyoumean
+    #   click-plugins
+    #   click-repl
+click-didyoumean==0.0.3
+    # via celery
+click-plugins==1.1.1
+    # via celery
+click-repl==0.2.0
+    # via celery
 codecov==2.0.15
     # via -r requirements_test.in
 cookies==2.2.1
@@ -148,10 +160,6 @@ html5lib==1.0.1
     # via weasyprint
 idna==2.6
     # via requests
-importlib-metadata==4.6.0
-    # via
-    #   kombu
-    #   markdown
 jinja2==3.0.1
     # via
     #   -r requirements_test.in
@@ -164,7 +172,7 @@ jsondiff==1.1.1
     # via moto
 jsonpickle==0.9.6
     # via aws-xray-sdk
-kombu==4.6.11
+kombu==5.1.0
     # via
     #   -r requirements.in
     #   celery
@@ -192,13 +200,15 @@ olefile==0.44
     # via directory-validators
 pbr==4.0.4
     # via mock
-pillow==8.2.0
+pillow==8.3.2
     # via
     #   cairosvg
     #   directory-validators
     #   django-markdownx
 pluggy==0.6.0
     # via pytest
+prompt-toolkit==3.0.19
+    # via click-repl
 psycopg2_binary==2.8.6
     # via -r requirements.in
 py==1.10.0
@@ -253,7 +263,7 @@ raven==6.5.0
     # via
     #   -r requirements.in
     #   django-staff-sso-client
-redis==2.10.6
+redis==3.5.3
     # via
     #   celery
     #   django-redis
@@ -276,8 +286,10 @@ sigauth==4.3.0
     # via -r requirements.in
 six==1.11.0
     # via
+    #   click-repl
     #   django-countries-plus
     #   docker
+    #   docker-pycreds
     #   html5lib
     #   mock
     #   mohawk
@@ -285,9 +297,10 @@ six==1.11.0
     #   pyopenssl
     #   pytest
     #   python-dateutil
+    #   websocket-client
 sorl-thumbnail==12.4.1
     # via -r requirements.in
-sqlparse==0.4.1
+sqlparse==0.4.2
     # via django
 termcolor==1.1.0
     # via pytest-sugar
@@ -296,17 +309,20 @@ tinycss2==1.1.0
     #   cairosvg
     #   cssselect2
     #   weasyprint
-typing-extensions==3.10.0.0
-    # via importlib-metadata
 urllib3==1.26.5
     # via
     #   -r requirements.in
     #   directory-validators
     #   requests
-vine==1.1.4
-    # via amqp
+vine==5.0.0
+    # via
+    #   amqp
+    #   celery
+    #   kombu
 waitress==1.4.4
     # via -r requirements.in
+wcwidth==0.2.5
+    # via prompt-toolkit
 weasyprint==51
     # via -r requirements.in
 webencodings==0.5.1
@@ -325,8 +341,6 @@ xmltodict==0.11.0
     # via moto
 zenpy==1.1.10
     # via -r requirements.in
-zipp==3.4.1
-    # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
