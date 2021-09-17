@@ -9,6 +9,9 @@
     "gulp-sourcemaps": "^2.6.5",
     "sass": "^1.22.4"
   },
+  "dependencies": {
+    "set-value": "^4.0.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
