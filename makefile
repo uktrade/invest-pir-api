@@ -151,7 +151,7 @@ compile_requirements:
 compile_test_requirements:
 	python -m piptools compile requirements_test.in
 
-compile_all_requirements: compile_requirements compile_test_requirements
+compile_all_requirements: compile_requirements && compile_test_requirements
 
 compile_css:
 	./node_modules/.bin/gulp css
