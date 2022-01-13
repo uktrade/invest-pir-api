@@ -200,7 +200,7 @@ olefile==0.44
     # via directory-validators
 pbr==4.0.4
     # via mock
-pillow==8.3.2
+pillow==9.0.0
     # via
     #   cairosvg
     #   directory-validators
