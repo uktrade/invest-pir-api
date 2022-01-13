@@ -146,10 +146,10 @@ debug_shell:
 debug: test_requirements debug_test
 
 compile_requirements:
-	python3 -m piptools compile requirements.in
+	python -m piptools compile requirements.in
 
 compile_test_requirements:
-	python3 -m piptools compile requirements_test.in
+	python -m piptools compile requirements_test.in
 
 compile_all_requirements: compile_requirements compile_test_requirements
 
