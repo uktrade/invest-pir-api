@@ -20,7 +20,7 @@ whitenoise==3.3.1
 zenpy==1.1.10
 kombu<6.0,>=5.2.3
 celery[redis]>=5.2.2
-directory-validators==8.0.0
+directory-validators==8.0.1
 # Pinned at this commit as includes vital model import logic fix.
 # Should be merged in 0.5.1
 django-modelcluster==4.1
