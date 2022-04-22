@@ -77,7 +77,6 @@ django==2.2.27
     #   django-clear-cache
     #   django-countries-plus
     #   django-markdownx
-    #   django-model-utils
     #   django-moderation
     #   django-recaptcha
     #   django-staff-sso-client
@@ -103,8 +102,6 @@ django-ipware==2.1.0
     # via django-axes
 django-markdownx==3.0.1
     # via -r requirements.in
-django-model-utils==4.1.1
-    # via django-moderation
 django-modelcluster==4.1
     # via -r requirements.in
 django-modeltranslation==0.13.1
@@ -168,7 +165,7 @@ pyjwt==1.6.4
     # via notifications-python-client
 pyopenssl==19.0.0
     # via requests
-pypdf2==1.26.0
+pypdf2==1.27.5
     # via -r requirements.in
 pyphen==0.9.4
     # via weasyprint
