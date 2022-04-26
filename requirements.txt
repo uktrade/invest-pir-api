@@ -165,7 +165,7 @@ pyjwt==1.6.4
     # via notifications-python-client
 pyopenssl==19.0.0
     # via requests
-pypdf2==1.26.0
+pypdf2==1.27.5
     # via -r requirements.in
 pyphen==0.9.4
     # via weasyprint
