@@ -29,7 +29,7 @@ djangorestframework==3.12.4
 sorl-thumbnail==12.4.1
 django-countries==5.2
 django-countries-plus==1.2.1
-notifications-python-client==5.4.*
+notifications-python-client==6.3.*
 weasyprint==51
 PyPDF2==1.27.5
 sigauth==4.3.0
@@ -45,3 +45,4 @@ urllib3>=1.26.5
 # django 2.2.24 for critical vulnerabilities - hence installing from master
 -e git+https://github.com/dominno/django-moderation.git#egg=django-moderation
 django-markdownx==3.0.1
+Pyjwt==2.4.0
