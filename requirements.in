@@ -45,3 +45,4 @@ urllib3>=1.26.5
 # django 2.2.24 for critical vulnerabilities - hence installing from master
 -e git+https://github.com/dominno/django-moderation.git#egg=django-moderation
 django-markdownx==3.0.1
+Pyjwt==2.4.0

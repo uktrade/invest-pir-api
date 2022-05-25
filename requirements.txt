@@ -157,8 +157,10 @@ psycopg2-binary==2.8.6
     # via -r requirements.in
 pycparser==2.18
     # via cffi
-pyjwt==1.6.4
-    # via notifications-python-client
+pyjwt==2.4.0
+    # via
+    #   -r requirements.in
+    #   notifications-python-client
 pyopenssl==19.0.0
     # via requests
 pypdf2==1.27.5
