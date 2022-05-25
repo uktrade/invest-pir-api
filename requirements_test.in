@@ -10,3 +10,4 @@ moto==2.3.1
 codecov==2.1.7
 MarkupSafe>=1.1.1
 jinja2>=2.11.3
+Pyjwt==2.4.0
