@@ -29,7 +29,7 @@ djangorestframework==3.12.4
 sorl-thumbnail==12.4.1
 django-countries==5.2
 django-countries-plus==1.2.1
-notifications-python-client==5.4.*
+notifications-python-client==6.3.*
 weasyprint==51
 PyPDF2==1.27.5
 sigauth==4.3.0

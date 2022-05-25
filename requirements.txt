@@ -122,8 +122,6 @@ djangorestframework==3.12.4
     #   sigauth
 docopt==0.6.2
     # via notifications-python-client
-future==0.16.0
-    # via notifications-python-client
 gunicorn==19.7.1
     # via -r requirements.in
 html5lib==1.0.1
@@ -142,9 +140,7 @@ markdown==3.3.4
     # via django-markdownx
 mohawk==1.1.0
     # via sigauth
-monotonic==1.5
-    # via notifications-python-client
-notifications-python-client==5.4.0
+notifications-python-client==6.3.0
     # via -r requirements.in
 oauthlib==3.1.1
     # via requests-oauthlib
