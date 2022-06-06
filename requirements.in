@@ -12,7 +12,7 @@ django-modeltranslation==0.13.1
 django-staff-sso-client==1.0.0
 dj-database-url==0.4.2
 gunicorn==19.7.1
-waitress==2.1.1
+waitress==2.1.2
 psycopg2_binary==2.8.6
 pytz==2021.3
 raven==6.5.0
