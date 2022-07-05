@@ -110,7 +110,7 @@ django-recaptcha==1.2.0
     # via -r requirements.in
 django-redis==4.8.0
     # via -r requirements.in
-django-staff-sso-client==1.0.0
+django-staff-sso-client==3.1.1
     # via -r requirements.in
 django-storages==1.6.5
     # via -r requirements.in
@@ -182,9 +182,7 @@ pytz==2021.3
 pyyaml==4.2b4
     # via -r requirements.in
 raven==6.5.0
-    # via
-    #   -r requirements.in
-    #   django-staff-sso-client
+    # via -r requirements.in
 redis==3.5.3
     # via
     #   celery
