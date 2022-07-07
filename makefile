@@ -57,7 +57,10 @@ DOCKER_SET_DEBUG_ENV_VARS := \
 	export PIR_AWS_SECRET_ACCESS_KEY=test; \
 	export PIR_AWS_DEFAULT_REGION=eu-west-1; \
 	export PIR_AWS_STORAGE_BUCKET_NAME=pir-invest; \
-	export PIR_API_CRYPTOGRAPHY_DONT_BUILD_RUST=1
+	export PIR_API_CRYPTOGRAPHY_DONT_BUILD_RUST=1; \
+	export PIR_API_AUTHBROKER_CLIENT_ID=debug; \
+	export PIR_API_AUTHBROKER_CLIENT_SECRET=debug; \
+	export PIR_API_STAFF_SSO_AUTHBROKER_URL=https://www.test.com
 
 
 docker_test_env_files:
@@ -108,7 +111,10 @@ DEBUG_SET_ENV_VARS := \
 	export RECAPTCHA_PRIVATE_KEY=debug; \
 	export NOCAPTCHA=false; \
 	export CRYPTOGRAPHY_DONT_BUILD_RUST=1; \
-	export REDIS_URL=redis://redis:6379
+	export REDIS_URL=redis://redis:6379; \
+	export AUTHBROKER_CLIENT_ID=debug; \
+	export AUTHBROKER_CLIENT_SECRET=debug; \
+	export STAFF_SSO_AUTHBROKER_URL=https://www.test.com
 
 DEBUG_CREATE_DB := \
 	psql -h localhost -U postgres -tc "SELECT 1 FROM pg_database WHERE datname = '$$DB_NAME'" | \
