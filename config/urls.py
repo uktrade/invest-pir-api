@@ -4,6 +4,8 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, \
     PasswordResetCompleteView
 from django.urls import path
+from django.urls import reverse_lazy
+from django.views.generic import RedirectView
 
 from investment_report.admin import admin_site as investment_report_admin
 from investment_report.views import api
@@ -43,6 +45,18 @@ urlpatterns = i18n_patterns(
     path('admin/', investment_report_admin.urls),
 
     prefix_default_language=False)
+
+if settings.FEATURE_ENFORCE_STAFF_SSO_ENABLED:
+    authbroker_urls = [
+        url(
+            r'^admin/login/$',
+            RedirectView.as_view(url=reverse_lazy('authbroker_client:login'),
+                                 query_string=True, )
+        ),
+        url('^auth/', include('authbroker_client.urls')),
+    ]
+
+    urlpatterns = [url('^', include(authbroker_urls))] + urlpatterns
 
 
 if settings.DEBUG:

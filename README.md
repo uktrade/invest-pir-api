@@ -14,7 +14,7 @@
 
     $ git clone https://github.com/uktrade/invest-pir-api
     $ cd invest-pir-api
-    $ virtualenv .venv -p python3.6
+    $ virtualenv .venv -p python3.9
     $ source .venv/bin/activate
     $ pip install -r requirements_test.txt
     # Start postgres now before proceeding.
@@ -24,7 +24,7 @@
 
 ### Requirements
 
-[Python 3.6](https://www.python.org/downloads/release/python-360/)
+[Python 3.9](https://www.python.org/downloads/release/python-395/)
 [Postgres 9.5](https://www.postgresql.org/)
 [Redis server](https://redis.io/)
 [Cairo](https://www.cairographics.org/download/)
