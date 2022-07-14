@@ -5,6 +5,7 @@
 
 ## Pre-release
 
+- No ticket - FE dependencies upgrade
 - No ticket - Dependencies upgrade
 
 ## Hotfix

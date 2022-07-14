@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.9
 
 
 # Current version of debian in the python image is waaayyy tooo ollllddddd.

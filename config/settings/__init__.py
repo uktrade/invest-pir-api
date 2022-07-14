@@ -15,6 +15,7 @@ import ssl
 import environ
 
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse_lazy
 
 env = environ.Env()
 env.read_env()
@@ -97,7 +98,8 @@ INSTALLED_APPS = [
     'countries_plus',
     'rest_framework',
     'raven.contrib.django.raven_compat',
-    'django.contrib.messages'
+    'django.contrib.messages',
+    'authbroker_client',
 ]
 
 
@@ -132,7 +134,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'core.middleware.AdminIpRestrictionMiddleware'
+    'core.middleware.AdminIpRestrictionMiddleware',
+    'core.middleware.AdminPermissionCheckMiddleware',
 ]
 
 if ENABLE_DEBUG_TOOLBAR:
@@ -325,3 +328,20 @@ DEFAULT_EMAIL_UUID = os.getenv('DEFAULT_EMAIL_UUID')
 
 FRONTEND_URL = os.environ.get('FRONTEND_URL', '')
 FRONTEND_PROXY_URL = os.path.join(FRONTEND_URL, 'reports/{filename}')
+
+
+# SSO config
+FEATURE_ENFORCE_STAFF_SSO_ENABLED = env.bool('FEATURE_ENFORCE_STAFF_SSO_ENABLED', False)
+if FEATURE_ENFORCE_STAFF_SSO_ENABLED:
+    AUTHENTICATION_BACKENDS = [
+        'django.contrib.auth.backends.ModelBackend',
+        'authbroker_client.backends.AuthbrokerBackend'
+    ]
+
+    LOGIN_URL = reverse_lazy('authbroker_client:login')
+    LOGIN_REDIRECT_URL = reverse_lazy('admin:index')
+
+    # authbroker config
+AUTHBROKER_URL = env.str('STAFF_SSO_AUTHBROKER_URL')
+AUTHBROKER_CLIENT_ID = env.str('AUTHBROKER_CLIENT_ID')
+AUTHBROKER_CLIENT_SECRET = env.str('AUTHBROKER_CLIENT_SECRET')

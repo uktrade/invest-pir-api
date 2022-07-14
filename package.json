@@ -4,10 +4,13 @@
   "description": "[Invest](https://invest.great.gov.uk/)",
   "main": "index.js",
   "devDependencies": {
-    "sass": "^1.22.4",
     "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.5"
+    "gulp-sass": "^5.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "sass": "^1.22.4"
+  },
+  "dependencies": {
+    "set-value": "^4.0.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
