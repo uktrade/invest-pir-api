@@ -13,4 +13,4 @@ updates:
     pull-request-branch-name:
       separator: "-"
     reviewers:
-      - "hal274"
+      - "@uktrade/directory"
