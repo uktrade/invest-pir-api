@@ -146,7 +146,7 @@ oauthlib==3.2.1
     # via requests-oauthlib
 olefile==0.44
     # via directory-validators
-pillow==9.0.1
+pillow==9.3.0
     # via
     #   cairosvg
     #   directory-validators
