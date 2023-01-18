@@ -10,6 +10,7 @@
 - GLS-274 - Staff SSO for backend
 - No ticket - Various dependencies upgrade
 - KLS-243 upgrade pillow to 9.3.0
+- KLS-330 patch certifi lib to latest version 2022.12.7
 
 ## [2.0.0](https://github.com/uktrade/invest-pir-api/releases/tag/2.0.0)
 [Full Changelog](https://github.com/uktrade/invest-pir-api/compare/2021.01.04..2.0.0)
