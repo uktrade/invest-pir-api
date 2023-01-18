@@ -29,16 +29,12 @@ botocore==1.20.112
     #   boto3
     #   moto
     #   s3transfer
+brotli==1.0.9
+    # via fonttools
 bs4==0.0.1
     # via -r requirements.in
 cachetools==2.0.1
     # via zenpy
-cairocffi==1.2.0
-    # via
-    #   cairosvg
-    #   weasyprint
-cairosvg==2.5.2
-    # via weasyprint
 celery[redis]==5.2.3
     # via -r requirements.in
 certifi==2022.12.7
@@ -47,7 +43,6 @@ certifi==2022.12.7
     #   requests
 cffi==1.14.5
     # via
-    #   cairocffi
     #   cryptography
     #   weasyprint
 chardet==3.0.4
@@ -77,11 +72,7 @@ cryptography==3.4.7
     #   pyopenssl
     #   requests
 cssselect2==0.2.1
-    # via
-    #   cairosvg
-    #   weasyprint
-defusedxml==0.5.0
-    # via cairosvg
+    # via weasyprint
 directory-validators==8.0.1
     # via -r requirements.in
 dj-database-url==0.4.2
@@ -141,6 +132,8 @@ docopt==0.6.2
     # via notifications-python-client
 flake8==4.0.1
     # via -r requirements_test.in
+fonttools[woff]==4.38.0
+    # via weasyprint
 gunicorn==19.7.1
     # via -r requirements.in
 html5lib==1.0.1
@@ -189,9 +182,9 @@ packaging==21.3
 pillow==9.3.0
     # via
     #   -r requirements.in
-    #   cairosvg
     #   directory-validators
     #   django-markdownx
+    #   weasyprint
 pluggy==0.13.1
     # via pytest
 prompt-toolkit==3.0.19
@@ -204,6 +197,8 @@ pycodestyle==2.8.0
     # via flake8
 pycparser==2.18
     # via cffi
+pydyf==0.5.0
+    # via weasyprint
 pyflakes==2.4.0
     # via flake8
 pyjwt==2.4.0
@@ -289,7 +284,6 @@ termcolor==1.1.0
     # via pytest-sugar
 tinycss2==1.1.0
     # via
-    #   cairosvg
     #   cssselect2
     #   weasyprint
 urllib3==1.26.5
@@ -308,7 +302,7 @@ waitress==2.1.2
     # via -r requirements.in
 wcwidth==0.2.5
     # via pytest
-weasyprint==51
+weasyprint==53.4
     # via -r requirements.in
 webencodings==0.5.1
     # via
@@ -324,6 +318,8 @@ zenpy==1.1.10
     # via -r requirements.in
 zipp==3.7.0
     # via importlib-metadata
+zopfli==0.2.2
+    # via fonttools
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
