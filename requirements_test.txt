@@ -281,7 +281,7 @@ six==1.11.0
     #   pytest
     #   python-dateutil
     #   responses
-sorl-thumbnail==12.4.1
+sorl-thumbnail==12.9.0
     # via -r requirements.in
 sqlparse==0.4.2
     # via django
