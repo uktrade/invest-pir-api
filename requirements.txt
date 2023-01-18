@@ -82,6 +82,7 @@ django==2.2.28
     #   django-moderation
     #   django-recaptcha
     #   django-staff-sso-client
+    #   django-storages
     #   djangorestframework
     #   sigauth
 django-amazon-ses==4.0.0
@@ -114,7 +115,7 @@ django-redis==4.8.0
     # via -r requirements.in
 django-staff-sso-client==3.1.1
     # via -r requirements.in
-django-storages==1.6.5
+django-storages==1.12.3
     # via -r requirements.in
 django-taggit==0.22.2
     # via -r requirements.in
