@@ -314,7 +314,7 @@ webencodings==0.5.1
     # via
     #   html5lib
     #   tinycss2
-werkzeug==0.14.1
+werkzeug==0.15.5
     # via moto
 whitenoise==3.3.1
     # via -r requirements.in
