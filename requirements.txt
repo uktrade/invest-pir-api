@@ -146,7 +146,7 @@ mohawk==1.1.0
     # via sigauth
 notifications-python-client==6.3.0
     # via -r requirements.in
-oauthlib==3.2.1
+oauthlib==3.2.2
     # via requests-oauthlib
 olefile==0.44
     # via directory-validators
