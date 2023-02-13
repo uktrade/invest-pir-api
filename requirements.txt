@@ -56,7 +56,7 @@ click-plugins==1.1.1
     # via celery
 click-repl==0.2.0
     # via celery
-cryptography==3.4.7
+cryptography==39.0.1
     # via
     #   -r requirements.in
     #   pyopenssl
