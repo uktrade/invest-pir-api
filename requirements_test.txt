@@ -163,18 +163,18 @@ kombu==5.2.3
     #   celery
 markdown==3.3.4
     # via django-markdownx
-markupsafe==2.0.1
+markupsafe==2.1.2
     # via
     #   -r requirements_test.in
     #   jinja2
-    #   moto
+    #   werkzeug
 mccabe==0.6.1
     # via flake8
 mohawk==1.1.0
     # via sigauth
 more-itertools==8.12.0
     # via pytest
-moto==2.3.1
+moto==4.1.2
     # via -r requirements_test.in
 notifications-python-client==6.3.0
     # via -r requirements.in
@@ -244,7 +244,6 @@ pytz==2021.3
     #   django
     #   django-axes
     #   django-modelcluster
-    #   moto
 pyyaml==4.2b4
     # via -r requirements.in
 raven==6.5.0
@@ -314,7 +313,7 @@ webencodings==0.5.1
     # via
     #   html5lib
     #   tinycss2
-werkzeug==0.14.1
+werkzeug==2.2.2
     # via moto
 whitenoise==3.3.1
     # via -r requirements.in
