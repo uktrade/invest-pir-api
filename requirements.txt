@@ -157,7 +157,7 @@ pillow==9.3.0
     #   django-markdownx
 prompt-toolkit==3.0.19
     # via click-repl
-psycopg2-binary==2.9.5
+psycopg2-binary==2.8.6
     # via -r requirements.in
 pycparser==2.18
     # via cffi

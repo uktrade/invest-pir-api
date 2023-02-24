@@ -198,7 +198,7 @@ pluggy==0.13.1
     # via pytest
 prompt-toolkit==3.0.19
     # via click-repl
-psycopg2-binary==2.9.5
+psycopg2-binary==2.8.6
     # via -r requirements.in
 py==1.10.0
     # via pytest
