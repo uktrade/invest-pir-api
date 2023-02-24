@@ -42,7 +42,7 @@ cffi==1.14.5
     #   cairocffi
     #   cryptography
     #   weasyprint
-chardet==3.0.4
+charset-normalizer==3.0.1
     # via requests
 click==8.0.3
     # via
@@ -56,11 +56,8 @@ click-plugins==1.1.1
     # via celery
 click-repl==0.2.0
     # via celery
-cryptography==3.4.7
-    # via
-    #   -r requirements.in
-    #   pyopenssl
-    #   requests
+cryptography==39.0.1
+    # via -r requirements.in
 cssselect2==0.2.1
     # via
     #   cairosvg
@@ -146,8 +143,10 @@ mohawk==1.1.0
     # via sigauth
 notifications-python-client==6.3.0
     # via -r requirements.in
-oauthlib==3.2.1
-    # via requests-oauthlib
+oauthlib==3.2.2
+    # via
+    #   -r requirements.in
+    #   requests-oauthlib
 olefile==0.44
     # via directory-validators
 pillow==9.3.0
@@ -166,8 +165,6 @@ pyjwt==2.4.0
     # via
     #   -r requirements.in
     #   notifications-python-client
-pyopenssl==19.0.0
-    # via requests
 pypdf2==1.27.5
     # via -r requirements.in
 pyphen==0.9.4
@@ -192,7 +189,7 @@ redis==3.5.3
     # via
     #   celery
     #   django-redis
-requests[security]==2.25.1
+requests[security]==2.28.2
     # via
     #   -r requirements.in
     #   django-countries-plus
@@ -211,7 +208,6 @@ six==1.11.0
     #   django-countries-plus
     #   html5lib
     #   mohawk
-    #   pyopenssl
     #   python-dateutil
 sorl-thumbnail==12.4.1
     # via -r requirements.in

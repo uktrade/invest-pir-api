@@ -2,6 +2,10 @@
 
 ## Pre-release
 
+- KLS-410 - Patch cryptography to v39.0.1
+- KLS-416 - Patch werkzeug to v2.2.3
+- KLS-419 - Patch oauthlib to v3.2.2
+
 ## Hotfix
 
 ## [2.1.0](https://github.com/uktrade/invest-pir-api/releases/tag/2.1.0)
