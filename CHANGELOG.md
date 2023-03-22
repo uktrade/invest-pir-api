@@ -7,6 +7,13 @@
 
 ## Hotfix
 
+## [2.1.4](https://github.com/uktrade/invest-pir-api/releases/tag/2.1.4)
+[Full Changelog](https://github.com/uktrade/invest-pir-api/compare/2.1.3..2.1.4)
+
+- KLS-410 - Patch cryptography to v39.0.1
+- KLS-416 - Patch werkzeug to v2.2.3
+- KLS-419 - Patch oauthlib to v3.2.2
+
 ## [2.1.0](https://github.com/uktrade/invest-pir-api/releases/tag/2.1.0)
 [Full Changelog](https://github.com/uktrade/invest-pir-api/compare/2.0.0..2.1.0)
 
