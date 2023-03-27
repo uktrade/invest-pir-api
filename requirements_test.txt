@@ -8,6 +8,8 @@
     # via -r requirements.in
 amqp==5.0.9
     # via kombu
+async-timeout==4.0.2
+    # via redis
 atomicwrites==1.4.0
     # via pytest
 attrs==21.4.0
@@ -248,7 +250,7 @@ pyyaml==4.2b4
     # via -r requirements.in
 raven==6.5.0
     # via -r requirements.in
-redis==3.5.3
+redis==4.5.3
     # via
     #   celery
     #   django-redis
