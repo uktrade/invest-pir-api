@@ -99,6 +99,7 @@ node_modules/
 
 # Docker
 .env
+.devcontainer
 
 # Generated files
 config/staticfiles
