@@ -16,7 +16,7 @@ PYTEST := pytest . --cov=. --cov-config=.coveragerc --capture=no $(pytest_args)
 COLLECT_STATIC := python manage.py collectstatic --noinput
 CODECOV := \
 	if [ "$$CODECOV_REPO_TOKEN" != "" ]; then \
-	   codecov --token=$$CODECOV_REPO_TOKEN ;\
+	   codecov --codecov-token=${CODECOV_TOKEN} ;\
 	fi
 
 test:

@@ -66,8 +66,6 @@ click-plugins==1.1.1
     # via celery
 click-repl==0.2.0
     # via celery
-codecov==2.1.7
-    # via -r requirements_test.in
 coverage==4.4.2
     # via
     #   codecov
