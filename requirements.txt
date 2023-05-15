@@ -213,8 +213,10 @@ six==1.11.0
     #   python-dateutil
 sorl-thumbnail==12.4.1
     # via -r requirements.in
-sqlparse==0.4.2
-    # via django
+sqlparse==0.4.4
+    # via
+    #   -r requirements.in
+    #   django
 tinycss2==1.1.0
     # via
     #   cairosvg
