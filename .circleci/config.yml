@@ -13,7 +13,7 @@ jobs:
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - checkout
       - run:
-          command: make docker_test
+          command: make docker_test -- --codecov-token=${CODECOV_TOKEN}
 
 workflows:
   version: 2
