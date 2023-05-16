@@ -12,15 +12,11 @@ test_requirements:
 	pip install -r requirements_test.txt
 
 FLAKE8 := flake8 . --exclude=migrations,.venv,node_modules,src
-PYTEST := pytest . --cov=. --cov-config=.coveragerc --capture=no $(pytest_args)
+PYTEST := pytest . --cov=. --cov-config=.coveragerc --capture=no --codecov $(pytest_args)
 COLLECT_STATIC := python manage.py collectstatic --noinput
-CODECOV := \
-	if [ "$$CODECOV_REPO_TOKEN" != "" ]; then \
-	   codecov --codecov-token=${CODECOV_TOKEN} ;\
-	fi
 
 test:
-	$(COLLECT_STATIC) && $(FLAKE8) && $(PYTEST) && $(CODECOV)
+	$(COLLECT_STATIC) && $(FLAKE8) && $(PYTEST)
 
 DJANGO_WEBSERVER := \
 	python manage.py migrate --noinput && \
