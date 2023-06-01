@@ -4,6 +4,11 @@
 
 ## Hotfix
 
+## [2.1.8]
+[Full Changelog]()
+
+- KLS-703 - Bump requests to 2.31.0
+
 ## [2.1.4](https://github.com/uktrade/invest-pir-api/releases/tag/2.1.4)
 [Full Changelog](https://github.com/uktrade/invest-pir-api/compare/2.1.3..2.1.4)
 
