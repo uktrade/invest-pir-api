@@ -10,6 +10,8 @@ amqp==5.0.9
     # via kombu
 async-timeout==4.0.2
     # via redis
+attrs==23.1.0
+    # via jsonschema
 beautifulsoup4==4.6.0
     # via bs4
 billiard==3.6.4.0
@@ -84,6 +86,7 @@ django==2.2.28
     #   django-staff-sso-client
     #   django-taggit
     #   djangorestframework
+    #   drf-spectacular
     #   sigauth
 django-amazon-ses==4.0.0
     # via -r requirements.in
@@ -122,19 +125,26 @@ django-taggit==1.0.0
 djangorestframework==3.12.4
     # via
     #   -r requirements.in
+    #   drf-spectacular
     #   sigauth
 docopt==0.6.2
     # via notifications-python-client
+drf-spectacular==0.26.2
+    # via -r requirements.in
 gunicorn==19.7.1
     # via -r requirements.in
 html5lib==1.0.1
     # via weasyprint
 idna==2.6
     # via requests
+inflection==0.5.1
+    # via drf-spectacular
 jmespath==0.9.3
     # via
     #   boto3
     #   botocore
+jsonschema==4.17.3
+    # via drf-spectacular
 kombu==5.2.3
     # via
     #   -r requirements.in
@@ -171,6 +181,8 @@ pypdf2==1.27.5
     # via -r requirements.in
 pyphen==0.9.4
     # via weasyprint
+pyrsistent==0.19.3
+    # via jsonschema
 python-dateutil==2.6.1
     # via
     #   botocore
@@ -183,8 +195,10 @@ pytz==2021.3
     #   django
     #   django-axes
     #   django-modelcluster
-pyyaml==4.2b4
-    # via -r requirements.in
+pyyaml==5.4.1
+    # via
+    #   -r requirements.in
+    #   drf-spectacular
 raven==6.5.0
     # via -r requirements.in
 redis==4.4.4
@@ -222,6 +236,8 @@ tinycss2==1.1.0
     #   cairosvg
     #   cssselect2
     #   weasyprint
+uritemplate==4.1.1
+    # via drf-spectacular
 urllib3==1.26.5
     # via
     #   -r requirements.in

@@ -10,6 +10,7 @@ django-redis==4.8.0
 django-storages==1.6.5
 django-modeltranslation==0.13.1
 dj-database-url==0.4.2
+drf-spectacular==0.26.*
 gunicorn==19.7.1
 pillow==9.3.0
 waitress==2.1.2

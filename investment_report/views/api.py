@@ -1,6 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.reverse import reverse
+from drf_spectacular.utils import extend_schema
 
 from investment_report.metadata import RelatedFieldMetadata
 from investment_report.serializers import PIRSerializer
@@ -18,6 +19,7 @@ class PIRAPI(APIView):
         # Done to get RelatedFieldMetadata to work correctly
         return PIRSerializer()
 
+    @extend_schema(request=PIRSerializer, responses={201: PIRSerializer})
     def post(self, request):
         serializer = PIRSerializer(data=request.data)
         if serializer.is_valid():

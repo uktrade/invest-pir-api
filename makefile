@@ -57,6 +57,7 @@ DOCKER_SET_DEBUG_ENV_VARS := \
 	export PIR_API_AUTHBROKER_CLIENT_ID=debug; \
 	export PIR_API_AUTHBROKER_CLIENT_SECRET=debug; \
 	export PIR_API_STAFF_SSO_AUTHBROKER_URL=https://www.test.com
+	export PIR_API_FEATURE_PIR_OPENAPI_ENABLED=true
 
 
 docker_test_env_files:
@@ -111,6 +112,7 @@ DEBUG_SET_ENV_VARS := \
 	export AUTHBROKER_CLIENT_ID=debug; \
 	export AUTHBROKER_CLIENT_SECRET=debug; \
 	export STAFF_SSO_AUTHBROKER_URL=https://www.test.com
+	export FEATURE_PIR_OPENAPI_ENABLED=true
 
 DEBUG_CREATE_DB := \
 	psql -h localhost -U postgres -tc "SELECT 1 FROM pg_database WHERE datname = '$$DB_NAME'" | \

@@ -90,6 +90,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'drf_spectacular',
 
     'axes',
     'markdownx',
@@ -273,6 +274,15 @@ LOGGING = {
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 USE_X_FORWARDED_HOST = True
 
+# OpenAPI
+
+FEATURE_PIR_OPENAPI_ENABLED = env.bool("FEATURE_PIR_OPENAPI_ENABLED", False)
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Personalised Investment Report (PIR) API',
+    'DESCRIPTION': 'Personalised investment report API - the Department for Business and Trade (DBT)',
+    'VERSION': os.environ.get('GIT_TAG', 'dev'),
+}
+
 # Sentry
 RAVEN_CONFIG = {
     "dsn": os.getenv("SENTRY_DSN"),
@@ -298,6 +308,7 @@ MODERATION_MODERATORS = [item.strip()
 
 
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_PERMISSION_CLASSES': (
         'config.permissions.SignatureCheckPermission',
     )

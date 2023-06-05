@@ -15,7 +15,7 @@ services:
     image: redis:alpine
     restart: on-failure
     ports:
-      - "6379:6379"
+      - "7777:7777"
     logging:
       driver: "none"
     networks:
