@@ -6,6 +6,8 @@ from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, 
 from django.urls import path
 from django.urls import reverse_lazy
 from django.views.generic import RedirectView
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+from django.contrib.auth.decorators import login_required
 
 from investment_report.admin import admin_site as investment_report_admin
 from investment_report.views import api
@@ -58,6 +60,20 @@ if settings.FEATURE_ENFORCE_STAFF_SSO_ENABLED:
 
     urlpatterns = [url('^', include(authbroker_urls))] + urlpatterns
 
+if settings.FEATURE_PIR_OPENAPI_ENABLED:
+    urlpatterns += [
+        path('openapi/', SpectacularAPIView.as_view(), name='schema'),
+        path(
+            'openapi/ui/',
+            login_required(SpectacularSwaggerView.as_view(url_name='schema'), login_url='admin:login'),
+            name='swagger-ui'
+        ),
+        path(
+            'openapi/ui/redoc/',
+            login_required(SpectacularRedocView.as_view(url_name='schema'), login_url='admin:login'),
+            name='redoc'
+        ),
+    ]
 
 if settings.DEBUG:
     from django.conf.urls.static import static
