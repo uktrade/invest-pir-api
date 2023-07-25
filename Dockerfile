@@ -5,7 +5,7 @@ FROM python:3.9
 # Need libcairo2 > 1.4
 # gettext to compile translations
 # redis for caching and sessions
-RUN sed '1 s/jessie/buster/' /etc/apt/sources.list > /etc/apt/sources.list.temp
+# RUN sed '1 s/jessie/buster/' /etc/apt/sources.list > /etc/apt/sources.list.temp
 RUN mv /etc/apt/sources.list.temp /etc/apt/sources.list
 RUN apt-get update
 
