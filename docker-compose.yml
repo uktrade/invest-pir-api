@@ -8,6 +8,7 @@ services:
   postgres:
     image: postgres:12.3-alpine
     env_file: ./docker/.env-postgres.test
+    container_name: postgres
     networks:
       - djangonetwork
 
