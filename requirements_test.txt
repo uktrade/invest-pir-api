@@ -68,7 +68,7 @@ coverage[toml]==7.2.5
     # via
     #   pytest-codecov
     #   pytest-cov
-cryptography==39.0.1
+cryptography==41.0.3
     # via
     #   -r requirements.in
     #   moto
@@ -108,7 +108,7 @@ django-clear-cache==0.3
     # via -r requirements.in
 django-countries==5.2
     # via -r requirements.in
-django-countries-plus==1.2.1
+django-countries-plus==2.1.0
     # via -r requirements.in
 django-crispy-forms==1.7.1
     # via -r requirements.in
@@ -290,7 +290,6 @@ sigauth==4.3.0
 six==1.11.0
     # via
     #   click-repl
-    #   django-countries-plus
     #   html5lib
     #   mohawk
     #   python-dateutil
