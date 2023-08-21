@@ -41,7 +41,7 @@ cairosvg==2.7.0
     # via weasyprint
 celery[redis]==5.2.3
     # via -r requirements.in
-certifi==2022.12.7
+certifi==2023.7.22
     # via
     #   -r requirements.in
     #   requests
@@ -68,7 +68,7 @@ coverage[toml]==7.2.5
     # via
     #   pytest-codecov
     #   pytest-cov
-cryptography==39.0.1
+cryptography==41.0.3
     # via
     #   -r requirements.in
     #   moto
@@ -108,7 +108,7 @@ django-clear-cache==0.3
     # via -r requirements.in
 django-countries==5.2
     # via -r requirements.in
-django-countries-plus==1.2.1
+django-countries-plus==2.1.0
     # via -r requirements.in
 django-crispy-forms==1.7.1
     # via -r requirements.in
@@ -147,7 +147,7 @@ flake8==4.0.1
     # via -r requirements_test.in
 gitdb==4.0.10
     # via gitpython
-gitpython==3.1.31
+gitpython==3.1.32
     # via -r requirements_test.in
 gunicorn==19.7.1
     # via -r requirements.in
@@ -290,7 +290,6 @@ sigauth==4.3.0
 six==1.11.0
     # via
     #   click-repl
-    #   django-countries-plus
     #   html5lib
     #   mohawk
     #   python-dateutil

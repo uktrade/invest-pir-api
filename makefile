@@ -1,3 +1,4 @@
+ARGUMENTS = $(filter-out $@,$(MAKECMDGOALS)) $(filter-out --,$(MAKEFLAGS))
 
 build: docker_test
 
@@ -120,6 +121,10 @@ DEBUG_CREATE_DB := \
 	psql -h localhost -U postgres -tc "SELECT 1 FROM pg_roles WHERE rolname = '$$DB_USER'" | \
 	grep -q 1 || echo "CREATE USER $$DB_USER WITH PASSWORD '$$DB_PASSWORD'; GRANT ALL PRIVILEGES ON DATABASE \"$$DB_NAME\" to $$DB_USER; ALTER USER $$DB_USER CREATEDB" | psql -h localhost -U postgres
 
+autoformat:
+	isort $(PWD)
+	black $(PWD)
+
 debug_db:
 	$(DEBUG_SET_ENV_VARS) && $(DEBUG_CREATE_DB)
 
@@ -159,5 +164,11 @@ compile_all_requirements: compile_requirements && compile_test_requirements
 
 compile_css:
 	./node_modules/.bin/gulp css
+
+cf-signin-sso:
+	cf login --sso -a api.london.cloud.service.gov.uk -u $(ARGUMENTS) -o dit-staging -s directory-dev
+
+install-cf-conduit:
+	cf install-plugin conduit
 
 .PHONY: build clean test_requirements docker_run docker_debug docker_webserver_bash docker_test debug_webserver debug_test debug heroku_deploy_dev debug_makemigrations

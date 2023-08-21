@@ -29,7 +29,7 @@ django-taggit==1.0.*
 djangorestframework==3.12.4
 sorl-thumbnail==12.4.1
 django-countries==5.2
-django-countries-plus==1.2.1
+django-countries-plus==2.1.0
 notifications-python-client==6.3.*
 weasyprint==51
 PyPDF2==1.27.9
@@ -41,7 +41,7 @@ requests[security]==2.31.0
 pyyaml>=4.2b1,<6.0.0
 django-environ==0.4.5
 oauthlib==3.2.2
-cryptography==39.0.1
+cryptography==41.0.3
 urllib3>=1.26.5
 # Latest django-moderation release(0.0.7) package has restriction for django upto 2.2 and we wanted to install
 # django 2.2.24 for critical vulnerabilities - hence installing from master
@@ -49,5 +49,5 @@ urllib3>=1.26.5
 django-markdownx==3.0.1
 Pyjwt==2.4.0
 django-staff-sso-client==3.1.1
-certifi==2022.12.7
+certifi==2023.7.22
 sqlparse>=0.4.4
