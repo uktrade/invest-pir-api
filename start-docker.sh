@@ -94,7 +94,7 @@ if [ ! -f ./.env ]; \
     else echo ".env already exists."; \
 fi
 if [ ! -f ./docker/.env ]; \
-    then sed -e 's/#DO NOT ADD SECRETS TO THIS FILE//g' secrets-do-not-commit > docker/.env \
+    then sed -e 's/#DO NOT ADD SECRETS TO THIS FILE//g' local_docker_env_template > docker/.env \
         && echo "Created docker/.env"; \
     else echo "docker/.env already exists. Delete it first to recreate it."; \
 fi
