@@ -45,7 +45,7 @@ cryptography==41.0.4
 urllib3>=1.26.18
 # Latest django-moderation release(0.0.7) package has restriction for django upto 2.2 and we wanted to install
 # django 2.2.24 for critical vulnerabilities - hence installing from master
--e git+https://github.com/dominno/django-moderation.git#egg=django-moderation
+django-moderation==0.8.0
 django-markdownx==3.0.1
 Pyjwt==2.4.0
 django-staff-sso-client==3.1.1
