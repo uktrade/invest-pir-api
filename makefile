@@ -158,7 +158,7 @@ compile_requirements:
 	PIP_CONSTRAINT=cython_constraint.txt python -m piptools compile requirements.in
 
 compile_test_requirements:
-	python -m piptools compile requirements_test.in
+	PIP_CONSTRAINT=cython_constraint.txt python -m piptools compile requirements_test.in
 
 compile_all_requirements: compile_requirements && compile_test_requirements
 
