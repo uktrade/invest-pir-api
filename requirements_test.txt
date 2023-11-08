@@ -315,7 +315,7 @@ tomli==2.0.1
     #   pytest
 uritemplate==4.1.1
     # via drf-spectacular
-urllib3==1.26.5
+urllib3==1.26.18
     # via
     #   -r requirements.in
     #   botocore
