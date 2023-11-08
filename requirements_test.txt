@@ -27,12 +27,16 @@ botocore==1.20.112
     #   boto3
     #   moto
     #   s3transfer
-brotli==1.1.0
-    # via fonttools
 bs4==0.0.1
     # via -r requirements.in
 cachetools==2.0.1
     # via zenpy
+cairocffi==1.6.1
+    # via
+    #   cairosvg
+    #   weasyprint
+cairosvg==2.7.1
+    # via weasyprint
 celery[redis]==5.2.3
     # via
     #   -r requirements.in
@@ -43,6 +47,7 @@ certifi==2023.7.22
     #   requests
 cffi==1.14.5
     # via
+    #   cairocffi
     #   cryptography
     #   weasyprint
 charset-normalizer==3.0.1
@@ -69,7 +74,11 @@ cryptography==41.0.4
     #   -r requirements.in
     #   moto
 cssselect2==0.2.1
-    # via weasyprint
+    # via
+    #   cairosvg
+    #   weasyprint
+defusedxml==0.7.1
+    # via cairosvg
 directory-validators==8.0.1
     # via -r requirements.in
 dj-database-url==0.4.2
@@ -140,10 +149,6 @@ exceptiongroup==1.1.1
     # via pytest
 flake8==4.0.1
     # via -r requirements_test.in
-fonttools[woff]==4.44.0
-    # via
-    #   fonttools
-    #   weasyprint
 gitdb==4.0.10
     # via gitpython
 gitpython==3.1.37
@@ -200,6 +205,7 @@ packaging==21.3
 pillow==10.0.1
     # via
     #   -r requirements.in
+    #   cairosvg
     #   directory-validators
     #   django-markdownx
     #   weasyprint
@@ -213,8 +219,6 @@ pycodestyle==2.8.0
     # via flake8
 pycparser==2.18
     # via cffi
-pydyf==0.8.0
-    # via weasyprint
 pyflakes==2.4.0
     # via flake8
 pyjwt==2.4.0
@@ -307,6 +311,7 @@ termcolor==2.3.0
     # via pytest-sugar
 tinycss2==1.1.0
     # via
+    #   cairosvg
     #   cssselect2
     #   weasyprint
 tomli==2.0.1
@@ -331,7 +336,7 @@ waitress==2.1.2
     # via -r requirements.in
 wcwidth==0.2.5
     # via prompt-toolkit
-weasyprint==53.4
+weasyprint==52.5
     # via -r requirements.in
 webencodings==0.5.1
     # via
@@ -347,8 +352,6 @@ xmltodict==0.11.0
     # via moto
 zenpy==1.1.10
     # via -r requirements.in
-zopfli==0.2.3
-    # via fonttools
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools

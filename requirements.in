@@ -31,7 +31,7 @@ sorl-thumbnail==12.9.0
 django-countries==5.2
 django-countries-plus==2.1.0
 notifications-python-client==6.3.*
-weasyprint==53.4
+weasyprint==52.5
 PyPDF2==1.27.9
 sigauth==4.3.0
 bs4
