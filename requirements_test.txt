@@ -6,6 +6,10 @@
 #
 amqp==5.0.9
     # via kombu
+asgiref==3.7.2
+    # via
+    #   django
+    #   django-countries
 async-timeout==4.0.2
     # via redis
 attrs==23.1.0
@@ -79,21 +83,25 @@ cssselect2==0.2.1
     #   weasyprint
 defusedxml==0.7.1
     # via cairosvg
-directory-validators==8.0.1
+directory-validators==9.3.1
     # via -r requirements.in
 dj-database-url==0.4.2
     # via -r requirements.in
-django==2.2.28
+django==3.2.23
     # via
     #   -r requirements.in
     #   directory-validators
     #   django-amazon-ses
+    #   django-axes
     #   django-clear-cache
     #   django-countries-plus
+    #   django-crispy-forms
     #   django-markdownx
     #   django-modelcluster
+    #   django-modeltranslation
     #   django-moderation
     #   django-recaptcha
+    #   django-redis
     #   django-staff-sso-client
     #   django-storages
     #   django-taggit
@@ -102,37 +110,33 @@ django==2.2.28
     #   sigauth
 django-amazon-ses==4.0.0
     # via -r requirements.in
-django-appconf==1.0.2
-    # via django-axes
-django-axes==4.4.0
+django-axes==6.1.1
     # via -r requirements.in
 django-clear-cache==0.3
     # via -r requirements.in
-django-countries==5.2
+django-countries==7.5.1
     # via -r requirements.in
 django-countries-plus==2.1.0
     # via -r requirements.in
-django-crispy-forms==1.7.1
+django-crispy-forms==2.0
     # via -r requirements.in
 django-environ==0.4.5
     # via -r requirements.in
-django-ipware==2.1.0
-    # via django-axes
 django-markdownx==3.0.1
     # via -r requirements.in
 django-modelcluster==6.0
     # via -r requirements.in
-django-modeltranslation==0.13.1
+django-modeltranslation==0.18.11
     # via -r requirements.in
 django-moderation==0.8.0
     # via -r requirements.in
 django-recaptcha==3.0.0
     # via -r requirements.in
-django-redis==4.8.0
+django-redis==5.4.0
     # via -r requirements.in
 django-staff-sso-client==3.1.1
     # via -r requirements.in
-django-storages==1.12.3
+django-storages==1.14.2
     # via -r requirements.in
 django-taggit==1.0.0
     # via -r requirements.in
@@ -261,7 +265,6 @@ pytz==2021.3
     #   celery
     #   directory-validators
     #   django
-    #   django-axes
     #   django-modelcluster
 pyyaml==6.0
     # via
@@ -318,6 +321,11 @@ tomli==2.0.1
     # via
     #   coverage
     #   pytest
+typing-extensions==4.8.0
+    # via
+    #   asgiref
+    #   django-countries
+    #   django-modeltranslation
 uritemplate==4.1.1
     # via drf-spectacular
 urllib3==1.26.18
@@ -346,7 +354,7 @@ werkzeug==3.0.1
     # via
     #   -r requirements_test.in
     #   moto
-whitenoise==3.3.1
+whitenoise==6.6.0
     # via -r requirements.in
 xmltodict==0.11.0
     # via moto
