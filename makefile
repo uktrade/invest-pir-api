@@ -155,10 +155,10 @@ debug_shell:
 debug: test_requirements debug_test
 
 compile_requirements:
-	PIP_CONSTRAINT=cython_constraint.txt python -m piptools compile requirements.in
+	python -m piptools compile requirements.in
 
 compile_test_requirements:
-	PIP_CONSTRAINT=cython_constraint.txt python -m piptools compile requirements_test.in
+	python -m piptools compile requirements_test.in
 
 compile_all_requirements: compile_requirements && compile_test_requirements
 
