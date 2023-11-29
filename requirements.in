@@ -41,7 +41,7 @@ requests[security]==2.31.0
 pyyaml==6.0.0
 django-environ==0.4.5
 oauthlib==3.2.2
-cryptography==41.0.4
+cryptography==41.0.6
 urllib3>=1.26.18
 # Latest django-moderation release(0.0.7) package has restriction for django upto 2.2 and we wanted to install
 # django 2.2.24 for critical vulnerabilities - hence installing from master
