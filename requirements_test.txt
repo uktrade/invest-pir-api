@@ -4,21 +4,23 @@
 #
 #    pip-compile requirements_test.in
 #
-amqp==5.0.9
+amqp==5.2.0
     # via kombu
 asgiref==3.7.2
     # via
     #   django
     #   django-countries
-async-timeout==4.0.2
+async-timeout==4.0.3
     # via redis
 attrs==23.1.0
-    # via jsonschema
+    # via
+    #   jsonschema
+    #   referencing
 beautifulsoup4==4.6.0
     # via
     #   -r requirements_test.in
     #   bs4
-billiard==3.6.4.0
+billiard==4.2.0
     # via celery
 boto3==1.17.112
     # via
@@ -33,7 +35,7 @@ botocore==1.20.112
     #   s3transfer
 bs4==0.0.1
     # via -r requirements.in
-cachetools==2.0.1
+cachetools==5.3.2
     # via zenpy
 cairocffi==1.6.1
     # via
@@ -41,32 +43,32 @@ cairocffi==1.6.1
     #   weasyprint
 cairosvg==2.7.1
     # via weasyprint
-celery[redis]==5.2.3
+celery[redis]==5.3.6
     # via -r requirements.in
 certifi==2023.7.22
     # via
     #   -r requirements.in
     #   requests
-cffi==1.14.5
+cffi==1.16.0
     # via
     #   cairocffi
     #   cryptography
     #   weasyprint
-charset-normalizer==3.0.1
+charset-normalizer==3.3.2
     # via requests
-click==8.0.3
+click==8.1.7
     # via
     #   celery
     #   click-didyoumean
     #   click-plugins
     #   click-repl
-click-didyoumean==0.0.3
+click-didyoumean==0.3.0
     # via celery
 click-plugins==1.1.1
     # via celery
-click-repl==0.2.0
+click-repl==0.3.0
     # via celery
-coverage[toml]==7.2.5
+coverage[toml]==7.3.4
     # via
     #   pytest-codecov
     #   pytest-cov
@@ -74,17 +76,17 @@ cryptography==41.0.7
     # via
     #   -r requirements.in
     #   moto
-cssselect2==0.2.1
+cssselect2==0.7.0
     # via
     #   cairosvg
     #   weasyprint
 defusedxml==0.7.1
     # via cairosvg
-directory-validators==9.3.1
+directory-validators==9.3.2
     # via -r requirements.in
 dj-database-url==0.4.2
     # via -r requirements.in
-django==3.2.23
+django==4.2
     # via
     #   -r requirements.in
     #   directory-validators
@@ -105,9 +107,9 @@ django==3.2.23
     #   djangorestframework
     #   drf-spectacular
     #   sigauth
-django-amazon-ses==4.0.0
+django-amazon-ses==4.0.1
     # via -r requirements.in
-django-axes==6.1.1
+django-axes==6.2.0
     # via -r requirements.in
 django-clear-cache==0.3
     # via -r requirements.in
@@ -115,11 +117,11 @@ django-countries==7.5.1
     # via -r requirements.in
 django-countries-plus==2.1.0
     # via -r requirements.in
-django-crispy-forms==2.0
+django-crispy-forms==2.1
     # via -r requirements.in
 django-environ==0.4.5
     # via -r requirements.in
-django-markdownx==3.0.1
+django-markdownx==4.0.7
     # via -r requirements.in
 django-modelcluster==6.0
     # via -r requirements.in
@@ -127,39 +129,41 @@ django-modeltranslation==0.18.11
     # via -r requirements.in
 django-moderation==0.8.0
     # via -r requirements.in
-django-recaptcha==3.0.0
+django-recaptcha==4.0.0
     # via -r requirements.in
 django-redis==5.4.0
     # via -r requirements.in
-django-staff-sso-client==3.1.1
+django-staff-sso-client==4.2.1
     # via -r requirements.in
 django-storages==1.14.2
     # via -r requirements.in
-django-taggit==1.0.0
+django-taggit==5.0.1
     # via -r requirements.in
-djangorestframework==3.12.4
+djangorestframework==3.14.0
     # via
     #   -r requirements.in
     #   drf-spectacular
     #   sigauth
 docopt==0.6.2
     # via notifications-python-client
-drf-spectacular==0.26.3
+drf-spectacular==0.27.0
     # via -r requirements.in
-exceptiongroup==1.1.1
+exceptiongroup==1.2.0
     # via pytest
 flake8==4.0.1
     # via -r requirements_test.in
-gitdb==4.0.10
+gitdb==4.0.11
     # via gitpython
 gitpython==3.1.37
     # via -r requirements_test.in
 gunicorn==19.7.1
     # via -r requirements.in
-html5lib==1.0.1
+html5lib==1.1
     # via weasyprint
-idna==2.6
+idna==3.6
     # via requests
+importlib-metadata==7.0.1
+    # via markdown
 inflection==0.5.1
     # via drf-spectacular
 iniconfig==2.0.0
@@ -168,17 +172,19 @@ jinja2==3.1.2
     # via
     #   -r requirements_test.in
     #   moto
-jmespath==0.9.3
+jmespath==0.10.0
     # via
     #   boto3
     #   botocore
-jsonschema==4.17.3
+jsonschema==4.20.0
     # via drf-spectacular
-kombu==5.2.3
+jsonschema-specifications==2023.12.1
+    # via jsonschema
+kombu==5.3.4
     # via
     #   -r requirements.in
     #   celery
-markdown==3.3.4
+markdown==3.5.1
     # via django-markdownx
 markupsafe==2.1.2
     # via
@@ -197,9 +203,9 @@ oauthlib==3.2.2
     # via
     #   -r requirements.in
     #   requests-oauthlib
-olefile==0.44
+olefile==0.47
     # via directory-validators
-packaging==21.3
+packaging==23.2
     # via
     #   pytest
     #   pytest-sugar
@@ -210,15 +216,15 @@ pillow==10.0.1
     #   directory-validators
     #   django-markdownx
     #   weasyprint
-pluggy==0.13.1
+pluggy==1.3.0
     # via pytest
-prompt-toolkit==3.0.19
+prompt-toolkit==3.0.43
     # via click-repl
 psycopg2-binary==2.8.6
     # via -r requirements.in
 pycodestyle==2.8.0
     # via flake8
-pycparser==2.18
+pycparser==2.21
     # via cffi
 pyflakes==2.4.0
     # via flake8
@@ -226,14 +232,10 @@ pyjwt==2.4.0
     # via
     #   -r requirements.in
     #   notifications-python-client
-pyparsing==3.0.6
-    # via packaging
 pypdf2==1.27.9
     # via -r requirements.in
-pyphen==0.9.4
+pyphen==0.14.0
     # via weasyprint
-pyrsistent==0.19.3
-    # via jsonschema
 pytest==7.3.1
     # via
     #   -r requirements_test.in
@@ -251,28 +253,33 @@ pytest-django==4.5.2
     # via -r requirements_test.in
 pytest-sugar==0.9.7
     # via -r requirements_test.in
-python-dateutil==2.6.1
+python-dateutil==2.8.2
     # via
     #   botocore
+    #   celery
     #   moto
     #   zenpy
 pytz==2021.3
     # via
     #   -r requirements.in
-    #   celery
     #   directory-validators
-    #   django
     #   django-modelcluster
+    #   djangorestframework
 pyyaml==6.0
     # via
     #   -r requirements.in
     #   drf-spectacular
+    #   responses
 raven==6.5.0
     # via -r requirements.in
-redis==4.4.4
+redis==5.0.1
     # via
     #   celery
     #   django-redis
+referencing==0.32.0
+    # via
+    #   jsonschema
+    #   jsonschema-specifications
 requests[security]==2.31.0
     # via
     #   -r requirements.in
@@ -283,22 +290,24 @@ requests[security]==2.31.0
     #   requests-oauthlib
     #   responses
     #   zenpy
-requests-oauthlib==1.3.0
+requests-oauthlib==1.3.1
     # via django-staff-sso-client
-responses==0.17.0
+responses==0.24.1
     # via moto
+rpds-py==0.15.2
+    # via
+    #   jsonschema
+    #   referencing
 s3transfer==0.4.2
     # via boto3
-sigauth==4.3.0
+sigauth==5.2.2
     # via -r requirements.in
-six==1.11.0
+six==1.16.0
     # via
-    #   click-repl
     #   html5lib
     #   mohawk
     #   python-dateutil
-    #   responses
-smmap==5.0.0
+smmap==5.0.1
     # via gitdb
 sorl-thumbnail==12.9.0
     # via -r requirements.in
@@ -306,9 +315,9 @@ sqlparse==0.4.4
     # via
     #   -r requirements.in
     #   django
-termcolor==2.3.0
+termcolor==2.4.0
     # via pytest-sugar
-tinycss2==1.1.0
+tinycss2==1.2.1
     # via
     #   cairosvg
     #   cssselect2
@@ -317,11 +326,15 @@ tomli==2.0.1
     # via
     #   coverage
     #   pytest
-typing-extensions==4.8.0
+typing-extensions==4.9.0
     # via
     #   asgiref
     #   django-countries
     #   django-modeltranslation
+    #   drf-spectacular
+    #   kombu
+tzdata==2023.3
+    # via celery
 uritemplate==4.1.1
     # via drf-spectacular
 urllib3==1.26.18
@@ -331,19 +344,20 @@ urllib3==1.26.18
     #   directory-validators
     #   requests
     #   responses
-vine==5.0.0
+vine==5.1.0
     # via
     #   amqp
     #   celery
     #   kombu
 waitress==2.1.2
     # via -r requirements.in
-wcwidth==0.2.5
+wcwidth==0.2.12
     # via prompt-toolkit
 weasyprint==52.5
     # via -r requirements.in
 webencodings==0.5.1
     # via
+    #   cssselect2
     #   html5lib
     #   tinycss2
 werkzeug==3.0.1
@@ -352,10 +366,12 @@ werkzeug==3.0.1
     #   moto
 whitenoise==6.6.0
     # via -r requirements.in
-xmltodict==0.11.0
+xmltodict==0.13.0
     # via moto
 zenpy==1.1.10
     # via -r requirements.in
+zipp==3.17.0
+    # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools

@@ -82,7 +82,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'modelcluster',
     'taggit',
-    'captcha',
     'clear_cache',
 
     'django.contrib.admin',
@@ -91,6 +90,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.sites',
     'drf_spectacular',
+    'django_recaptcha',
 
     'axes',
     'markdownx',
@@ -105,7 +105,7 @@ INSTALLED_APPS = [
 
 
 AUTHENTICATION_BACKENDS = [
-    'axes.backends.AxesModelBackend',
+    'axes.backends.AxesBackend',
     'django.contrib.auth.backends.ModelBackend'
 ]
 
@@ -357,4 +357,4 @@ AUTHBROKER_URL = env.str('STAFF_SSO_AUTHBROKER_URL')
 AUTHBROKER_CLIENT_ID = env.str('AUTHBROKER_CLIENT_ID')
 AUTHBROKER_CLIENT_SECRET = env.str('AUTHBROKER_CLIENT_SECRET')
 
-SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+SILENCED_SYSTEM_CHECKS = ['django_recaptcha.recaptcha_test_key_error']
