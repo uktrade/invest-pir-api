@@ -28,7 +28,6 @@ class UtilsViewTestCase(TestCase):
                 'en', 'china', 'tech'
             ])
         )
-
         self.assertEquals(response.context['sector'], 'Technology')
         self.assertEquals(response['content-language'], 'en')
 

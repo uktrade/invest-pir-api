@@ -1,10 +1,10 @@
 boto3==1.17.*
 botocore==1.20.*
 dj-database-url==0.4.2
-django==3.2.23
+django==4.2
 django-amazon-ses>=4.0.0
 django-clear-cache>=0.3
-django-crispy-forms==2.0
+django-crispy-forms==2.1
 django_recaptcha>=3.0.0
 django-redis==5.4.0
 django-storages>=1.14.2
@@ -21,7 +21,7 @@ whitenoise==6.6.0
 zenpy==1.1.10
 kombu<6.0,>=5.2.3
 celery[redis]>=5.2.2
-directory-validators>=9.3.1
+directory-validators>=9.3.2
 # Pinned at this commit as includes vital model import logic fix.
 # Should be merged in 0.5.1
 django-modelcluster>=6.0
