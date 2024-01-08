@@ -166,24 +166,29 @@ for klass in PDFSection.__subclasses__():
     admin_site.register(klass, Admin)
 
 
+@admin.register(PIRRequest, site=admin_site)
 class PIRRequestAdmin(admin.ModelAdmin):
     change_list_template = "admin/pir_request_list.html"
     list_display = [f.name for f in PIRRequest._meta.fields]
     list_filter = ('market', 'sector', 'gdpr_optin')
 
 
+@admin.register(Market, site=admin_site)
 class MarketAdmin(admin.ModelAdmin):
     pass
 
 
+@admin.register(Sector, site=admin_site)
 class SectorAdmin(admin.ModelAdmin):
     pass
 
 
+@admin.register(MarketContact, site=admin_site)
 class MarketContactAdmin(admin.ModelAdmin):
     pass
 
 
+@admin.register(ModeratedObject, site=admin_site)
 class CustomModeratedObjectAdmin(ModeratedObjectAdmin, PDFPreviewMixin):
     change_form_template = 'admin/moderate_object.html'
 
@@ -252,11 +257,6 @@ class CustomModeratedObjectAdmin(ModeratedObjectAdmin, PDFPreviewMixin):
             extra_context=extra_context)
 
 
-admin_site.register(ModeratedObject, CustomModeratedObjectAdmin)
-admin_site.register(Market, MarketAdmin)
-admin_site.register(Sector, SectorAdmin)
-admin_site.register(PIRRequest, PIRRequestAdmin)
-admin_site.register(MarketContact, MarketContactAdmin)
 admin_site.register(User, UserAdmin)
 admin_site.register(Group, GroupAdmin)
 admin_site.register(Site, admin.ModelAdmin)

@@ -14,6 +14,7 @@ def custom_media(context, file_field):
     """
     if file_field:
         return file_field.url
+    return ''
 
 
 @register.simple_tag
