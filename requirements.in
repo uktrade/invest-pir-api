@@ -28,7 +28,7 @@ dj-database-url==0.4.2
 drf-spectacular>=0.26.*
 gunicorn==19.7.1
 kombu<6.0,>=5.2.3
-notifications-python-client==6.3.*
+notifications-python-client==9.0.0
 oauthlib==3.2.2
 pillow==10.0.1
 psycopg2-binary==2.8.6

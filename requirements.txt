@@ -166,7 +166,7 @@ markdown==3.5.1
     # via django-markdownx
 mohawk==1.1.0
     # via sigauth
-notifications-python-client==6.3.0
+notifications-python-client==9.0.0
     # via -r requirements.in
 oauthlib==3.2.2
     # via

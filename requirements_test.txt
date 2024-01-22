@@ -200,7 +200,7 @@ mohawk==1.1.0
     # via sigauth
 moto==4.1.3
     # via -r requirements_test.in
-notifications-python-client==6.3.0
+notifications-python-client==9.0.0
     # via -r requirements.in
 oauthlib==3.2.2
     # via
