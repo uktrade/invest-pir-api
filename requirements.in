@@ -39,7 +39,7 @@ Pyjwt==2.4.0
 raven
 raven==6.5.0
 requests[security]==2.31.0
-sigauth==5.2.3
+sigauth==5.2.4
 sorl-thumbnail==12.9.0
 sqlparse>=0.4.4
 urllib3>=1.26.18

@@ -236,7 +236,7 @@ rpds-py==0.15.2
     #   referencing
 s3transfer==0.4.2
     # via boto3
-sigauth==5.2.3
+sigauth==5.2.4
     # via -r requirements.in
 six==1.16.0
     # via
