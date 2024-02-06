@@ -212,7 +212,7 @@ packaging==23.2
     # via
     #   pytest
     #   pytest-sugar
-pillow==10.0.1
+pillow==10.2.0
     # via
     #   -r requirements.in
     #   cairosvg
