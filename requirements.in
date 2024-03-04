@@ -39,10 +39,10 @@ raven
 raven==6.5.0
 requests[security]==2.31.0
 sigauth==5.2.6
-sorl-thumbnail==12.9.0
+sorl-thumbnail==12.10.0
 sqlparse>=0.4.4
 urllib3>=1.26.18
 waitress==2.1.2
-weasyprint==52.5
+weasyprint==61.1
 whitenoise==6.6.0
 zenpy==1.1.10
