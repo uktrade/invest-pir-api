@@ -43,6 +43,6 @@ sorl-thumbnail==12.10.0
 sqlparse>=0.4.4
 urllib3>=1.26.18
 waitress==2.1.2
-weasyprint==61.1
+weasyprint==61.2
 whitenoise==6.6.0
 zenpy==1.1.10
