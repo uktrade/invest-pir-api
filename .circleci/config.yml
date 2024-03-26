@@ -1,4 +1,14 @@
 version: 2
+
+install_libpango: &install_libpango
+  run:
+    name: Install libpango
+    command: |
+      sudo apt-get update
+      sudo apt-get install libpango-1.0-0
+      sudo apt-get install libpangoft2-1.0-0
+
+
 jobs:
   test:
     docker:
@@ -11,6 +21,7 @@ jobs:
             curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
             chmod +x ~/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
+      - *install_libpango
       - checkout
       - run:
           command: make docker_test -- --codecov-token=${CODECOV_TOKEN}
