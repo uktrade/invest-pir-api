@@ -33,16 +33,12 @@ botocore==1.20.112
     #   boto3
     #   moto
     #   s3transfer
+brotli==1.1.0
+    # via fonttools
 bs4==0.0.2
     # via -r requirements.in
 cachetools==5.3.2
     # via zenpy
-cairocffi==1.6.1
-    # via
-    #   cairosvg
-    #   weasyprint
-cairosvg==2.7.1
-    # via weasyprint
 celery[redis]==5.3.6
     # via
     #   -r requirements.in
@@ -53,7 +49,6 @@ certifi==2023.7.22
     #   requests
 cffi==1.16.0
     # via
-    #   cairocffi
     #   cryptography
     #   weasyprint
 charset-normalizer==3.3.2
@@ -80,16 +75,12 @@ cryptography==42.0.4
     #   -r requirements.in
     #   moto
 cssselect2==0.7.0
-    # via
-    #   cairosvg
-    #   weasyprint
-defusedxml==0.7.1
-    # via cairosvg
-directory-validators==9.3.2
+    # via weasyprint
+directory-validators==9.3.3
     # via -r requirements.in
 dj-database-url==0.4.2
     # via -r requirements.in
-django==4.2.7
+django==4.2.10
     # via
     #   -r requirements.in
     #   directory-validators
@@ -155,6 +146,10 @@ exceptiongroup==1.2.0
     # via pytest
 flake8==4.0.1
     # via -r requirements_test.in
+fonttools[woff]==4.50.0
+    # via
+    #   fonttools
+    #   weasyprint
 gitdb==4.0.11
     # via gitpython
 gitpython==3.1.41
@@ -215,7 +210,6 @@ packaging==23.2
 pillow==10.2.0
     # via
     #   -r requirements.in
-    #   cairosvg
     #   directory-validators
     #   django-markdownx
     #   weasyprint
@@ -229,6 +223,8 @@ pycodestyle==2.8.0
     # via flake8
 pycparser==2.21
     # via cffi
+pydyf==0.9.0
+    # via weasyprint
 pyflakes==2.4.0
     # via flake8
 pyjwt==2.4.0
@@ -304,7 +300,7 @@ rpds-py==0.17.1
     #   referencing
 s3transfer==0.4.2
     # via boto3
-sigauth==5.2.4
+sigauth==5.2.7
     # via -r requirements.in
 six==1.16.0
     # via
@@ -313,7 +309,7 @@ six==1.16.0
     #   python-dateutil
 smmap==5.0.1
     # via gitdb
-sorl-thumbnail==12.9.0
+sorl-thumbnail==12.10.0
     # via -r requirements.in
 sqlparse==0.4.4
     # via
@@ -323,7 +319,6 @@ termcolor==2.4.0
     # via pytest-sugar
 tinycss2==1.2.1
     # via
-    #   cairosvg
     #   cssselect2
     #   weasyprint
 tomli==2.0.1
@@ -357,7 +352,7 @@ waitress==2.1.2
     # via -r requirements.in
 wcwidth==0.2.13
     # via prompt-toolkit
-weasyprint==52.5
+weasyprint==61.2
     # via -r requirements.in
 webencodings==0.5.1
     # via
@@ -376,6 +371,8 @@ zenpy==1.1.10
     # via -r requirements.in
 zipp==3.17.0
     # via importlib-metadata
+zopfli==0.2.3
+    # via fonttools
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
