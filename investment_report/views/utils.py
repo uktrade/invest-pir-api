@@ -47,7 +47,8 @@ def investment_report_pdf(request, lang, market, sector, moderated=True):
             market, sector, company,
             local=True,
             moderated=moderated,
-            plain=plain
+            plain=plain,
+            base_url=request.build_absolute_uri(),
         )
 
         pdf = pdf_file.getvalue()
