@@ -165,6 +165,8 @@ oauthlib==3.2.2
     #   requests-oauthlib
 olefile==0.47
     # via directory-validators
+pdfkit==1.0.0
+    # via -r requirements.in
 pillow==10.2.0
     # via
     #   -r requirements.in
@@ -272,7 +274,7 @@ waitress==2.1.2
     # via -r requirements.in
 wcwidth==0.2.12
     # via prompt-toolkit
-weasyprint==61.2
+weasyprint==61.1
     # via -r requirements.in
 webencodings==0.5.1
     # via
